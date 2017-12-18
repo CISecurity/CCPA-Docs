@@ -56,21 +56,16 @@ CIS-CAT Pro Assessor CLI can perform a variety of functions related to both benc
 
 #### Extra configuration Options ####
 
-`-sessions, --sessions <SESSIONS.PROPERTIES>`:
+`-sessions, --sessions <SESSIONS.PROPERTIES>`: The `-sessions` option allows users to configure multiple endpoints for assessment of a benchmark.  The `sessions.properties` file configures CIS-CAT Pro Assessor for the assessment of remote endpoints by specifying remote hosts, ports, and credentials which the application will use for connection, collection and evaluation of benchmark recommendations and/or vulnerabilities.  See "Remote Assessment Capability" below for more information.
 
-`-props, --properties <PROPERTIES-FILE>`:
+If no `sessions.properties` file exists or no connections are configured in the file, CIS-CAT Pro Assessor CLI will assess the local machine.
 
-`-D <Property=Value>`:
+`-props, --properties <PROPERTIES-FILE>`: The CIS-CAT Pro Assessor CLI user properties file defaults many runtime properties used during the assessment process.  These properties may be customized per assessment or per endpoint, by creating individual properties files, and specifying either the full filepath or a path relative to the working directory.
+
+`-D <Property=Value>`: Instead of creating a new properties file for unique assessments, individual user properties may be specified using the `-D` option together with a `property=value` pair.  This allows an assessment to only override specific user properties when only a small number differ from the defaults.
 
 #### Debugging Options ####
 `-v, --verbose`: Enable verbose debug logging.
-``:
-``:
-``:
-``:
-``:
-``:
-``:
 
 ----------
 
