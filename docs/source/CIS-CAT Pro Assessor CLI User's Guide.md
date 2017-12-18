@@ -8,35 +8,51 @@ The CIS-CAT Pro Assessor is a command-line user interface, allowing users to ass
 ## Deployment ##
 CIS-CAT Pro Assessor is a simple Java-based application and as such, requires a Java Runtime Environment (JRE) at or above version 1.8, in order to execute.  A suitable JRE may be installed to the machine on which CIS-CAT is installed, or may be located on a network share.  As long as the machine executing the CIS-CAT Pro Assessor application can access a suitable JRE, it may be used to run the tool.
 
-## Using CIS-CAT Pro Assessor ##
+## Using CIS-CAT Pro Assessor CLI ##
 
 ### Command Line Options ###
 CIS-CAT Pro Assessor CLI can perform a variety of functions related to both benchmark and vulnerability assessments.  The myriad command-line options allow for combined usage to initiate these functions.
 
 - Basic Options
+ 
 `-h, --help`: Display CIS-CAT Pro Assessor help output.
-`-l, --list`: List the benchmarks available for assessment.
-`-i, --interactive`: Execute the Assessor in "interactive" mode specifically for benchmark assessments, allowing the user to manually select a benchmark and profile for assessment.  Based on the selected benchmark, the user may be required to enter "interactive values" which are then used by the assessment engine.
-`-o, --definitions`: Execute the Assessor in "interactive" mode specifically for the manual selection and evaluation of OVAL Definitions files, and (optionally) selecting and associating an OVAL Variables file as well.
+
+ `-l, --list`: List the benchmarks available for assessment.
+
+ `-i, --interactive`: Execute the Assessor in "interactive" mode specifically for benchmark assessments, allowing the user to manually select a benchmark and profile for assessment.  Based on the selected benchmark, the user may be required to enter "interactive values" which are then used by the assessment engine.
+
+ `-o, --definitions`: Execute the Assessor in "interactive" mode specifically for the manual selection and evaluation of OVAL Definitions files, and (optionally) selecting and associating an OVAL Variables file as well.
 
 - Report Configuration Options
+
 `-d, --startingDir`:  Configure the Assessor's starting directory.  When not used, the starting directory defaults to the folder location of the main Assessor .jar file.
+
 `-rd, --reports-dir`: Configure the report destination folder, allowing users to configure the location to which result reports are written.
+
 `-rp, --report-prefix`: 
 
 - Benchmark/Data-Stream Collection Options
+
 `-b, --benchmark <BENCHMARK>`:
+
 `-ds, --data-stream <DATA-STREAM>`:
+
 `-cl, --checklist <CHECKLIST>`:
+
 `-p, --profile <PROFILE>`:
 
 - OVAL Definitions Assessment Options:
+
 `-od, --oval-definitions <OVAL_DEFINITIONS>`:
+
 `-ov, --oval-variables <OVAL_VARIABLES>`:
 
 - Extra configuration Options:
+
 `-sessions, --sessions <SESSIONS.PROPERTIES>`:
+
 `-props, --properties <PROPERTIES-FILE>`:
+
 `-D <Property=Value>`:
 
 - Report Generation Options
