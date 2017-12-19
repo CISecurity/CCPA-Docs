@@ -65,7 +65,7 @@ If no `sessions.properties` file exists or no connections are configured in the 
 `-D <Property=Value>`: Instead of creating a new properties file for unique assessments, individual user properties may be specified using the `-D` option together with a `property=value` pair.  This allows an assessment to only override specific user properties when only a small number differ from the defaults.
 
 #### Debugging Options ####
-`-v, --verbose`: Enable verbose debug logging.
+`-v, --verbose`: Enable more verbose output when combined with the `-l` option.
 
 ----------
 
@@ -74,11 +74,25 @@ If no `sessions.properties` file exists or no connections are configured in the 
 ### Producing Reports ###
 
 ### Examples ###
-List All Available Benchmarks
-Execute interactively against the local host
-Configure Sessions
-Assess a specific benchmark and profile
-Download Vulnerability Definitions
-Execute a Vulnerability Assessment
+The following are common examples for executing CIS-CAT Pro Assessor CLI.  Note the `>` indicates a command prompt.
+#### List All Available Benchmarks ####
+    > java -Xmx768m -jar Assessor-CLI-1.0.0.jar -l
 
+#### List All Available Benchmarks (with `-b` information)
+    > java -Xmx768m -jar Assessor-CLI-1.0.0.jar -l -v
+
+#### Execute interactively against the local host ####
+    > java -Xmx768m -jar Assessor-CLI-1.0.0.jar -i
+
+#### Configure Sessions ####
+    > java -Xmx768m -jar Assessor-CLI-1.0.0.jar -sessions config\windows.properties
+
+#### Assess a specific benchmark and profile ####
+    > java -Xmx768m -jar Assessor-CLI-1.0.0.jar -b benchmarks\CIS_Microsoft_Windows_10_Enterprise_Release_1703_Benchmark_v1.3.0-xccdf.xml -p "Level 1"
+
+#### Download Vulnerability Definitions ####
+    > java -Xmx768m -jar Assessor-CLI-1.0.0.jar -vdd
+
+#### Execute a Vulnerability Assessment ####
+    > java -Xmx768m -jar Assessor-CLI-1.0.0.jar -od vulnerabilities\microsoft_windows_10.xml
 
