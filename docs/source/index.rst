@@ -14,5 +14,6 @@ CIS-CAT Pro Assessor Documentation
    
    CIS-CAT Pro Assessor CLI User's Guide <CIS-CAT Pro Assessor CLI User's Guide.md>
    CIS-CAT Pro Assessor Configuration Guide <CIS-CAT Pro Assessor Configuration Guide.md>
+   CIS-CAT Pro Assessor Coverage Guide <CIS-CAT Pro Assessor Coverage Guide.md>
 
 
