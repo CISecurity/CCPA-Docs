@@ -61,8 +61,8 @@ Execute an assessment of an OVAL Definitions file in "interactive" mode, selecti
 | Short Option  |  Long Option  |   Argument   | Description                      |
 | ------------- | ------------- | ----------------------------------------------- |
 | `-b`          | `--benchmark` | `<BENCHMARK>` | Specify either the full filepath to a benchmark XML file (an XCCDF), or a path relative to the starting directory. |
-| `-ds`         | `--data-stream` | `<DATA-STREAM>` | Specify either the full filepath to a data-stream collection XML file, or a path relative to the starting directory.|
-| `-cl` | `--checklist` | `<CHECKLIST>` | Used only in conjunction with the `-ds` option, the `-cl` option specifies, within the data-stream collection, the ID of the checklist (benchmark) to be assessed.|
+| `-ds`         | `--data-stream` | `<DATA-STREAM>` |  |
+| `-cl` | `--checklist` | `<CHECKLIST>` | Used only in conjunction with the `-ds` option, the `-cl` option specifies, within the data-stream, the ID of the checklist (benchmark) to be assessed.|
 | `-p` | `--profile` | `<PROFILE>` | Specify either a profile name, such as `Level-1`, or the profile ID, such as `xccdf_org.cisecurity.benchmarks_profile_Level_1`.  Note that when using the profile name, if any spaces occur, the entire profile name must be wrapped in double-quotes, such as `"Level 2"`|
 
 #### Examples ####
