@@ -65,6 +65,8 @@ CIS currently distributes CIS-CAT with production support for the following benc
 55. CIS Ubuntu Linux 14.04 LTS Benchmark, v2.0.0
 56. CIS Ubuntu Linux 16.04 LTS Benchmark, v1.0.0
 
+**NOTE**:  Any benchmarks which utilized CIS' proprietary Embedded Check Language (ECL) are not yet supported in CIS-CAT Pro Assessor v4.  Further development will either implement these benchmarks using currently available scripting capabilities, or will be migrated to OVAL when platform coverage is expanded.
+
 ## OVAL Capabilities ##
 International in scope and free for public use, OVAL is an information security community effort to standardize how to assess and report upon the machine state of computer systems. OVAL includes a language to encode system details, and an assortment of content repositories held throughout the community.
 
