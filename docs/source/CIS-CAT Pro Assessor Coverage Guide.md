@@ -73,17 +73,22 @@ International in scope and free for public use, OVAL is an information security 
 Tools and services that use OVAL for the three steps of system assessment — representing system information, expressing specific machine states, and reporting the results of an assessment — provide enterprises with accurate, consistent, and actionable information so they may improve their security. Use of OVAL also provides for reliable and reproducible information assurance metrics and enables interoperability and automation among security tools and services.
 
 ### Platform Independent ###
-- Environment Variable (<5.8)
-- Family
-- File Hash (<5.8)
-- File Hash (5.8+)
-- LDAP (<5.7)
-- LDAP (5.7+)
-- SQL (5.7+)
-- Text File Content (<5.4)
-- Text File Content (5.4+)
-- Variable
-- XML File Content
+| Test Name | Implemented? | Etc. |
+|------------------------------------|---|-------|
+| Environment Variable (<5.8)        | Y ||
+| Environment Variable (5.8+)        | N ||
+| Family                             | Y ||
+| File Hash (<5.8)                   | Y ||
+| File Hash (5.8+)                   | Y ||
+| LDAP (<5.7)                        | Y ||
+| LDAP (5.7+)                        | N | Deprecated |
+| SQL (<5.7+)                        | N | Deprecated |
+| SQL (5.7+)                         | Y ||
+| Text File Content (<5.4)           | Y ||
+| Text File Content (5.4+)           | Y ||
+| Unknown                            | Y ||
+| Variable                           | Y ||
+| XML File Content                   | Y ||
 
 ### Microsoft Windows ###
 - Access Token
