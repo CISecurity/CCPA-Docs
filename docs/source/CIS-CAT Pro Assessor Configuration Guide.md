@@ -104,10 +104,11 @@ WinRM
 
 
 ## Unix/Linux Endpoint Configuration ##
-SSH
+Make sure SSH is enabled, and that the machine hosting CIS-CAT Pro Assessor CLI has the ability to connect via SSH to the endpoint.
 
 ## Cisco Network Device Endpoint Configuration ##
-SSH
+### Connecting to a Device ###
+Make sure SSH is enabled, and that the machine hosting CIS-CAT Pro Assessor CLI has the ability to connect via SSH to the endpoint.
 
 `show tech-support`
 
