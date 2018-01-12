@@ -73,10 +73,10 @@ International in scope and free for public use, OVAL is an information security 
 Tools and services that use OVAL for the three steps of system assessment — representing system information, expressing specific machine states, and reporting the results of an assessment — provide enterprises with accurate, consistent, and actionable information so they may improve their security. Use of OVAL also provides for reliable and reproducible information assurance metrics and enables interoperability and automation among security tools and services.
 
 ### Platform Independent ###
-| Test Name | Implemented? | Etc. |
+| Test Name | Implemented? | Notes |
 |------------------------------------|---|-------|
 | Environment Variable (<5.8)        | Y ||
-| Environment Variable (5.8+)        | N ||
+| Environment Variable (5.8+)        | N | In development|
 | Family                             | Y ||
 | File Hash (<5.8)                   | Y ||
 | File Hash (5.8+)                   | Y ||
@@ -91,98 +91,114 @@ Tools and services that use OVAL for the three steps of system assessment — re
 | XML File Content                   | Y ||
 
 ### Microsoft Windows ###
-- Access Token
-- Audit Event Policy
-- Audit Event Policy Subcategories
-- Cmdlet
-- File
-- File Audited Permissions (<5.3)
-- File Audited Permissions (5.3+)
-- File Effective Rights (<5.3)
-- File Effective Rights (5.3+)
-- Group
-- Group SID
-- Interface
-- Lockout Policy
-- Password Policy
-- Process (5.8+)
-- Registry
-- Registry Key Audited Permissions (<5.3)
-- Registry Key Audited Permissions (5.3+)
-- Registry Key Effective Rights (<5.3)
-- Registry Key Effective Rights (5.3+)
-- Service
-- Service Effective Rights
-- Shared Resource
-- Shared Resource Audited Permissions
-- Shared Resource Effective Rights
-- SID
-- SID SID
-- UAC
-- User
-- User Rights
-- User SID (5.5+)
-- Volume
-- WMI (<5.7)
-- WMI (5.7+)
-- WUA Update Searcher
+| Test Name | Implemented? | Notes |
+|------------------------------------|---|-------|
+| Access Token | Y ||
+| Audit Event Policy | Y ||
+| Audit Event Policy Subcategories | Y ||
+| Cmdlet | Y ||
+| File | Y ||
+| File Audited Permissions (<5.3) | Y ||
+| File Audited Permissions (5.3+) | Y ||
+| File Effective Rights (<5.3) | Y ||
+| File Effective Rights (5.3+) | Y ||
+| Group | Y ||
+| Group SID | Y ||
+| Interface | Y ||
+| Lockout Policy | Y ||
+| Password Policy | Y ||
+| Process (5.8+) | Y ||
+| Registry | Y ||
+| Registry Key Audited Permissions (<5.3) | Y ||
+| Registry Key Audited Permissions (5.3+) | Y ||
+| Registry Key Effective Rights (<5.3) | Y ||
+| Registry Key Effective Rights (5.3+) | Y ||
+| Service | Y ||
+| Service Effective Rights | Y ||
+| Shared Resource | Y ||
+| Shared Resource Audited Permissions | Y ||
+| Shared Resource Effective Rights | Y ||
+| SID | Y ||
+| SID SID | Y ||
+| UAC | Y ||
+| User | Y ||
+| User Rights | Y ||
+| User SID (5.5+) | Y ||
+| Volume | Y ||
+| WMI (<5.7) | Y ||
+| WMI (5.7+) | Y ||
+| WUA Update Searcher | Y ||
 
 ### Microsoft IIS (Extension) ###
-- Application Host Config
-- Application Pool
-- Site Bindings
-- System Web
-- Web Config
+| Test Name                | Implemented? | Notes |
+|--------------------------|--------------|-------|
+| Application Host Config  | Y ||
+| Application Pool         | Y ||
+| Site Bindings            | Y ||
+| System Web               | Y ||
+| Web Config               | Y ||
 
 ### Unix ###
-- File
-- Inetd
-- Password
-- Process (5.8+)
-- Runlevel
-- Shadow
-- Symlink
-- Sysctl
-- Uname
-- Xinetd
+| Test Name                | Implemented? | Notes |
+|--------------------------|--------------|-------|
+| File                     | Y ||
+| Inetd                    | Y ||
+| Password                 | Y ||
+| Process (5.8+)           | Y ||
+| Runlevel                 | Y ||
+| Shadow                   | Y ||
+| Symlink                  | Y ||
+| Sysctl                   | Y ||
+| Uname                    | Y ||
+| Xinetd                   | Y ||
 
 ### Linux ###
-- AppArmor Status
-- DpkgInfo
-- Inet Listening Servers
-- Partition
-- RPM Info
-- SELinux Booleans
-- Systemd Unit Property
+| Test Name                | Implemented? | Notes |
+|--------------------------|--------------|-------|
+| AppArmor Status | Y ||
+| DpkgInfo | Y ||
+| Inet Listening Servers | Y ||
+| Partition | Y ||
+| RPM Info | Y ||
+| SELinux Booleans | Y ||
+| Systemd Unit Property | Y ||
 
 ### Mac OSX ###
+| Test Name                | Implemented? | Notes |
+|--------------------------|--------------|-------|
 TBD
 
 ### Cisco ASA ###
+| Test Name                | Implemented? | Notes |
+|--------------------------|--------------|-------|
 TBD
 
 ### Cisco IOS ###
-- ACL
-- BGP Neighbor
-- Global
-- Interface
-- Line
-- Router
-- Routing Protocol Auth. Intf.
-- Section
-- SNMP
-- SNMP Community
-- SNMP Group
-- SNMP Host
-- SNMP User
-- SNMP View
-- Tclsh
-- Version (<5.5)
-- Version (5.5+)
+| Test Name                | Implemented? | Notes |
+|--------------------------|--------------|-------|
+| ACL | Y ||
+| BGP Neighbor | Y ||
+| Global | Y ||
+| Interface | Y ||
+| Line | Y ||
+| Router | Y ||
+| Routing Protocol Auth. Intf. | Y ||
+| Section | Y ||
+| SNMP | Y ||
+| SNMP Community | Y ||
+| SNMP Group | Y ||
+| SNMP Host | Y ||
+| SNMP User | Y ||
+| SNMP View | Y ||
+| Tclsh | Y ||
+| Version (<5.5) | Y ||
+| Version (5.5+) | Y ||
 
 ### Other ###
-- Shell Command (Extension, Platform Independent)
-- Invalid User Home Directory Ownership (Extension, Linux)
+| Test Name                | Implemented? | Notes |
+|--------------------------|--------------|-------|
+| Shell Command            | Y            | Extension, Platform Independent |
+| Invalid User Home Directory Ownership |Y| Extension, Linux|
 
 
 ## Scripting Capabilities ##
