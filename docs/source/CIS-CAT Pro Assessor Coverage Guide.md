@@ -94,9 +94,12 @@ Tools and services that use OVAL for the three steps of system assessment — re
 | Test Name | Implemented? | Notes |
 |------------------------------------|---|-------|
 | Access Token | Y ||
+| Active Directory (<5.7) | N | On roadmap |
+| Active Directory (5.7+)| N | On roadmap |
 | Audit Event Policy | Y ||
 | Audit Event Policy Subcategories | Y ||
 | Cmdlet | Y ||
+| DNSCache | N | On roadmap |
 | File | Y ||
 | File Audited Permissions (<5.3) | Y ||
 | File Audited Permissions (5.3+) | Y ||
@@ -105,8 +108,16 @@ Tools and services that use OVAL for the three steps of system assessment — re
 | Group | Y ||
 | Group SID | Y ||
 | Interface | Y ||
+| Junction | N | In development |
+| License | N | On roadmap |
 | Lockout Policy | Y ||
+| Metabase | N | On roadmap |
+| NTUser | N | On roadmap |
 | Password Policy | Y ||
+| PEHeader | N | On roadmap |
+| Port | N | On roadmap |
+| Printer Effective Rights | N | On roadmap |
+| Process (<5.8) | N | On roadmap |
 | Process (5.8+) | Y ||
 | Registry | Y ||
 | Registry Key Audited Permissions (<5.3) | Y ||
@@ -120,9 +131,11 @@ Tools and services that use OVAL for the three steps of system assessment — re
 | Shared Resource Effective Rights | Y ||
 | SID | Y ||
 | SID SID | Y ||
+| System Metric | N | On roadmap |
 | UAC | Y ||
 | User | Y ||
 | User Rights | Y ||
+| User SID (<5.5) | N | Deprecated |
 | User SID (5.5+) | Y ||
 | Volume | Y ||
 | WMI (<5.7) | Y ||
@@ -141,11 +154,18 @@ Tools and services that use OVAL for the three steps of system assessment — re
 ### Unix ###
 | Test Name                | Implemented? | Notes |
 |--------------------------|--------------|-------|
+| DNSCache                 | N | On roadmap |
 | File                     | Y ||
+| File Extended Attribute  | N | On roadmap |
+| Gconf                    | N | On roadmap |
 | Inetd                    | Y ||
+| Interface                | N | On roadmap |
 | Password                 | Y ||
+| Process (<5.8)           | N | On roadmap |
 | Process (5.8+)           | Y ||
+| Routing Table            | N | On roadmap |
 | Runlevel                 | Y ||
+| SCCS                     | N | On roadmap |
 | Shadow                   | Y ||
 | Symlink                  | Y ||
 | Sysctl                   | Y ||
@@ -157,26 +177,61 @@ Tools and services that use OVAL for the three steps of system assessment — re
 |--------------------------|--------------|-------|
 | AppArmor Status | Y ||
 | DpkgInfo | Y ||
+| IfListeners| N | On roadmap|
 | Inet Listening Servers | Y ||
 | Partition | Y ||
 | RPM Info | Y ||
+| RPM Verify | N | On roadmap|
+| RPM Verify File | N | On roadmap|
+| RPM Verify Package | N | On roadmap|
 | SELinux Booleans | Y ||
+| SELinux Security Context | N | On roadmap|
+| Slackware PkgInfo| N | On roadmap|
+| Systemd Unit Dependency | N | On roadmap|
 | Systemd Unit Property | Y ||
 
 ### Mac OSX ###
 | Test Name                | Implemented? | Notes |
 |--------------------------|--------------|-------|
-TBD
+| Account Info | Y | |
+| Authorization DB | Y | |
+| CoreStorage | N | In development|
+| DiskUtil | N | In development|
+| Gatekeeper | N | In development|
+| Inet Listening Servers (<5.10) | N | In development|
+| Inet Listening Servers (5.10+) | N | In development|
+| Keychain | N | In development|
+| Launchd| N | In development|
+| Nvram | N | In development|
+| Plist (<5.10) | N | In development|
+| Plist (5.10) | N | In development|
+| Plist (5.11+)| Y | |
+| Pwpolicy (<5.9) | N | In development|
+| Pwpolicy (5.9+) | N | In development|
+| Rlimit | N | In development|
+| Software Update | N | In development|
+| System Profiler | N | In development|
+| System Setup | N | In development|
 
 ### Cisco ASA ###
 | Test Name                | Implemented? | Notes |
 |--------------------------|--------------|-------|
-TBD
+| ACL | N | In development|
+| Class Map | N | In development|
+| Interface | N | In development|
+| Line | N | In development|
+| Policy Map | N | In development|
+| Service Policy | N | In development|
+| SNMP Host | N | In development|
+| SNMP Group | N | In development|
+| SNMP User | N | In development|
+| TCP Map | N | In development|
+| Version | N | In development|
 
 ### Cisco IOS ###
 | Test Name                | Implemented? | Notes |
 |--------------------------|--------------|-------|
-| ACL | Y ||
+| ACL | Y | Partial implementation |
 | BGP Neighbor | Y ||
 | Global | Y ||
 | Interface | Y ||
@@ -193,6 +248,11 @@ TBD
 | Tclsh | Y ||
 | Version (<5.5) | Y ||
 | Version (5.5+) | Y ||
+
+### VMware ESXi ###
+| Test Name                | Implemented? | Notes |
+|--------------------------|--------------|-------|
+| | N | On roadmap |
 
 ### Other ###
 | Test Name                | Implemented? | Notes |
