@@ -111,13 +111,13 @@ Tools and services that use OVAL for the three steps of system assessment — re
 | Junction | N | In development |
 | License | N | On roadmap |
 | Lockout Policy | Y ||
-| Metabase | N | On roadmap |
+| Metabase | N | |
 | NTUser | N | On roadmap |
 | Password Policy | Y ||
 | PEHeader | N | On roadmap |
 | Port | N | On roadmap |
-| Printer Effective Rights | N | On roadmap |
-| Process (<5.8) | N | On roadmap |
+| Printer Effective Rights | N | |
+| Process (<5.8) | Y ||
 | Process (5.8+) | Y ||
 | Registry | Y ||
 | Registry Key Audited Permissions (<5.3) | Y ||
@@ -141,15 +141,6 @@ Tools and services that use OVAL for the three steps of system assessment — re
 | WMI (<5.7) | Y ||
 | WMI (5.7+) | Y ||
 | WUA Update Searcher | Y ||
-
-### Microsoft IIS (Extension) ###
-| Test Name                | Implemented? | Notes |
-|--------------------------|--------------|-------|
-| Application Host Config  | Y ||
-| Application Pool         | Y ||
-| Site Bindings            | Y ||
-| System Web               | Y ||
-| Web Config               | Y ||
 
 ### Unix ###
 | Test Name                | Implemented? | Notes |
@@ -249,10 +240,39 @@ Tools and services that use OVAL for the three steps of system assessment — re
 | Version (<5.5) | Y ||
 | Version (5.5+) | Y ||
 
-### VMware ESXi ###
+### Microsoft IIS (Extension) ###
 | Test Name                | Implemented? | Notes |
 |--------------------------|--------------|-------|
-| | N | On roadmap |
+| Application Host Config  | Y ||
+| Application Pool         | Y ||
+| Site Bindings            | Y ||
+| System Web               | Y ||
+| Web Config               | Y ||
+
+### VMware ESXi (Extension) ###
+| Test Name                | Implemented? | Notes |
+|--------------------------|--------------|-------|
+| VMHost Acceptance Level | N | In development |
+| VMHost VIB | N | In development |
+| VMHost Module | N | In development |
+| VMHost Coredump | N | In development |
+| VMHost Web Server SSL | N | In development |
+| VMHost Authentication | N | In development |
+| VMHost Account | N | In development |
+| VMHost SNMP | N | In development |
+| VMHost Advanced Setting | N | In development |
+| VMHost Service | N | In development |
+| VMHost NTP Server | N | In development |
+| VMHost Lockdown | N | In development |
+| VMHost Firewall Exception | N | In development |
+| VMHost Bus Adapter | N | In development |
+| VMHost iSCSI Host Bus Adapter | N | In development |
+| VMHost vSwitch Policy | N | In development |
+| VM Advanced Setting | N | In development |
+| VM Device | N | In development |
+| VM Hard Disk Device | N | In development |
+| VM Resource Config | N | In development |
+| Virtual Port Group | N | In development |
 
 ### Other ###
 | Test Name                | Implemented? | Notes |
