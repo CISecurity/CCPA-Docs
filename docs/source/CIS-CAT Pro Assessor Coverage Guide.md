@@ -67,6 +67,32 @@ CIS currently distributes CIS-CAT with production support for the following benc
 
 **NOTE**:  Any benchmarks which utilized CIS' proprietary Embedded Check Language (ECL) are not yet supported in CIS-CAT Pro Assessor v4.  Further development will either implement these benchmarks using currently available scripting capabilities, or will be migrated to OVAL when platform coverage is expanded.
 
+## Platform Coverage for Vulnerability Assessments ##
+Using the `-vdd` command-line option, CIS-CAT Pro Assessor v4 is able to download the latest vulnerability definitions from various repositories.  A number of different platforms are officially supported by CIS-CAT Pro Assessor v4, including:
+
+
+| Platform                         | Downloaded From                                                    |
+|----------------------------------|--------------------------------------------------------------------|
+| Microsoft Windows XP             | https://oval.cisecurity.org/repository/download/5.10/vulnerability |
+| Microsoft Windows 7              | https://oval.cisecurity.org/repository/download/5.10/vulnerability |
+| Microsoft Windows 8              | https://oval.cisecurity.org/repository/download/5.10/vulnerability |
+| Microsoft Windows 8.1            | https://oval.cisecurity.org/repository/download/5.10/vulnerability |
+| Microsoft Windows 10             | https://oval.cisecurity.org/repository/download/5.10/vulnerability |
+| Microsoft Windows Server 2003    | https://oval.cisecurity.org/repository/download/5.10/vulnerability |
+| Microsoft Windows Server 2008    | https://oval.cisecurity.org/repository/download/5.10/vulnerability |
+| Microsoft Windows Server 2008 R2 | https://oval.cisecurity.org/repository/download/5.10/vulnerability |
+| Microsoft Windows Server 2012    | https://oval.cisecurity.org/repository/download/5.10/vulnerability |
+| Microsoft Windows Server 2012 R2 | https://oval.cisecurity.org/repository/download/5.10/vulnerability |
+| Microsoft Windows Server 2016    | https://oval.cisecurity.org/repository/download/5.10/vulnerability |
+| Red Hat Enterprise Linux         | https://www.redhat.com/security/data/oval                          |
+| SuSE Linux Enterprise Server 9   | https://support.novell.com/security/oval                           |
+| SuSE Linux Enterprise Server 10  | https://support.novell.com/security/oval                           |
+| SuSE Linux Enterprise Server 11  | https://support.novell.com/security/oval                           |
+| SuSE Linux Enterprise Server 12  | https://support.novell.com/security/oval                           |
+| Ubuntu Linux 12.04               | https://people.canonical.com/~ubuntu-security/oval                 |
+| Ubuntu Linux 14.04               | https://people.canonical.com/~ubuntu-security/oval                 |
+| Ubuntu Linux 16.04               | https://people.canonical.com/~ubuntu-security/oval                 |
+
 ## OVAL Capabilities ##
 International in scope and free for public use, OVAL is an information security community effort to standardize how to assess and report upon the machine state of computer systems. OVAL includes a language to encode system details, and an assortment of content repositories held throughout the community.
 

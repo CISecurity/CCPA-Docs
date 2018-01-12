@@ -179,7 +179,7 @@ Execute an assessment against the CIS Microsoft Windows 10 benchmark, using the 
 
 | Short Option  |   Long Option   |    Argument   | Description                       |
 | ------------- | --------------- | --------------|---------------------------------- |
-| `-vdd` | `--vulnerability-definitions` | N/A | Download the latest supported vulnerability definitions information for the supported platforms: Microsoft Windows, Red Hat Linux, SuSE Enterprise Linux, and Ubuntu|
+| `-vdd` | `--vulnerability-definitions` | N/A | Download the latest supported vulnerability definitions.  See the [CIS-CAT Pro Assessor Coverage Guide](./CIS-CAT%20Pro%20Assessor%20Coverage%20Guide) for the most up-to-date information regarding vulnerability definitions platform coverage.  Vulnerability definitions files are saved into the application's `vulnerabilities` folder, i.e. `C:\CIS\Assessor-CLI\vulnerabilities`.|
 | `-sessions`| `--sessions`| `<SESSIONS.PROPERTIES>`| The `-sessions` option allows users to configure multiple endpoints for assessment of a benchmark.  The `sessions.properties` file configures CIS-CAT Pro Assessor for the assessment of remote endpoints by specifying remote hosts, ports, and credentials which the application will use for connection, collection and evaluation of benchmark recommendations and/or vulnerabilities.  See "Remote Assessment Capability" below for more information.  <br/><br/>If no `sessions.properties` file exists or no connections are configured in the file, CIS-CAT Pro Assessor CLI will assess the local machine.|
 | `-props`| `--properties`| `<PROPERTIES-FILE>`| The CIS-CAT Pro Assessor CLI user properties file defaults many runtime properties used during the assessment process.  These properties may be customized per assessment or per endpoint, by creating individual properties files, and specifying either the full filepath or a path relative to the working directory.|
 | `-D`| N/A| `<Property=Value>`| Instead of creating a new properties file for unique assessments, individual user properties may be specified using the `-D` option together with a `property=value` pair.  This allows an assessment to only override specific user properties when only a small number differ from the defaults.|
@@ -188,6 +188,10 @@ Execute an assessment against the CIS Microsoft Windows 10 benchmark, using the 
 Download the latest vulnerability definitions:
 
 	> Assessor-CLI.bat -vdd
+
+Execute a vulnerability assessment for the Microsoft Windows Server 2012 R2 platform, producing both an OVAL Result XML file, and an HTML report:
+
+	> Assessor-CLI.bat -od vulnerabilities\microsoft_windows_server_2012_r2.xml -html
 
 Execute an assessment against the CIS Microsoft Windows 10 benchmark, using the relative path to the benchmark file, automatically selecting the first profile, assessing a number of remote machines, configured in a specific session configuration file:
 
@@ -200,7 +204,7 @@ Execute an assessment against the CIS Oracle Database 11g R2 benchmark, selectin
 
 
 ## Troubleshooting and Support ###
-Member support for CIS-CAT Pro Assessor is available through the normal support channels:
+Member support for CIS-CAT Pro Assessor is available through the normal CIS SecureSuite support channels:
 
 - Email support at [support@cisecurity.org](mailto:support@cisecurity.org)
 - Start a discussion on the [CIS-CAT Discussion Group](https://workbench.cisecurity.org/communities/30) (login required)
