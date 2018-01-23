@@ -99,17 +99,33 @@ Configure a Cisco IOS session pointing to an exported configuration file:
 
 
 ## Microsoft Windows Endpoint Configuration ##
-WinRM
+
+
+- Connect to the instance either directly or through RDP
+- Copy the `configure-winrm-ccpa.ps1` script to the endpoint
+- When using an AWS instance, the public DNS name can be configured as the hostname:
+
+	`$hostname = (New-Object System.Net.WebClient).DownloadString("http://169.254.169.254/2011-01-01/meta-data/public-hostname")`
+- Or, uncomment the following line:
+
+	`$hostname = "[HOSTNAME-or-IPADDRESS]"`
+	
+	and modify the value to an actual hostname or IP address.
+
+NOTE:  This hostname value will be configured as the CN in the created self-signed certificate which CCPA will use during authentication/authorization.  If a certificate
 
 
 
 ## Unix/Linux Endpoint Configuration ##
-Make sure SSH is enabled, and that the machine hosting CIS-CAT Pro Assessor CLI has the ability to connect via SSH to the endpoint.
+CIS-CAT Pro Assessor assesses remote Unix/Linux targets via SSH connections.  Ensure the target system can be accessed via SSH and that the user connecting to the remote target is either the `root` user or a user granted privileges to execute commands using `sudo`.
 
 ## Cisco Network Device Endpoint Configuration ##
-### Connecting to a Device ###
-Make sure SSH is enabled, and that the machine hosting CIS-CAT Pro Assessor CLI has the ability to connect via SSH to the endpoint.
+CIS-CAT Pro Assessor v4 can assess either the current running configuration of a Cisco network device, or an exported configuration file.
 
+### Connecting to a Device ###
+CIS-CAT Pro Assessor assesses Cisco network device targets via SSH connections.  Ensure the target system can be accessed via SSH and that the user connecting to the remote target is a privileged user.  When connecting to Cisco devices, CIS-CAT Pro Assessor will be configured to enter "privileged EXEC" mode, so any user connecting to the Cisco device via SSH must be granted appropriate permission to do so.
+
+### Exported Configuration File ###
 `show tech-support`
 
 ## Database Endpoint Configuration ##
