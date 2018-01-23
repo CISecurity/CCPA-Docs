@@ -100,24 +100,22 @@ Configure a Cisco IOS session pointing to an exported configuration file:
 
 ## Microsoft Windows Endpoint Configuration ##
 
+### WinRM Configuration ###
 
-- Connect to the instance either directly or through RDP
-- Copy the `configure-winrm-ccpa.ps1` script to the endpoint
-- When using an AWS instance, the public DNS name can be configured as the hostname:
+#### Enable WinRM ####
+#### Create the Self-Signed Certificate ####
+Run the script to create the self-signed cert and apply it to the WinRM HTTPS listener.
+#### Windows Firewall Configuration ####
+Open ports 5986 for WinRM over HTTPS and 445 for SMB.
+#### Disable UAC remote restrictions ####
+LocalAccountTokenFilterPolicy
 
-	`$hostname = (New-Object System.Net.WebClient).DownloadString("http://169.254.169.254/2011-01-01/meta-data/public-hostname")`
-- Or, uncomment the following line:
-
-	`$hostname = "[HOSTNAME-or-IPADDRESS]"`
-	
-	and modify the value to an actual hostname or IP address.
-
-NOTE:  This hostname value will be configured as the CN in the created self-signed certificate which CCPA will use during authentication/authorization.  If a certificate
-
+#### Domain Considerations ####
+Kerberos stuff
 
 
-## Unix/Linux Endpoint Configuration ##
-CIS-CAT Pro Assessor assesses remote Unix/Linux targets via SSH connections.  Ensure the target system can be accessed via SSH and that the user connecting to the remote target is either the `root` user or a user granted privileges to execute commands using `sudo`.
+## Unix/Linux/OSX Endpoint Configuration ##
+CIS-CAT Pro Assessor assesses remote Unix/Linux/OSX targets via SSH connections.  Ensure the target system can be accessed via SSH and that the user connecting to the remote target is either the `root` user or a user granted privileges to execute commands using `sudo`.
 
 ## Cisco Network Device Endpoint Configuration ##
 CIS-CAT Pro Assessor v4 can assess either the current running configuration of a Cisco network device, or an exported configuration file.
@@ -143,14 +141,121 @@ Once the exported configuration file is available to CIS-CAT Pro Assessor, the a
 Assessing database benchmarks in CIS-CAT Pro Assessor v4 uses the same JDBC connection mechanism as previous versions.  Database benchmarks will require a user to enter the JDBC connection string, or utilize the `ciscat.properties` file to set the appropriate value for assessment.
 
 ### Oracle Database ###
+The JDBC string parameter is the connection string used to connect to and authenticate to the Oracle Database service and instance that CIS-CAT will assess.  The Oracle JDBC driver has the ability to connect to Oracle database instances using either the SID or Service Name.
+
+When connecting to an Oracle database using the SID, the format of the JDBC connection string is:
+
+	jdbc:oracle:thin:[username]/[password]@[hostname]:[port]:[SID]
+
+For example:
+
+	jdbc:oracle:thin:sys as sysdba/pa55w0rd!@servername:1521:ORCL
+
+When connecting to an Oracle database using the Service Name, the format of the JDBC connection string is:
+
+	jdbc:oracle:thin:[username]/[password]@//[hostname]:[port]/[service_name]
+
+For example:
+
+	jdbc:oracle:thin:sys as sysdba/pa55w0rd!@//servername:1521/SERVICE_NAME
+
+The following table describes the components of the Oracle JDBC connection string.
+
+| Property Name | Property Description |
+|---------------|----------------------|
+| username      | A valid username who can connect to the database instance.  This user should have sufficient privileges to `SELECT` from the various tables and views indicated in the specific Oracle benchmark, or be granted `SYSDBA` privileges. |
+| password      | The credentials for the specified `username` to connect to the database instance. |
+| hostname      | The name of the server (or it's IP address) hosting the database.|
+| port          | The port number on which the database is listening.  By default, Oracle databases are configured to listen on port 1521.|
+| SID           | The database SID.|
+| Service Name  | The database Service Name.|
+
 
 ### Oracle MySQL Database ###
+Oracle MySQL database support is implemented using the MariaDB JDBC driver.  The format for the MariaDB JDBC connection string for MySQL is:
+
+	jdbc:mysql://<host>:<port>/<database>?<key1>=<value1>&<key2>=<value2>...
+
+Consider a MySQL database instance with the following information:
+
+| Property Name | Property Value |
+|---------------|----------------------|
+| Server Name   | CIS-SERVER |
+| Database Name | TestDB |
+| Database Port | 3306 |
+| Username      | db_user |
+| Credentials   | db_pass |
+
+When configuring the JDBC connection string in CIS-CAT Pro Assessor, the above information would yield:
+
+	jdbc:mysql://CIS-SERVER:3306/TestDB?user=db_user&password=db_pass
+
+Notable optional parameters involve ensuring JDBC connections are made via SSL:
+
+| Property Name          | Property Description |
+|------------------------|----------------------|
+| user                   | The database username. |
+| password               | The credentials for the specified `username` to connect to the database instance. |
+| useSSL                 | Force the usage of SSL on the connection. |
+| trustServerCertificate | When using SSL, do *not* verify the server's certificate.|
+| serverSslCert          | Server's certificate in DER form, or server's CA certificate. Can be used in one of 3 forms:<br/><br/> `serverSslCert=/path/to/cert.pem`:  full path to certificate <br/><br/> `serverSslCert =classpath:relative/cert.pem`:  relative to current classpath <br/><br/> or as verbatim DER-encoded certificate string, starting with<br/> `------BEGIN CERTIFICATE-----`|
+
+**NOTES**
+
+- The default port number for MySQL is 3306
+- The full set of connection properties/optional URL parameters supported by MariaDB can be found at [https://mariadb.com/kb/en/mariadb/about-the-mariadb-java-client/](https://mariadb.com/kb/en/mariadb/about-the-mariadb-java-client/)
+
 
 ### Microsoft SQL Server ###
+Microsoft SQL Server database support is implemented using the jTDS open source JDBC driver.  The jTDS driver provides support for SQL Server 6.5, 7, 2000, 2005, 2008, and 2012.
 
+The format of the jTDS JDBC URL for MS SQL Server is:
 
-## (TODO) VMware ESXi Endpoint Configuration ##
-Currently PowerCLI
+	jdbc:jtds:sqlserver://<server>[:<port>][/<database>][;<property>=<value>]
+
+Properties required for the database connection can be provided as `<property>=<value>` pairs, separated by a semi-colon `;`
+
+Consider a Microsoft SQL Server database instance with the following information:
+
+| Property Name                     | Property Value |
+|-----------------------------------|----------------------|
+| Server Name                       | CIS-SERVER |
+| Database Name                     | TestDB |
+| Database Port                     | 1433 |
+| Windows Domain                    | WIN-DOMAIN |
+| Windows Domain User/Password      | jsmith/qw3rty |
+| SQL Server Database User/Password | db_user/db_pass |
+| Instance Name                     | InstanceName |
+
+#### Windows Authentication ####
+Windows Authentication Mode allows a user to connect to a SQL Server instance through a Microsoft Windows user account.  This mode allows domain user account information to be supplied in order to establish a connection.  The following JDBC connection string would be valid for establishing a connection using the above example information:
+
+	jdbc:jtds:sqlserver://CIS-SERVER:1433/TestDB;domain=WIN-DOMAIN;user=jsmith;password=qw3rty;instance=InstanceName
+
+Windows Authentication Mode may also be used against databases running on machines not joined to a domain (standalone servers).  When authenticating with Microsoft Windows user accounts to non-domain joined servers, substitute in the computer name for the domain.  For example, if the name of the standalone server is `SQLSERVER`, the JDBC connection string would look as such:
+
+	jdbc:jtds:sqlserver://CIS-SERVER:1433;DatabaseName=TestDB;domain=SQLSERVER;user=jsmith;password=qw3rty;instance=InstanceName
+
+**NOTE**:  When connecting to a SQL Server using Windows Authentication, a common error message indicates that “the user is attempting to log in from an untrusted domain” (or similar message).  In order to resolve this issue, add the `useNTLMv2=true` property/value:
+
+	jdbc:jtds:sqlserver://CIS-SERVER:1433;DatabaseName=TestDB;domain=SQLSERVER;user=jsmith;password=qw3rty;instance=InstanceName;useNTLMv2=true
+
+#### SQL Server Authentication ####
+SQL Server Authentication provides the ability for connections to a database instance to be made using trusted username and password information, allowing SQL Server to perform the authentication itself by checking to see if a SQL Server login account has been setup and if the password matches one previously recorded for that user.  The following JDBC URLs would be valid for establishing a connection using the above example information:
+
+	jdbc:jtds:sqlserver://CIS-SERVER:1433/TestDB;user=db_user;password=db_pass;instance=InstanceName
+
+or
+
+	jdbc:jtds:sqlserver://CIS-SERVER:1433;DatabaseName=TestDB;user=jsmith;password=qw3rty;instance=InstanceNam
+
+**NOTES**:
+
+- The default port number for MS SQL Server databases is `1433`.
+- The full set of connection properties supported by jTDS can be found at [http://jtds.sourceforge.net/faq.html#urlFormat](http://jtds.sourceforge.net/faq.html#urlFormat).
+
+## VMware ESXi Endpoint Configuration ##
+Currently in development for support in CIS-CAT Pro Assessor v4.
 
 
 ### Extra configuration Options ###
