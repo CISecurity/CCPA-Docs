@@ -126,10 +126,28 @@ CIS-CAT Pro Assessor v4 can assess either the current running configuration of a
 CIS-CAT Pro Assessor assesses Cisco network device targets via SSH connections.  Ensure the target system can be accessed via SSH and that the user connecting to the remote target is a privileged user.  When connecting to Cisco devices, CIS-CAT Pro Assessor will be configured to enter "privileged EXEC" mode, so any user connecting to the Cisco device via SSH must be granted appropriate permission to do so.
 
 ### Exported Configuration File ###
-`show tech-support`
+CIS-CAT Pro Assessor can also assess an exported configuration file; the output of the `show tech-support` command.  The output from the `show tech-support` command is very long. To better manage this output, you can redirect the output to a file (for example, `show tech-support > *filename*` ) in the local writable storage file system or the remote file system.
+
+You can use one of the following redirection methods:
+
+	> filename —Redirects the output to a file.
+	>> filename —Redirects the output to a file in append mode.
+
+This example shows how to redirect the technical support information to a file:
+
+	switch# show tech-support > bootflash:TechSupport.txt
+
+Once the exported configuration file is available to CIS-CAT Pro Assessor, the assessment can be performed against it.  See the example above entitled "Configure a Cisco IOS session pointing to an exported configuration file" to configure the appropriate Assessor "session".
 
 ## Database Endpoint Configuration ##
-JDBC
+Assessing database benchmarks in CIS-CAT Pro Assessor v4 uses the same JDBC connection mechanism as previous versions.  Database benchmarks will require a user to enter the JDBC connection string, or utilize the `ciscat.properties` file to set the appropriate value for assessment.
+
+### Oracle Database ###
+
+### Oracle MySQL Database ###
+
+### Microsoft SQL Server ###
+
 
 ## (TODO) VMware ESXi Endpoint Configuration ##
 Currently PowerCLI

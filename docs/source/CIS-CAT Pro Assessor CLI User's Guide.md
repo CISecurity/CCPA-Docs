@@ -181,7 +181,7 @@ Execute an assessment against the CIS Microsoft Windows 10 benchmark, using the 
 | ------------- | --------------- | --------------|---------------------------------- |
 | `-vdd` | `--vulnerability-definitions` | N/A | Download the latest supported vulnerability definitions.  See the [CIS-CAT Pro Assessor Coverage Guide](./CIS-CAT%20Pro%20Assessor%20Coverage%20Guide) for the most up-to-date information regarding vulnerability definitions platform coverage.  Vulnerability definitions files are saved into the application's `vulnerabilities` folder, i.e. `C:\CIS\Assessor-CLI\vulnerabilities`.|
 | `-sessions`| `--sessions`| `<SESSIONS.PROPERTIES>`| The `-sessions` option allows users to configure multiple endpoints for assessment of a benchmark.  The `sessions.properties` file configures CIS-CAT Pro Assessor for the assessment of remote endpoints by specifying remote hosts, ports, and credentials which the application will use for connection, collection and evaluation of benchmark recommendations and/or vulnerabilities.  See "Remote Assessment Capability" below for more information.  <br/><br/>If no `sessions.properties` file exists or no connections are configured in the file, CIS-CAT Pro Assessor CLI will assess the local machine.|
-| `-props`| `--properties`| `<PROPERTIES-FILE>`| The CIS-CAT Pro Assessor CLI user properties file defaults many runtime properties used during the assessment process.  These properties may be customized per assessment or per endpoint, by creating individual properties files, and specifying either the full filepath or a path relative to the working directory.|
+| `-props`| `--properties`| `<PROPERTIES-FILE>`| The CIS-CAT Pro Assessor CLI user properties file defaults many runtime properties used during the assessment process.  These properties may be customized per assessment or per endpoint, by creating individual properties files, and specifying either the full filepath or a path relative to the working directory.  If this option is not specified, CIS-CAT Pro Assessor CLI will load a default properties file named `assessor-cli.properties` located in the `config` folder of the application installation.|
 | `-D`| N/A| `<Property=Value>`| Instead of creating a new properties file for unique assessments, individual user properties may be specified using the `-D` option together with a `property=value` pair.  This allows an assessment to only override specific user properties when only a small number differ from the defaults.|
 
 #### Examples ####
@@ -202,6 +202,16 @@ Execute an assessment against the CIS Oracle Database 11g R2 benchmark, selectin
 
 	> Assessor-CLI.bat -b benchmarks\CIS_Oracle_Database_11g_R2_Benchmark_v2.2.0-xccdf.xml -p "Level 1 - Windows Server Host OS" -D xccdf_org.cisecurity_value_jdbc.url=jdbc:oracle:thin:user/s3cr3t@DBHOST:1521:devdb -D xccdf_org.cisecurity_value_listener.ora=C:\product\oracle\network\admin\listener.ora
 
+#### Configuring Interactive Values ####
+A number of benchmarks supported by/bundled with CIS-CAT Pro Assessor require manual interaction by the user in order to configure specific values used during the assessment.  These "interactive values" will be presented to the user during a manual execution of the assessment, but will block the completion of the assessment if it is being executed off-hours, or as part of an automated script.  CIS-CAT Pro Assessor provides a mechanism for these "interactive values" to be configured using a properties file, thus removing the burden of entering these values manually.  This configuration requires knowledge of the value's `id` attribute within the benchmark or data-stream collection component.  The CIS-CAT Pro Assessor Coverage Guide provides a listing, for each applicable benchmark, for any "interactive value" `id` attributes.  Once known, a user can modify the `assessor-cli.properties` file to specify the value:
+
+	xccdf_org.cisecurity_value_jdbc.url=jdbc:oracle:thin:system/manager@dbhost:1521:orcl
+
+When CIS-CAT Pro Assessor executes, the program will (by default) attempt to load properties contained in the `config\assessor-cli.properties`.
+
+A second method to configure "interactive values" is to utilize the `-D <Property=Value>` command-line option.  This allows the user to configure a single property at a time when executing, therefore eliminating the potential need for multiple properties files.  Configuring this option on the command-line is straightforward, where the property name is the `id` attribute of the "interactive value" and the property value is configured:
+
+	> Assessor-CLI.bat -b benchmarks\CIS_Oracle_Database_11g_R2_Benchmark_v2.2.0-xccdf.xml -p "Level 1 - Windows Server Host OS" -D xccdf_org.cisecurity_value_jdbc.url=jdbc:oracle:thin:user/s3cr3t@DBHOST:1521:devdb
 
 ## Troubleshooting and Support ###
 Member support for CIS-CAT Pro Assessor is available through the normal CIS SecureSuite support channels:
