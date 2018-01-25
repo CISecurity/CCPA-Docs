@@ -13,7 +13,7 @@ A number of different connection types exist to allow for maximum flexibility an
 
 | Type                   | Value      |   Description |
 | -----------------------| ---------- | ------------- |
-| Local                  | `local`    | Usage of a "local" session is for a host-based assessment, mimicing the functionality of CIS-CAT Pro v3.  Standalone or command-line applications (such as CIS-CAT Pro Assessor CLI) may use the local session to continue host-based assessments of benchmarks and/or OVAL definitions |
+| Local                  | `local`    | Usage of a "local" session is for a host-based assessment, mimicing the functionality of CIS-CAT Pro v3.  Standalone or command-line applications (such as CIS-CAT Pro Assessor CLI) may use the local session to continue host-based assessments of benchmarks and/or OVAL definitions. |
 | SSH (Unix, Linux, Mac) | `ssh`      | The "ssh" session type represents a connection to a remote Unix, Linux, or Mac endpoint, via SSH (obviously).  SSH connections can be established with a `username/password` or a `username/path to a private key file`.|
 | Windows                | `windows`  | The "windows" session type represents a WinRM connection to a remote Microsoft Windows environment.  Both workstations and servers are supported with this connection type and can currently be established using `username/password` authentication.|
 | Cisco IOS              | `ios`      | The "ios" session type handles the specific case for the assessment of Cisco IOS network devices.  Depending on the specific configuration when the "ios" session type is used, CIS-CAT Pro Assessor will either establish a SSH connection using `username/password` or `username/path to a private key` authentication, or will create a modified local session, collecting information from an exported configuration file.|
@@ -35,7 +35,9 @@ A number of configuration properties exist, and will vary based on the session t
 | `tech`     | The `tech` property is REQUIRED when assessing the exported configuration of a network device.  This property specifies the full path to the exported configuration file. <br/><br/> When assessing non-network device endpoints, or assessing a network devices' current running configuration via SSH, the `tech` property is unnecessary.<br/><br/> The `tech` property is not needed when the session type is `local`.|
 
 ### Examples ###
-The examples below provide insight into the creation of a `sessions.properties` file, which can then be consumed by CIS-CAT Pro Assessor CLI to provide connection configurations when assessing a particular benchmark.  By default, CIS-CAT Pro Assessor CLI will ALWAYS attempt to load a default configuration file located in the application's `config` folder, named `sessions.properties`.  For example, if CCPA is installed at `C:\CIS\Assessor-CLI`, a file named `C:\CIS\Assessor-CLI\config\sessions.properties` will be searched for and loaded (if found).  If no `sessions.properties` files are found or specified, a default `local` session will be used.
+The examples below provide insight into the creation of a `sessions.properties` file, which can then be consumed by CIS-CAT Pro Assessor CLI to provide connection configurations when assessing a particular benchmark.  By default, CIS-CAT Pro Assessor CLI will ALWAYS attempt to load a default configuration file located in the application's `config` folder, named `sessions.properties`.
+
+For example, if CCPA is installed at `C:\CIS\Assessor-CLI`, a file named `C:\CIS\Assessor-CLI\config\sessions.properties` will be searched for and loaded (if found).  If no `sessions.properties` files are found or specified, a default `local` session will be used.
 
 Configure a session for the local host:
 
@@ -99,20 +101,125 @@ Configure a Cisco IOS session pointing to an exported configuration file:
 
 
 ## Microsoft Windows Endpoint Configuration ##
+CIS-CAT Pro Assessor v4 utilizes the prevalent SMB protocol for file manipulation and uses WinRM for process execution.  Once connected to a remote Windows endpoint, CIS-CAT Pro Assessor establishes an "ephemeral" directory to host script required for the collection of system characteristics from the endpoint.  Once the collection/assessment has completed and the session disconnected, the "ephemeral" directory is removed from the endpoint.
+
+CIS-CAT Pro Assessor v4 supports both basic authentication for local accounts and Kerberos authentication for domain accounts.  When authenticating with domain accounts, the new-style domain syntax, e.g. **`ciscatuser@example.org`** must be used, and **NOT** the old-style domain syntax, such as `DOMAIN\User`.
+
+The Assessor will access the administrative shares on the remote host, which are only accessible for users that are part of the **Administrators** on the remote host.
 
 ### WinRM Configuration ###
+In order for CIS-CAT Pro Assessor to connect to a remote Windows host, a number of configuration steps on those hosts must happen.  The following sections will describe the configurations.
+
+#### Windows Firewall Configuration ####
+CIS-CAT Pro Assessor v4 uses both the SMB and WinRM protocols in order to enable file manipulation and process execution, respectively.  As such, to connect to the remote host using SMB, ensure the host is reachable on port `445`.  To enable connection to the remote host using WinRM over HTTPS, ensure the host is reachable on port `5986`.
+
+Users can enable these firewall rules simply using PowerShell and the script provided with the CIS-CAT Pro Assessor v4 application bundle.  The bundle will contain a `setup` folder, in which will be locate the **`CISCAT_Pro_Assessor_v4_Firewall_SMB_WinRM.ps1`** script.  Execute this script in PowerShell to configure the Windows Firewall.
 
 #### Enable WinRM ####
-#### Create the Self-Signed Certificate ####
-Run the script to create the self-signed cert and apply it to the WinRM HTTPS listener.
-#### Windows Firewall Configuration ####
-Open ports 5986 for WinRM over HTTPS and 445 for SMB.
-#### Disable UAC remote restrictions ####
-LocalAccountTokenFilterPolicy
+On the remote Windows host, open a Command Prompt using the "Run as Administrator" option.  Enter the following command to enable the default configuration for WinRM:
+
+	winrm quickconfig
+
+A confirmation prompt may be presented to the user.  If so, type `Y` and hit `Enter`.  Performing the `quickconfig` will start the Windows Remote Management service, configure an HTTP listener and create exceptions in the Windows Firewall for the WinRM service.
+
+By default, basic authentication is disabled in WinRM.  Enable it if CIS-CAT Pro Assessor will be authenticating to the endpoint using a local account:
+
+	winrm set winrm/config/service/Auth @{Basic="true"}
+
+By default, Kerberos authentication is enabled in WinRM.  Disable it if CIS-CAT Pro Assessor will **NOT** be authenticating using domain accounts:
+
+	winrm set winrm/config/service/Auth @{Kerberos="false"}
+
+**NOTE**: Do not disable "Negotiate" authentication as the `winrm` command itself uses that to configure the WinRM subsystem.
+
+Finally, configure WinRM to provide enough memory to the commands that are going to be executed, e.g. 1024 MB:
+
+	winrm set winrm/config/winrs @{MaxMemoryPerShellMB="1024"}
+
+#### Configure WinRM over HTTPS ####
+In order for CIS-CAT Pro Assessor to access the remote Windows host using WinRM over HTTPS, an HTTPS WinRM Listener must be configured using the thumbprint of a certificate for that host.
+
+Users can attempt to find an existing certificate thumbprint for the remote host using PowerShell.  In the following commands, assume `HOSTNAME` is the DNS name of the remote Windows host:
+
+    PS C:\Windows\system32> Get-childItem cert:\LocalMachine\Root\ | Select-String -pattern HOSTNAME
+
+If a certificate exists on the system, the PowerShell command will yield results similar to the following:
+
+    [Subject]
+       CN=HOSTNAME
+    
+     [Issuer]
+       CN=HOSTNAME
+    
+     [Serial Number]
+       527E7AF9142D96AD49A10469A264E766
+    
+     [Not Before]
+       5/23/2011 10:23:33 AM
+    
+     [Not After]
+       5/20/2021 10:23:33 AM
+    
+     [Thumbprint]
+       5C36B638BC31F505EF7F693D9A60C01551DD486F
+
+Once the certificate thumbprint is found, create the HTTPS WinRM listener for the remote host:
+
+	winrm create winrm/config/Listener?Address=*+Transport=HTTPS @{Hostname="HOSTNAME"; CertificateThumbprint="THUMBPRINT"}
+
+Where `HOSTNAME` is the DNS name of the remote host, such as `WINSERVER1`, and `THUMBPRINT` is the certificate thumbprint found in PowerShell, for example `5C36B638BC31F505EF7F693D9A60C01551DD486F`
+
+If no results are returned, the user may create a self-signed certificate using PowerShell and a script provided with the CIS-CAT Pro Assessor v4 application bundle.  The bundle will contain a `setup` folder, in which will be located the **`CISCAT_Pro_Assessor_v4_SelfSignedCertificate.ps1`** script.  Execute this script in PowerShell to configure the self-signed certificate and create the WinRM HTTPS listener.
+
+#### Disable UAC remote restrictions (Local account authentication only) ####
+To better protect those users who are members of the local Administrators group, Microsoft implemented UAC restrictions on the network. This mechanism helps prevent against "loopback" attacks. This mechanism also helps prevent local malicious software from running remotely with administrative rights.
+
+When a user who is a member of the local administrators group on the target remote computer establishes a remote administrative connection by using the `net use * \\remotecomputer\Share$` command, for example, they will not connect as a full administrator. The user has no elevation potential on the remote computer, and the user cannot perform administrative tasks. If the user wants to administer the workstation with a Security Account Manager (SAM) account, the user must interactively log on to the computer that is to be administered with Remote Assistance or Remote Desktop, if these services are available.
+
+To disable UAC remote restrictions, follow these steps: 
+
+1. Click Start, click Run, type `regedit`, and then press `ENTER`.
+2. Locate and then click the following registry subkey:
+
+	`HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System`
+3. If the `LocalAccountTokenFilterPolicy` registry entry does not exist, follow these steps: 
+	1. On the Edit menu, point to `New`, and then click `DWORD Value`.
+	2. Type `LocalAccountTokenFilterPolicy`, and then press `ENTER`.
+4. Right-click `LocalAccountTokenFilterPolicy`, and then click `Modify`.
+5. In the Value data box, type `1`, and then click `OK`.
+6. Exit Registry Editor.
 
 #### Domain Considerations ####
-Kerberos stuff
+If users are planning on authenticating to remote Windows hosts using domain accounts, configuration is necessary both on the remote host, and on the "source" host (the machine hosting CIS-CAT Pro Assessor v4).
 
+**Kerberos - Source Host**
+
+Depending on the operating system of the source hose, create a file called `krb5.conf` (Unix) or `krb5.ini` (Windows) with at least the following content:
+
+    [realms]
+    EXAMPLE.COM = {
+    	kdc = KDC.EXAMPLE.COM
+    }
+
+Replace the values with the name of your domain/realm and the hostname of your domain controller (multiple entries can be added to allow the source host to connect to multiple domains) and place the file in the default location for your operating system:
+
+- Linux: `/etc/krb5.conf`
+- Solaris: `/etc/krb5/krb5.conf`
+- Windows: `C:\Windows\krb5.ini`
+
+**Kerberos - Remote Host**
+
+By default, the CIS-CAT Pro Assessor's connection to a remote Windows host will request access to a Kerberos service principal name of the form `WSMAN/HOST`.  This SPN should be configured automatically when configuring WinRM for the remote host (the "Enable WinRM" section above).
+
+To verify the SPN has been created, list all the SPNs configured on the remote host:
+
+	setspn -L HOSTNAME
+
+If the `WSMAN/HOSTNAME` SPN is not listed, it must be configured.  From any host in the domain, invoke the `setspn` command:
+
+	setspn -A WSMAN/ADDRESS HOSTNAME
+
+Where `ADDRESS` is the address (DNS Name or IP Address) used to connect to the remote host, and `HOSTNAME` is the short Windows hostname of the remote host.
 
 ## Unix/Linux/OSX Endpoint Configuration ##
 CIS-CAT Pro Assessor assesses remote Unix/Linux/OSX targets via SSH connections.  Ensure the target system can be accessed via SSH and that the user connecting to the remote target is either the `root` user or a user granted privileges to execute commands using `sudo`.
