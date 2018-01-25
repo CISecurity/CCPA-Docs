@@ -197,8 +197,8 @@ If users are planning on authenticating to remote Windows hosts using domain acc
 Depending on the operating system of the source hose, create a file called `krb5.conf` (Unix) or `krb5.ini` (Windows) with at least the following content:
 
     [realms]
-    EXAMPLE.COM = {
-    	kdc = KDC.EXAMPLE.COM
+    EXAMPLE.ORG = {
+    	kdc = KDC.EXAMPLE.ORG
     }
 
 Replace the values with the name of your domain/realm and the hostname of your domain controller (multiple entries can be added to allow the source host to connect to multiple domains) and place the file in the default location for your operating system:
