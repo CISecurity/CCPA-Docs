@@ -107,6 +107,14 @@ CIS-CAT Pro Assessor v4 supports both basic authentication for local accounts an
 
 The Assessor will access the administrative shares on the remote host, which are only accessible for users that are part of the **Administrators** on the remote host.
 
+### Security Considerations ###
+The majority of CIS benchmarks for Microsoft Windows operating systems contain recommendations restricting WinRM usage.  The following table indicates those restrictions which will need to be relaxed in order to enable remote assessment in CIS-CAT Pro Assessor.
+
+| Recommendation | CIS Benchmark Value | Relaxed Value |
+|----------------|---------------------|---------------|
+| 18.6.1: Ensure 'Apply UAC restrictions to local accounts on network logons' is set to 'Enabled'| Enabled | Disabled|
+| 18.9.86.2.1: Ensure 'Allow Basic authentication' is set to 'Disabled'| Disabled | Enabled |
+
 ### WinRM Configuration ###
 In order for CIS-CAT Pro Assessor to connect to a remote Windows host, a number of configuration steps on those hosts must happen.  The following sections will describe the configurations.
 
@@ -171,7 +179,7 @@ Where `HOSTNAME` is the DNS name of the remote host, such as `WINSERVER1`, and `
 
 If no results are returned, the user may create a self-signed certificate using PowerShell and a script provided with the CIS-CAT Pro Assessor v4 application bundle.  The bundle will contain a `setup` folder, in which will be located the **`CISCAT_Pro_Assessor_v4_SelfSignedCertificate.ps1`** script.  Execute this script in PowerShell to configure the self-signed certificate and create the WinRM HTTPS listener.
 
-#### Disable UAC remote restrictions (Local account authentication only) ####
+#### Disable UAC remote restrictions ####
 To better protect those users who are members of the local Administrators group, Microsoft implemented UAC restrictions on the network. This mechanism helps prevent against "loopback" attacks. This mechanism also helps prevent local malicious software from running remotely with administrative rights.
 
 When a user who is a member of the local administrators group on the target remote computer establishes a remote administrative connection by using the `net use * \\remotecomputer\Share$` command, for example, they will not connect as a full administrator. The user has no elevation potential on the remote computer, and the user cannot perform administrative tasks. If the user wants to administer the workstation with a Security Account Manager (SAM) account, the user must interactively log on to the computer that is to be administered with Remote Assistance or Remote Desktop, if these services are available.
@@ -188,6 +196,11 @@ To disable UAC remote restrictions, follow these steps:
 4. Right-click `LocalAccountTokenFilterPolicy`, and then click `Modify`.
 5. In the Value data box, type `1`, and then click `OK`.
 6. Exit Registry Editor.
+
+In Windows domain environments, this setting can be configured through Group Policy, however, the Group Policy Object is not a standard policy and must be downloaded and installed separately.  Generally, if an environment has installed the Microsoft Security Compliance Manager (SCM), the GPO is included there and can be exported.
+
+Otherwise, the Group Policy Objects can be found either [here](http://blogs.technet.com/b/secguide/archive/2014/08/13/security-baselines-for-windows-8-1-windows-server-2012-r2-and-internet-explorer-11-final.aspx) or [here](https://blogs.technet.microsoft.com/secguide/2017/08/30/security-baseline-for-windows-10-creators-update-v1703-final/).
+
 
 #### Domain Considerations ####
 If users are planning on authenticating to remote Windows hosts using domain accounts, configuration is necessary both on the remote host, and on the "source" host (the machine hosting CIS-CAT Pro Assessor v4).
