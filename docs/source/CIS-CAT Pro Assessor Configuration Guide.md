@@ -190,6 +190,7 @@ To disable UAC remote restrictions, follow these steps:
 2. Locate and then click the following registry subkey:
 
 	`HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System`
+
 3. If the `LocalAccountTokenFilterPolicy` registry entry does not exist, follow these steps: 
 	1. On the Edit menu, point to `New`, and then click `DWORD Value`.
 	2. Type `LocalAccountTokenFilterPolicy`, and then press `ENTER`.
