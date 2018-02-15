@@ -138,7 +138,7 @@ Tools and services that use OVAL for the three steps of system assessment — re
 |------------------------------------|---|-------|
 | Access Token | Y ||
 | Active Directory (<5.7) | N | On roadmap |
-| Active Directory (5.7+)| N | On roadmap |
+| Active Directory (5.7+)| N | In Development |
 | Audit Event Policy | Y ||
 | Audit Event Policy Subcategories | Y ||
 | Cmdlet | Y ||
@@ -151,14 +151,14 @@ Tools and services that use OVAL for the three steps of system assessment — re
 | Group | Y ||
 | Group SID | Y ||
 | Interface | Y ||
-| Junction | N | In development |
-| License | N | On roadmap |
+| Junction | Y ||
+| License | Y ||
 | Lockout Policy | Y ||
 | Metabase | N | |
 | NTUser | N | On roadmap |
 | Password Policy | Y ||
 | PEHeader | N | On roadmap |
-| Port | N | On roadmap |
+| Port | N | In Development |
 | Printer Effective Rights | N | |
 | Process (<5.8) | Y ||
 | Process (5.8+) | Y ||
@@ -174,7 +174,7 @@ Tools and services that use OVAL for the three steps of system assessment — re
 | Shared Resource Effective Rights | Y ||
 | SID | Y ||
 | SID SID | Y ||
-| System Metric | N | On roadmap |
+| System Metric | Y ||
 | UAC | Y ||
 | User | Y ||
 | User Rights | Y ||

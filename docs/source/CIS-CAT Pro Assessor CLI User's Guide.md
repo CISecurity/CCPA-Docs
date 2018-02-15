@@ -37,6 +37,7 @@ Basic operation of CIS-CAT Pro Assessor CLI allows a user to get help, list avai
 | `-i`          | `--interactive` | N/A | Execute the Assessor in "interactive" mode specifically for benchmark assessments, allowing the user to manually select a benchmark and profile for assessment.  Based on the selected benchmark, the user may be required to enter "interactive values" which are then used by the assessment engine. |
 | `-o`          | `--definitions` | N/A | Execute the Assessor in "interactive" mode specifically for the manual selection and evaluation of OVAL Definitions files, and (optionally) selecting and associating an OVAL Variables file as well.|
 | `-d`          | `--startingDir` | `<DIRECTORY>` | Configure the relative root folder from which other options, such as benchmarks, can be found. |
+| `-cfg` |`--config-xml`|`<CONFIGURATION XML FILE>`| Execute CIS-CAT Pro Assessor using configuration information found in the `<CONFIGURATION XML FILE>`.  This file allows users to override user properties, configure interactive values, setup sessions and outline the various assessments to be performed.  See the "Using a Configuration XML File" section below for more information and examples regarding the structure and options for the XML configuration file.|
 
 #### Examples ####
 
@@ -71,6 +72,10 @@ Execute an assessment of an OVAL Definitions file in "interactive" mode:
 Execute an assessment of an OVAL Definitions file in "interactive" mode, selecting the definitions file from a location relative to a specific folder:
 
 	> Assessor-CLI.bat -i -o -d C:\CIS\My-Benchmarks
+
+Execute an assessment or set of assessments using information found in a saved configuration XML file:
+
+	> Assessor-CLI.bat -cfg C:\CIS\assessment-configuration.xml
 
 
 ### Benchmark/Data-Stream Collection Options ###
@@ -183,6 +188,7 @@ Execute an assessment against the CIS Microsoft Windows 10 benchmark, using the 
 | `-sessions`| `--sessions`| `<SESSIONS.PROPERTIES>`| The `-sessions` option allows users to configure multiple endpoints for assessment of a benchmark.  The `sessions.properties` file configures CIS-CAT Pro Assessor for the assessment of remote endpoints by specifying remote hosts, ports, and credentials which the application will use for connection, collection and evaluation of benchmark recommendations and/or vulnerabilities.  See "Remote Assessment Capability" below for more information.  <br/><br/>If no `sessions.properties` file exists or no connections are configured in the file, CIS-CAT Pro Assessor CLI will assess the local machine.|
 | `-props`| `--properties`| `<PROPERTIES-FILE>`| The CIS-CAT Pro Assessor CLI user properties file defaults many runtime properties used during the assessment process.  These properties may be customized per assessment or per endpoint, by creating individual properties files, and specifying either the full filepath or a path relative to the working directory.  If this option is not specified, CIS-CAT Pro Assessor CLI will load a default properties file named `assessor-cli.properties` located in the `config` folder of the application installation.|
 | `-D`| N/A| `<Property=Value>`| Instead of creating a new properties file for unique assessments, individual user properties may be specified using the `-D` option together with a `property=value` pair.  This allows an assessment to only override specific user properties when only a small number differ from the defaults.|
+| `-test` | `--test`| N/A | The `-test` option allows the user to perform connection tests on any sessions configured to execute during the assessments.  These sessions may be loaded from a configuration XML file (`-cfg`) or from a sessions.properties file (`-sessions`).  When specified, connectivity tests are performed and reported to the user on the CIS-CAT Pro Assessor console.  Once completed, CIS-CAT Pro Assessor exits.  When the `-test` option is supplied, no assessments take place; only the connectivity tests.|
 
 #### Examples ####
 Download the latest vulnerability definitions:
@@ -202,6 +208,11 @@ Execute an assessment against the CIS Oracle Database 11g R2 benchmark, selectin
 
 	> Assessor-CLI.bat -b benchmarks\CIS_Oracle_Database_11g_R2_Benchmark_v2.2.0-xccdf.xml -p "Level 1 - Windows Server Host OS" -D xccdf_org.cisecurity_value_jdbc.url=jdbc:oracle:thin:user/s3cr3t@DBHOST:1521:devdb -D xccdf_org.cisecurity_value_listener.ora=C:\product\oracle\network\admin\listener.ora
 
+Using a customized properties file defining session connections, test the connectivity of each session and exit:
+
+	> Assessor-CLI.bat -sessions config\test-sessions.properties -test
+
+
 #### Configuring Interactive Values ####
 A number of benchmarks supported by/bundled with CIS-CAT Pro Assessor require manual interaction by the user in order to configure specific values used during the assessment.  These "interactive values" will be presented to the user during a manual execution of the assessment, but will block the completion of the assessment if it is being executed off-hours, or as part of an automated script.  CIS-CAT Pro Assessor provides a mechanism for these "interactive values" to be configured using a properties file, thus removing the burden of entering these values manually.  This configuration requires knowledge of the value's `id` attribute within the benchmark or data-stream collection component.  The [CIS-CAT Pro Assessor Coverage Guide](./CIS-CAT%20Pro%20Assessor%20Coverage%20Guide) provides a listing, for each applicable benchmark, for any "interactive value" `id` attributes.  Once known, a user can modify the `assessor-cli.properties` file to specify the value:
 
@@ -212,6 +223,217 @@ When CIS-CAT Pro Assessor executes, the program will (by default) attempt to loa
 A second method to configure "interactive values" is to utilize the `-D <Property=Value>` command-line option.  This allows the user to configure a single property at a time when executing, therefore eliminating the potential need for multiple properties files.  Configuring this option on the command-line is straightforward, where the property name is the `id` attribute of the "interactive value" and the property value is configured:
 
 	> Assessor-CLI.bat -b benchmarks\CIS_Oracle_Database_11g_R2_Benchmark_v2.2.0-xccdf.xml -p "Level 1 - Windows Server Host OS" -D xccdf_org.cisecurity_value_jdbc.url=jdbc:oracle:thin:user/s3cr3t@DBHOST:1521:devdb
+
+## Using a Configuration XML File ##
+CIS-CAT Pro Assessor can be executed using the `-cfg` option, and specifying a configuration XML file.  This XML file allows user to configure sessions, assessments, interactive values, user properties, and reporting options all in a single file.  This configuration XML file essentially allows for multiple benchmark assessments against multiple endpoints both local and/or remote.
+
+An XML schema is included in the CIS-CAT Pro Assessor CLI bundle, along with a sample configuration file.
+
+### Configuration XML Elements ###
+The root element of the configuration XML file is `<configuration>`.  All other elements must be contained within the `<configuration>` element.
+
+The following sections describe the elements that are available for configuration through the XML file:
+
+#### CIS-CAT Pro Assessor "starting directory" ####
+	<starting_dir>C:\Projects\CIS-CAT\Assessor-CLI</starting_dir>
+The `starting_dir` element is optional and contains a value noting the base directory from which any relative paths are specified (such as the location of an XCCDF benchmark).  This element is the equivalent of the `-d` command-line option.  If this element is not present in the configuration file, the default starting directory, the folder in which CIS-CAT Pro Assessor is installed, is used.
+
+#### Vulnerability Definitions Download ####
+	<vulnerability_definitions download="(true|false)"/>
+The `vulnerability_definitions` element contains a single attribute, `download`.  If this attribute's value is `true`, CIS-CAT Pro Assessor will download the latest vulnerability definitions.  This element/attribute is equivalent to the `-vdd` command-line option.  If this element is not present in the configuration file, or the `download` attribute is set to `false`, vulnerability definitions will not be downloaded.
+
+#### Sessions ####
+The `sessions` element configures each individual connection to either the local host or a remote endpoint.  An attribute of the `sessions` element, `test` indicates whether this configuration file is meant to test the connectivity of each session only.  When the `test` attribute is `true`, connectivity tests will take place, and CIS-CAT Pro Assessor will then exit.  No other assessment processing will take place.
+
+	<!-- Session configurations referenced by the assessments -->
+	<sessions test="(true|false)">
+		
+		<!-- A "connection" to the local host -->
+		<session id="local">
+			<type>local</type>
+		</session>
+		
+		<!-- A connection to a remote Ubuntu instance using a private key file -->
+		<session id="aws-ubuntu">
+			<type>ssh</type>
+			<host>11.22.33.44</host>
+			<port>22</port>
+			<user>ubuntu</user>
+			<path_to_private_key>C:\Path\To\aws-ubuntu.ppk</path_to_private_key>
+		</session>
+		
+		<!-- A connection to a remote Windows instance using credentials -->
+		<session id="aws-2012r2">
+			<type>windows</type>
+			<host>AWS-WIN2012R2-AMI</host>
+			<port>5986</port>
+			<user>Administrator</user>
+			<credentials>P@ssw0rd12345</credentials>
+		</session>
+		
+		<!-- A connection to a Cisco IOS device, using a private key file -->
+		<session id="cisco-ios1">
+			<type>ios</type>
+			<host>55.66.77.88</host>
+			<port>22</port>
+			<user>ciscoprivd</user>
+			<path_to_private_key>C:\Path\To\cisco-ios-private-key.ppk</path_to_private_key>
+			<enable_password>3n@bl3mePlz</enable_password>
+		</session>
+	</sessions>
+
+Each `session` consists of a number of elements configuring the connection to the target endpoint:
+
+- `type`:  The session `type` indicates a "flavor" of the connection to the endpoint being assessed.  A number of options exist for the `type` value, as noted in the [CIS-CAT Pro Assessor Configuration Guide](./CIS-CAT%20Pro%20Assessor%20Configuration%20Guide).
+	- `local`:  The `local` session type indicates that the assessment(s) will be performed in a host-based manner.  No further session information is required when using a `local` session.
+	- `ssh`:  The `ssh` session type indicates the connection is to a remote Unix/Linux/Mac endpoint.  This session type allows CIS-CAT Pro Assessor to utilize the `host`, `port`, `user`, and either `credentials` or `path_to_private_key` to create a SSH connection to the endpoint and use that SSH connection to execute the assessment.
+	- `windows`:  The `windows` session type indicates (obviously) a connection to a remote Microsoft Windows endpoint.  This session type allows CIS-CAT Pro Assessor to utilize the `host`, `port`, `user`, `credentials` to initiate a WinRM connection to the remote endpoint.
+	- `ios`:  The `ios` session type indicates a connection to a remote Cisco IOS device, such as a router or switch.  This session type allows CIS-CAT Pro Assessor to utilize the `host`, `port`, `user`, and either `credentials` or `path_to_private_key` to create a SSH connection to the endpoint and use that SSH connection to execute the assessment.
+- `host`:  The `host` element value is either the hostname or IP address of the endpoint to which this session will connect/assess.
+- `port`:  The `port` element value is the port number on which communication takes place.  For `ssh` or `ios` connections, the default value for `port` is 22.  For `windows` sessions, the default value is 5986.
+- `user`:  The `user` element value specifies the username used to log on to the remote endpoint.  For `ssh` sessions, this user should be either `root` or a username with the ability to `sudo`, in order to elevate privileges to execute the required commands.  For `windows` sessions, the user must be either an Administrator or a member of the Administrators group.  For `ios` sessions, the user must be privileged and able to enter into "enable" mode on that device, using the `enable_password` value below.
+- `credentials`:  The `credentials` element identifies the user's password for logging on to the remote endpoint.  Note that this XML file will then be storing users and passwords for remote endpoints, and should thus be secured as much as possible on the machine hosting CIS-CAT Pro Assessor.  When the session type is either `ssh` or `ios`, the `credentials` element can be bypassed by logging into the remote endpoint using a private key file, the path of which is configured in the `path_to_private_key` element.  If a private key is used for authentication, the `credentials` element can be left out of the `session` configuration.
+- `path_to_private_key`:  The `path_to_private_key` element specifies the full filepath to a private key file to be used for authenticating the `user` to the remote endpoint.  When configuring a `session`, one of `credentials` or `path_to_private_key` must be specified, for `ssh` or `ios` sessions.  Note that for `windows` sessions, private key authentication is not currently supported.
+- `enable_password`:  When authenticating a privileged user for `ios` sessions, the `enable_password` is mandatory.  This element specifies the credentials which allow the privileged user to enter "enable" mode on the Cisco IOS device.
+
+
+#### Assessments ####
+The `assessments` element configures which assessment content will be evaluated, against which `session` that content will be assessed, any User properties specific to that assessment, and/or any "interactive" values to be applied to that assessment.
+
+	<assessments>
+		<!-- XCCDF COLLECTIONS -->
+		<benchmark xccdf="benchmarks\CIS_Ubuntu_Linux_16.04_LTS_Benchmark_v1.0.0-xccdf.xml" profile="Level 1 - Workstation" session-ref="aws-ubuntu"/>
+		<benchmark xccdf="benchmarks\CIS_Ubuntu_Linux_16.04_LTS_Benchmark_v1.0.0-xccdf.xml" profile="Level 1 - Server" session-ref="aws-ubuntu"/>
+		
+		<benchmark xccdf="benchmarks\CIS_Microsoft_Windows_Server_2012_R2_Benchmark_v2.2.1-xccdf.xml" profile="Level 1 - Member Server" session-ref="aws-2012r2">
+			<properties>
+				<property name="ignore.platform.mismatch">true</property>
+			</properties>
+		</benchmark>
+		
+		<benchmark xccdf="benchmarks\CIS_Oracle_Database_11g_R2_Benchmark_v2.2.0-xccdf.xml" profile="Level 1" session-ref="aws-ubuntu">
+			<interactive_values>
+				<value id="xccdf_org.cisecurity_value_jdbc.url">jdbc:oracle:thin:sys/passw0rd1@DB-SERVER:1521:ORCL</value>
+				<value id="xccdf_org.cisecurity_value_listener.ora">/opt/oracle/product/oracle11g/network/admin/listener.ora</value>
+			</interactive_values>
+		</benchmark>
+		
+		<!-- DATA-STREAM COLLECTIONS -->
+		<data-stream-collection collection="dsc-id" data-stream="ds-id" checklist="benchmark-id" profile="profile-id-or-name" session-ref="local"/>
+		
+		<!-- OVAL DEFINITIONS COLLECTIONS -->
+		<oval_definitions definitions="vulnerabilities\microsoft_windows_10.xml" session-ref="local"/>
+		<oval_definitions definitions="definitions\defs.xml" variables="definitions\vars.xml" session-ref="local"/>
+	</assessments>
+
+A number of elements may be configured, allowing various assessments against a number of different sessions:
+
+**Assess an XCCDF `<Benchmark>`, selecting the first Profile**:
+
+	<benchmark xccdf="benchmarks\CIS_Ubuntu_Linux_16.04_LTS_Benchmark_v1.0.0-xccdf.xml" session-ref="aws-ubuntu"/>
+- `xccdf`: The `xccdf` attribute defines the path (relative to the `starting_dir` or absolute) to the XCCDF file being assessed.
+- `session-ref`: The `session-ref` attribute specifies the `id` of a `session` configured in the `sessions` configuration, described above.
+
+**Assess an XCCDF `<Benchmark>`, selecting a named Profile**:
+
+	<benchmark xccdf="benchmarks\CIS_Ubuntu_Linux_16.04_LTS_Benchmark_v1.0.0-xccdf.xml" profile="Level 1 Workstation" session-ref="aws-ubuntu"/>
+- `xccdf`: The `xccdf` attribute defines the path (relative to the `starting_dir` or absolute) to the XCCDF file being assessed.
+- `profile`: The `profile` attribute defines the configuration Profile, within the XCCDF, selected for assessment.  The value of this attribute may be either the Profile `<title>` or `id` specified in the Benchmark XCCDF.
+- `session-ref`: The `session-ref` attribute specifies the `id` of a `session` configured in the `sessions` configuration, described above.
+
+**Assess an XCCDF `<Benchmark>`, selecting a named Profile, and configuring specific assessment properties**:
+
+	<benchmark xccdf="benchmarks\CIS_Microsoft_Windows_Server_2012_R2_Benchmark_v2.2.1-xccdf.xml" profile="Level 1 Member Server" session-ref="aws-2012r2">
+		<properties>
+			<property name="ignore.platform.mismatch">true</property>
+		</properties>
+	</benchmark>
+- `xccdf`: The `xccdf` attribute defines the path (relative to the `starting_dir` or absolute) to the XCCDF file being assessed.
+- `profile`: The `profile` attribute defines the configuration Profile, within the XCCDF, selected for assessment.  The value of this attribute may be either the Profile `<title>` or `id` specified in the Benchmark XCCDF.
+- `session-ref`: The `session-ref` attribute specifies the `id` of a `session` configured in the `sessions` configuration, described above.
+- `properties`: The `properties` element serves as a container for individual `property` elements.  A `properties` element must contain 1..n `property` element(s).
+- `property`: A `property` defines a name/value pair, configuring a single user property named by the value of the `name` attribute.  The value of the `property` is the content of the element.  An individual `property` is the equivalent of using the `-D name=value` command-line option, or a property defined in the "assessor-cli.properties" file, located in the `config` folder.
+
+**Assess an XCCDF `<Benchmark>`, selecting a named Profile, configuring specific values normally requested from the user**:
+
+	<benchmark xccdf="benchmarks\CIS_Oracle_Database_11g_R2_Benchmark_v2.2.0-xccdf.xml" profile="Level 1" session-ref="aws-ubuntu">
+		<interactive_values>
+			<value id="xccdf_org.cisecurity_value_jdbc.url">jdbc:oracle:thin:sys/passw0rd1@DB-SERVER:1521:ORCL</value>
+			<value id="xccdf_org.cisecurity_value_listener.ora">/opt/oracle/product/oracle11g/network/admin/listener.ora</value>
+		</interactive_values>
+	</benchmark>
+- `xccdf`: The `xccdf` attribute defines the path (relative to the `starting_dir` or absolute) to the XCCDF file being assessed.
+- `profile`: The `profile` attribute defines the configuration Profile, within the XCCDF, selected for assessment.  The value of this attribute may be either the Profile `<title>` or `id` specified in the Benchmark XCCDF.
+- `session-ref`: The `session-ref` attribute specifies the `id` of a `session` configured in the `sessions` configuration, described above.
+- `interactive_values`: The `interactive_values` element serves as a container for individual `value` elements.  An `interactive_values` element must contain 1..n `value` element(s).
+- `value`: A `value` defines an id/value pair, configuring a single interactive value identified by the `id` attribute.  This `id` attribute should match the `id` of a `<Value>` element in the XCCDF that is noted as `interactive="true"`.  The value of the `value` is the content of the element.  An individual `value` is the equivalent of using the `-D name=value` command-line option, or a property defined in the "assessor-cli.properties" file, located in the `config` folder.
+
+**Assess a SCAP `<data-stream-collection>`, selecting the first data-stream, checklist, and profile**:
+
+	<data-stream-collection collection="dsc-id" session-ref="local"/>
+- `collection`: The `collection` attribute defines the path (relative to the `starting_dir` or absolute) to the SCAP 1.2 data-stream collection file being assessed.
+- `session-ref`: The `session-ref` attribute specifies the `id` of a `session` configured in the `sessions` configuration, described above.
+
+**Assess a SCAP `<data-stream-collection>`, selecting a named data-stream, the first checklist, and first profile**:
+
+	<data-stream-collection collection="dsc-id" data-stream="ds-id" checklist="benchmark-id" profile="profile-id-or-name" session-ref="local"/>
+- `collection`: The `collection` attribute defines the path (relative to the `starting_dir` or absolute) to the SCAP 1.2 data-stream collection file being assessed.
+- `data-stream`: The `data-stream` attribute specifies the `id` of the `data-stream`, contained in the collection, to be selected for assessment.
+- `session-ref`: The `session-ref` attribute specifies the `id` of a `session` configured in the `sessions` configuration, described above.
+
+**Assess a SCAP `<data-stream-collection>`, selecting a named data-stream, a named checklist, and the first profile**:
+
+	<data-stream-collection collection="dsc-id" data-stream="ds-id" checklist="benchmark-id" profile="profile-id-or-name" session-ref="local"/>
+- `collection`: The `collection` attribute defines the path (relative to the `starting_dir` or absolute) to the SCAP 1.2 data-stream collection file being assessed.
+- `data-stream`: The `data-stream` attribute specifies the `id` of the `data-stream`, contained in the collection, to be selected for assessment.
+- `checklist`: The `checklist` attribute specifies the `id` of the checklist to be assessed.  A checklist is a component in the data-stream collection representing an XCCDF `<Benchmark>`.
+- `session-ref`: The `session-ref` attribute specifies the `id` of a `session` configured in the `sessions` configuration, described above.
+
+**Assess a SCAP `<data-stream-collection>`, selecting a named data-stream, a named checklist, and a named profile**:
+
+	<data-stream-collection collection="dsc-id" data-stream="ds-id" checklist="benchmark-id" profile="profile-id-or-name" session-ref="local"/>
+- `collection`: The `collection` attribute defines the path (relative to the `starting_dir` or absolute) to the SCAP 1.2 data-stream collection file being assessed.
+- `data-stream`: The `data-stream` attribute specifies the `id` of the `data-stream`, contained in the collection, to be selected for assessment.
+- `checklist`: The `checklist` attribute specifies the `id` of the checklist to be assessed.  A checklist is a component in the data-stream collection representing an XCCDF `<Benchmark>`.
+- `profile`: The `profile` attribute defines the configuration Profile, within the checklist, selected for assessment.  The value of this attribute may be either the Profile `<title>` or `id` specified in the Benchmark XCCDF.
+- `session-ref`: The `session-ref` attribute specifies the `id` of a `session` configured in the `sessions` configuration, described above.
+
+**Assess an `<oval_definitions>` file that does not include an `<oval_variables>` file**:
+
+	<oval_definitions definitions="vulnerabilities\microsoft_windows_10.xml" session-ref="local"/>
+- `definitions`: The `definitions` attribute defines the path (relative to the `starting_dir` or absolute) to the OVAL Definitions file being assessed.
+
+**Assess an `<oval_definitions>` file that includes an `<oval_variables>` file**:
+
+	<oval_definitions definitions="definitions\defs.xml" variables="definitions\vars.xml" session-ref="local"/>
+- `definitions`: The `definitions` attribute defines the path (relative to the `starting_dir` or absolute) to the OVAL Definitions file being assessed.
+- `variables`: The `variables` attribute defines the path (relative to the `starting_dir` or absolute) to the OVAL Variables file used in the assessment.
+
+#### Report Output Options ####
+The `reports` element contains a number of attributes controlling the output report formats, and sub-elements controlling report output directory, POST URL, and report naming.  The `html` attribute value controls the generation of HTML reports, the `csv` attribute controls the generation of CSV reports, and the `txt` attribute controls the generation of plain-text reports.  The `no-report-file` attribute, when `true`, overrides the other 3 attributes and disables the generation of any report files.  Setting this attribute to `true` is intended to be used in conjunction with the `reports_url` element, which identifies a URL to which report output should be POST'ed.  If the reports are POST'ed to the URL, they may not need to be generated and saved in file format.
+	<reports html="(true|false)" csv="(true|false)" txt="(true|false)" no-report-file="(true|false)">
+        
+        <!-- Customize the folder to which CIS-CAT reports are saved.  If not present, CIS-CAT will use the default reports location. -->
+        <reports_dir>C:\Projects\CIS\reports</reports_dir>
+        
+        <!-- POST the Asset Reporting Format or OVAL Results XML to a URL, ignoring SSL certificate warnings if specified -->
+        <reports_url ignore_certificate_warnings="true">https://example.cisecurity.org/CCPD/api/reports/upload</reports_url>
+        
+        <!-- Override the default report name.  Timestamp information will always be appended to the report_prefix -->
+        <reports_prefix>CIS-CAT-DEV</reports_prefix>
+    </reports>
+
+Various sub-elements are available to configure the destination folder for report files to be saved, URL's to which reports can be uploaded, and naming of reports:
+
+	<reports_dir>C:\Projects\CIS\reports</reports_dir>
+The `reports_dir` element is optional and contains a value noting the directory to which reports are saved.  This element is equivalent to the `-rd` command-line option.
+
+	<reports_url ignore_certificate_warnings="(true|false")>
+The `reports_url` element is optional and contains a value noting the URL to which reports are POST'ed.  This element is the equivalent to the `-u` command-line option.  The optional `ignore_certificate_warnings` attribute, when `true`, indicates to CIS-CAT that any SSL certificate warnings should be ignored.  This attribute is the equivalent to the `-ui` command-line option.
+
+	<reports_prefix>CIS-CAT-DEV</reports_prefix>
+The `reports_prefix` element is optional and contains a value defining a prefix, essentially naming the reports that are generated by the assessments.  When reports are generated, the name of the report is created by concatenating the reports prefix, the report type (such as ARF or OVALResults) and the timestamp of report generation.  If this element is not present, the default reports prefix is the assessment target's hostname plus the benchmark's title, such as `CIS-CAT-DEV-CIS_Microsoft_Windows_10_Enterprise_Release_1703_Benchmark`.
+
 
 ## Troubleshooting and Support ###
 Member support for CIS-CAT Pro Assessor is available through the normal CIS SecureSuite support channels:
