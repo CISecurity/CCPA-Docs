@@ -285,15 +285,15 @@ The `sessions` element configures each individual connection to either the local
 Each `session` consists of a number of elements configuring the connection to the target endpoint:
 
 - `type`:  The session `type` indicates a "flavor" of the connection to the endpoint being assessed.  A number of options exist for the `type` value, as noted in the [CIS-CAT Pro Assessor Configuration Guide](./CIS-CAT%20Pro%20Assessor%20Configuration%20Guide).
-	- `local`:  The `local` session type indicates that the assessment(s) will be performed in a host-based manner.  No further session information is required when using a `local` session.
-	- `ssh`:  The `ssh` session type indicates the connection is to a remote Unix/Linux/Mac endpoint.  This session type allows CIS-CAT Pro Assessor to utilize the `host`, `port`, `user`, and either `credentials` or `path_to_private_key` to create a SSH connection to the endpoint and use that SSH connection to execute the assessment.
-	- `windows`:  The `windows` session type indicates (obviously) a connection to a remote Microsoft Windows endpoint.  This session type allows CIS-CAT Pro Assessor to utilize the `host`, `port`, `user`, `credentials` to initiate a WinRM connection to the remote endpoint.
-	- `ios`:  The `ios` session type indicates a connection to a remote Cisco IOS device, such as a router or switch.  This session type allows CIS-CAT Pro Assessor to utilize the `host`, `port`, `user`, and either `credentials` or `path_to_private_key` to create a SSH connection to the endpoint and use that SSH connection to execute the assessment.
-- `host`:  The `host` element value is either the hostname or IP address of the endpoint to which this session will connect/assess.
-- `port`:  The `port` element value is the port number on which communication takes place.  For `ssh` or `ios` connections, the default value for `port` is 22.  For `windows` sessions, the default value is 5986.
-- `user`:  The `user` element value specifies the username used to log on to the remote endpoint.  For `ssh` sessions, this user should be either `root` or a username with the ability to `sudo`, in order to elevate privileges to execute the required commands.  For `windows` sessions, the user must be either an Administrator or a member of the Administrators group.  For `ios` sessions, the user must be privileged and able to enter into "enable" mode on that device, using the `enable_password` value below.
-- `credentials`:  The `credentials` element identifies the user's password for logging on to the remote endpoint.  Note that this XML file will then be storing users and passwords for remote endpoints, and should thus be secured as much as possible on the machine hosting CIS-CAT Pro Assessor.  When the session type is either `ssh` or `ios`, the `credentials` element can be bypassed by logging into the remote endpoint using a private key file, the path of which is configured in the `path_to_private_key` element.  If a private key is used for authentication, the `credentials` element can be left out of the `session` configuration.
-- `path_to_private_key`:  The `path_to_private_key` element specifies the full filepath to a private key file to be used for authenticating the `user` to the remote endpoint.  When configuring a `session`, one of `credentials` or `path_to_private_key` must be specified, for `ssh` or `ios` sessions.  Note that for `windows` sessions, private key authentication is not currently supported.
+	- **`local`**:  The "local" session type indicates that the assessment(s) will be performed in a host-based manner.  No further session information is required when using a "local" session.
+	- **`ssh`**:  The "ssh" session type indicates the connection is to a remote Unix/Linux/Mac endpoint.  This session type allows CIS-CAT Pro Assessor to utilize the `host`, `port`, `user`, and either `credentials` or `path_to_private_key` to create a SSH connection to the endpoint and use that SSH connection to execute the assessment.
+	- **`windows`**:  The "windows" session type indicates (obviously) a connection to a remote Microsoft Windows endpoint.  This session type allows CIS-CAT Pro Assessor to utilize the `host`, `port`, `user`, `credentials` to initiate a WinRM connection to the remote endpoint.
+	- **`ios`**:  The "ios" session type indicates a connection to a remote Cisco IOS device, such as a router or switch.  This session type allows CIS-CAT Pro Assessor to utilize the `host`, `port`, `user`, and either `credentials` or `path_to_private_key` to create a SSH connection to the endpoint and use that SSH connection to execute the assessment.
+- `host`:  The "host" element value is either the hostname or IP address of the endpoint to which this session will connect/assess.
+- `port`:  The "port" element value is the port number on which communication takes place.  For `ssh` or `ios` connections, the default value for `port` is 22.  For `windows` sessions, the default value is 5986.
+- `user`:  The "user" element value specifies the username used to log on to the remote endpoint.  For `ssh` sessions, this user should be either `root` or a username with the ability to `sudo`, in order to elevate privileges to execute the required commands.  For `windows` sessions, the user must be either an Administrator or a member of the Administrators group.  For `ios` sessions, the user must be privileged and able to enter into "enable" mode on that device, using the `enable_password` value below.
+- `credentials`:  The "credentials" element identifies the user's password for logging on to the remote endpoint.  Note that this XML file will then be storing users and passwords for remote endpoints, and should thus be secured as much as possible on the machine hosting CIS-CAT Pro Assessor.  When the session type is either `ssh` or `ios`, the `credentials` element can be bypassed by logging into the remote endpoint using a private key file, the path of which is configured in the `path_to_private_key` element.  If a private key is used for authentication, the `credentials` element can be left out of the `session` configuration.
+- `path_to_private_key`:  The "path_to_private_key" element specifies the full filepath to a private key file to be used for authenticating the `user` to the remote endpoint.  When configuring a `session`, one of `credentials` or `path_to_private_key` must be specified, for `ssh` or `ios` sessions.  Note that for `windows` sessions, private key authentication is not currently supported.
 - `enable_password`:  When authenticating a privileged user for `ios` sessions, the `enable_password` is mandatory.  This element specifies the credentials which allow the privileged user to enter "enable" mode on the Cisco IOS device.
 
 
@@ -331,15 +331,15 @@ A number of elements may be configured, allowing various assessments against a n
 **Assess an XCCDF `<Benchmark>`, selecting the first Profile**:
 
 	<benchmark xccdf="benchmarks\CIS_Ubuntu_Linux_16.04_LTS_Benchmark_v1.0.0-xccdf.xml" session-ref="aws-ubuntu"/>
-- `xccdf`: The `xccdf` attribute defines the path (relative to the `starting_dir` or absolute) to the XCCDF file being assessed.
-- `session-ref`: The `session-ref` attribute specifies the `id` of a `session` configured in the `sessions` configuration, described above.
+- `xccdf`: The "xccdf" attribute defines the path (relative to the `starting_dir` or absolute) to the XCCDF file being assessed.
+- `session-ref`: The "session-ref" attribute specifies the `id` of a `session` configured in the `sessions` configuration, described above.
 
 **Assess an XCCDF `<Benchmark>`, selecting a named Profile**:
 
 	<benchmark xccdf="benchmarks\CIS_Ubuntu_Linux_16.04_LTS_Benchmark_v1.0.0-xccdf.xml" profile="Level 1 Workstation" session-ref="aws-ubuntu"/>
-- `xccdf`: The `xccdf` attribute defines the path (relative to the `starting_dir` or absolute) to the XCCDF file being assessed.
-- `profile`: The `profile` attribute defines the configuration Profile, within the XCCDF, selected for assessment.  The value of this attribute may be either the Profile `<title>` or `id` specified in the Benchmark XCCDF.
-- `session-ref`: The `session-ref` attribute specifies the `id` of a `session` configured in the `sessions` configuration, described above.
+- `xccdf`: The "xccdf" attribute defines the path (relative to the `starting_dir` or absolute) to the XCCDF file being assessed.
+- `profile`: The "profile" attribute defines the configuration Profile, within the XCCDF, selected for assessment.  The value of this attribute may be either the Profile `<title>` or `id` specified in the Benchmark XCCDF.
+- `session-ref`: The "session-ref" attribute specifies the `id` of a `session` configured in the `sessions` configuration, described above.
 
 **Assess an XCCDF `<Benchmark>`, selecting a named Profile, and configuring specific assessment properties**:
 
@@ -348,11 +348,11 @@ A number of elements may be configured, allowing various assessments against a n
 			<property name="ignore.platform.mismatch">true</property>
 		</properties>
 	</benchmark>
-- `xccdf`: The `xccdf` attribute defines the path (relative to the `starting_dir` or absolute) to the XCCDF file being assessed.
-- `profile`: The `profile` attribute defines the configuration Profile, within the XCCDF, selected for assessment.  The value of this attribute may be either the Profile `<title>` or `id` specified in the Benchmark XCCDF.
-- `session-ref`: The `session-ref` attribute specifies the `id` of a `session` configured in the `sessions` configuration, described above.
-- `properties`: The `properties` element serves as a container for individual `property` elements.  A `properties` element must contain 1..n `property` element(s).
-- `property`: A `property` defines a name/value pair, configuring a single user property named by the value of the `name` attribute.  The value of the `property` is the content of the element.  An individual `property` is the equivalent of using the `-D name=value` command-line option, or a property defined in the "assessor-cli.properties" file, located in the `config` folder.
+- `xccdf`: The "xccdf" attribute defines the path (relative to the `starting_dir` or absolute) to the XCCDF file being assessed.
+- `profile`: The "profile" attribute defines the configuration Profile, within the XCCDF, selected for assessment.  The value of this attribute may be either the Profile `<title>` or `id` specified in the Benchmark XCCDF.
+- `session-ref`: The "session-ref" attribute specifies the `id` of a `session` configured in the `sessions` configuration, described above.
+- `properties`: The "properties" element serves as a container for individual `property` elements.  A `properties` element must contain 1..n `property` element(s).
+- `property`: A "property" defines a name/value pair, configuring a single user property named by the value of the `name` attribute.  The value of the `property` is the content of the element.  An individual `property` is the equivalent of using the `-D name=value` command-line option, or a property defined in the "assessor-cli.properties" file, located in the `config` folder.
 
 **Assess an XCCDF `<Benchmark>`, selecting a named Profile, configuring specific values normally requested from the user**:
 
@@ -362,52 +362,52 @@ A number of elements may be configured, allowing various assessments against a n
 			<value id="xccdf_org.cisecurity_value_listener.ora">/opt/oracle/product/oracle11g/network/admin/listener.ora</value>
 		</interactive_values>
 	</benchmark>
-- `xccdf`: The `xccdf` attribute defines the path (relative to the `starting_dir` or absolute) to the XCCDF file being assessed.
-- `profile`: The `profile` attribute defines the configuration Profile, within the XCCDF, selected for assessment.  The value of this attribute may be either the Profile `<title>` or `id` specified in the Benchmark XCCDF.
-- `session-ref`: The `session-ref` attribute specifies the `id` of a `session` configured in the `sessions` configuration, described above.
-- `interactive_values`: The `interactive_values` element serves as a container for individual `value` elements.  An `interactive_values` element must contain 1..n `value` element(s).
-- `value`: A `value` defines an id/value pair, configuring a single interactive value identified by the `id` attribute.  This `id` attribute should match the `id` of a `<Value>` element in the XCCDF that is noted as `interactive="true"`.  The value of the `value` is the content of the element.  An individual `value` is the equivalent of using the `-D name=value` command-line option, or a property defined in the "assessor-cli.properties" file, located in the `config` folder.
+- `xccdf`: The "xccdf" attribute defines the path (relative to the `starting_dir` or absolute) to the XCCDF file being assessed.
+- `profile`: The "profile" attribute defines the configuration Profile, within the XCCDF, selected for assessment.  The value of this attribute may be either the Profile `<title>` or `id` specified in the Benchmark XCCDF.
+- `session-ref`: The "session-ref" attribute specifies the `id` of a `session` configured in the `sessions` configuration, described above.
+- `interactive_values`: The "interactive_values" element serves as a container for individual `value` elements.  An `interactive_values` element must contain 1..n `value` element(s).
+- `value`: A "value" defines an id/value pair, configuring a single interactive value identified by the `id` attribute.  This `id` attribute should match the `id` of a `<Value>` element in the XCCDF that is noted as `interactive="true"`.  The value of the `value` is the content of the element.  An individual `value` is the equivalent of using the `-D name=value` command-line option, or a property defined in the "assessor-cli.properties" file, located in the `config` folder.
 
 **Assess a SCAP `<data-stream-collection>`, selecting the first data-stream, checklist, and profile**:
 
-	<data-stream-collection collection="dsc-id" session-ref="local"/>
-- `collection`: The `collection` attribute defines the path (relative to the `starting_dir` or absolute) to the SCAP 1.2 data-stream collection file being assessed.
-- `session-ref`: The `session-ref` attribute specifies the `id` of a `session` configured in the `sessions` configuration, described above.
+	<data-stream-collection collection="collections\collection.xml" session-ref="local"/>
+- `collection`: The "collection" attribute defines the path (relative to the `starting_dir` or absolute) to the SCAP 1.2 data-stream collection file being assessed.
+- `session-ref`: The "session-ref" attribute specifies the `id` of a `session` configured in the `sessions` configuration, described above.
 
 **Assess a SCAP `<data-stream-collection>`, selecting a named data-stream, the first checklist, and first profile**:
 
-	<data-stream-collection collection="dsc-id" data-stream="ds-id" checklist="benchmark-id" profile="profile-id-or-name" session-ref="local"/>
-- `collection`: The `collection` attribute defines the path (relative to the `starting_dir` or absolute) to the SCAP 1.2 data-stream collection file being assessed.
-- `data-stream`: The `data-stream` attribute specifies the `id` of the `data-stream`, contained in the collection, to be selected for assessment.
-- `session-ref`: The `session-ref` attribute specifies the `id` of a `session` configured in the `sessions` configuration, described above.
+	<data-stream-collection collection="collections\collection.xml" data-stream="ds-id" checklist="benchmark-id" profile="profile-id-or-name" session-ref="local"/>
+- `collection`: The "collection" attribute defines the path (relative to the `starting_dir` or absolute) to the SCAP 1.2 data-stream collection file being assessed.
+- `data-stream`: The "data-stream" attribute specifies the `id` of the `data-stream`, contained in the collection, to be selected for assessment.
+- `session-ref`: The "session-ref" attribute specifies the `id` of a `session` configured in the `sessions` configuration, described above.
 
 **Assess a SCAP `<data-stream-collection>`, selecting a named data-stream, a named checklist, and the first profile**:
 
-	<data-stream-collection collection="dsc-id" data-stream="ds-id" checklist="benchmark-id" profile="profile-id-or-name" session-ref="local"/>
-- `collection`: The `collection` attribute defines the path (relative to the `starting_dir` or absolute) to the SCAP 1.2 data-stream collection file being assessed.
-- `data-stream`: The `data-stream` attribute specifies the `id` of the `data-stream`, contained in the collection, to be selected for assessment.
-- `checklist`: The `checklist` attribute specifies the `id` of the checklist to be assessed.  A checklist is a component in the data-stream collection representing an XCCDF `<Benchmark>`.
-- `session-ref`: The `session-ref` attribute specifies the `id` of a `session` configured in the `sessions` configuration, described above.
+	<data-stream-collection collection="collections\collection.xml" data-stream="ds-id" checklist="benchmark-id" profile="profile-id-or-name" session-ref="local"/>
+- `collection`: The "collection" attribute defines the path (relative to the `starting_dir` or absolute) to the SCAP 1.2 data-stream collection file being assessed.
+- `data-stream`: The "data-stream" attribute specifies the `id` of the `data-stream`, contained in the collection, to be selected for assessment.
+- `checklist`: The "checklist" attribute specifies the `id` of the checklist to be assessed.  A checklist is a component in the data-stream collection representing an XCCDF `<Benchmark>`.
+- `session-ref`: The "session-ref" attribute specifies the `id` of a `session` configured in the `sessions` configuration, described above.
 
 **Assess a SCAP `<data-stream-collection>`, selecting a named data-stream, a named checklist, and a named profile**:
 
-	<data-stream-collection collection="dsc-id" data-stream="ds-id" checklist="benchmark-id" profile="profile-id-or-name" session-ref="local"/>
-- `collection`: The `collection` attribute defines the path (relative to the `starting_dir` or absolute) to the SCAP 1.2 data-stream collection file being assessed.
-- `data-stream`: The `data-stream` attribute specifies the `id` of the `data-stream`, contained in the collection, to be selected for assessment.
-- `checklist`: The `checklist` attribute specifies the `id` of the checklist to be assessed.  A checklist is a component in the data-stream collection representing an XCCDF `<Benchmark>`.
-- `profile`: The `profile` attribute defines the configuration Profile, within the checklist, selected for assessment.  The value of this attribute may be either the Profile `<title>` or `id` specified in the Benchmark XCCDF.
-- `session-ref`: The `session-ref` attribute specifies the `id` of a `session` configured in the `sessions` configuration, described above.
+	<data-stream-collection collection="collections\collection.xml" data-stream="ds-id" checklist="benchmark-id" profile="profile-id-or-name" session-ref="local"/>
+- `collection`: The "collection" attribute defines the path (relative to the `starting_dir` or absolute) to the SCAP 1.2 data-stream collection file being assessed.
+- `data-stream`: The "data-stream" attribute specifies the `id` of the `data-stream`, contained in the collection, to be selected for assessment.
+- `checklist`: The "checklist" attribute specifies the `id` of the checklist to be assessed.  A checklist is a component in the data-stream collection representing an XCCDF `<Benchmark>`.
+- `profile`: The "profile" attribute defines the configuration Profile, within the checklist, selected for assessment.  The value of this attribute may be either the Profile `<title>` or `id` specified in the Benchmark XCCDF.
+- `session-ref`: The "session-ref" attribute specifies the `id` of a `session` configured in the `sessions` configuration, described above.
 
 **Assess an `<oval_definitions>` file that does not include an `<oval_variables>` file**:
 
 	<oval_definitions definitions="vulnerabilities\microsoft_windows_10.xml" session-ref="local"/>
-- `definitions`: The `definitions` attribute defines the path (relative to the `starting_dir` or absolute) to the OVAL Definitions file being assessed.
+- `definitions`: The "definitions" attribute defines the path (relative to the `starting_dir` or absolute) to the OVAL Definitions file being assessed.
 
 **Assess an `<oval_definitions>` file that includes an `<oval_variables>` file**:
 
 	<oval_definitions definitions="definitions\defs.xml" variables="definitions\vars.xml" session-ref="local"/>
-- `definitions`: The `definitions` attribute defines the path (relative to the `starting_dir` or absolute) to the OVAL Definitions file being assessed.
-- `variables`: The `variables` attribute defines the path (relative to the `starting_dir` or absolute) to the OVAL Variables file used in the assessment.
+- `definitions`: The "definitions" attribute defines the path (relative to the `starting_dir` or absolute) to the OVAL Definitions file being assessed.
+- `variables`: The "variables" attribute defines the path (relative to the `starting_dir` or absolute) to the OVAL Variables file used in the assessment.
 
 #### Report Output Options ####
 The `reports` element contains a number of attributes controlling the output report formats, and sub-elements controlling report output directory, POST URL, and report naming.  The `html` attribute value controls the generation of HTML reports, the `csv` attribute controls the generation of CSV reports, and the `txt` attribute controls the generation of plain-text reports.  The `no-report-file` attribute, when `true`, overrides the other 3 attributes and disables the generation of any report files.  Setting this attribute to `true` is intended to be used in conjunction with the `reports_url` element, which identifies a URL to which report output should be POST'ed.  If the reports are POST'ed to the URL, they may not need to be generated and saved in file format.
