@@ -158,7 +158,7 @@ Tools and services that use OVAL for the three steps of system assessment — re
 | NTUser | N | On roadmap |
 | Password Policy | Y ||
 | PEHeader | N | On roadmap |
-| Port | N | In Development |
+| Port | Y ||
 | Printer Effective Rights | N | |
 | Process (<5.8) | Y ||
 | Process (5.8+) | Y ||
