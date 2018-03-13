@@ -20,7 +20,6 @@ This is the initial release of CIS-CAT Pro Assessor v4 (CCPA), a command-line us
 - Assessment of remote Windows endpoints using WinRM and an "ephemeral" agent.
 - Assessment of remote Unix/Linux endpoints using an SSH-based connection.
 - Assessment of Cisco IOS network devices using an SSH-based connection.
-- Assessment of exported Cisco IOS configuration files; a file exporting the output of the `show tech-support` command.
 - Support for the assessment of Security Content Automation Protocol (SCAP) 1.2 data-stream collections.
 - Support for the assessment of XCCDF 1.2-based content.
 - Support for the assessment of OVAL Definitions files, such as inventory and vulnerability definitions.
