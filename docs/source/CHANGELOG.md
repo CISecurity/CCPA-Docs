@@ -2,6 +2,9 @@
 
 # Change Log #
 
+**NOTE: CIS-CAT Pro Assessor v4 is currently in BETA and this documentation will change as a result of ongoing testing and feedback.  Until the official release of CIS-CAT Pro Assessor v4, please consider this document fluid.**
+
+
 ----------
 
 ## CIS-CAT Pro Assessor v4.0.0 ##

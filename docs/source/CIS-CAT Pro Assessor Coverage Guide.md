@@ -2,6 +2,8 @@
 
 # CIS-CAT Pro Assessor Coverage Guide #
 
+**NOTE: CIS-CAT Pro Assessor v4 is currently in BETA and this documentation will change as a result of ongoing testing and feedback.  Until the official release of CIS-CAT Pro Assessor v4, please consider this document fluid.**
+
 ## Introduction ##
 This document provides information about the assessment capabilities of CIS-CAT Pro Assessor v4, such as included benchmarks, OVAL test types, scripting capabilities, etc.
 
