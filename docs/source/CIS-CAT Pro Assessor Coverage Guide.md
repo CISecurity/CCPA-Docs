@@ -14,7 +14,7 @@ Note that any benchmark listed below which displays a bulleted list of "`id`:des
 
 - **CIS Amazon Linux Benchmark, v2.0.0**
 - **CIS CentOS Linux 6 Benchmark, v2.0.2**
-- **CIS CentOS Linux 7 Benchmark, v2.1.1**
+- **CIS CentOS Linux 7 Benchmark, v2.2.0**
 - **CIS Cisco IOS 12 Benchmark, v4.0.0**
 - **CIS Cisco IOS 15 Benchmark, v4.0.0**
 - **CIS Debian Linux 7 Benchmark, v1.0.0**
@@ -45,14 +45,14 @@ Note that any benchmark listed below which displays a bulleted list of "`id`:des
 	- `xccdf_org.cisecurity_value_jdbc.url`: SQL Server connection string.
 - **CIS Microsoft Windows 10 Enterprise Release 1703 Benchmark, v1.3.0**
 - **CIS Microsoft Windows Server 2003 Benchmark, v3.1.0**
-- **CIS Microsoft Windows Server 2008 (non-R2) Benchmark, v3.0.1**
-- **CIS Microsoft Windows Server 2008 R2 Benchmark, v3.0.1**
-- **CIS Microsoft Windows Server 2012 (non-R2) Benchmark, v2.0.1**
-- **CIS Microsoft Windows Server 2012 R2 Benchmark, v2.2.1**
+- **CIS Microsoft Windows Server 2008 (non-R2) Benchmark, v3.1.0**
+- **CIS Microsoft Windows Server 2008 R2 Benchmark, v3.1.0**
+- **CIS Microsoft Windows Server 2012 (non-R2) Benchmark, v2.1.0**
+- **CIS Microsoft Windows Server 2012 R2 Benchmark, v2.3.0**
 - **CIS Microsoft Windows Server 2016 RTM (Release 1607) Benchmark, v1.0.0**
-- **CIS Microsoft Windows 7 Workstation Benchmark, v3.0.1**
+- **CIS Microsoft Windows 7 Workstation Benchmark, v3.1.0**
 - **CIS Microsoft Windows 8 Benchmark, v1.0.0**
-- **CIS Microsoft Windows 8.1 Workstation Benchmark, v2.2.1**
+- **CIS Microsoft Windows 8.1 Workstation Benchmark, v2.3.0**
 - **CIS Microsoft Windows XP Benchmark, v3.1.0**
 - **CIS Mozilla Firefox 24 ESR Benchmark, v1.0.0**
 - **CIS Mozilla Firefox 38 ESR Benchmark, v1.0.0**
@@ -159,7 +159,7 @@ Tools and services that use OVAL for the three steps of system assessment — re
 | Metabase | N | |
 | NTUser | N | On roadmap |
 | Password Policy | Y ||
-| PEHeader | N | On roadmap |
+| PEHeader | Y ||
 | Port | Y ||
 | Printer Effective Rights | N | |
 | Process (<5.8) | Y ||
@@ -180,7 +180,7 @@ Tools and services that use OVAL for the three steps of system assessment — re
 | UAC | Y ||
 | User | Y ||
 | User Rights | Y ||
-| User SID (<5.5) | N | Deprecated |
+| User SID (<5.5) | Y ||
 | User SID (5.5+) | Y ||
 | Volume | Y ||
 | WMI (<5.7) | Y ||
@@ -192,10 +192,10 @@ Tools and services that use OVAL for the three steps of system assessment — re
 |--------------------------|--------------|-------|
 | DNSCache                 | N | On roadmap |
 | File                     | Y ||
-| File Extended Attribute  | N | On roadmap |
+| File Extended Attribute  | Y ||
 | Gconf                    | N | On roadmap |
 | Inetd                    | Y ||
-| Interface                | N | On roadmap |
+| Interface                | Y ||
 | Password                 | Y ||
 | Process (<5.8)           | N | On roadmap |
 | Process (5.8+)           | Y ||
@@ -227,27 +227,27 @@ Tools and services that use OVAL for the three steps of system assessment — re
 | Systemd Unit Property | Y ||
 
 ### Mac OSX ###
-| Test Name                | Implemented? | Notes |
-|--------------------------|--------------|-------|
-| Account Info | Y | |
-| Authorization DB | Y | |
-| CoreStorage | N | In development|
-| DiskUtil | N | In development|
-| Gatekeeper | N | In development|
+| Test Name                      | Implemented? | Notes |
+|--------------------------------|--------------|-------|
+| Account Info                   | Y | |
+| Authorization DB               | Y | |
+| CoreStorage                    | N | In development|
+| DiskUtil                       | N | In development|
+| Gatekeeper                     | Y ||
 | Inet Listening Servers (<5.10) | N | In development|
 | Inet Listening Servers (5.10+) | N | In development|
-| Keychain | N | In development|
-| Launchd| N | In development|
-| Nvram | N | In development|
-| Plist (<5.10) | N | In development|
-| Plist (5.10) | N | In development|
-| Plist (5.11+)| Y | |
-| Pwpolicy (<5.9) | N | In development|
-| Pwpolicy (5.9+) | N | In development|
-| Rlimit | N | In development|
-| Software Update | N | In development|
-| System Profiler | N | In development|
-| System Setup | N | In development|
+| Keychain                       | N | In development|
+| Launchd                        | N | In development|
+| Nvram                          | N | In development|
+| Plist (<5.10)                  | Y ||
+| Plist (5.10)                   | Y ||
+| Plist (5.11+)                  | Y ||
+| Pwpolicy (<5.9)                | N | In development|
+| Pwpolicy (5.9+)                | N | In development|
+| Rlimit                         | N | In development|
+| Software Update                | N | In development|
+| System Profiler                | N | In development|
+| System Setup                   | N | In development|
 
 ### Cisco ASA ###
 | Test Name                | Implemented? | Notes |
