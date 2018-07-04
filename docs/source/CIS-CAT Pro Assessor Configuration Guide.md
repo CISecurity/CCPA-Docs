@@ -36,15 +36,18 @@ A number of configuration properties exist, and will vary based on the session t
 | `identity` | The `identity` property represents the full path to a private key file used for authentication to a remote endpoint.<br/><br/>**NOTE**: When executing CIS-CAT Pro Assessor CLI, if a given session's configuration specifies neither the `cred` nor the `identity` property, the user will be prompted to enter credentials manually.  This **will block** assessment against other configured sessions until credentials are entered. <br/><br/> The `identity` property is not needed when assessing against exported network device configuration files.<br/><br/> The `identity` property is not needed when the session type is `local`.|
 | `enable`   | The `enable` property is used only in network device sessions (`ios` or `asa`) and represents the credentials needed to enter "privileged EXEC" mode; required for obtaining the full output of the `show tech-support` command. <br/><br/> The `enable` property is not needed when assessing against exported network device configuration files.<br/><br/> The `enable` property is not needed when the session type is `local`.|
 | `tech`     | The `tech` property is REQUIRED when assessing the exported configuration of a network device.  This property specifies the full path to the exported configuration file. <br/><br/> When assessing non-network device endpoints, or assessing a network devices' current running configuration via SSH, the `tech` property is unnecessary.<br/><br/> The `tech` property is not needed when the session type is `local`.|
+| `tmp_path`| The `tmp_path` property allows users to configure the location of the temporary "ephemeral" directory on the target host.  This "ephemeral" directory is created upon connection to the target endpoint, hosts any scripts which may require executing during system characteristics collection, and is deleted upon the Assessor's completion and session disconnect.  If this property is left blank or not included, the Assessor will use the default "temp" folder as defined for the operating system, such as `/tmp` or `C:\Windows\Temp`.|
 
 ### Examples ###
 The examples below provide insight into the creation of a `sessions.properties` file, which can then be consumed by CIS-CAT Pro Assessor CLI to provide connection configurations when assessing a particular benchmark.  By default, CIS-CAT Pro Assessor CLI will ALWAYS attempt to load a default configuration file located in the application's `config` folder, named `sessions.properties`.
 
 For example, if CCPA is installed at `C:\CIS\Assessor-CLI`, a file named `C:\CIS\Assessor-CLI\config\sessions.properties` will be searched for and loaded (if found).  If no `sessions.properties` files are found or specified, a default `local` session will be used.
 
-Configure a session for the local host:
+Configure a session for the local host, defining a custom "temp" folder:
 
     session.1.type=local
+	# Note that specifying Windows directory paths require a double-backslash "\\" as the path separator
+    session.1.tmp_path=C:\\Temp
 
 Configure a remote Windows session using a username/password:
 
@@ -61,13 +64,14 @@ Configure a remote Windows session using a username, but requiring manual passwo
     session.3.port=5986
     session.3.user=Administrator1
 
-Configure a remote Linux session using a username/password:
+Configure a remote Linux session using a username/password, defining a custom "temp" folder:
 
     session.4.type=ssh
     session.4.host=ubuntu-test.example.org
     session.4.port=22
     session.4.user=ubuntu
     session.4.cred=s3cr3t3r!
+    session.4.tmp_path=/home/ubuntu
 
 Configure a remote Linux session using a username/private key:
 
@@ -240,6 +244,13 @@ Where `ADDRESS` is the address (DNS Name or IP Address) used to connect to the r
 
 ## Unix/Linux/OSX Endpoint Configuration ##
 CIS-CAT Pro Assessor assesses remote Unix/Linux/OSX targets via SSH connections.  Ensure the target system can be accessed via SSH and that the user connecting to the remote target is either the `root` user or a user granted privileges to execute commands using `sudo`.
+
+### Allowing Script Check Engine Environment Variables ###
+When executing assessments against Unix/Linux/OSX platforms, many CIS benchmarks leverage the Script Check Engine (SCE) in order to quickly assess recommendations that would otherwise evaluate very slowly.  The Script Check Engine utilizes a number of environment variables, all prefaced with `XCCDF_` in order to pass variable values and provide Pass/Fail return codes.  When SSH'ing into a remote Unix/Linux/OSX platform, many systems restrict the SSH user's ability to set environment variable values.  In order to enable the creation of these variables, the target system must be configured to allow it.  The system's `/etc/ssh/sshd_config` file must be edited, adding the following line:
+
+	AcceptEnv XCCDF_*
+
+Once added, the system should be restarted in order for the configuration to take effect.
 
 ## Cisco Network Device Endpoint Configuration ##
 CIS-CAT Pro Assessor v4 can assess either the current running configuration of a Cisco network device, or an exported configuration file.

@@ -192,11 +192,20 @@ Execute an assessment against the CIS Microsoft Windows 10 benchmark, using the 
 | `-props`| `--properties`| `<PROPERTIES-FILE>`| The CIS-CAT Pro Assessor CLI user properties file defaults many runtime properties used during the assessment process.  These properties may be customized per assessment or per endpoint, by creating individual properties files, and specifying either the full filepath or a path relative to the working directory.  If this option is not specified, CIS-CAT Pro Assessor CLI will load a default properties file named `assessor-cli.properties` located in the `config` folder of the application installation.|
 | `-D`| N/A| `<Property=Value>`| Instead of creating a new properties file for unique assessments, individual user properties may be specified using the `-D` option together with a `property=value` pair.  This allows an assessment to only override specific user properties when only a small number differ from the defaults.|
 | `-test` | `--test`| N/A | The `-test` option allows the user to perform connection tests on any sessions configured to execute during the assessments.  These sessions may be loaded from a configuration XML file (`-cfg`) or from a sessions.properties file (`-sessions`).  When specified, connectivity tests are performed and reported to the user on the CIS-CAT Pro Assessor console.  Once completed, CIS-CAT Pro Assessor exits.  When the `-test` option is supplied, no assessments take place; only the connectivity tests.|
+| `-q`| `--quiet`| N/A | Enable the Assessor to execute in "quiet mode", causing the suppression of any assessment status information from being written to the console.|
 
 #### Examples ####
 Download the latest vulnerability definitions:
 
 	> Assessor-CLI.bat -vdd
+
+Download the latest vulnerability definitions when using an HTTPS Proxy:
+
+	> Assessor-CLI.bat -vdd -D https.proxyHost=PROXY_HOSTNAME_OR_IP -D https.proxyPort=PROXY_PORT
+
+Download the latest vulnerability definitions when using an HTTP Proxy:
+
+	> Assessor-CLI.bat -vdd -D http.proxyHost=PROXY_HOSTNAME_OR_IP -D http.proxyPort=PROXY_PORT
 
 Execute a vulnerability assessment for the Microsoft Windows Server 2012 R2 platform, producing both an OVAL Result XML file, and an HTML report:
 
@@ -214,6 +223,10 @@ Execute an assessment against the CIS Oracle Database 11g R2 benchmark, selectin
 Using a customized properties file defining session connections, test the connectivity of each session and exit:
 
 	> Assessor-CLI.bat -sessions config\test-sessions.properties -test
+
+Execute the Assessor, against the CIS Microsoft Windows 10 benchmark, in "quiet mode"
+
+	> Assessor-CLI.bat -b benchmarks\CIS_Microsoft_Windows_10_Enterprise_Release_1703_Benchmark_v1.3.0-xccdf.xml -q
 
 
 #### Configuring Interactive Values ####
@@ -254,6 +267,7 @@ The `sessions` element configures each individual connection to either the local
 		<!-- A "connection" to the local host -->
 		<session id="local">
 			<type>local</type>
+			<tmp_path>C:\Temp</tmp_path>
 		</session>
 		
 		<!-- A connection to a remote Ubuntu instance using a private key file -->
@@ -263,6 +277,7 @@ The `sessions` element configures each individual connection to either the local
 			<port>22</port>
 			<user>ubuntu</user>
 			<path_to_private_key>C:\Path\To\aws-ubuntu.ppk</path_to_private_key>
+			<tmp_path>/path/to/temp/folder</tmp_path>
 		</session>
 		
 		<!-- A connection to a remote Windows instance using credentials -->
@@ -298,6 +313,7 @@ Each `session` consists of a number of elements configuring the connection to th
 - `credentials`:  The "credentials" element identifies the user's password for logging on to the remote endpoint.  Note that this XML file will then be storing users and passwords for remote endpoints, and should thus be secured as much as possible on the machine hosting CIS-CAT Pro Assessor.  When the session type is either `ssh` or `ios`, the `credentials` element can be bypassed by logging into the remote endpoint using a private key file, the path of which is configured in the `path_to_private_key` element.  If a private key is used for authentication, the `credentials` element can be left out of the `session` configuration.
 - `path_to_private_key`:  The "path_to_private_key" element specifies the full filepath to a private key file to be used for authenticating the `user` to the remote endpoint.  When configuring a `session`, one of `credentials` or `path_to_private_key` must be specified, for `ssh` or `ios` sessions.  Note that for `windows` sessions, private key authentication is not currently supported.
 - `enable_password`:  When authenticating a privileged user for `ios` sessions, the `enable_password` is mandatory.  This element specifies the credentials which allow the privileged user to enter "enable" mode on the Cisco IOS device.
+- `tmp_path`: Configure a custom "temp" directory location for use on the target endpoint.  By default, the Assessor will use the "temp" folder location defined for that operating system, such as `/tmp` or `C:\Windows\Temp`.  If a different folder should be used, for example because the `/tmp` partition is configured with `-noexec`, the `tmp_path` element should be included.
 
 
 #### Assessments ####
@@ -465,5 +481,6 @@ A number of scenarios exist which could cause CIS-CAT Pro Assessor to terminate 
 ## Troubleshooting and Support ###
 Member support for CIS-CAT Pro Assessor is available through the normal CIS SecureSuite support channels:
 
+- During the CIS-CAT Pro Assessor v4 beta testing period, email [CIS-CAT@cisecurity.org](mailto:CIS-CAT@cisecurity.org)
 - Email support at [support@cisecurity.org](mailto:support@cisecurity.org)
 - Start a discussion on the [CIS-CAT Discussion Group](https://workbench.cisecurity.org/communities/30) (login required)

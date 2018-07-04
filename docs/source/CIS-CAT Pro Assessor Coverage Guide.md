@@ -37,11 +37,13 @@ Note that any benchmark listed below which displays a bulleted list of "`id`:des
 - **CIS Microsoft Office Word 2016 Benchmark, v1.1.0**
 - **CIS Microsoft Office 2013 Benchmark, v1.1.0**
 - **CIS Microsoft Office 2016 Benchmark, v1.1.0**
-- **CIS Microsoft SQL Server 2008 R2 Benchmark, v1.3.0**
+- **CIS Microsoft SQL Server 2008 R2 Benchmark, v1.5.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: SQL Server connection string.
-- **CIS Microsoft SQL Server 2012 Benchmark, v1.2.0**
+- **CIS Microsoft SQL Server 2012 Benchmark, v1.4.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: SQL Server connection string.
-- **CIS Microsoft SQL Server 2014 Benchmark, v1.1.0**
+- **CIS Microsoft SQL Server 2014 Benchmark, v1.3.0**
+	- `xccdf_org.cisecurity_value_jdbc.url`: SQL Server connection string.
+- **CIS Microsoft SQL Server 2016 Benchmark, v1.0.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: SQL Server connection string.
 - **CIS Microsoft Windows 10 Enterprise Release 1703 Benchmark, v1.3.0**
 - **CIS Microsoft Windows Server 2003 Benchmark, v3.1.0**
@@ -193,7 +195,7 @@ Tools and services that use OVAL for the three steps of system assessment — re
 | DNSCache                 | N | On roadmap |
 | File                     | Y ||
 | File Extended Attribute  | Y ||
-| Gconf                    | N | On roadmap |
+| Gconf                    | N | In Development |
 | Inetd                    | Y ||
 | Interface                | Y ||
 | Password                 | Y ||
@@ -237,14 +239,14 @@ Tools and services that use OVAL for the three steps of system assessment — re
 | Inet Listening Servers (<5.10) | N | In development|
 | Inet Listening Servers (5.10+) | N | In development|
 | Keychain                       | N | In development|
-| Launchd                        | N | In development|
+| Launchd                        | Y ||
 | Nvram                          | N | In development|
 | Plist (<5.10)                  | Y ||
 | Plist (5.10)                   | Y ||
 | Plist (5.11+)                  | Y ||
 | Pwpolicy (<5.9)                | N | In development|
 | Pwpolicy (5.9+)                | N | In development|
-| Rlimit                         | N | In development|
+| Rlimit                         | Y ||
 | Software Update                | N | In development|
 | System Profiler                | N | In development|
 | System Setup                   | N | In development|
