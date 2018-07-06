@@ -17,7 +17,7 @@ A number of different connection types exist to allow for maximum flexibility an
 | Type                   | Value      |   Description |
 | -----------------------| ---------- | ------------- |
 | Local                  | `local`    | Usage of a "local" session is for a host-based assessment, mimicing the functionality of CIS-CAT Pro v3.  Standalone or command-line applications (such as CIS-CAT Pro Assessor CLI) may use the local session to continue host-based assessments of benchmarks and/or OVAL definitions. |
-| SSH (Unix, Linux, Mac) | `ssh`      | The "ssh" session type represents a connection to a remote Unix, Linux, or Mac endpoint, via SSH (obviously).  SSH connections can be established with a `username/password` or a `username/path to a private key file`.|
+| SSH (Unix, Linux, Mac) | `ssh`      | The "ssh" session type represents a connection to a remote Unix, Linux, or Mac endpoint, via SSH (obviously).  SSH connections can be established a number of different ways, including `username/password`, `username/path to a private key file`, `username/private key file protected with a passphrase`, `username/private key file + credentials to use for sudo`.|
 | Windows                | `windows`  | The "windows" session type represents a WinRM connection to a remote Microsoft Windows environment.  Both workstations and servers are supported with this connection type and can currently be established using `username/password` authentication.|
 | Cisco IOS              | `ios`      | The "ios" session type handles the specific case for the assessment of Cisco IOS network devices.  Depending on the specific configuration when the "ios" session type is used, CIS-CAT Pro Assessor will either establish a SSH connection using `username/password` or `username/path to a private key` authentication, or will create a modified local session, collecting information from an exported configuration file.|
 | Cisco ASA              | `asa`      | The "asa" session type handles the specific case for the assessment of Cisco ASA devices.  Depending on the specific configuration when the "asa" session type is used, CIS-CAT Pro Assessor will either establish a SSH connection using `username/password` or `username/path to a private key` authentication, or will create a modified local session, collecting information from an exported configuration file.|
@@ -34,9 +34,10 @@ A number of configuration properties exist, and will vary based on the session t
 | `user`     | The `user` property represents an administrator-level username, used to log on to the remote endpoint.  This can be a domain user or a local administrator on the remote endpoint, or a privileged user when logging on to Cisco network devices.<br/><br/> The `user` property is not needed when assessing against exported network device configuration files.<br/><br/> The `user` property is not needed when the session type is `local`.|
 | `cred`     | The `cred` property represents the credentials for the `user`, in order to log on to the remote endpoint.  Note that this is not encrypted, so users must take great care in safeguarding the sessions configuration file(s).  <br/><br/>**NOTE**: When executing CIS-CAT Pro Assessor CLI, if a given session's configuration specifies neither the `cred` nor the `identity` property, the user will be prompted to enter credentials manually.  This **will block** assessment against other configured sessions until credentials are entered. <br/><br/> The `cred` property is not needed when assessing against exported network device configuration files.<br/><br/> The `cred` property is not needed when the session type is `local`.|
 | `identity` | The `identity` property represents the full path to a private key file used for authentication to a remote endpoint.<br/><br/>**NOTE**: When executing CIS-CAT Pro Assessor CLI, if a given session's configuration specifies neither the `cred` nor the `identity` property, the user will be prompted to enter credentials manually.  This **will block** assessment against other configured sessions until credentials are entered. <br/><br/> The `identity` property is not needed when assessing against exported network device configuration files.<br/><br/> The `identity` property is not needed when the session type is `local`.|
+| `identityPassphrase` | The `identityPassphrase` property is optional and should be used in conjunction with the `identity` property, when that key is protected with a passphrase.|
 | `enable`   | The `enable` property is used only in network device sessions (`ios` or `asa`) and represents the credentials needed to enter "privileged EXEC" mode; required for obtaining the full output of the `show tech-support` command. <br/><br/> The `enable` property is not needed when assessing against exported network device configuration files.<br/><br/> The `enable` property is not needed when the session type is `local`.|
 | `tech`     | The `tech` property is REQUIRED when assessing the exported configuration of a network device.  This property specifies the full path to the exported configuration file. <br/><br/> When assessing non-network device endpoints, or assessing a network devices' current running configuration via SSH, the `tech` property is unnecessary.<br/><br/> The `tech` property is not needed when the session type is `local`.|
-| `tmp_path`| The `tmp_path` property allows users to configure the location of the temporary "ephemeral" directory on the target host.  This "ephemeral" directory is created upon connection to the target endpoint, hosts any scripts which may require executing during system characteristics collection, and is deleted upon the Assessor's completion and session disconnect.  If this property is left blank or not included, the Assessor will use the default "temp" folder as defined for the operating system, such as `/tmp` or `C:\Windows\Temp`.|
+| `tmp`| The `tmp` property allows users to configure the location of the temporary "ephemeral" directory on the target host.  This "ephemeral" directory is created upon connection to the target endpoint, hosts any scripts which may require executing during system characteristics collection, and is deleted upon the Assessor's completion and session disconnect.  If this property is left blank or not included, the Assessor will use the default "temp" folder as defined for the operating system, such as `/tmp` or `C:\Windows\Temp`.|
 
 ### Examples ###
 The examples below provide insight into the creation of a `sessions.properties` file, which can then be consumed by CIS-CAT Pro Assessor CLI to provide connection configurations when assessing a particular benchmark.  By default, CIS-CAT Pro Assessor CLI will ALWAYS attempt to load a default configuration file located in the application's `config` folder, named `sessions.properties`.
@@ -47,7 +48,7 @@ Configure a session for the local host, defining a custom "temp" folder:
 
     session.1.type=local
 	# Note that specifying Windows directory paths require a double-backslash "\\" as the path separator
-    session.1.tmp_path=C:\\Temp
+    session.1.tmp=C:\\Temp
 
 Configure a remote Windows session using a username/password:
 
@@ -71,7 +72,7 @@ Configure a remote Linux session using a username/password, defining a custom "t
     session.4.port=22
     session.4.user=ubuntu
     session.4.cred=s3cr3t3r!
-    session.4.tmp_path=/home/ubuntu
+    session.4.tmp=/home/ubuntu
 
 Configure a remote Linux session using a username/private key:
 
@@ -81,30 +82,39 @@ Configure a remote Linux session using a username/private key:
     session.5.user=ubuntu
     session.5.identity=/home/ubuntu/cis/ubuntu-test.ppk
 
-Configure a remote Cisco IOS session using a username/password:
+Configure a remote Linux session using a username/private key, with the private key being secured with a passphrase:
 
-    session.6.type=ios
-    session.6.host=9.8.7.6
+    session.6.type=ssh
+    session.6.host=ubuntu-test.example.org
     session.6.port=22
-    session.6.user=admin
-    session.6.cred=s3cr3t3r!
-    session.6.enable=3nab!3d
+    session.6.user=ubuntu
+    session.6.identity=/home/ubuntu/cis/ubuntu-test.ppk
+    session.6.identityPassphrase=P@55phr@s3!
 
-Configure a remote Cisco IOS session using a username/private key:
+Configure a remote Cisco IOS session using a username/password:
 
     session.7.type=ios
     session.7.host=9.8.7.6
     session.7.port=22
     session.7.user=admin
-    # Note that specifying Windows directory paths require a double-backslash "\\" as the path separator
-    session.7.identity=C:\\CIS\\cisco-ios.ppk
+    session.7.cred=s3cr3t3r!
     session.7.enable=3nab!3d
+
+Configure a remote Cisco IOS session using a username/private key:
+
+    session.8.type=ios
+    session.8.host=9.8.7.6
+    session.8.port=22
+    session.8.user=admin
+    # Note that specifying Windows directory paths require a double-backslash "\\" as the path separator
+    session.8.identity=C:\\CIS\\cisco-ios.ppk
+    session.8.enable=3nab!3d
 
 Configure a Cisco IOS session pointing to an exported configuration file:
 
-    session.8.type=ios
+    session.9.type=ios
     # Note that specifying Windows directory paths require a double-backslash "\\" as the path separator
-    session.8.tech=C:\\CIS\\TS\\tech-support-export.txt
+    session.9.tech=C:\\CIS\\TS\\tech-support-export.txt
 
 
 ## Microsoft Windows Endpoint Configuration ##

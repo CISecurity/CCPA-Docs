@@ -195,7 +195,7 @@ Tools and services that use OVAL for the three steps of system assessment — re
 | DNSCache                 | N | On roadmap |
 | File                     | Y ||
 | File Extended Attribute  | Y ||
-| Gconf                    | N | In Development |
+| Gconf                    | Y ||
 | Inetd                    | Y ||
 | Interface                | Y ||
 | Password                 | Y ||

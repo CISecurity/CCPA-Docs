@@ -276,7 +276,18 @@ The `sessions` element configures each individual connection to either the local
 			<host>11.22.33.44</host>
 			<port>22</port>
 			<user>ubuntu</user>
-			<path_to_private_key>C:\Path\To\aws-ubuntu.ppk</path_to_private_key>
+			<identity>C:\Path\To\aws-ubuntu.ppk</identity>
+			<tmp_path>/path/to/temp/folder</tmp_path>
+		</session>
+		
+		<!-- A connection to a remote CentOS instance using a private key file secured with a passphrase -->
+		<session id="aws-centos">
+			<type>ssh</type>
+			<host>1.2.3.4</host>
+			<port>22</port>
+			<user>centos</user>
+			<identity>C:\Path\To\aws-centos.ppk</identity>
+			<identity_passphrase>P@55phr@s3!</identity_passphrase>
 			<tmp_path>/path/to/temp/folder</tmp_path>
 		</session>
 		
@@ -295,7 +306,7 @@ The `sessions` element configures each individual connection to either the local
 			<host>55.66.77.88</host>
 			<port>22</port>
 			<user>ciscoprivd</user>
-			<path_to_private_key>C:\Path\To\cisco-ios-private-key.ppk</path_to_private_key>
+			<identity>C:\Path\To\cisco-ios-private-key.ppk</identity>
 			<enable_password>3n@bl3mePlz</enable_password>
 		</session>
 	</sessions>
@@ -304,14 +315,15 @@ Each `session` consists of a number of elements configuring the connection to th
 
 - `type`:  The session `type` indicates a "flavor" of the connection to the endpoint being assessed.  A number of options exist for the `type` value, as noted in the [CIS-CAT Pro Assessor Configuration Guide](./CIS-CAT%20Pro%20Assessor%20Configuration%20Guide).
 	- **`local`**:  The "local" session type indicates that the assessment(s) will be performed in a host-based manner.  No further session information is required when using a "local" session.
-	- **`ssh`**:  The "ssh" session type indicates the connection is to a remote Unix/Linux/Mac endpoint.  This session type allows CIS-CAT Pro Assessor to utilize the `host`, `port`, `user`, and either `credentials` or `path_to_private_key` to create a SSH connection to the endpoint and use that SSH connection to execute the assessment.
+	- **`ssh`**:  The "ssh" session type indicates the connection is to a remote Unix/Linux/Mac endpoint.  This session type allows CIS-CAT Pro Assessor to utilize the `host`, `port`, `user`, and either `credentials` and/or `identity` (and optionally an `identity_passphrase`) to create a SSH connection to the endpoint and use that SSH connection to execute the assessment.
 	- **`windows`**:  The "windows" session type indicates (obviously) a connection to a remote Microsoft Windows endpoint.  This session type allows CIS-CAT Pro Assessor to utilize the `host`, `port`, `user`, `credentials` to initiate a WinRM connection to the remote endpoint.
-	- **`ios`**:  The "ios" session type indicates a connection to a remote Cisco IOS device, such as a router or switch.  This session type allows CIS-CAT Pro Assessor to utilize the `host`, `port`, `user`, and either `credentials` or `path_to_private_key` to create a SSH connection to the endpoint and use that SSH connection to execute the assessment.
+	- **`ios`**:  The "ios" session type indicates a connection to a remote Cisco IOS device, such as a router or switch.  This session type allows CIS-CAT Pro Assessor to utilize the `host`, `port`, `user`, and either `credentials` and/or `identity` (and optionally an `identity_passphrase`) to create a SSH connection to the endpoint and use that SSH connection to execute the assessment.
 - `host`:  The "host" element value is either the hostname or IP address of the endpoint to which this session will connect/assess.
 - `port`:  The "port" element value is the port number on which communication takes place.  For `ssh` or `ios` connections, the default value for `port` is 22.  For `windows` sessions, the default value is 5986.
 - `user`:  The "user" element value specifies the username used to log on to the remote endpoint.  For `ssh` sessions, this user should be either `root` or a username with the ability to `sudo`, in order to elevate privileges to execute the required commands.  For `windows` sessions, the user must be either an Administrator or a member of the Administrators group.  For `ios` sessions, the user must be privileged and able to enter into "enable" mode on that device, using the `enable_password` value below.
-- `credentials`:  The "credentials" element identifies the user's password for logging on to the remote endpoint.  Note that this XML file will then be storing users and passwords for remote endpoints, and should thus be secured as much as possible on the machine hosting CIS-CAT Pro Assessor.  When the session type is either `ssh` or `ios`, the `credentials` element can be bypassed by logging into the remote endpoint using a private key file, the path of which is configured in the `path_to_private_key` element.  If a private key is used for authentication, the `credentials` element can be left out of the `session` configuration.
-- `path_to_private_key`:  The "path_to_private_key" element specifies the full filepath to a private key file to be used for authenticating the `user` to the remote endpoint.  When configuring a `session`, one of `credentials` or `path_to_private_key` must be specified, for `ssh` or `ios` sessions.  Note that for `windows` sessions, private key authentication is not currently supported.
+- `credentials`:  The "credentials" element identifies the user's password for logging on to the remote endpoint.  Note that this XML file will then be storing users and passwords for remote endpoints, and should thus be secured as much as possible on the machine hosting CIS-CAT Pro Assessor.  When the session type is either `ssh` or `ios`, the `credentials` element can be bypassed by logging into the remote endpoint using a private key file, the path of which is configured in the `identity` element.  If a private key is used for authentication, the `credentials` element can either be left out of the `session` configuration, or included for use when commands must be executed with elevated privileges using `sudo`, and the credentials are required for that user.
+- `identity`:  The `identity` element specifies the full filepath to a private key file to be used for authenticating the `user` to the remote endpoint.  When configuring a `session`, the `identity` may require the specification of the `identity_passphrase` in order for authentication to complete successfully.  Note that for `windows` sessions, private key authentication is not currently supported.
+- `identity_passphrase`: The `identity_passphrase` element contains credentials required to complete authentication using the private key specified in the `identity` element.
 - `enable_password`:  When authenticating a privileged user for `ios` sessions, the `enable_password` is mandatory.  This element specifies the credentials which allow the privileged user to enter "enable" mode on the Cisco IOS device.
 - `tmp_path`: Configure a custom "temp" directory location for use on the target endpoint.  By default, the Assessor will use the "temp" folder location defined for that operating system, such as `/tmp` or `C:\Windows\Temp`.  If a different folder should be used, for example because the `/tmp` partition is configured with `-noexec`, the `tmp_path` element should be included.
 
