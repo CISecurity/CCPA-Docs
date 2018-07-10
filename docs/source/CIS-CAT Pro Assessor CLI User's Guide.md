@@ -246,7 +246,11 @@ CIS-CAT Pro Assessor can be executed using the `-cfg` option, and specifying a c
 An XML schema is included in the CIS-CAT Pro Assessor CLI bundle, along with a sample configuration file.
 
 ### Configuration XML Elements ###
-The root element of the configuration XML file is `<configuration>`.  All other elements must be contained within the `<configuration>` element.
+The root element of the configuration XML file is `<configuration>`, and utilizes a default namespace URI of `http://cisecurity.org/ccpa/config`.  This namespace URI must be specified or else validation of the configuration XML file will fail.  The root of any XML configuration file should appear as follows:
+
+	<configuration xmlns="http://cisecurity.org/ccpa/config">
+
+All other elements must be contained within the `<configuration>` element.
 
 The following sections describe the elements that are available for configuration through the XML file:
 
