@@ -155,6 +155,10 @@ By default, Kerberos authentication is enabled in WinRM.  Disable it if CIS-CAT 
 
 	winrm set winrm/config/service/Auth @{Kerberos="false"}
 
+Configure WinRM to allow unencrypted SOAP messages:
+
+	winrm set winrm/config/service @{AllowUnencrypted="true"}
+
 **NOTE**: Do not disable "Negotiate" authentication as the `winrm` command itself uses that to configure the WinRM subsystem.
 
 Finally, configure WinRM to provide enough memory to the commands that are going to be executed, e.g. 1024 MB:
