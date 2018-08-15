@@ -19,7 +19,7 @@ Note that any benchmark listed below which displays a bulleted list of "`id`:des
 - **CIS Cisco IOS 15 Benchmark, v4.0.0**
 - **CIS Debian Linux 7 Benchmark, v1.0.0**
 - **CIS Debian Linux 8 Benchmark, v1.0.0**
-- **CIS Google Chrome Benchmark, v1.2.0**
+- **CIS Google Chrome Benchmark, v1.3.0**
 - **CIS MIT Kerberos 1.10 Benchmark, v1.0.0**
 - **CIS Microsoft IIS 7 Benchmark, v1.8.0**
 - **CIS Microsoft IIS 8 Benchmark, v1.5.0**
@@ -78,6 +78,8 @@ Note that any benchmark listed below which displays a bulleted list of "`id`:des
 	- `xccdf_org.cisecurity_value_listener.ora`: Path to the listener.ora file
 - **CIS Oracle Linux 6 Benchmark, v1.0.0**
 - **CIS Oracle Linux 7 Benchmark, v2.0.0**
+- **CIS PostgreSQL 9.5 Benchmark, v1.0.0**
+	- `xccdf_org.cisecurity_value_jdbc.url`: PostgreSQL Database connection string.
 - **CIS Red Hat Enterprise Linux 5 Benchmark, v2.2.0**
 - **CIS Red Hat Enterprise Linux 6 Benchmark, v2.0.2**
 - **CIS Red Hat Enterprise Linux 7 Benchmark, v2.1.1**
@@ -85,6 +87,7 @@ Note that any benchmark listed below which displays a bulleted list of "`id`:des
 - **CIS SUSE Linux Enterprise 12 Benchmark, v2.0.0**
 - **CIS Ubuntu Linux 14.04 LTS Benchmark, v2.0.0**
 - **CIS Ubuntu Linux 16.04 LTS Benchmark, v1.0.0**
+- **CIS Ubuntu Linux 18.04 LTS Benchmark, v1.0.0**
 
 **NOTE**:  Any benchmarks which utilized CIS' proprietary Embedded Check Language (ECL) are not yet supported in CIS-CAT Pro Assessor v4.  Further development will either implement these benchmarks using currently available scripting capabilities, or will be migrated to OVAL when platform coverage is expanded.
 
@@ -113,6 +116,7 @@ Using the `-vdd` command-line option, CIS-CAT Pro Assessor v4 is able to downloa
 | Ubuntu Linux 12.04               | https://people.canonical.com/~ubuntu-security/oval                 |
 | Ubuntu Linux 14.04               | https://people.canonical.com/~ubuntu-security/oval                 |
 | Ubuntu Linux 16.04               | https://people.canonical.com/~ubuntu-security/oval                 |
+| Ubuntu Linux 18.04               | https://people.canonical.com/~ubuntu-security/oval                 |
 
 ## OVAL Capabilities ##
 International in scope and free for public use, OVAL is an information security community effort to standardize how to assess and report upon the machine state of computer systems. OVAL includes a language to encode system details, and an assortment of content repositories held throughout the community.

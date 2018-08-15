@@ -496,8 +496,12 @@ A number of scenarios exist which could cause CIS-CAT Pro Assessor to terminate 
 
 
 ## Troubleshooting and Support ###
-Member support for CIS-CAT Pro Assessor is available through the normal CIS SecureSuite support channels:
+During the CIS-CAT Pro Assessor v4 beta testing period, the following support channels may be used:
 
-- During the CIS-CAT Pro Assessor v4 beta testing period, email [CIS-CAT@cisecurity.org](mailto:CIS-CAT@cisecurity.org)
+- Email the beta testing support team at [CIS-CAT@cisecurity.org](mailto:CIS-CAT@cisecurity.org)
+- Start a discussion on the [CIS-CAT Pro Assessor v4 Beta Community](https://workbench.cisecurity.org/communities/75)
+
+Once CIS-CAT Pro Assessor v4 is generally available, member support is available through the normal CIS SecureSuite channels:
+
 - Email support at [support@cisecurity.org](mailto:support@cisecurity.org)
 - Start a discussion on the [CIS-CAT Discussion Group](https://workbench.cisecurity.org/communities/30) (login required)

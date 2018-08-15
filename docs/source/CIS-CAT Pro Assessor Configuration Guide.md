@@ -344,7 +344,7 @@ Notable optional parameters involve ensuring JDBC connections are made via SSL:
 | Property Name          | Property Description |
 |------------------------|----------------------|
 | user                   | The database username. |
-| password               | The credentials for the specified `username` to connect to the database instance. |
+| password               | The credentials for the specified `user` to connect to the database instance. |
 | useSSL                 | Force the usage of SSL on the connection. |
 | trustServerCertificate | When using SSL, do *not* verify the server's certificate.|
 | serverSslCert          | Server's certificate in DER form, or server's CA certificate. Can be used in one of 3 forms:<br/><br/> `serverSslCert=/path/to/cert.pem`:  full path to certificate <br/><br/> `serverSslCert =classpath:relative/cert.pem`:  relative to current classpath <br/><br/> or as verbatim DER-encoded certificate string, starting with<br/> `------BEGIN CERTIFICATE-----`|
@@ -354,6 +354,46 @@ Notable optional parameters involve ensuring JDBC connections are made via SSL:
 - The default port number for MySQL is 3306
 - The full set of connection properties/optional URL parameters supported by MariaDB can be found at [https://mariadb.com/kb/en/mariadb/about-the-mariadb-java-client/](https://mariadb.com/kb/en/mariadb/about-the-mariadb-java-client/)
 
+### PostgreSQL Database ###
+CIS-CAT Pro Assessor has implemented support for assessments against PostgreSQL database instances using the PostgreSQL JDBC driver.  The format for the PostgreSQL JDBC connection string is:
+
+	jdbc:postgresql://<host>:<port>/<database>?<key1>=<value1>&<key2>=<value2>...
+
+Consider a PostgreSQL database instance with the following information:
+
+| Property Name | Property Value |
+|---------------|----------------------|
+| Server Name   | CIS-POSTGRESQL |
+| Database Name | PostgreSQL-DB |
+| Database Port | 5432 (the default) |
+| Username      | db_user |
+| Credentials   | db_pass |
+
+When configuring the JDBC connection string in CIS-CAT Pro Assessor, the above information would yield:
+
+	jdbc:postgresql://CIS-POSTGRESQL:5432/PostgreSQL-DB?user=db_user&password=db_pass
+
+If CIS-CAT Pro Assessor is connecting to PostgreSQL on the default port (5432), it can be omitted from the connection string:
+
+	jdbc:postgresql://CIS-POSTGRESQL/PostgreSQL-DB?user=db_user&password=db_pass
+
+Notable optional parameters involve ensuring JDBC connections are made via SSL:
+
+| Property Name          | Property Description |
+|------------------------|----------------------|
+| user                   | The database username. |
+| password               | The credentials for the specified `user` to connect to the database instance. |
+| ssl                 | A boolean value (`true` or `false`), to force the usage of SSL on the connection. |
+
+For example, in order to force the database connection to require SSL, the connection string would look like:
+
+	jdbc:postgresql://CIS-POSTGRESQL/PostgreSQL-DB?user=db_user&password=db_pass&ssl=true
+
+
+**NOTES**
+
+- The default port number for PostgreSQL is 5432
+- The full set of connection properties/optional URL parameters supported by PostgreSQL can be found at [https://jdbc.postgresql.org/documentation/head/connect.html](https://jdbc.postgresql.org/documentation/head/connect.html)
 
 ### Microsoft SQL Server ###
 Microsoft SQL Server database support is implemented using the jTDS open source JDBC driver.  The jTDS driver provides support for SQL Server 6.5, 7, 2000, 2005, 2008, and 2012.
