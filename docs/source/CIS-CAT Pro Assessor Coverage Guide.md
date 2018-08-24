@@ -48,7 +48,9 @@ Note that any benchmark listed below which displays a bulleted list of "`id`:des
 	- `xccdf_org.cisecurity_value_jdbc.url`: SQL Server connection string.
 - **CIS Microsoft SQL Server 2016 Benchmark, v1.0.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: SQL Server connection string.
+- **CIS Microsoft Windows 10 Enterprise Release 1607 Benchmark, v1.2.0**
 - **CIS Microsoft Windows 10 Enterprise Release 1703 Benchmark, v1.3.0**
+- **CIS Microsoft Windows 10 Enterprise Release 1709 Benchmark, v1.4.0**
 - **CIS Microsoft Windows Server 2003 Benchmark, v3.1.0**
 - **CIS Microsoft Windows Server 2008 (non-R2) Benchmark, v3.1.0**
 - **CIS Microsoft Windows Server 2008 R2 Benchmark, v3.1.0**
