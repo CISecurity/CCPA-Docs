@@ -13,6 +13,9 @@ CIS currently distributes CIS-CAT with production support for the following benc
 Note that any benchmark listed below which displays a bulleted list of "`id`:description" information are those benchmarks which contain "interactive values".  Please see the [CIS-CAT Pro Assessor CLI User's Guide](./CIS-CAT%20Pro%20Assessor%20CLI%20User's%20Guide) for more information regarding configuration of these values.
 
 - **CIS Amazon Linux Benchmark, v2.0.0**
+- **CIS Apple OSX 10.10 Benchmark, v1.2.0**
+- **CIS Apple OSX 10.11 Benchmark, v1.1.0**
+- **CIS Apple OSX 10.12 Benchmark, v1.0.0**
 - **CIS CentOS Linux 6 Benchmark, v2.0.2**
 - **CIS CentOS Linux 7 Benchmark, v2.2.0**
 - **CIS Cisco IOS 12 Benchmark, v4.0.0**
@@ -342,4 +345,13 @@ CIS-CAT Pro Assessor supports using SCE usage with the following scripting langu
 - Windows batch scripts
 - VBScript
 
+## CIS Embedded Check Language (ECL) ##
+CIS-CAT Pro Assessor contains minimal implementation of CIS' proprietary Embedded Check Language (ECL).  A subset of the total available functionality has been developed, in order to support both local and remote assessment of Apple OSX benchmarks.
 
+The following ECL constructs have been implemented:
+
+- File Content
+- Shell Command
+- Platform
+
+Note that further ECL implementation is tentative and may not be included in future releases.
