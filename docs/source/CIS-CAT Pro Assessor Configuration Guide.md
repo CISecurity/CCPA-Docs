@@ -146,6 +146,11 @@ On the remote Windows host, open a Command Prompt using the "Run as Administrato
 
 A confirmation prompt may be presented to the user.  If so, type `Y` and hit `Enter`.  Performing the `quickconfig` will start the Windows Remote Management service, configure an HTTP listener and create exceptions in the Windows Firewall for the WinRM service.
 
+If users intend to connect to remote endpoints using WinRM over HTTP (and not HTTPS), then WinRM must be configured to "Allow unencrypted traffic":
+
+	winrm set winrm/config/service @{AllowUnencrypted="true"}
+
+
 By default, Kerberos authentication is enabled in WinRM.  Disable it if CIS-CAT Pro Assessor will **NOT** be authenticating using domain accounts:
 
 	winrm set winrm/config/service/Auth @{Kerberos="false"}
