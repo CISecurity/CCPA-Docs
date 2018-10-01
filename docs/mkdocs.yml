@@ -1,0 +1,11 @@
+site_name: CIS-CAT Pro Assessor v4
+
+nav:
+  - Home: index.md
+  - User's Guide: UsersGuide.md
+  - Configuration Guide: ConfigurationGuide.md
+  - Coverage Guide: CoverageGuide.md
+  - 3rd-Party Licenses: LicenseInformation.md
+  - Change Log: CHANGELOG.md
+
+theme: readthedocs
