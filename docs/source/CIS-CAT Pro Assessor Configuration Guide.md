@@ -130,7 +130,6 @@ The majority of CIS benchmarks for Microsoft Windows operating systems contain r
 | Recommendation | CIS Benchmark Value | Relaxed Value |
 |----------------|---------------------|---------------|
 | 18.6.1: Ensure 'Apply UAC restrictions to local accounts on network logons' is set to 'Enabled'| Enabled | Disabled|
-| 18.9.86.2.1: Ensure 'Allow Basic authentication' is set to 'Disabled'| Disabled | Enabled |
 
 ### WinRM Configuration ###
 In order for CIS-CAT Pro Assessor to connect to a remote Windows host, a number of configuration steps on those hosts must happen.  The following sections will describe the configurations.
@@ -147,17 +146,9 @@ On the remote Windows host, open a Command Prompt using the "Run as Administrato
 
 A confirmation prompt may be presented to the user.  If so, type `Y` and hit `Enter`.  Performing the `quickconfig` will start the Windows Remote Management service, configure an HTTP listener and create exceptions in the Windows Firewall for the WinRM service.
 
-By default, basic authentication is disabled in WinRM.  Enable it if CIS-CAT Pro Assessor will be authenticating to the endpoint using a local account:
-
-	winrm set winrm/config/service/Auth @{Basic="true"}
-
 By default, Kerberos authentication is enabled in WinRM.  Disable it if CIS-CAT Pro Assessor will **NOT** be authenticating using domain accounts:
 
 	winrm set winrm/config/service/Auth @{Kerberos="false"}
-
-Configure WinRM to allow unencrypted SOAP messages:
-
-	winrm set winrm/config/service @{AllowUnencrypted="true"}
 
 **NOTE**: Do not disable "Negotiate" authentication as the `winrm` command itself uses that to configure the WinRM subsystem.
 
@@ -258,13 +249,6 @@ Where `ADDRESS` is the address (DNS Name or IP Address) used to connect to the r
 
 ## Unix/Linux/OSX Endpoint Configuration ##
 CIS-CAT Pro Assessor assesses remote Unix/Linux/OSX targets via SSH connections.  Ensure the target system can be accessed via SSH and that the user connecting to the remote target is either the `root` user or a user granted privileges to execute commands using `sudo`.
-
-### Allowing Script Check Engine Environment Variables ###
-When executing assessments against Unix/Linux/OSX platforms, many CIS benchmarks leverage the Script Check Engine (SCE) in order to quickly assess recommendations that would otherwise evaluate very slowly.  The Script Check Engine utilizes a number of environment variables, all prefaced with `XCCDF_` in order to pass variable values and provide Pass/Fail return codes.  When SSH'ing into a remote Unix/Linux/OSX platform, many systems restrict the SSH user's ability to set environment variable values.  In order to enable the creation of these variables, the target system must be configured to allow it.  The system's `/etc/ssh/sshd_config` file must be edited, adding the following line:
-
-	AcceptEnv XCCDF_*
-
-Once added, the system should be restarted in order for the configuration to take effect.
 
 ## Cisco Network Device Endpoint Configuration ##
 CIS-CAT Pro Assessor v4 can assess either the current running configuration of a Cisco network device, or an exported configuration file.
