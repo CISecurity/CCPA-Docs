@@ -8,4 +8,5 @@ nav:
   - 3rd-Party Licenses: License Information.md
   - Change Log: CHANGELOG.md
 
-theme: readthedocs
+theme:
+  name: 'material'
