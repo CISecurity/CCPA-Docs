@@ -1,13 +1,23 @@
+---
+title: Coverage Guide
+summary: CIS-CAT Pro Assessor v4 Coverage Guide
+authors:
+	- B. Munyan
+	- L. Patsantaras
+---
 ![](http://i.imgur.com/5yZfZi5.jpg)
 
-# CIS-CAT Pro Assessor Coverage Guide #
+CIS-CAT Pro Assessor Coverage Guide
+===================================
 
 **NOTE: CIS-CAT Pro Assessor v4 is currently in BETA and this documentation will change as a result of ongoing testing and feedback.  Until the official release of CIS-CAT Pro Assessor v4, please consider this document fluid.**
 
-## Introduction ##
+Introduction
+------------
 This document provides information about the assessment capabilities of CIS-CAT Pro Assessor v4, such as included benchmarks, OVAL test types, scripting capabilities, etc.
 
-## CIS Benchmark Coverage ##
+CIS Benchmark Coverage
+----------------------
 CIS currently distributes CIS-CAT with production support for the following benchmarks. The benchmarks utilize standards included in the Security Content Automation Protocol, such as the eXtensible Configuration Checklist Description Format (XCCDF) and the Open Vulnerability and Assessment Language (OVAL).
 
 Note that any benchmark listed below which displays a bulleted list of "`id`:description" information are those benchmarks which contain "interactive values".  Please see the [CIS-CAT Pro Assessor CLI User's Guide](./CIS-CAT%20Pro%20Assessor%20CLI%20User's%20Guide) for more information regarding configuration of these values.
@@ -96,7 +106,8 @@ Note that any benchmark listed below which displays a bulleted list of "`id`:des
 
 **NOTE**:  Any benchmarks which utilized CIS' proprietary Embedded Check Language (ECL) are not yet supported in CIS-CAT Pro Assessor v4.  Further development will either implement these benchmarks using currently available scripting capabilities, or will be migrated to OVAL when platform coverage is expanded.
 
-## Platform Coverage for Vulnerability Assessments ##
+Platform Coverage for Vulnerability Assessments
+-----------------------------------------------
 Using the `-vdd` command-line option, CIS-CAT Pro Assessor v4 is able to download the latest vulnerability definitions from various repositories.  A number of different platforms are officially supported by CIS-CAT Pro Assessor v4, including:
 
 
@@ -123,7 +134,8 @@ Using the `-vdd` command-line option, CIS-CAT Pro Assessor v4 is able to downloa
 | Ubuntu Linux 16.04               | https://people.canonical.com/~ubuntu-security/oval                 |
 | Ubuntu Linux 18.04               | https://people.canonical.com/~ubuntu-security/oval                 |
 
-## OVAL Capabilities ##
+OVAL Capabilities
+-----------------
 International in scope and free for public use, OVAL is an information security community effort to standardize how to assess and report upon the machine state of computer systems. OVAL includes a language to encode system details, and an assortment of content repositories held throughout the community.
 
 Tools and services that use OVAL for the three steps of system assessment — representing system information, expressing specific machine states, and reporting the results of an assessment — provide enterprises with accurate, consistent, and actionable information so they may improve their security. Use of OVAL also provides for reliable and reproducible information assurance metrics and enables interoperability and automation among security tools and services.
@@ -337,7 +349,8 @@ Tools and services that use OVAL for the three steps of system assessment — re
 | Invalid User Home Directory Ownership |Y| Extension, Linux|
 
 
-## Scripting Capabilities ##
+Scripting Capabilities
+----------------------
 CIS-CAT Pro Assessor implements the Script Check Engine (SCE) check system, initially introduced as part of the [OpenSCAP](http://open-scap.org/page/SCE) project.  Using SCE in XCCDF documents allows administrators to use already-created scripts written in Bash, Windows Batch files, PowerShell, VBScript, etc. in benchmark recommendations.
 
 CIS-CAT Pro Assessor supports using SCE usage with the following scripting languages:
@@ -347,7 +360,8 @@ CIS-CAT Pro Assessor supports using SCE usage with the following scripting langu
 - Windows batch scripts
 - VBScript
 
-## CIS Embedded Check Language (ECL) ##
+CIS Embedded Check Language (ECL)
+---------------------------------
 CIS-CAT Pro Assessor contains minimal implementation of CIS' proprietary Embedded Check Language (ECL).  A subset of the total available functionality has been developed, in order to support both local and remote assessment of Apple OSX benchmarks.
 
 The following ECL constructs have been implemented:

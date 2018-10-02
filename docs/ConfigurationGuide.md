@@ -1,14 +1,24 @@
+---
+title: Configuration Guide
+summary: CIS-CAT Pro Assessor v4 Configuration Guide
+authors:
+	- B. Munyan
+	- L. Patsantaras
+---
 ![](http://i.imgur.com/5yZfZi5.jpg)
 
-# CIS-CAT Pro Assessor Configuration Guide #
+CIS-CAT Pro Assessor Configuration Guide
+========================================
 
 **NOTE: CIS-CAT Pro Assessor v4 is currently in BETA and this documentation will change as a result of ongoing testing and feedback.  Until the official release of CIS-CAT Pro Assessor v4, please consider this document fluid.**
 
 
-## Introduction ##
+Introduction
+------------
 Utilizing the CIS-CAT Pro Assessor CLI, users are capable of performing both host-based (local) assessments, as well as remote-based assessments.  In order to perform assessments of remote endpoints, certain configurations must be made.  The intent of this document is to serve as a guide for enabling systems for remote-based assessments using CIS-CAT Pro Assessor.
 
-## Sessions ##
+Sessions
+--------
 CIS-CAT Pro Assessor v4's remote assessment capability depends on the configuration of "sessions"; connection parameters used to create a secure connection to the remote endpoint.  A session configuration requires a number of entries, which will vary depending on the connection type.
 
 ### Connection Types ###
@@ -117,7 +127,8 @@ Configure a Cisco IOS session pointing to an exported configuration file:
     session.9.tech=C:\\CIS\\TS\\tech-support-export.txt
 
 
-## Microsoft Windows Endpoint Configuration ##
+Microsoft Windows Endpoint Configuration
+----------------------------------------
 CIS-CAT Pro Assessor v4 utilizes the prevalent SMB protocol for file manipulation and uses WinRM for process execution.  Once connected to a remote Windows endpoint, CIS-CAT Pro Assessor establishes an "ephemeral" directory to host script required for the collection of system characteristics from the endpoint.  Once the collection/assessment has completed and the session disconnected, the "ephemeral" directory is removed from the endpoint.
 
 CIS-CAT Pro Assessor v4 supports both basic authentication for local accounts and Kerberos authentication for domain accounts.  When authenticating with domain accounts, the new-style domain syntax, e.g. **`ciscatuser@example.org`** must be used, and **NOT** the old-style domain syntax, such as `DOMAIN\User`.
@@ -252,10 +263,12 @@ If the `WSMAN/HOSTNAME` SPN is not listed, it must be configured.  From any host
 
 Where `ADDRESS` is the address (DNS Name or IP Address) used to connect to the remote host, and `HOSTNAME` is the short Windows hostname of the remote host.
 
-## Unix/Linux/OSX Endpoint Configuration ##
+Unix/Linux/OSX Endpoint Configuration
+-------------------------------------
 CIS-CAT Pro Assessor assesses remote Unix/Linux/OSX targets via SSH connections.  Ensure the target system can be accessed via SSH and that the user connecting to the remote target is either the `root` user or a user granted privileges to execute commands using `sudo`.
 
-## Cisco Network Device Endpoint Configuration ##
+Cisco Network Device Endpoint Configuration
+-------------------------------------------
 CIS-CAT Pro Assessor v4 can assess either the current running configuration of a Cisco network device, or an exported configuration file.
 
 ### Connecting to a Device ###
@@ -275,7 +288,8 @@ This example shows how to redirect the technical support information to a file:
 
 Once the exported configuration file is available to CIS-CAT Pro Assessor, the assessment can be performed against it.  See the example above entitled "Configure a Cisco IOS session pointing to an exported configuration file" to configure the appropriate Assessor "session".
 
-## Database Endpoint Configuration ##
+Database Endpoint Configuration
+-------------------------------
 Assessing database benchmarks in CIS-CAT Pro Assessor v4 uses the same JDBC connection mechanism as previous versions.  Database benchmarks will require a user to enter the JDBC connection string, or utilize the `ciscat.properties` file to set the appropriate value for assessment.
 
 ### Oracle Database ###
@@ -432,11 +446,13 @@ or
 - The default port number for MS SQL Server databases is `1433`.
 - The full set of connection properties supported by jTDS can be found at [http://jtds.sourceforge.net/faq.html#urlFormat](http://jtds.sourceforge.net/faq.html#urlFormat).
 
-## VMware ESXi Endpoint Configuration ##
+VMware ESXi Endpoint Configuration
+----------------------------------
 Currently in development for support in CIS-CAT Pro Assessor v4.
 
 
-## Extra configuration Options ##
+Extra configuration Options
+---------------------------
 
 	-sessions, --sessions <SESSIONS.PROPERTIES>
 The `-sessions` option allows users to configure multiple endpoints for assessment of a benchmark.  The `sessions.properties` file configures CIS-CAT Pro Assessor for the assessment of remote endpoints by specifying remote hosts, ports, and credentials which the application will use for connection, collection and evaluation of benchmark recommendations and/or vulnerabilities.  See "Remote Assessment Capability" below for more information.

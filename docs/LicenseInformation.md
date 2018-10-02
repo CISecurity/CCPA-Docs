@@ -1,16 +1,27 @@
+---
+title: 3rd-Party License Information
+summary: CIS-CAT Pro Assessor v4 3rd-Party License Information
+authors:
+	- B. Munyan
+	- L. Patsantaras
+---
 ![](http://i.imgur.com/5yZfZi5.jpg)
 
-# CIS-CAT Pro Assessor License Information #
+CIS-CAT Pro Assessor License Information
+========================================
 
 **NOTE: CIS-CAT Pro Assessor v4 is currently in BETA and this documentation will change as a result of ongoing testing and feedback.  Until the official release of CIS-CAT Pro Assessor v4, please consider this document fluid.**
 
-## Introduction ##
+Introduction
+------------
 This document provides information regarding terms of use for CIS-CAT Pro Assessor, along with identification and documentation of license information for any 3rd-party libraries used in the tool.
 
-## CIS Terms of Use ##
+CIS Terms of Use
+----------------
 TBD
 
-## Third-Party Licenses ##
+Third-Party Licenses
+--------------------
 The following 3rd-party libraries are bundled with CIS-CAT Pro Assessor v4.  Information regarding the license and links to further information can be found in the table below.
 
 | Library                         | Version   | License                   | License Link                              |
@@ -34,8 +45,6 @@ The following 3rd-party libraries are bundled with CIS-CAT Pro Assessor v4.  Inf
 | Jsch                            |0.1.54     |BSD                        |[http://www.jcraft.com/jsch/LICENSE.txt](http://www.jcraft.com/jsch/LICENSE.txt) |
 | PostgreSQL JDBC Driver          |42.2.4     |PostgreSQL                 |[https://www.postgresql.org/about/licence/](https://www.postgresql.org/about/licence/) |
 | Oracle JDBC Driver              |11.2.0.4.0 |Oracle Technology License  |[http://www.oracle.com/technetwork/licenses/distribution-license-152002.html](http://www.oracle.com/technetwork/licenses/distribution-license-152002.html) |
-| | | | |
-| | | | |
-| | | | |
+
 
 

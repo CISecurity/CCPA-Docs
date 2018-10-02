@@ -1,13 +1,22 @@
+---
+title: Change Log
+summary: CIS-CAT Pro Assessor v4 Change Log
+authors:
+	- B. Munyan
+	- L. Patsantaras
+---
 ![](http://i.imgur.com/5yZfZi5.jpg)
 
-# Change Log #
+Change Log
+==========
 
 **NOTE: CIS-CAT Pro Assessor v4 is currently in BETA and this documentation will change as a result of ongoing testing and feedback.  Until the official release of CIS-CAT Pro Assessor v4, please consider this document fluid.**
 
 
 ----------
 
-## CIS-CAT Pro Assessor v4.0.0 ##
+CIS-CAT Pro Assessor v4.0.0
+---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
 ### Benchmark Updates ###
