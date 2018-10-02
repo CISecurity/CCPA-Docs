@@ -1,10 +1,3 @@
----
-title: 3rd-Party License Information
-summary: CIS-CAT Pro Assessor v4 3rd-Party License Information
-authors:
-	- B. Munyan
-	- L. Patsantaras
----
 CIS-CAT Pro Assessor License Information
 ========================================
 
@@ -27,14 +20,14 @@ The following 3rd-party libraries are bundled with CIS-CAT Pro Assessor v4.  Inf
 | Library                         | Version   | License                   | License Link                              |
 |---------------------------------|-----------|---------------------------|-------------------------------------------|
 | Groovy                          |2.5.1      |Apache 2.0                 |[https://github.com/apache/groovy/blob/master/LICENSE](https://github.com/apache/groovy/blob/master/LICENSE) |
-| winrm4j                   |0.5.0      |Apache 2.0                 |[https://github.com/cloudsoft/winrm4j/blob/master/LICENSE](https://github.com/cloudsoft/winrm4j/blob/master/LICENSE) |
-| smbj                      |0.8.0      |Apache 2.0                 |[https://github.com/hierynomus/smbj/blob/master/LICENSE_HEADER](https://github.com/hierynomus/smbj/blob/master/LICENSE_HEADER) |
+| winrm4j                         |0.5.0      |Apache 2.0                 |[https://github.com/cloudsoft/winrm4j/blob/master/LICENSE](https://github.com/cloudsoft/winrm4j/blob/master/LICENSE) |
+| smbj                            |0.8.0      |Apache 2.0                 |[https://github.com/hierynomus/smbj/blob/master/LICENSE_HEADER](https://github.com/hierynomus/smbj/blob/master/LICENSE_HEADER) |
 | MapDB                           |3.0.2      |Apache 2.0                 |[https://github.com/jankotek/mapdb/blob/master/LICENSE.txt](https://github.com/jankotek/mapdb/blob/master/LICENSE.txt) |
 | Apache Commons IO               |2.4        |Apache 2.0                 |[https://github.com/apache/commons-io/blob/master/LICENSE.txt](https://github.com/apache/commons-io/blob/master/LICENSE.txt) |
 | Apache Commons CLI              |1.4        |Apache 2.0                 |[https://github.com/apache/commons-cli/blob/master/LICENSE.txt](https://github.com/apache/commons-cli/blob/master/LICENSE.txt) |
 | HTTP Client Framework for Groovy|0.7.1      |Apache 2.0                 |[https://github.com/jgritman/httpbuilder](https://github.com/jgritman/httpbuilder) |
 | GPars                           |1.2.1      |Apache 2.0                 |[https://github.com/GPars/GPars/blob/master/LICENSE.txt](https://github.com/GPars/GPars/blob/master/LICENSE.txt) |
-|jPowerShell |2.1 |Apache 2.0 |[https://github.com/profesorfalken/jPowerShell/blob/master/LICENSE](https://github.com/profesorfalken/jPowerShell/blob/master/LICENSE) |
+| jPowerShell                     |2.1        |Apache 2.0                 |[https://github.com/profesorfalken/jPowerShell/blob/master/LICENSE](https://github.com/profesorfalken/jPowerShell/blob/master/LICENSE) |
 | Logback Classic Module          |1.1.7      |LGPL 2.1                   |[https://github.com/qos-ch/logback/blob/master/LICENSE.txt](https://github.com/qos-ch/logback/blob/master/LICENSE.txt) |
 | Logback Core Module             |1.1.7      |LGPL 2.1                   |[https://github.com/qos-ch/logback/blob/master/LICENSE.txt](https://github.com/qos-ch/logback/blob/master/LICENSE.txt) |
 | MariaDB Java Client             |1.5.6      |LGPL 2.1                   |[https://github.com/MariaDB/mariadb-connector-j/blob/master/LICENSE](https://github.com/MariaDB/mariadb-connector-j/blob/master/LICENSE) |

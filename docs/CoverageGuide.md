@@ -1,10 +1,3 @@
----
-title: Coverage Guide
-summary: CIS-CAT Pro Assessor v4 Coverage Guide
-authors:
-	- B. Munyan
-	- L. Patsantaras
----
 CIS-CAT Pro Assessor Coverage Guide
 ===================================
 

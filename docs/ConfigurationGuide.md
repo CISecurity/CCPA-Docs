@@ -1,10 +1,3 @@
----
-title: Configuration Guide
-summary: CIS-CAT Pro Assessor v4 Configuration Guide
-authors:
-	- B. Munyan
-	- L. Patsantaras
----
 CIS-CAT Pro Assessor Configuration Guide
 ========================================
 

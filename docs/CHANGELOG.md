@@ -1,10 +1,3 @@
----
-title: Change Log
-summary: CIS-CAT Pro Assessor v4 Change Log
-authors:
-	- B. Munyan
-	- L. Patsantaras
----
 Change Log
 ==========
 
