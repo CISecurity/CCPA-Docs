@@ -9,4 +9,4 @@ nav:
   - Change Log: CHANGELOG.md
 
 theme:
-  name: 'material'
+  name: readthedocs
