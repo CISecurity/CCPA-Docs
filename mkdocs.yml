@@ -8,8 +8,8 @@ site_name: CIS-CAT Pro Assessor v4
 #   - 3rd-Party Licenses: LicenseInformation.md
 #   - Change Log: CHANGELOG.md
 nav:
-  - "index.md"
-  - "UsersGuide.md"
-  - "ConfigurationGuide.md"
+- "index.md"
+- "UsersGuide.md"
+- "ConfigurationGuide.md"
 
 theme: readthedocs

@@ -1,5 +1,5 @@
 ---
-title: CIS-CAT Pro Assessor v4
+title: Home
 summary: CIS-CAT Pro Assessor v4
 authors:
 	- B. Munyan
