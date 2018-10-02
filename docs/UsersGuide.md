@@ -1,3 +1,11 @@
+---
+title: User's Guide
+summary: CIS-CAT Pro Assessor v4 User's Guide
+authors:
+	- B. Munyan
+	- L. Patsantaras
+---
+
 ![](http://i.imgur.com/5yZfZi5.jpg)
 
 # CIS-CAT Pro Assessor CLI User's Guide #
