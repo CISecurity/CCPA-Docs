@@ -5,13 +5,12 @@ authors:
 	- B. Munyan
 	- L. Patsantaras
 ---
-![](http://i.imgur.com/5yZfZi5.jpg)
-
 Change Log
 ==========
 
-**NOTE: CIS-CAT Pro Assessor v4 is currently in BETA and this documentation will change as a result of ongoing testing and feedback.  Until the official release of CIS-CAT Pro Assessor v4, please consider this document fluid.**
+![](http://i.imgur.com/5yZfZi5.jpg)
 
+**NOTE: CIS-CAT Pro Assessor v4 is currently in BETA and this documentation will change as a result of ongoing testing and feedback.  Until the official release of CIS-CAT Pro Assessor v4, please consider this document fluid.**
 
 ----------
 
