@@ -134,6 +134,7 @@ The majority of CIS benchmarks for Microsoft Windows operating systems contain r
 | Recommendation | CIS Benchmark Value | Relaxed Value |
 |----------------|---------------------|---------------|
 | 18.6.1: Ensure 'Apply UAC restrictions to local accounts on network logons' is set to 'Enabled'| Enabled | Disabled|
+| 18.9.86.2.3 (L1) Ensure 'Allow unencrypted traffic' is set to 'Disabled' | Disabled | Enabled |
 
 ### WinRM Configuration ###
 In order for CIS-CAT Pro Assessor to connect to a remote Windows host, a number of configuration steps on those hosts must happen.  The following sections will describe the configurations.
