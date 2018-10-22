@@ -29,6 +29,7 @@ Note that any benchmark listed below which displays a bulleted list of "`id`:des
 - **CIS MIT Kerberos 1.10 Benchmark, v1.0.0**
 - **CIS Microsoft IIS 7 Benchmark, v1.8.0**
 - **CIS Microsoft IIS 8 Benchmark, v1.5.0**
+- **CIS Microsoft IIS 10 Benchmark, v1.0.0**
 - **CIS Microsoft Internet Explorer 10 Benchmark, v1.1.0**
 - **CIS Microsoft Internet Explorer 11 Benchmark, v1.0.0**
 - **CIS Microsoft Office Access 2013 Benchmark, v1.0.1**
@@ -81,7 +82,7 @@ Note that any benchmark listed below which displays a bulleted list of "`id`:des
 - **CIS Oracle Database 11g R2 Benchmark, v2.2.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: Oracle 11g R2 Server connection string.
 	- `xccdf_org.cisecurity_value_listener.ora`: Path to the listener.ora file
-- **CIS Oracle Database 12c Benchmark, v2.0.0**
+- **CIS Oracle Database 12c Benchmark, v2.1.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: Oracle Database connection string.
 	- `xccdf_org.cisecurity_value_listener.ora`: Path to the listener.ora file
 - **CIS Oracle Linux 6 Benchmark, v1.0.0**
