@@ -9,6 +9,7 @@ CIS-CAT Pro Assessor v4
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
 ## CIS-CAT Pro Assessor, v4.0.0 ##
+#### Release Date: October 26, 2018 ####
 This is the initial release of CIS-CAT Pro Assessor v4 (CCPA), a command-line user interface enabling configuration and vulnerability assessment of endpoints.
 
 ### Assessor Updates ###
