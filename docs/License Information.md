@@ -30,7 +30,7 @@ The following 3rd-party libraries are bundled with CIS-CAT Pro Assessor v4.  Inf
 | Logback Classic Module          |1.1.7      |LGPL 2.1                   |[https://github.com/qos-ch/logback/blob/master/LICENSE.txt](https://github.com/qos-ch/logback/blob/master/LICENSE.txt) |
 | Logback Core Module             |1.1.7      |LGPL 2.1                   |[https://github.com/qos-ch/logback/blob/master/LICENSE.txt](https://github.com/qos-ch/logback/blob/master/LICENSE.txt) |
 | MariaDB Java Client             |1.5.6      |LGPL 2.1                   |[https://github.com/MariaDB/mariadb-connector-j/blob/master/LICENSE](https://github.com/MariaDB/mariadb-connector-j/blob/master/LICENSE) |
-| UnboundID LDAP SDK for Java     |4.0.3      |LGPL 2.1                   |[https://github.com/pingidentity/ldapsdk/blob/master/LICENSE-UnboundID-LDAPSDK.txt](https://github.com/pingidentity/ldapsdk/blob/master/LICENSE-UnboundID-LDAPSDK.txt) |
+| UnboundID LDAP SDK for Java     |4.0.3      |UnboundID LDAP SDK License |[https://github.com/pingidentity/ldapsdk/blob/master/LICENSE-UnboundID-LDAPSDK.txt](https://github.com/pingidentity/ldapsdk/blob/master/LICENSE-UnboundID-LDAPSDK.txt) |
 | jni4net                         |0.8.8.0    |MIT                        |[https://github.com/jni4net/jni4net](https://github.com/jni4net/jni4net) |
 | slf4j                           |1.7.25     |MIT                        |[https://github.com/qos-ch/slf4j/blob/master/LICENSE.txt](https://github.com/qos-ch/slf4j/blob/master/LICENSE.txt) |
 | Saxon                           |9.1.0.8    |Mozilla Public License 1.0 |[http://www.saxonica.com/license/license.xml](http://www.saxonica.com/license/license.xml) |
