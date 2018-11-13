@@ -43,9 +43,12 @@ A number of configuration properties exist, and will vary based on the session t
 ### Examples ###
 The examples below provide insight into the creation of a `sessions.properties` file, which can then be consumed by CIS-CAT Pro Assessor CLI to provide connection configurations when assessing a particular benchmark.  By default, CIS-CAT Pro Assessor CLI will ALWAYS attempt to load a default configuration file located in the application's `config` folder, named `sessions.properties`.
 
+Microsoft Windows install
+-----------------------------------------
+
 For example, if CCPA is installed at `C:\CIS\Assessor-CLI`, a file named `C:\CIS\Assessor-CLI\config\sessions.properties` will be searched for and loaded (if found).  If no `sessions.properties` files are found or specified, a default `local` session will be used.
 
-Configure a session for the local host, defining a custom "temp" folder:
+Configure a session for the local Microsoft Windows host, defining a custom "temp" folder:
 
     session.1.type=local
 	# Note that specifying Windows directory paths require a double-backslash "\\" as the path separator
@@ -81,7 +84,7 @@ Configure a remote Linux session using a username/private key:
     session.5.host=ubuntu-test.example.org
     session.5.port=22
     session.5.user=ubuntu
-    session.5.identity=/home/ubuntu/cis/ubuntu-test.ppk
+    session.5.identity=C:\\cis\\ubuntu-test.ppk 
 
 Configure a remote Linux session using a username/private key, with the private key being secured with a passphrase:
 
@@ -89,7 +92,7 @@ Configure a remote Linux session using a username/private key, with the private 
     session.6.host=ubuntu-test.example.org
     session.6.port=22
     session.6.user=ubuntu
-    session.6.identity=/home/ubuntu/cis/ubuntu-test.ppk
+    session.6.identity=C:\\cis\\ubuntu-test.ppk
     session.6.identityPassphrase=P@55phr@s3!
 
 Configure a remote Cisco IOS session using a username/password:
@@ -116,6 +119,28 @@ Configure a Cisco IOS session pointing to an exported configuration file:
     session.9.type=ios
     # Note that specifying Windows directory paths require a double-backslash "\\" as the path separator
     session.9.tech=C:\\CIS\\TS\\tech-support-export.txt
+
+Linux install
+------------------------
+
+Configure a remote Linux session using a username/private key:
+
+    session.5.type=ssh
+    session.5.host=ubuntu-test.example.org
+    session.5.port=22
+    session.5.user=ec2-user
+    session.5.identity=/home/myuser/cis/pkey.pem
+
+MacOS install
+--------------------------
+
+Configure a remote Linux session using a username/private key:
+
+    session.5.type=ssh
+    session.5.host=ubuntu-test.example.org
+    session.5.port=22
+    session.5.user=ec2-user
+    session.5.identity=/Users/myuser/cis/pkey.pem
 
 
 Microsoft Windows Endpoint Configuration
