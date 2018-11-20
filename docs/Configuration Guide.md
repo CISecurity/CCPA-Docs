@@ -69,78 +69,52 @@ Configure a remote Windows session using a username, but requiring manual passwo
     session.3.port=5986
     session.3.user=Administrator1
 
-Configure a remote Linux session using a username/password, defining a custom "temp" folder:
-
-    session.4.type=ssh
-    session.4.host=ubuntu-test.example.org
-    session.4.port=22
-    session.4.user=ubuntu
-    session.4.cred=s3cr3t3r!
-    session.4.tmp=/home/ubuntu
-
-Configure a remote Linux session using a username/private key:
-
-    session.5.type=ssh
-    session.5.host=ubuntu-test.example.org
-    session.5.port=22
-    session.5.user=ubuntu
-    session.5.identity=C:\\cis\\ubuntu-test.ppk 
-
-Configure a remote Linux session using a username/private key, with the private key being secured with a passphrase:
-
-    session.6.type=ssh
-    session.6.host=ubuntu-test.example.org
-    session.6.port=22
-    session.6.user=ubuntu
-    session.6.identity=C:\\cis\\ubuntu-test.ppk
-    session.6.identityPassphrase=P@55phr@s3!
-
 Configure a remote Cisco IOS session using a username/password:
 
-    session.7.type=ios
-    session.7.host=9.8.7.6
-    session.7.port=22
-    session.7.user=admin
-    session.7.cred=s3cr3t3r!
-    session.7.enable=3nab!3d
+    session.4.type=ios
+    session.4.host=9.8.7.6
+    session.4.port=22
+    session.4.user=admin
+    session.4.cred=s3cr3t3r!
+    session.4.enable=3nab!3d
 
 Configure a remote Cisco IOS session using a username/private key:
 
-    session.8.type=ios
-    session.8.host=9.8.7.6
-    session.8.port=22
-    session.8.user=admin
+    session.5.type=ios
+    session.5.host=9.8.7.6
+    session.5.port=22
+    session.5.user=admin
     # Note that specifying Windows directory paths require a double-backslash "\\" as the path separator
-    session.8.identity=C:\\CIS\\cisco-ios.ppk
-    session.8.enable=3nab!3d
+    session.5.identity=C:\\CIS\\cisco-ios.ppk
+    session.5.enable=3nab!3d
 
 Configure a Cisco IOS session pointing to an exported configuration file:
 
-    session.9.type=ios
+    session.6.type=ios
     # Note that specifying Windows directory paths require a double-backslash "\\" as the path separator
-    session.9.tech=C:\\CIS\\TS\\tech-support-export.txt
+    session.6.tech=C:\\CIS\\TS\\tech-support-export.txt
 
 Linux install
 ------------------------
 
 Configure a remote Linux session using a username/private key:
 
-    session.5.type=ssh
-    session.5.host=ubuntu-test.example.org
-    session.5.port=22
-    session.5.user=ec2-user
-    session.5.identity=/home/myuser/cis/pkey.pem
+    session.7.type=ssh
+    session.7.host=ubuntu-test.example.org
+    session.7.port=22
+    session.7.user=ec2-user
+    session.7.identity=/home/myuser/cis/pkey.pem
 
 MacOS install
 --------------------------
 
 Configure a remote Linux session using a username/private key:
 
-    session.5.type=ssh
-    session.5.host=ubuntu-test.example.org
-    session.5.port=22
-    session.5.user=ec2-user
-    session.5.identity=/Users/myuser/cis/pkey.pem
+    session.8.type=ssh
+    session.8.host=ubuntu-test.example.org
+    session.8.port=22
+    session.8.user=ec2-user
+    session.8.identity=/Users/myuser/cis/pkey.pem
 
 
 Microsoft Windows Endpoint Configuration
