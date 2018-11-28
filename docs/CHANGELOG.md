@@ -8,6 +8,20 @@ CIS-CAT Pro Assessor v4
 ---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
+## CIS-CAT Pro Assessor, v4.0.2 ##
+#### Release Date: November 28, 2018 ####
+
+
+### New Benchmarks ###
+- None
+
+### Benchmark Updates ###
+- None
+
+### CIS-CAT Pro Updates ###
+-  Resolved User_object NPE/fatal error that occurs during some assessments.
+-  Assessment results produced in csv format will now be modified per options set using the -D option.
+
 ## CIS-CAT Pro Assessor, v4.0.1 ##
 #### Release Date: November 21, 2018 ####
 
