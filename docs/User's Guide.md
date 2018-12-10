@@ -25,6 +25,8 @@ Many benchmarks which utilized CIS' proprietary Embedded Check Language (ECL) **
 ## Using CIS-CAT Pro Assessor CLI ##
 Bundled with the application are two script files; a Microsoft Windows batch script, `Assessor-CLI.bat` and a Unix/Linux shell script, `Assessor-CLI.sh`.  These scripts serve as the entry point to the application.  Any examples included in this user's guide will utilize the Microsoft Windows batch script, but usage of the Unix/Linux shell script can be substituted.
 
+**NOTE: These CIS-CAT scripts must be executed from the command line using root, Administrator, or an equivalently privileged principal.**
+
 ## Command Line Options ##
 CIS-CAT Pro Assessor CLI can perform a variety of functions related to both benchmark and vulnerability assessments.  The myriad command-line options allow for combined usage to initiate these functions.
 
