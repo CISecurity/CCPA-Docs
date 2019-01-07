@@ -247,12 +247,12 @@ Tools and services that use OVAL for the three steps of system assessment — re
 |--------------------------------|--------------|-------|
 | Account Info                   | Y | |
 | Authorization DB               | Y | |
-| CoreStorage                    | N | In development|
+| CoreStorage                    | Y | |
 | DiskUtil                       | N | In development|
 | Gatekeeper                     | Y ||
 | Inet Listening Servers (<5.10) | N | In development|
 | Inet Listening Servers (5.10+) | N | In development|
-| Keychain                       | N | In development|
+| Keychain                       | Y | |
 | Launchd                        | Y ||
 | Nvram                          | N | In development|
 | Plist (<5.10)                  | Y ||

@@ -36,7 +36,7 @@ Basic operation of CIS-CAT Pro Assessor CLI allows a user to get help, list avai
 | ------------- | ------------- | ------------|---------------------------------- |
 | `-h`          | `--help`      | N/A | Display CIS-CAT Pro Assessor help output. |
 | `-l`          | `--list`      | N/A | List the benchmarks available for assessment.|
-| `-v`          | `--verbose`   | N/A |Enable more verbose output when combined with the `-l` option, specifically displaying the full filepath to the benchmark, for later assessment using the `-b` option.|
+| `-lv`          | `--list-verbose` | N/A |Enable more verbose output when combined with the `-l` option, specifically displaying the full filepath to the benchmark, for later assessment using the `-b` option.|
 | `-i`          | `--interactive` | N/A | Execute the Assessor in "interactive" mode specifically for benchmark assessments, allowing the user to manually select a benchmark and profile for assessment.  Based on the selected benchmark, the user may be required to enter "interactive values" which are then used by the assessment engine. |
 | `-o`          | `--definitions` | N/A | Execute the Assessor in "interactive" mode specifically for the manual selection and evaluation of OVAL Definitions files, and (optionally) selecting and associating an OVAL Variables file as well.|
 | `-d`          | `--startingDir` | `<DIRECTORY>` | Configure the relative root folder from which other options, such as benchmarks, can be found. |
@@ -183,6 +183,28 @@ Execute an assessment against the CIS Microsoft Windows 10 benchmark, using the 
 
 	> Assessor-CLI.bat -b benchmarks\CIS_Microsoft_Windows_10_Enterprise_Release_1703_Benchmark_v1.3.0-xccdf.xml -nrf -u https://ccpd.example.org/CCPD/api/reports/upload -ui
 
+
+### Logging Options ###
+The following table describes the various options to control the application log file generation.  By default, the Assessor-CLI application is configured to log at the WARN level.
+
+| Short Option  |   Long Option   |    Argument   | Description                       |
+| ------------- | --------------- | --------------|---------------------------------- |
+| -nl           | --no-logging    | N/A | Disable all logging.
+| -v            | --error         | N/A | Only write log messages with a level of ERROR.|
+| -vv           | --warn          | N/A | Write log messages with a level of WARN or ERROR.|
+| -vvv          | --info          | N/A | Write log messages with a level of WARN, ERROR, or INFO.|
+| -vvvv         | --debug         | N/A | Write log messages with a level of WARN, ERROR, INFO, or DEBUG.|
+| -vvvvv        | --trace         | N/A | Write log messages with a level of WARN, ERROR, INFO, DEBUG, or TRACE.|
+| -vvvvvv       | --all           | N/A | Write all log messages.|
+
+#### Examples ####
+Execute an "interactive" assessment at the INFO log level:
+
+	> Assessor-CLI.bat -i -vvv
+
+Execute an assessment against the CIS Microsoft Windows 10 benchmark, using the Level 2 profile, writing log messages at the DEBUG log level:
+
+	> Assessor-CLI.bat -b benchmarks\CIS_Microsoft_Windows_10_Enterprise_Release_1703_Benchmark_v1.3.0-xccdf.xml -p "Level 2" -vvvv
 
 ### Miscellaneous Options ###
 
