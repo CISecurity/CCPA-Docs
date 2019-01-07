@@ -90,9 +90,7 @@ Configure a remote Cisco IOS session using a username/private key:
 
 Configure a Cisco IOS session pointing to an exported configuration file:
 
-    session.6.type=ios
-    # Note that specifying Windows directory paths require a double-backslash "\\" as the path separator
-    session.6.tech=C:\\CIS\\TS\\tech-support-export.txt
+    session.6.type=local
 
 Linux install
 ------------------------
