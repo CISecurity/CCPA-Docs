@@ -23,12 +23,13 @@ Note that any benchmark listed below which displays a bulleted list of "`id`:des
 - **CIS Cisco IOS 12 Benchmark, v4.0.0**
 - **CIS Cisco IOS 15 Benchmark, v4.0.0**
 - **CIS Debian Linux 7 Benchmark, v1.0.0**
-- **CIS Debian Linux 8 Benchmark, v1.0.0**
+- **CIS Debian Linux 8 Benchmark, v2.0.0**
+- **CIS Debian Linux 9 Benchmark, v1.0.0**
 - **CIS Google Chrome Benchmark, v1.3.0**
 - **CIS MIT Kerberos 1.10 Benchmark, v1.0.0**
 - **CIS Microsoft IIS 7 Benchmark, v1.8.0**
 - **CIS Microsoft IIS 8 Benchmark, v1.5.0**
-- **CIS Microsoft IIS 10 Benchmark, v1.0.0**
+- **CIS Microsoft IIS 10 Benchmark, v1.1.0**
 - **CIS Microsoft Internet Explorer 10 Benchmark, v1.1.0**
 - **CIS Microsoft Internet Explorer 11 Benchmark, v1.0.0**
 - **CIS Microsoft Office Access 2013 Benchmark, v1.0.1**
@@ -86,7 +87,7 @@ Note that any benchmark listed below which displays a bulleted list of "`id`:des
 	- `xccdf_org.cisecurity_value_listener.ora`: Path to the listener.ora file
 - **CIS Oracle Linux 6 Benchmark, v1.0.0**
 - **CIS Oracle Linux 7 Benchmark, v2.0.0**
-- **CIS PostgreSQL 9.5 Benchmark, v1.0.0**
+- **CIS PostgreSQL 9.5 Benchmark, v1.1.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: PostgreSQL Database connection string.
 - **CIS Red Hat Enterprise Linux 5 Benchmark, v2.2.0**
 - **CIS Red Hat Enterprise Linux 6 Benchmark, v2.0.2**

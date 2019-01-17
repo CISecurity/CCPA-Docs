@@ -284,7 +284,7 @@ Once the exported configuration file is available to CIS-CAT Pro Assessor, the a
 
 Database Endpoint Configuration
 -------------------------------
-Assessing database benchmarks in CIS-CAT Pro Assessor v4 uses the same JDBC connection mechanism as previous versions.  Database benchmarks will require a user to enter the JDBC connection string, or utilize the `ciscat.properties` file to set the appropriate value for assessment.
+Assessing database benchmarks in CIS-CAT Pro Assessor v4 uses the same JDBC connection mechanism as previous versions.  Database benchmarks will require a user to enter the JDBC connection string, or utilize the `assessor-cli.properties` file to set the appropriate value for assessment.
 
 ### Oracle Database ###
 The JDBC string parameter is the connection string used to connect to and authenticate to the Oracle Database service and instance that CIS-CAT will assess.  The Oracle JDBC driver has the ability to connect to Oracle database instances using either the SID or Service Name.

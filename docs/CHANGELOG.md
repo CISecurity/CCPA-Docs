@@ -8,6 +8,27 @@ CIS-CAT Pro Assessor v4
 ---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
+## CIS-CAT Pro Assessor, v4.0.3 ##
+#### Release Date: January 17, 2019 ####
+
+
+### New Benchmarks ###
+- CIS Debian Linux 9 Benchmark v1.0.0
+
+### Benchmark Updates ###
+- CIS Debian Linux 8 Benchmark v2.0.0
+- CIS Microsoft IIS 10 Benchamrk v1.1.0
+- CIS PostgreSQL 9.5 Benchmark v1.1.0
+
+### CIS-CAT Pro Updates ###
+-  Assessment result HTML reports now show the CIS Controls and CIS Sub-control version numbers when mapped to a CIS Benchmark recommendation. The CIS Control version is only available on some Benchmarks. Check the CIS website for more information. The title page of the report has also been enhanced to display long Benchmark names.
+-  Scripts have been modified to allow an assessment to execute with OpenJDK, Java 9, Java 10, and Java 11.
+-  User's Guide updated in section titled "Using CIS-CAT Pro Assessor CLI" to highlight requirement for a the user executing the application to have root, Administrator, or an equivalently privileged principal.
+-  CIS-CAT Pro assessor has been enhanced to more efficiently work with OVAL content that uses XPath.
+-  CIS Microsoft IIS 10 Benchmark has been corrected to properly collect assessment information. In prior versions, some users may have experienced false failures.
+-  An issue was resolved with interactive values when users configured private keys with passphrases. The command line will now prompt users to enter a passphrase when the passphrase element is present and null in the Sessions or Config file. If the passphrase element does not exist for a target in the sessions or configuration xml, the command line will not prompt the user for an entry.
+-  Report generation errors have been resolved for all versions of CIS Apple OSX 10.10, 10.11 and 10.12 Benchmark.    
+
 ## CIS-CAT Pro Assessor, v4.0.2 ##
 #### Release Date: November 28, 2018 ####
 
