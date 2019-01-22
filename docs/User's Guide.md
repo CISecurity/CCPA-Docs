@@ -270,6 +270,9 @@ CIS-CAT Pro Assessor can be executed using the `-cfg` option, and specifying a c
 
 An XML schema is included in the CIS-CAT Pro Assessor CLI bundle, along with a sample configuration file.
 
+### Using Special Characters in XML Elements ###
+Some user-entered characters in the XML configuration file may need to be replaced with their numeric character reference equivalent to work properly.  For example, an ampersand (&) character to be used in a password for the credentials element should be replaced with the decimal character reference `&#38;`.  See the full list of decimal character references at [https://en.wikipedia.org/wiki/Numeric_character_reference](https://en.wikipedia.org/wiki/Numeric_character_reference "Numeric Character References").
+
 ### Configuration XML Elements ###
 The root element of the configuration XML file is `<configuration>`, and utilizes a default namespace URI of `http://cisecurity.org/ccpa/config`.  This namespace URI must be specified or else validation of the configuration XML file will fail.  The root of any XML configuration file should appear as follows:
 
