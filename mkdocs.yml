@@ -1,6 +1,6 @@
 site_name: CIS-CAT Pro Assessor v4
 
-pages:
+nav:
   - Home: index.md
   - Source:
     - User's Guide: User's Guide.md
