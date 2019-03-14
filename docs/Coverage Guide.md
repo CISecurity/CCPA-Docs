@@ -15,6 +15,7 @@ CIS currently distributes CIS-CAT with production support for the following benc
 Note that any benchmark listed below which displays a bulleted list of "`id`:description" information are those benchmarks which contain "interactive values".  Please see the [CIS-CAT Pro Assessor CLI User's Guide](./User's%20Guide) for more information regarding configuration of these values.
 
 - **CIS Amazon Linux Benchmark, v2.0.0**
+- **CIS Amazon Linux 2 Benchmark v1.0.0**
 - **CIS Apple OSX 10.10 Benchmark, v1.2.0**
 - **CIS Apple OSX 10.11 Benchmark, v1.1.0**
 - **CIS Apple OSX 10.12 Benchmark, v1.0.0**
