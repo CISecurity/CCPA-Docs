@@ -8,6 +8,27 @@ CIS-CAT Pro Assessor v4
 ---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
+## CIS-CAT Pro Assessor, v4.0.4 ##
+#### Release Date: March 20, 2019 ####
+
+
+### New Benchmarks ###
+- CIS MS Windows 10 Enterprise Release 1803 Benchmark v1.5.0. Updates to centralized scripts and dissolvable bundle to accommodate the new Benchmark. CIS-CAT Pro will support the latest three published Windows Enterprise Benchmarks.
+- CIS PostgreSQL 9.6 v1.0.0
+
+### Benchmark Updates ###
+- CIS Amazon Linux 2 v1.0.0.1 with updated Controls 7 mapping only
+- CIS Microsoft IIS 10 Benchmark v1.1.1
+- CIS PostgreSQL 9.5 v1.1.0.1
+
+### CIS-CAT Pro Updates ###
+-  Configuration XML files and sessions.properties files used to drive the assessment process can be encrypted.  See the **"File Encryption Options"** section of the User's Guide for more information.
+-  Scripts are included for Linux and Windows environments to scan an entire domain when target machines have access to a network Java instance and CIS-CAT Pro Assessor. This is useful for members who want to use the assessor within a domain instead of remotely connecting to each target. See the **"Assessing Multiple Windows Targets"** and **"Assessing Multiple Unix/Linux Targets"** sections of the User's Guide for more information.
+-  On screen message for local assessments will let users know if they lack privileges to execute the assessment.
+-  The connection to remote endpoints has been modified to be more efficient.
+-  Enhanced documentation with information on allowed characters used within the configuration XML file.
+-  Linux configuration results have been corrected for reported issues on Linux CentOS recommendation 6.2.6.
+
 ## CIS-CAT Pro Assessor, v4.0.3 ##
 #### Release Date: January 17, 2019 ####
 

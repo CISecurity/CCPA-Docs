@@ -15,7 +15,7 @@ CIS currently distributes CIS-CAT with production support for the following benc
 Note that any benchmark listed below which displays a bulleted list of "`id`:description" information are those benchmarks which contain "interactive values".  Please see the [CIS-CAT Pro Assessor CLI User's Guide](./User's%20Guide) for more information regarding configuration of these values.
 
 - **CIS Amazon Linux Benchmark, v2.0.0**
-- **CIS Amazon Linux 2 Benchmark v1.0.0**
+- **CIS Amazon Linux 2 Benchmark v1.0.0.1**
 - **CIS Apple OSX 10.10 Benchmark, v1.2.0**
 - **CIS Apple OSX 10.11 Benchmark, v1.1.0**
 - **CIS Apple OSX 10.12 Benchmark, v1.0.0**
@@ -30,7 +30,7 @@ Note that any benchmark listed below which displays a bulleted list of "`id`:des
 - **CIS MIT Kerberos 1.10 Benchmark, v1.0.0**
 - **CIS Microsoft IIS 7 Benchmark, v1.8.0**
 - **CIS Microsoft IIS 8 Benchmark, v1.5.0**
-- **CIS Microsoft IIS 10 Benchmark, v1.1.0**
+- **CIS Microsoft IIS 10 Benchmark, v1.1.1**
 - **CIS Microsoft Internet Explorer 10 Benchmark, v1.1.0**
 - **CIS Microsoft Internet Explorer 11 Benchmark, v1.0.0**
 - **CIS Microsoft Office Access 2013 Benchmark, v1.0.1**
@@ -53,9 +53,9 @@ Note that any benchmark listed below which displays a bulleted list of "`id`:des
 	- `xccdf_org.cisecurity_value_jdbc.url`: SQL Server connection string.
 - **CIS Microsoft SQL Server 2016 Benchmark, v1.0.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: SQL Server connection string.
-- **CIS Microsoft Windows 10 Enterprise Release 1607 Benchmark, v1.2.0**
 - **CIS Microsoft Windows 10 Enterprise Release 1703 Benchmark, v1.3.0**
 - **CIS Microsoft Windows 10 Enterprise Release 1709 Benchmark, v1.4.0**
+- **CIS Microsoft Windows 10 Enterprise Release 1803 Benchmark, v1.5.0**
 - **CIS Microsoft Windows Server 2003 Benchmark, v3.1.0**
 - **CIS Microsoft Windows Server 2008 (non-R2) Benchmark, v3.1.0**
 - **CIS Microsoft Windows Server 2008 R2 Benchmark, v3.1.0**
@@ -88,7 +88,9 @@ Note that any benchmark listed below which displays a bulleted list of "`id`:des
 	- `xccdf_org.cisecurity_value_listener.ora`: Path to the listener.ora file
 - **CIS Oracle Linux 6 Benchmark, v1.0.0**
 - **CIS Oracle Linux 7 Benchmark, v2.0.0**
-- **CIS PostgreSQL 9.5 Benchmark, v1.1.0**
+- **CIS PostgreSQL 9.5 Benchmark, v1.1.0.1**
+	- `xccdf_org.cisecurity_value_jdbc.url`: PostgreSQL Database connection string.
+- **CIS PostgreSQL 9.6 Benchmark, v1.0.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: PostgreSQL Database connection string.
 - **CIS Red Hat Enterprise Linux 5 Benchmark, v2.2.0**
 - **CIS Red Hat Enterprise Linux 6 Benchmark, v2.0.2**
