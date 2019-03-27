@@ -238,8 +238,7 @@ Alternatively, you can add the local Group Policy Object Editor to the Microsoft
 When using the Group Policy Object Editor, open the policy editor as described above and make the following changes:
 
 1. Navigate to: Local Computer Policy -> Computer Configuration -> Administrative Templates -> Windows Components -> Windows Remote Management (WinRM) -> WinRM Service
-2.	Set “Allow remote server management through WinRM” to **Enabled**.
-a.	Set the IPv4 filter value to the IP address of the machine with the assessor, so it can access this machine.
+2.	Set “Allow remote server management through WinRM” to **Enabled**.  Set the IPv4 filter value to the IP address of the machine with the assessor, so it can access this machine.
 3.	If you are using HTTP instead of HTTPS, set “Allow unencrypted traffic” to **Enabled**.
  
 After performing these changes, you can run the following command in the command prompt: *“gpupdate /force”*.  This will apply all the GPO settings.  Alternatively, you can reboot the machine to make sure everything is applied correctly.
