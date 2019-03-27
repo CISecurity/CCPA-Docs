@@ -219,6 +219,32 @@ In Windows domain environments, this setting can be configured through Group Pol
 
 Otherwise, the Group Policy Objects can be found either [here](http://blogs.technet.com/b/secguide/archive/2014/08/13/security-baselines-for-windows-8-1-windows-server-2012-r2-and-internet-explorer-11-final.aspx) or [here](https://blogs.technet.microsoft.com/secguide/2017/08/30/security-baseline-for-windows-10-creators-update-v1703-final/).
 
+#### Group Policy Configuration ####
+In Windows domain environments, some of these WinRM settings will need to be configured through Group Policy instead, or they will be reset to their GPO setting after some time.  If unsure, proceed through the command line WinRM configuration instructions as previously described, and then also perform the following GPO steps.
+
+##### Prepare Local Group Policy Object Editor #####
+Click the Start menu and type “gpedit.msc”.  Right-click and run it as an Administrator.
+
+Alternatively, you can add the local Group Policy Object Editor to the Microsoft Management Console as a snap-in component:
+
+
+1. Open the Start menu and enter “mmc”.  Right-click and run this application as an Administrator.
+2. Select **File -> Add/Remove Snap-ins**.
+3. Under **Available Snap-ins**, select **Group Policy Object Editor** and click the **Add >** button.
+4. In the wizard, make sure it’s choosing “Local Computer” and click **Finish**.
+5. Click **OK**.
+
+##### Microsoft Windows Endpoint Configuration Settings using GPO Editor #####
+When using the Group Policy Object Editor, open the policy editor as described above and make the following changes:
+
+1. Navigate to: Local Computer Policy -> Computer Configuration -> Administrative Templates -> Windows Components -> Windows Remote Management (WinRM) -> WinRM Service
+2.	Set “Allow remote server management through WinRM” to **Enabled**.
+a.	Set the IPv4 filter value to the IP address of the machine with the assessor, so it can access this machine.
+3.	If you are using HTTP instead of HTTPS, set “Allow unencrypted traffic” to **Enabled**.
+ 
+After performing these changes, you can run the following command in the command prompt: *“gpupdate /force”*.  This will apply all the GPO settings.  Alternatively, you can reboot the machine to make sure everything is applied correctly.
+
+After this, you may need to make the `LocalAccountTokenFilterPolicy` change (again, if you did it earlier).
 
 #### Domain Considerations ####
 If users are planning on authenticating to remote Windows hosts using domain accounts, configuration is necessary both on the remote host, and on the "source" host (the machine hosting CIS-CAT Pro Assessor v4).
