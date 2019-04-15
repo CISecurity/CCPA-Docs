@@ -124,12 +124,12 @@ CIS-CAT Pro Assessor v4 supports both basic authentication for local accounts an
 The Assessor will access the administrative shares on the remote host, which are only accessible for users that are part of the **Administrators** on the remote host.
 
 ### Security Considerations ###
-The majority of CIS benchmarks for Microsoft Windows operating systems contain recommendations restricting WinRM usage.  The following table indicates those restrictions which will need to be relaxed in order to enable remote assessment in CIS-CAT Pro Assessor.
+The majority of CIS benchmarks for Microsoft Windows operating systems contain recommendations that affect enabling remote assessment in CIS-CAT Pro.  If you plan to utilize remote assessment in your environment for Microsoft Windows operating systems, we recommend you consider the risks of making deviations from the recommended CIS Benchmark setting.  Below are a few recommendations that will need to be changed from the recommended setting in the benchmark to allow for remote assessment.  Each notation below applies to the Level 1 Profile.  If you choose to implement the Level 2 Profile, further consideration of risk applies to the disabling of WinRM.  Please note the actual text of each benchmark recommendation may vary from the text noted in the table. 
 
 | Recommendation | CIS Benchmark Value | Relaxed Value |
 |----------------|---------------------|---------------|
-| 18.6.1: Ensure 'Apply UAC restrictions to local accounts on network logons' is set to 'Enabled'| Enabled | Disabled|
-| 18.9.86.2.3 (L1) Ensure 'Allow unencrypted traffic' is set to 'Disabled' | Disabled | Enabled |
+| Ensure 'Apply UAC restrictions to local accounts on network logons' is set to 'Enabled'| Enabled | Disabled|
+| Ensure 'Allow unencrypted traffic' is set to 'Disabled' | Disabled | Enabled |
 
 ### WinRM Configuration ###
 In order for CIS-CAT Pro Assessor to connect to a remote Windows host, a number of configuration steps on those hosts must happen.  The following sections will describe the configurations.
