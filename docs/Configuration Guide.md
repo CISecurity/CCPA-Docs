@@ -117,58 +117,59 @@ Configure a remote Linux session using a username/private key:
 
 Microsoft Windows Endpoint Configuration
 ----------------------------------------
-CIS-CAT Pro Assessor v4 utilizes the prevalent SMB protocol for file manipulation and uses WinRM for process execution.  Once connected to a remote Windows endpoint, CIS-CAT Pro Assessor establishes an "ephemeral" directory to host scripts required for the collection of system characteristics from the endpoint.  Once the collection/assessment has completed and the session disconnected, the "ephemeral" directory is removed from the endpoint.
+CIS-CAT Pro Assessor v4 utilizes the SMB protocol for file manipulation and uses WinRM for process execution.  Once connected to a remote Windows endpoint, CIS-CAT Pro Assessor establishes an "ephemeral" directory to host scripts required for the collection of system characteristics from the endpoint.  Once the collection/assessment has completed and the session disconnected, the "ephemeral" directory is removed from the endpoint.
 
-CIS-CAT Pro Assessor v4 supports both basic authentication for local accounts and Kerberos authentication for domain accounts.  When authenticating with domain accounts, the new-style domain syntax, e.g. **`ciscatuser@example.org`** must be used, and **NOT** the old-style domain syntax, such as `DOMAIN\User`.
+CIS-CAT Pro Assessor v4 supports authentication to remote Windows endpoints using either local or domain accounts.  When authenticating with domain accounts, the new-style domain syntax, e.g. **`ciscatuser@example.org`** must be used, and **NOT** the old-style domain syntax, such as `DOMAIN\User`.
 
-The Assessor will access the administrative shares on the remote host, which are only accessible for users that are part of the **Administrators** on the remote host.
+The Assessor accesses the administrative shares on the remote host, which are only accessible for users that are part of the **Administrators** group on that host, or are configured as domain administrators.
 
-### Security Considerations ###
-The majority of CIS benchmarks for Microsoft Windows operating systems contain recommendations that affect enabling remote assessment in CIS-CAT Pro.  If you plan to utilize remote assessment in your environment for Microsoft Windows operating systems, we recommend you consider the risks of making deviations from the recommended CIS Benchmark setting.  Below are a few recommendations that will need to be changed from the recommended setting in the benchmark to allow for remote assessment.  Each notation below applies to the Level 1 Profile.  If you choose to implement the Level 2 Profile, further consideration of risk applies to the disabling of WinRM.  Please note the actual text of each benchmark recommendation may vary from the text noted in the table. 
+When configuring WinRM for an environment, members must consider the following:
 
-| Recommendation | CIS Benchmark Value | Relaxed Value |
-|----------------|---------------------|---------------|
-| Ensure 'Apply UAC restrictions to local accounts on network logons' is set to 'Enabled'| Enabled | Disabled|
-| Ensure 'Allow unencrypted traffic' is set to 'Disabled' | Disabled | Enabled |
+- **Will the configuration be done manually or through group policy?**
+- **Will the Assessor access endpoints using WinRM over HTTP or HTTPS?** (see [Security Considerations](#security-considerations))
+- **Will the Assessor authenticate to remote endpoints using a local administrator account or domain account?** (see [Security Considerations](#security-considerations))
 
-If your organization has accepted the risk of remote configuration assessment and system values have been set to enable a remote connection, the assessment report will show a failure for the deviated settings. The failed recommendations may be handled in the CIS-CAT Pro Dashboard as exceptions with organization-provided rationale.
+### <a name="security-considerations"></a>Security Considerations ###
+The answers to two of the above questions have security implications:
 
-### WinRM Configuration ###
-In order for CIS-CAT Pro Assessor to connect to a remote Windows host, a number of configuration steps on those hosts must happen.  The following sections will describe the configurations.
+- If the Assessor will access remote endpoints using **WinRM over HTTP**, each endpoint must be configured to "Allow Unencrypted Traffic";
+- If the Assessor will authenticate to remote endpoints using a **local administrator account**, each endpoint must disable the "Apply UAC restrictions to local accounts on network logons" configuration.
 
-#### Windows Firewall Configuration ####
-CIS-CAT Pro Assessor v4 uses both the SMB and WinRM protocols in order to enable file manipulation and process execution, respectively.  As such, to connect to the remote host using SMB, ensure the host is reachable on port `445`.  To enable connection to the remote host using WinRM over HTTPS, ensure the host is reachable on port `5986`.
+The majority of CIS benchmarks for Microsoft Windows operating systems contain recommendations that affect enabling remote assessment in CIS-CAT Pro.  If users plan to utilize remote assessment in their environment for Microsoft Windows operating systems, we recommend considering the risks of making deviations from the recommended CIS Benchmark setting.  Each notation below applies to the Level 1 Profile.
+
+Please note the actual text of each benchmark recommendation may vary from the text noted in the table. 
+
+| Usage | Recommendation | CIS Benchmark Value | Relaxed Value |
+|-------|----------------|---------------------|---------------|
+| WinRM over HTTP | Ensure 'Allow unencrypted traffic' is set to 'Disabled' | Disabled | Enabled |
+| Authenticating with local administrator account | Ensure 'Apply UAC restrictions to local accounts on network logons' is set to 'Enabled'| Enabled | Disabled|
+
+Each of these configurations represents a deviation from the CIS benchmark recommendations.
+
+If a member organization has accepted the risk of remote configuration assessment and system values have been set to enable a remote connection, the assessment report will show a failure for the deviated settings. The failed recommendations may be handled in the CIS-CAT Pro Dashboard as exceptions with organization-provided rationale.
+
+Because of these recommendations and potential for deviation, CIS recommends configuring WinRM over HTTPS and utilizing domain accounts when performing remote assessments.
+
+CIS Benchmark Level 2 profiles are designed toward host-based assessments.  If selecting to remotely assess endpoints, an organization may choose to adopt Level 1 policies or tailor Level 2 policies as needed to enable remote scanning.
+
+Finally, note that the CIS Microsoft Windows Benchmarks are written assuming Active Directory domain-joined systems using Group Policy, and not necessarily standalone/workgroup systems.  Adjustments/tailoring to some recommendations will be needed to maintain functionality when implementing CIS Benchmark recommendations on standalone systems.
+
+### An Example Flowchart ###
+The following flowchart outlines the decision-making process when configuring and environment for remote assessment using CIS-CAT Pro Assessor v4:
+
+![](https://i.imgur.com/wkgLOYG.png)
+
+### Windows Firewall Configuration ###
+CIS-CAT Pro Assessor v4 uses both the SMB and WinRM protocols in order to enable file manipulation and process execution, respectively.  As such, to connect to the remote host using SMB, ensure the host is reachable on port `445`.  To enable connection to the remote host using WinRM, ensure the host is reachable on either port `5985` (for WinRM over HTTP) or port `5986` (for WinRM over HTTPS).
 
 Users can enable these firewall rules simply using PowerShell and the script provided with the CIS-CAT Pro Assessor v4 application bundle.  The bundle will contain a `setup` folder, in which will be locate the **`CISCAT_Pro_Assessor_v4_Firewall_SMB_WinRM.ps1`** script.  Execute this script in PowerShell to configure the Windows Firewall.
-
-#### Enable WinRM ####
-On the remote Windows host, open a Command Prompt using the "Run as Administrator" option.  Enter the following command to enable the default configuration for WinRM:
-
-	winrm quickconfig
-
-A confirmation prompt may be presented to the user.  If so, type `Y` and hit `Enter`.  Performing the `quickconfig` will start the Windows Remote Management service, configure an HTTP listener and create exceptions in the Windows Firewall for the WinRM service.
-
-If users intend to connect to remote endpoints using WinRM over HTTP (and not HTTPS), then WinRM must be configured to "Allow unencrypted traffic":
-
-	winrm set winrm/config/service @{AllowUnencrypted="true"}
-
-
-By default, Kerberos authentication is enabled in WinRM.  Disable it if CIS-CAT Pro Assessor will **NOT** be authenticating using domain accounts:
-
-	winrm set winrm/config/service/Auth @{Kerberos="false"}
-
-**NOTE**: Do not disable "Negotiate" authentication as the `winrm` command itself uses that to configure the WinRM subsystem.
-
-Finally, configure WinRM to provide enough memory to the commands that are going to be executed, e.g. 1024 MB:
-
-	winrm set winrm/config/winrs @{MaxMemoryPerShellMB="1024"}
 
 #### Configure WinRM over HTTPS ####
 In order for CIS-CAT Pro Assessor to access the remote Windows host using WinRM over HTTPS, an HTTPS WinRM Listener must be configured using the thumbprint of a certificate for that host.
 
 Users can attempt to find an existing certificate thumbprint for the remote host using PowerShell.  In the following commands, assume `HOSTNAME` is the DNS name of the remote Windows host:
 
-    PS C:\Windows\system32> Get-childItem cert:\LocalMachine\Root\ | Select-String -pattern HOSTNAME
+    PS C:\Windows\system32> Get-childItem cert:\LocalMachine\My\ | Select-String -pattern HOSTNAME
 
 If a certificate exists on the system, the PowerShell command will yield results similar to the following:
 
@@ -190,94 +191,95 @@ If a certificate exists on the system, the PowerShell command will yield results
      [Thumbprint]
        5C36B638BC31F505EF7F693D9A60C01551DD486F
 
-Once the certificate thumbprint is found, create the HTTPS WinRM listener for the remote host:
+If a valid certificate is found, a couple of options are available depending on the Windows version being configured.  For Windows Server 2012 and higher, HTTPS listeners may be created without needing to know the hostname or thumbprint.  Therefore, if the certificate is found, users can issue the following `winrm` command to configure the HTTPS listener:
+
+	winrm quickconfig -transport:https -force
+
+Alternatively, users can manually create the HTTPS WinRM listener as follows:
 
 	winrm create winrm/config/Listener?Address=*+Transport=HTTPS @{Hostname="HOSTNAME"; CertificateThumbprint="THUMBPRINT"}
 
-Where `HOSTNAME` is the DNS name of the remote host, such as `WINSERVER1`, and `THUMBPRINT` is the certificate thumbprint found in PowerShell, for example `5C36B638BC31F505EF7F693D9A60C01551DD486F`
+Where `HOSTNAME` is either the DNS name or FQDN of the remote host, such as `WINSERVER1` or `winserver1.domain.com`, respectively, and `THUMBPRINT` is the certificate thumbprint found in PowerShell, for example `5C36B638BC31F505EF7F693D9A60C01551DD486F`
 
-If no results are returned, the user may create a self-signed certificate using PowerShell and a script provided with the CIS-CAT Pro Assessor v4 application bundle.  The bundle will contain a `setup` folder, in which will be located the **`CISCAT_Pro_Assessor_v4_SelfSignedCertificate.ps1`** script.  Execute this script in PowerShell to configure the self-signed certificate and create the WinRM HTTPS listener.
+If no results are returned, members may create a self-signed certificate using PowerShell and a script provided with the CIS-CAT Pro Assessor v4 application bundle.  The bundle will contain a `setup` folder, in which will be located the **`CISCAT_Pro_Assessor_v4_SelfSignedCertificate.ps1`** script.  Execute this script in PowerShell to configure the self-signed certificate and create the WinRM HTTPS listener.
 
-#### Disable UAC remote restrictions ####
+### WinRM Configuration ###
+In order for CIS-CAT Pro Assessor to connect to a remote Windows host, a number of configurations must be applied to those hosts.  This configuration can be applied either manually or through Group Policy.
+
+#### <a name="gpo"></a>Group Policy Configuration ####
+The WinRM service can be configured using Group Policy in two ways.  In domain environments, policies are maintained on the Domain Controller's Group Policy Management Console (GPMC).  Group Policy administrators can access the GPMC by clicking the Start menu and typing "Group Policy Management".  Once displayed in the available applications menu, right-click and select "Run as Administrator".  Once opened, the member should first create a new Group Policy Object, followed by right-clicking on the GPO and selecting "Edit".  In standalone (non-domain) environments, local administrators can edit the endpoint's Local Group Policy Object in a similar fashion.  To start the Local Group Policy editor, click the Start menu and type “gpedit.msc”.  Right-click and run it as an Administrator.  Alternatively, you can add the local Group Policy Object Editor to the Microsoft Management Console as a snap-in component:
+
+
+1. Open the Start menu and enter **mmc**.  Right-click and run this application as an Administrator.
+2. Select **File** and **Add/Remove Snap-ins**.
+3. Under **Available Snap-ins**, select **Group Policy Object Editor** and click the **Add >** button.
+4. In the wizard, make sure it’s choosing “Local Computer” and click **Finish**.
+5. Click **OK**.
+
+Once the Group Policy Object has been opened for editing, navigate to 
+
+
+    Computer Configuration\Policies\Administrative Templates\Windows Components\Windows Remote Management (WinRM)\WinRM Service
+
+Configure the following settings:
+
+- **Allow remote server management through WinRM**:  Set to `Enabled`
+	- This policy setting allows you to manage whether the Windows Remote Management (WinRM) service automatically listens on the network for requests. 
+	- **NOTE**: Options exist for this setting.  Consult the descriptions in this group policy setting to configure any IPv4 or IPv6 filters in order to restrict which IP addresses are listened for.  Members could use an asterisk (*) to indicate that the service listens on all available IP addresses on the computer.
+- **Allow unencrypted traffic**: Set to `Enabled`
+	- **NOTE** This configuration is only required when using *WinRM over HTTP*.  See the [Security Considerations](#security-considerations) above for more information.  This setting is **NOT REQUIRED** when using *WinRM over HTTPS*.
+
+If the Assessor will authenticate to remote endpoints using a **local administrator account** (See the [Security Considerations](#security-considerations) above for more information), navigate to:
+
+    Computer Configuration\Policies\Administrative Templates\SCM: Pass the Hash Mitigations
+
+If this group policy setting is not available, it may need to be downloaded and imported into the GPMC.  The administrative template (ADMX) files can be downloaded from either [here](http://blogs.technet.com/b/secguide/archive/2014/08/13/security-baselines-for-windows-8-1-windows-server-2012-r2-and-internet-explorer-11-final.aspx) or [here](https://blogs.technet.microsoft.com/secguide/2017/08/30/security-baseline-for-windows-10-creators-update-v1703-final/).
+
+Once downloaded and made available in the GPMC, configure the following:
+
+- **Apply UAC restrictions to local accounts on network logons**:  Set to `Disabled`
+	- This setting controls whether local accounts can be used for remote administration via network logon (e.g., NET USE, connecting to C$, etc.). 
+	- Configuring this setting to `Disabled` allows local accounts to have full administrative rights when authenticating via network logon, by configuring the `LocalAccountTokenFilterPolicy` registry value to 1.
+	- Local accounts are at high risk for credential theft when the same account and password is configured on multiple systems.  Again, see the Security Considerations above to determine if local accounts are necessary to perform remote assessment with CIS-CAT Pro Assessor.
+
+#### Manual Configuration ####
+Configuring WinRM manually is not a complicated task, but does involve a number of commands on each endpoint that will be assessed remotely.  CIS recommends configuring endpoints via Group Policy in a domain environment, but manual configuration can be useful for testing environments.
+
+##### Enable WinRM #####
+On the remote Windows host, open a Command Prompt using the "Run as Administrator" option.  Enter the following command to enable the default configuration for WinRM:
+
+	winrm quickconfig
+
+A confirmation prompt may be presented to the user.  If so, type `Y` and hit `Enter`.  Performing the `quickconfig` will start the Windows Remote Management service, configure an HTTP listener and create exceptions in the Windows Firewall for the WinRM service.
+
+If users intend to connect to remote endpoints using WinRM over HTTP (and not HTTPS), then WinRM must be configured to "Allow unencrypted traffic":
+
+	winrm set winrm/config/service @{AllowUnencrypted="true"}
+
+**NOTE** This configuration is only required when using *WinRM over HTTP*.  See the Security Considerations above for more information.  This setting is **NOT REQUIRED** when using *WinRM over HTTPS*.
+
+##### Disable UAC remote restrictions #####
 To better protect those users who are members of the local Administrators group, Microsoft implemented UAC restrictions on the network. This mechanism helps prevent against "loopback" attacks. This mechanism also helps prevent local malicious software from running remotely with administrative rights.
 
 When a user who is a member of the local administrators group on the target remote computer establishes a remote administrative connection by using the `net use * \\remotecomputer\Share$` command, for example, they will not connect as a full administrator. The user has no elevation potential on the remote computer, and the user cannot perform administrative tasks. If the user wants to administer the workstation with a Security Account Manager (SAM) account, the user must interactively log on to the computer that is to be administered with Remote Assistance or Remote Desktop, if these services are available.
 
 To disable UAC remote restrictions, follow these steps: 
 
-1. Click Start, click Run, type `regedit`, and then press `ENTER`.
-2. Locate and then click the following registry subkey:
+- Click Start, click Run, type **regedit**, and then press **ENTER**.
+- Locate and then click the following registry subkey:
 
 	`HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System`
+- If the `LocalAccountTokenFilterPolicy` registry entry does not exist, follow these steps: 
+	- On the Edit menu, point to **New**, and then click **DWORD Value**.
+	- Type **LocalAccountTokenFilterPolicy**, and then press **ENTER**.
+- Right-click **LocalAccountTokenFilterPolicy**, and then click **Modify**.
+- In the Value data box, type **1**, and then click **OK**.
+- Exit Registry Editor.
 
-3. If the `LocalAccountTokenFilterPolicy` registry entry does not exist, follow these steps: 
-	1. On the Edit menu, point to `New`, and then click `DWORD Value`.
-	2. Type `LocalAccountTokenFilterPolicy`, and then press `ENTER`.
-4. Right-click `LocalAccountTokenFilterPolicy`, and then click `Modify`.
-5. In the Value data box, type `1`, and then click `OK`.
-6. Exit Registry Editor.
-
-In Windows domain environments, this setting can be configured through Group Policy, however, the Group Policy Object is not a standard policy and must be downloaded and installed separately.  Generally, if an environment has installed the Microsoft Security Compliance Manager (SCM), the GPO is included there and can be exported.
+In Windows domain environments, this setting can be configured through [Group Policy](#gpo), however, the Group Policy Object is not a standard policy and must be downloaded and installed separately.  Generally, if an environment has installed the Microsoft Security Compliance Manager (SCM), the GPO is included there and can be exported.
 
 Otherwise, the Group Policy Objects can be found either [here](http://blogs.technet.com/b/secguide/archive/2014/08/13/security-baselines-for-windows-8-1-windows-server-2012-r2-and-internet-explorer-11-final.aspx) or [here](https://blogs.technet.microsoft.com/secguide/2017/08/30/security-baseline-for-windows-10-creators-update-v1703-final/).
 
-#### Group Policy Configuration ####
-In Windows domain environments, some of these WinRM settings will need to be configured through Group Policy instead, or they will be reset to their GPO setting after some time.  If unsure, proceed through the command line WinRM configuration instructions as previously described, and then also perform the following GPO steps.
-
-##### Prepare Local Group Policy Object Editor #####
-Click the Start menu and type “gpedit.msc”.  Right-click and run it as an Administrator.
-
-Alternatively, you can add the local Group Policy Object Editor to the Microsoft Management Console as a snap-in component:
-
-
-1. Open the Start menu and enter “mmc”.  Right-click and run this application as an Administrator.
-2. Select **File -> Add/Remove Snap-ins**.
-3. Under **Available Snap-ins**, select **Group Policy Object Editor** and click the **Add >** button.
-4. In the wizard, make sure it’s choosing “Local Computer” and click **Finish**.
-5. Click **OK**.
-
-##### Microsoft Windows Endpoint Configuration Settings using GPO Editor #####
-When using the Group Policy Object Editor, open the policy editor as described above and make the following changes:
-
-1. Navigate to: Local Computer Policy -> Computer Configuration -> Administrative Templates -> Windows Components -> Windows Remote Management (WinRM) -> WinRM Service
-2.	Set “Allow remote server management through WinRM” to **Enabled**.  Set the IPv4 filter value to the IP address of the machine with the assessor, so it can access this machine.
-3.	If you are using HTTP instead of HTTPS, set “Allow unencrypted traffic” to **Enabled**.
- 
-After performing these changes, you can run the following command in the command prompt: *“gpupdate /force”*.  This will apply all the GPO settings.  Alternatively, you can reboot the machine to make sure everything is applied correctly.
-
-After this, you may need to make the `LocalAccountTokenFilterPolicy` change (again, if you did it earlier).
-
-#### Domain Considerations ####
-If users are planning on authenticating to remote Windows hosts using domain accounts, configuration is necessary both on the remote host, and on the "source" host (the machine hosting CIS-CAT Pro Assessor v4).
-
-**Kerberos - Source Host**
-
-Depending on the operating system of the source hose, create a file called `krb5.conf` (Unix) or `krb5.ini` (Windows) with at least the following content:
-
-    [realms]
-    EXAMPLE.ORG = {
-    	kdc = KDC.EXAMPLE.ORG
-    }
-
-Replace the values with the name of your domain/realm and the hostname of your domain controller (multiple entries can be added to allow the source host to connect to multiple domains) and place the file in the default location for your operating system:
-
-- Linux: `/etc/krb5.conf`
-- Solaris: `/etc/krb5/krb5.conf`
-- Windows: `C:\Windows\krb5.ini`
-
-**Kerberos - Remote Host**
-
-By default, the CIS-CAT Pro Assessor's connection to a remote Windows host will request access to a Kerberos service principal name of the form `WSMAN/HOST`.  This SPN should be configured automatically when configuring WinRM for the remote host (the "Enable WinRM" section above).
-
-To verify the SPN has been created, list all the SPNs configured on the remote host:
-
-	setspn -L HOSTNAME
-
-If the `WSMAN/HOSTNAME` SPN is not listed, it must be configured.  From any host in the domain, invoke the `setspn` command:
-
-	setspn -A WSMAN/ADDRESS HOSTNAME
-
-Where `ADDRESS` is the address (DNS Name or IP Address) used to connect to the remote host, and `HOSTNAME` is the short Windows hostname of the remote host.
 
 Unix/Linux/OSX Endpoint Configuration
 -------------------------------------
