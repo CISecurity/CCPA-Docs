@@ -8,6 +8,22 @@ CIS-CAT Pro Assessor v4
 ---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
+## CIS-CAT Pro Assessor, v4.0.5 ##
+#### Release Date: April 30, 2019 ####
+
+
+### New Benchmarks ###
+- None
+
+### Benchmark Updates ###
+- CIS Microsoft Windows 10 Enterprise 1803 v1.5.0.1 - scoring modification only for profile selection of ‘Windows 10 1803 Level 1 (L1) + BitLocker (BL) + Next Generation Windows Security (NG)’ or 'Windows 10 1803 Level 1 (L1) + BitLocker (BL)'
+
+### CIS-CAT Pro Updates ###
+-  Cisco IOS assessments will now produce accurate results when performing local and remote assessments.
+-  Number only credentials for endpoints utilized in the configuration xml files are now valid.
+-  A broader explanation and more generic referral to Level 1 Windows Benchmark recommendations that require consideration when remote scanning has been added to the online documentation. In order to remotely scan, users may need to except 2 or more recommendations.
+-  Online documentation has been revised for Windows Endpoint Configuration to be more specific to users' environments.
+
 ## CIS-CAT Pro Assessor, v4.0.4 ##
 #### Release Date: March 20, 2019 ####
 
