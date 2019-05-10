@@ -243,7 +243,7 @@ Tools and services that use OVAL for the three steps of system assessment — re
 | SELinux Booleans | Y ||
 | SELinux Security Context | N | On roadmap|
 | Slackware PkgInfo| N | On roadmap|
-| Systemd Unit Dependency | N | On roadmap|
+| Systemd Unit Dependency | Y ||
 | Systemd Unit Property | Y ||
 
 ### Mac OSX ###
