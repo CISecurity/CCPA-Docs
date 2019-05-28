@@ -90,7 +90,8 @@ Configure a remote Cisco IOS session using a username/private key:
 
 Configure a Cisco IOS session pointing to an exported configuration file:
 
-    session.6.type=local
+    session.6.type=ios
+	session.6.tech=C:\\CiscoFiles\\configuration.cfg
 
 Linux install
 ------------------------
