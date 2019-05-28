@@ -42,7 +42,7 @@ Additionally, there are four values that can be configured for the automated che
 
 These values can be set as appropriate for the organization.  For example, if the organization only requires a password length of 10, the following change could be made:
 
-`xccdf_org.cisecurity_value_4.2_var=10`
+    xccdf_org.cisecurity_value_4.2_var=10
 
 ### Survey Questions ###
 Answers to the survey questions can be provided in the Assessor properties file (config\assessor-cli.properties).  The second half of this file has a section entitled “CAM IG1 Survey Questions” containing instructions, question lines, and answer lines.  All of these survey questions are set to a value of “n” by default, meaning that each of these Sub-Controls will be assessed as a “Fail” unless the user changes this value.  For those Sub-Controls that your organization is successfully implementing, the corresponding value should be updated to “y”, meaning that Sub-Control will be assessed as a “Pass”.
