@@ -48,20 +48,17 @@ These values can be set as appropriate for the organization.  For example, if th
 Answers to the survey questions can be provided in the Assessor properties file (config\assessor-cli.properties).  The second half of this file has a section entitled “CAM IG1 Survey Questions” containing instructions, question lines, and answer lines.  All of these survey questions are set to a value of “n” by default, meaning that each of these Sub-Controls will be assessed as a “Fail” unless the user changes this value.  For those Sub-Controls that your organization is successfully implementing, the corresponding value should be updated to “y”, meaning that Sub-Control will be assessed as a “Pass”.
 For example, by default, the survey question for Sub-Control 12.1 is set as follows:
 
-    ##Sub-Control 12.1 Question: Does your organization maintain an up-to-date inventory of all of the
-    organization’s network boundaries?
+    ##Sub-Control 12.1 Question: Does your organization maintain an up-to-date inventory of all of the organization’s network boundaries?
 	xccdf_org.cisecurity_value_12.1_var=no
 
 If your organization is implementing this Sub-Control, you could change it as follows and save the file:
 
-	##Sub-Control 12.1 Question: Does your organization maintain an up-to-date inventory of all of the
-	organization’s network boundaries?
+	##Sub-Control 12.1 Question: Does your organization maintain an up-to-date inventory of all of the organization’s network boundaries?
 	xccdf_org.cisecurity_value_12.1_var=yes
 
 For survey questions that you want to provide interactive, machine-specific answers to instead of saving organization-level answers in this properties file, the answer line for that question can be commented out by prepending a “#” at the beginning of the answer line.  This will result in the answer value on that line being ignored, and the question will instead be asked on the Assessor command line for each machine in the assessment:
 
-	##Sub-Control 12.1 Question: Does your organization maintain an up-to-date inventory of all of the 
-	organization’s network boundaries?
+	##Sub-Control 12.1 Question: Does your organization maintain an up-to-date inventory of all of the organization’s network boundaries?
 	#xccdf_org.cisecurity_value_12.1_var=no
 
 Any subset of Sub-Control questions can be selected to be interactive.  None are interactive by default.
