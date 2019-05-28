@@ -4,6 +4,7 @@ nav:
   - Home: index.md
   - Source:
     - User's Guide: User's Guide.md
+    - Controls Assessment Module User Guide: Controls Assessment Module User Guide
     - Configuration Guide: Configuration Guide.md
     - Coverage Guide: Coverage Guide.md
     - 3rd-Party Licenses: License Information.md
