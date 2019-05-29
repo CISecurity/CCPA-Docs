@@ -8,6 +8,30 @@ CIS-CAT Pro Assessor v4
 ---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
+## CIS-CAT Pro Assessor, v4.0.6 ##
+#### Release Date: May 29, 2019 ####
+
+
+### Benchmark Coverage ###
+- PostgreSQL 10 v1.0.0
+- NGINX v1.0.0
+- Mac OS 10.13 with OVAL support
+- Google Chrome v75 v2.0.0
+- MS SQL Server 2017 v1.0.0
+- MS SQL Server 2016 v1.1.0
+- MS SQL Server 2014 v1.4.0
+- MS SQL Server 2012 Benchmark v1.5.0
+
+### CIS-CAT Pro Updates ###
+-  Consumers can now try V4 command line application with 3 Benchmarks (Ubuntu, Windows 10 Enterprise, Chrome) by downloading V4 Lite. Users can assess endpoints using Controls Assessment Module for Windows 10 Enterprise Implementation Group 1 for Controls V7.1.
+-  Enhanced Debian 8 assessment process now produces accurate results for recommendations 1.5.1, 1.5.3, 3.1.1, 3.1.2 and 3.2.1 to 3.2.9.
+-  Enhanced Ubuntu Linux assessment process accommodates large system group IDs.
+-  Pass/fail assessment results for Windows 10 1803 now include the OVAL evidence.
+-  Assess a Windows 10 endpoint with the Controls Assessment Module for Controls 7.1 Implementation Group 1.
+-  Assessment result default file descriptions now only include "ARF" on XML configuration files.
+-  Enhanced Debian 8 assessment process now produces more accurate results for recommendations 5.1.2 to 5.1.7.
+
+
 ## CIS-CAT Pro Assessor, v4.0.5 ##
 #### Release Date: April 30, 2019 ####
 
