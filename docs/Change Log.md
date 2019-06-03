@@ -8,6 +8,16 @@ CIS-CAT Pro Assessor v4
 ---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
+## CIS-CAT Pro Assessor, v4.0.7 ##
+#### Release Date: June 3, 2019 ####
+
+
+### Benchmark Coverage ###
+- Debian Linux 8 Benchmark v2.0.0.1
+
+### CIS-CAT Pro Updates ###
+-  Error corrected for local Linux/Unix/Mac OS configuration assessments. Results will now be accurate for recommendations referring to files or file directories.
+
 ## CIS-CAT Pro Assessor, v4.0.6 ##
 #### Release Date: May 29, 2019 ####
 
