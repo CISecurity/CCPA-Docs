@@ -122,3 +122,150 @@ GP-enforced settings are generally preferred from a security perspective since t
 
 ### Machine vs. User Settings ###
 Similarly, some settings on a machine can apply to the entire machine, or might only apply to particular users on that machine.  (Sometimes, but not always, the distinction for settings stored in the registry is the difference between the HKEY Local Machine and the HKEY Current User registry hives).  From a security perspective, machine settings are preferred to user settings, since they would apply a security policy to the entire machine.  When possible, both types of settings were factored in for the Controls Assessment Module’s automated checks.  It is important to keep in mind, however, that the per-user settings that Controls Assessment Module checks would be those of the user running Assessor or those specified in the Assessor sessions file.
+
+Remediations for Automated Checks
+---------------------------------
+### 3.4 Deploy Automated Operating System Patch Management Tools ###
+Remediation:
+ 
+The automated CAM check for 3.4 requires both the download of updates and the installation of those updates to be automatic and without user intervention. Therefore, it will fail even if automatic update downloads are on but the user can decide whether to install those updates.
+
+CAM is checking the following registry settings:
+ 
+HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\WindowsUpdate DisableWindowsUpdateAccess
+ 
+(Fail if this setting is set to 1)
+
+HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\WindowsUpdate\AU NoAutoUpdate 
+
+(Fail if this setting is set to 1)
+
+HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\WindowsUpdate\AU AUOptions 
+
+(Fail if this setting is not set to 4)
+
+The AUOptions value can be set via local group policy as follows: Open the Local Group Policy Editor, navigate to Computer Configuration > Administrative Templates > Windows Components > Windows Update > Configure Automatic Updates. Ensure that Enabled is selected, and Configure automatic updating is set to 4 – Auto download and schedule the install. The other settings there (such as the specific schedule for updates) can be set as appropriate for your organization and are not assessed by CAM. Similar settings are available at the Domain level as well.
+
+### 4.2 Change Default Passwords ###
+Remediation:
+ 
+Since Windows 10 does not have default passwords, the automated CAM check for 4.2 focuses on the having "values consistent with administrative level accounts" portion of the sub-control. CAM is checking for a required minimum password length. By default, the required minimum in CAM is 14 (which is consistent with the Windows Benchmark), but this setting can be adjusted in the assessor-cli.properties file as appropriate for your organization.
+
+The minimum password length can be set via local group policy as follows: Open the Local Group Policy Editor, navigate to Computer Configuration > Windows Settings > Security Settings > Account Policies > Password Policy > Minimum password length. Similar settings are available at the Domain level as well.
+
+### 6.2 Activate Audit Logging ###
+Remediation:
+
+For the CAM automated check for 6.2, CAM verifies that at least one sub-category of logging is turned on (but does not currently require specific sub-categories). For recommended audit sub-categories, see section 17 of the appropriate Windows Benchmark.
+
+This should pass with a default Windows installation. Logging sub-categories can be enabled/disabled: Open the Local Group Policy Editor, navigate to Computer Configuration > Windows Settings > Security Settings > Advanced Audit Policy Configuration > System Audit Policies. Click into the desired logging category, and you can enable or disable the sub-categories under that category. Similar settings are available at the Domain level as well.
+
+### 8.2 Ensure Anti-Malware Software and Signatures are Updated ###
+Remediation:
+ 
+For the automated check for 8.2, CAM verifies that an anti-malware tool is enabled and up-to-date on the machine. In Control Panel > System and Security > Security and Maintenance, look under Security > Virus Protection to see whether Windows shows that an anti-malware program is On or Off. The exact steps for ensuring that anti-malware software is enabled and that automatic updates for that software are turned on varies depending on which anti-malware software is being used.
+
+### 8.5(a) Configure Devices to Not Auto-Run Content (AutoRun) ###
+Remediation:
+ 
+CAM's check for 8.5 is divided into two separate checks - one for AutoRun and one for AutoPlay. This is the AutoRun check.
+
+CAM is checking the following registry settings to see if at least one of them is set to disable AutoRun:
+ 
+HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer NoAutoRun
+ 
+(Pass if this setting is set to 1)
+
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer NoAutoRun
+ 
+(Pass if this setting is set to 1)
+
+HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer NoDriveTypeAutoRun
+ 
+(Pass if this setting is set to 0xff)
+
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer NoDriveTypeAutoRun
+ 
+(Pass if this setting is set to 0xff)
+
+HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer NoDriveAutoRun
+ 
+(Pass if this setting is set to 0x3FFFFFF)
+
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer NoDriveAutoRun
+ 
+(Pass if this setting is set to 0x3FFFFFF)
+
+Note that while the Machine settings or Current User settings are accepted by CAM, the Machine settings are preferred because they would turn AutoRun off for all users on the machine.
+
+AutoRun can be turned off via local group policy as follows: Open the Local Group Policy Editor, navigate to Computer Configuration > Administrative Templates > Windows Components > AutoPlay Policies > Set the default behavior for AutoRun. Ensure that Enabled is selected, and then select "Do not execute any autorun commands" in the drop down menu. Similar settings are available at the Domain level as well.
+
+### 8.5(b) Configure Devices to Not Auto-Run Content (AutoPlay) ###
+Remediation:
+ 
+CAM's check for 8.5 is divided into two separate checks - one for AutoRun and one for AutoPlay. This is the AutoPlay check.
+
+CAM is checking the following registry setting to see if it is set to disable AutoPlay:
+ 
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers DisableAutoPlay
+ 
+(Pass if this setting is set to 1)
+
+In the Windows 10 Settings, go to AutoPlay Settings. Move the "Use AutoPlay for all media and devices" toggle to Off. Note: this is a per user setting.
+
+### 9.4 Apply Host-Based Firewalls or Port Filtering ###
+Remediation:
+ 
+The automated CAM check for 9.4 ensures that all three host-based Windows Firewall profiles (Domain, Private, and Public) are using a default-deny rule for incoming traffic. In Windows Defender Security Center, select Firewall and network protection, and ensure that all 3 are turned on. To edit the default-deny rules for Inbound Traffic, select Advanced Settings and click Windows Defender Firewall Properties, and then ensure that "Block (default)" is selected for Inbound Connections in each of the 3 profile tabs.
+
+### 10.1 Ensure Regular Automated Backups ###
+Remediation:
+ 
+The automated CAM check for 10.1 verifies that Windows 10 File History is turned on for at least one user. In the Windows 10 Backup settings, in the "Back up using File History" section, ensure an appropriate destination drive is selected (or select one with "Add a drive"), then make sure the "Automatically back up my files" toggle is set to "On". In the "More options" menu, individual folders can be included or excluded from the File History backups.
+
+### 10.2 Perform Complete System Backups ###
+Remediation:
+ 
+The automated CAM check for 10.2 verifies that a successful Windows System Image backup was generated within a specified timeframe. By default, CAM uses 90 days for this timeframe, but this setting can be adjusted in the assessor-cli.properties file as appropriate for your organization.
+
+A Windows System Image backup can be initiated in Control Panel > System and Security > Backup and Restore (Windows 7), and then clicking on "Create a system image" on the left side.
+
+### 10.4 Protect Backups ###
+Remediation:
+ 
+The automated Controls Assessment Module check for 10.4 verifies that if Windows 10 File History is on, the drive that the File History data is being backed up to is encrypted with native Windows encryption (either hardware/device encryption or BitLocker software encryption).  Similarly, if Windows System Image backups are turned on, this check verifies that the destination drive for those backups is encrypted with native Windows encryption.  If either/both of these two backup methods are enabled, the check will fail if the corresponding backup drives are not encrypted.  If neither backup method is enabled, the check will also fail.
+  
+In order to pass this check, enable either Windows 10 File History, Windows System Image backups, or both.  For whichever of these backup methods that you enable, ensure that the corresponding backup drive destinations are encrypted with native Windows encryption.
+
+File History can be turned on in the Windows 10 Backup settings, in the "Back up using File History" section, ensure an appropriate destination drive is selected (or select one with "Add a drive"), then make sure the "Automatically back up my files" toggle is set to "On". In the "More options" menu, individual folders can be included or excluded from the File History backups.
+
+A Windows System Image backup can be initiated in Control Panel > System and Security > Backup and Restore (Windows 7), and then clicking on "Create a system image" on the left side.
+
+To turn on Bitlocker, navigate to Control Panel > System and Security > BitLocker Drive Encryption, and select Turn on BitLocker.
+
+### 13.6 Encrypt Mobile Device Data ###
+Remediation:
+ 
+While sub-control 13.6 does explicitly specify mobile devices, the automated CAM check for 13.6 does not discriminate by device type. This CAM check passes if native Windows encryption (either hardware/device encryption or BitLocker software encryption) is enabled for all drives. To turn on Bitlocker, navigate to Control Panel > System and Security > BitLocker Drive Encryption, and select Turn on BitLocker.
+
+### 15.7 Leverage the Advanced Encryption Standard (AES) to Encrypt Wireless Data ###
+Remediation:
+ 
+The automated CAM check for 15.7 ensures that any wireless connections detected for the machine are making use of CCMP (the Counter Mode CBCMAC Protocol, a mode of AES used for WLAN connections as discussed in IEEE 802.11i). If no wireless connections are detected, this check will Pass.
+ 
+For each wireless connection in Control Panel > All Control Panel Items > Network and Sharing Center, click on the linked name of that connection to open the Wi-Fi Status of the connection, and then click Wireless Properties. In the Properties dialog box for that connection, click on the Security tab. Ensure that WPA2 is being used in the Security type dropdown and that AES is selected as the Encryption type (note: settings may be different for WPA2-Enterprise).
+
+### 16.9 Disable Dormant Accounts ###
+Remediation:
+ 
+The automated CAM check for 16.9 checks the last logon date for each of the enabled local machine accounts and verifies that they have been logged into within a specified timeframe. If the account has never been logged into, this timeframe is applied to the last password set date instead. By default, CAM uses 90 days for this timeframe, but this setting can be adjusted in the assessor-cli.properties file as appropriate for your organization.
+
+Ensure that any accounts not meeting the specified dormancy time frame are disabled. The "net user" command can be used to identify last logon times for specific users. Accounts can be deactivated either with the "net user" command or in Computer Management > System Tools > Local Users and Groups > Users.
+
+### 16.11 Lock Workstation Sessions After Inactivity ###
+Remediation:
+ 
+The CAM automated check for 16.11 makes sure that the lock screen timeout does not exceed a maximum value and that the lock screen is enabled. The default maximum timeout value for CAM is 900 seconds (15 minutes, which is consistent with the Windows Benchmark), but this setting can be adjusted in the assessor-cli.properties file as appropriate for your organization.
+
+The lock screen timeout value can be set via local group policy as follows: Open the Local Group Policy Editor, navigate to Computer Configuration > Windows Settings > Security Settings > Local Policies > Security Options > Interactive logon: Machine inactivity limit. This setting may require a reboot to take effect.
+
