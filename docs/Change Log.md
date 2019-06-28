@@ -8,6 +8,24 @@ CIS-CAT Pro Assessor v4
 ---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
+## CIS-CAT Pro Assessor, v4.0.8 ##
+#### Release Date: June 28, 2019 ####
+
+
+### Benchmark Coverage ###
+- None
+
+### CIS-CAT Pro Updates ###
+- Cisco IOS configuration assessment process enhanced to accommodate additional configuration scenarios
+- Enhanced Ubuntu 18.04 configuration process to ensure more accurate results
+- The unix/linux centralized scripts have been corrected to refer to the proper CIS-CAT Pro Assessor jar file
+- Correction to linux centralized script for Debian operating systems
+- Linux centralized scripts can now be used to assess Mac OS 10.13
+- CIS-CAT Pro Assessor v4 vulnerability reports for Windows Server 2012 can now import successfully into CIS-CAT Pro Dashboard
+- New section added to Controls Assessment Module documentation to provide information on remediation steps for automated checks
+- Debian operating systems are now properly detected and assessed on local assessments and when pairing with external application build scripts
+
+
 ## CIS-CAT Pro Assessor, v4.0.7 ##
 #### Release Date: June 3, 2019 ####
 

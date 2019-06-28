@@ -590,6 +590,17 @@ Finally, set the various reporting options to be used when launching CIS-CAT.
 * `-csv` indicates generation of the CIS-CAT CSV report.
 * `-narf` indicates that CIS-CAT should NOT generate an Asset Reporting Format (ARF) report.
 
+Another option offered by the script is the ability to automatically detect the Operating System of the system that is being assessed.
+
+	SET AUTODETECT=1
+
+Setting AUTODETECT=1 will cause this script to detect the following:
+
+1.	Which CIS Windows Benchmark to run
+2.	Which Benchmark Profile to select
+3.	Which JRE to leverage (32- or 64-bit). Defaults to 32-bit
+
+
 **Configuration Note:**  The “cis-cat-centralized.bat” script sets local environment variables denoting file system paths and folder names.  CIS recommends, for simplicity, that these paths do not contain spaces, as without modification to the script, spaces in paths can cause unexpected behavior.
 
 Near line 780 of the “cis-cat-centralized.bat” script, the following code section illustrates the configuration of the CIS-CAT command-line for execution.
@@ -759,6 +770,32 @@ CISCAT_DIR, REPORTS_DIR, and JRE_BASE should be configured to align with the *CI
 
 	SSLF='0'
 The script can be configured to execute either the **“Level 1”** or **“Level 2”** **profile** (if available), based on an environment variable value.  This variable is named `SSLF`, and may be set to either 0 or 1.  Setting the value to 0 results in CIS-CAT evaluating the "Level 1" profile, while setting the value to 1 results in CIS-CAT evaluating the “Level 2” profile.
+
+The shell script automatically detects the Operating System of the target system that is being assessed. Depending on the version of the OS, the appropriate benchmark and profile are selected for the assessment.
+
+The above functionality is achieved within the detect-os-variant.sh and map-to-benchmark.sh scripts. For the Linux distributions that it is possible to detect if the OS is a Workstation or a Server variant the script takes care of the profile selection for the level that was selected above (SSLF). For the ones that the script cannot detect it selects the corresponding “Server” profile with the level again set in the above variable (SSLF).
+
+Examples: 
+
+1. Operating system = RHEL 7, Workstation and SSLF is set to ‘0’
+    * Benchmark selected  = CIS_Red_Hat_Enterprise_Linux_7_Benchmark
+	* Profile selected = Level 1 – Workstation
+2. Operating system = Debian 9 and SSLF is set to ‘1’
+    * Benchmark selected  = CIS_Debian_Linux_9_Benchmark
+    * Profile selected = Level 2 – Server
+
+If the current mapping to the benchmark and profile for a particular version of an operating system doesn’t serve your needs, you can always manually update the benchmark and profile you want by modifying the appropriate line in the map-to-benchmark.sh script.
+
+Example for Debian 9:
+
+	if [ `expr $_VER \>= 9` -eq 1 ]
+	then
+	    BENCHMARK="CIS_Debian_Linux_9_Benchmark_v1.0.0-xccdf.xml"
+	    PROFILE1="Level 1 - Server"
+	    PROFILE2="Level 2 - Server"
+
+You can change PROFILE1="Level 1 - Server" to PROFILE1="Level 1 - Workstation"
+
 
 ### Update cis-cat-centralized-ccpd.sh ###
 If you want to send the assessment reports directly to a CIS-CAT Pro Dashboard (CCPD) you have already setup, you must use the `cis-cat-centralized-ccpd.sh` file instead of the `cis-cat-centralized.sh` file.  Modify the `cis-cat-centralized-ccpd.sh` file as follows: 
