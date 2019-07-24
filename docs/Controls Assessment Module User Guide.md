@@ -17,7 +17,7 @@ Use of CIS-CAT Pro Assessor v4 and the Controls Assessment Module is subject to 
 
 Deployment
 ----------
-In order to setup the Controls Assessment Module, download the CIS-CAT Assessor zip file (v4.0.6 or later) that contains the Controls Assessment Module from WorkBench (https://workbench.cisecurity.org/) and follow the standard Assessor v4 setup instructions at [https://ccpa-docs.readthedocs.io/en/latest/User's%20Guide/#deployment](https://www.cisecurity.org/blog/v7-1-introduces-implementation-groups-cis-controls/).
+In order to setup the Controls Assessment Module, download the CIS-CAT Assessor zip file (v4.0.6 or later) that contains the Controls Assessment Module from WorkBench (https://workbench.cisecurity.org/) and follow the standard Assessor v4 setup instructions at [https://ccpa-docs.readthedocs.io/en/latest/Configuration%20Guide/](https://ccpa-docs.readthedocs.io/en/latest/Configuration%20Guide/).
 
 Assessable Operating Systems
 ----------------------------
