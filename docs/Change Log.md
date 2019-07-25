@@ -8,6 +8,18 @@ CIS-CAT Pro Assessor v4
 ---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
+## CIS-CAT Pro Assessor, v4.0.9 ##
+#### Release Date: July 25, 2019 ####
+
+
+### Benchmark Coverage ###
+- PostgreSQL 11 v1.0.0
+- Debian Linux v2.0.1
+
+### CIS-CAT Pro Updates ###
+- Updated to latest NVD CVE feeds for up-to-date display of CVE information, including CVSS base scores and vector strings in HTML Reports.  This update includes the 2019 feed.
+- CIS-CAT Pro Assessor v4 vulnerability reports for Windows Server 2008 R2 can now import successfully into CIS-CAT Pro Dashboard.
+
 ## CIS-CAT Pro Assessor, v4.0.8 ##
 #### Release Date: June 28, 2019 ####
 

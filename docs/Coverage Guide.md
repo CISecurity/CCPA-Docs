@@ -25,7 +25,7 @@ Note that any benchmark listed below which displays a bulleted list of "`id`:des
 - **CIS Cisco IOS 12 Benchmark, v4.0.0**
 - **CIS Cisco IOS 15 Benchmark, v4.0.0**
 - **CIS Debian Linux 7 Benchmark, v1.0.0**
-- **CIS Debian Linux 8 Benchmark, v2.0.0.1**
+- **CIS Debian Linux 8 Benchmark, v2.0.1**
 - **CIS Debian Linux 9 Benchmark, v1.0.0**
 - **CIS Google Chrome Benchmark, v1.3.0**
 - **CIS Google Chrome Benchmark, v2.0.0**
@@ -98,6 +98,8 @@ Note that any benchmark listed below which displays a bulleted list of "`id`:des
 - **CIS PostgreSQL 9.6 Benchmark, v1.0.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: PostgreSQL Database connection string.
 - **CIS PostgreSQL 10 Benchmark, v1.0.0**
+	- `xccdf_org.cisecurity_value_jdbc.url`: PostgreSQL Database connection string.
+- **CIS PostgreSQL 11 Benchmark, v1.0.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: PostgreSQL Database connection string.
 - **CIS Red Hat Enterprise Linux 5 Benchmark, v2.2.0**
 - **CIS Red Hat Enterprise Linux 6 Benchmark, v2.0.2**
