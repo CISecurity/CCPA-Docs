@@ -103,7 +103,7 @@ Note that any benchmark listed below which displays a bulleted list of "`id`:des
 	- `xccdf_org.cisecurity_value_jdbc.url`: PostgreSQL Database connection string.
 - **CIS Red Hat Enterprise Linux 5 Benchmark, v2.2.0**
 - **CIS Red Hat Enterprise Linux 6 Benchmark, v2.0.2**
-- **CIS Red Hat Enterprise Linux 7 Benchmark, v2.1.0**
+- **CIS Red Hat Enterprise Linux 7 Benchmark, v2.2.0**
 - **CIS SUSE Linux Enterprise 11 Benchmark, v2.0.0**
 - **CIS SUSE Linux Enterprise 12 Benchmark, v2.0.0**
 - **CIS Ubuntu Linux 14.04 LTS Benchmark, v2.0.0**
