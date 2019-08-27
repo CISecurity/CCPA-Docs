@@ -8,6 +8,20 @@ CIS-CAT Pro Assessor v4
 ---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
+## CIS-CAT Pro Assessor, v4.0.10 ##
+#### Release Date: August 27, 2019 ####
+
+
+### Benchmark Coverage ###
+- None
+
+### CIS-CAT Pro Updates ###
+- MS Windows 10 configuration assessment HTML report displays OVAL assessment collected system values, recommended Benchmark values and rule used to generate pass/fail result.
+- Support for NIST vulnerability JSON data feeds.
+- Additional enhancements Ubuntu 18.04 assessment process to ensure more accurate results.
+- Major performance improvements (10-100% performance increase) for Linux assessment process, particularly where a target has an attached a mounted file system. Additional option to exclude mounted file system, when necessary, for Linux only.
+- Updated to latest NVD CVE feeds for up-to-date display of CVE information, including CVSS base scores and vector strings in HTML Reports.
+
 ## CIS-CAT Pro Assessor, v4.0.9 ##
 #### Release Date: July 25, 2019 ####
 
