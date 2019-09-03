@@ -366,6 +366,36 @@ CIS-CAT Pro Assessor supports using SCE usage with the following scripting langu
 - Windows batch scripts
 - VBScript
 
+### Configuring SCE Checks
+Configuring a recommendation's `<check>` element to be evaluated using a script, users must first note the namespace URI of the Script Check Engine, the filepath, relative to the CIS-CAT Pro Assessor "working" directory, of the script, and any input arguments necessary during the execution of the script.
+
+An example from the CIS CentOS 7 benchmark illustrates an SCE check:
+
+    <xccdf:check system="http://open-scap.org/page/SCE">
+    	<check-import import-name="stdout"/>
+    	<xccdf:check-export export-name="XCCDF_VALUE_REGEX" value-id="xccdf_org.cisecurity.benchmarks_value_4.1.6.3_var"/>
+    	<check-content-ref href="sce/auditd.sh"/>
+    </xccdf:check>
+
+Note the key information:
+
+- The `system` attribute on the XCCDF `check` element must have a value of `http://open-scap.org/page/SCE` to indicate this is an SCE check, 
+- The `<check-import import-name="stdout"/>` line must exist to indicate to the SCE that information displayed on `stdout` is relevant, 
+- Any arguments required by the script must be passed as environment variables using the XCCDF `check-export` element.
+	- The `export-name` attribute represents the name of the environment variable used within the script being executed.  While not mandatory, the `export-name` *should* follow the naming convention `XCCDF_VALUE_(NAME)`.  These same environment variable names are those that are used within the script itself.
+	- The `value-id` attribute represents the XCCDF `Value` to be used as the value of the environment variable passed as an argument to the script.
+- The `check-content-ref` element *must* exist, containing an `href` attribute value that references the name of the script to be executed.  This `href` value can be a relative path, based on the "working" directory of the CIS-CAT Pro Assessor, or a full canonical path to the script to be executed.  Using the example content above, if the CIS-CAT Pro Assessor "working" directory (the folder in which CCPA is installed) is `/opt/CCPA/Assessor-CLI`, the `href` attribute value of `sce/auditd.sh` references the script residing at `/opt/CCPA/Assessor-CLI/sce/auditd.sh`
+
+CIS-CAT Pro Assessor determines the execution environment based on the file extension of the script:
+
+| Script Extension | SCE Execution Environment | Notes |
+|------------------|---------------------------|-------|
+| .sh              | bash                      ||
+| .ps1             | PowerShell                | Efforts have been made so users should not need to change any PowerShell settings in order to run these scripts.  CIS-CAT Pro Assessor v4 calls PowerShell using the `-ExecutionPolicy bypass` option.  This will temporarily bypass the existing PowerShell execution policy just for the duration of each CCPA script’s run without changing the system’s overall PowerShell execution policy.  Additionally, the `Unblock-File` PowerShell command will be run against the scripts when CIS-CAT Pro Assessor calls them; this will result in CCPA's scripts remaining unblocked/trusted even after running the Assessment.  The use of the `-ExecutionPolicy bypass` and `Unblock-File` are meant to contribute to a smoother user experience, but it is important that users consider any policy and security implications for their organization prior to running CIS-CAT Pro Assessor. |
+| .bat             | Windows Batch             ||
+| .vbs             | VBScript                  ||
+
+
 CIS Embedded Check Language (ECL)
 ---------------------------------
 CIS-CAT Pro Assessor contains minimal implementation of CIS' proprietary Embedded Check Language (ECL).  A subset of the total available functionality has been developed, in order to support both local and remote assessment of Apple OSX benchmarks.
