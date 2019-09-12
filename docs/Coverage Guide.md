@@ -14,6 +14,8 @@ CIS currently distributes CIS-CAT with production support for the following benc
 
 Note that any benchmark listed below which displays a bulleted list of "`id`:description" information are those benchmarks which contain "interactive values".  Please see the [CIS-CAT Pro Assessor CLI User's Guide](./User's%20Guide) for more information regarding configuration of these values.
 
+CIS-CAT Pro Assessor v4 strives to be a standards-based application focused on vendor-supported technology platforms and applications where OVAL coverage is available. Some benchmarks released in CIS-CAT Pro Assessor v3 were developed using CIS' proprietary Embedded Check Language (ECL). These can be identified by the absence of "oval" or "xccdf" in the filename. These are not supported in v4 and will eventually be archived due to their age and diminishing relevance. If a benchmark was released only in v3, then it is likely that V4 does not support it. CIS-CAT Pro Assessor v4 will offer coverage only for CIS Benchmark content where OVAL content exists. Only the below technologies are supported in CIS-CAT Pro Assessor v4. CIS-CAT Pro Assessor v4 supported CIS Benchmarks will be present in the benchmark directory of your downloaded CIS-CAT bundle and contain "oval" or "xccdf" in the filename. Please contact [support@cisecurity.org](support@cisecurity.org) for additional coverage requests.
+
 - **CIS Amazon Linux Benchmark, v2.0.0**
 - **CIS Amazon Linux 2 Benchmark v1.0.0.1**
 - **CIS Apple macOS 10.13 Benchmark, v1.0.0.1**
@@ -110,7 +112,6 @@ Note that any benchmark listed below which displays a bulleted list of "`id`:des
 - **CIS Ubuntu Linux 16.04 LTS Benchmark, v1.0.0**
 - **CIS Ubuntu Linux 18.04 LTS Benchmark, v1.0.0**
 
-**NOTE**:  Any benchmarks which utilized CIS' proprietary Embedded Check Language (ECL) are not yet supported in CIS-CAT Pro Assessor v4.  Further development will either implement these benchmarks using currently available scripting capabilities, or will be migrated to OVAL when platform coverage is expanded.
 
 Platform Coverage for Vulnerability Assessments
 -----------------------------------------------
