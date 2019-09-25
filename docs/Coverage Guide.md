@@ -59,15 +59,16 @@ CIS-CAT Pro Assessor v4 strives to be a standards-based application focused on v
 	- `xccdf_org.cisecurity_value_jdbc.url`: SQL Server connection string.
 - **CIS Microsoft SQL Server 2017 Benchmark, v1.0.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: SQL Server connection string.
-- **CIS Microsoft Windows 10 Enterprise Release 1703 Benchmark, v1.3.0**
 - **CIS Microsoft Windows 10 Enterprise Release 1709 Benchmark, v1.4.0**
 - **CIS Microsoft Windows 10 Enterprise Release 1803 Benchmark, v1.5.0.1**
+- **CIS Microsoft Windows 10 Enterprise Release 1809 Benchmark, v1.6.0**
 - **CIS Microsoft Windows Server 2003 Benchmark, v3.1.0**
 - **CIS Microsoft Windows Server 2008 (non-R2) Benchmark, v3.1.0**
 - **CIS Microsoft Windows Server 2008 R2 Benchmark, v3.1.0**
 - **CIS Microsoft Windows Server 2012 (non-R2) Benchmark, v2.1.0**
 - **CIS Microsoft Windows Server 2012 R2 Benchmark, v2.3.0**
 - **CIS Microsoft Windows Server 2016 RTM (Release 1607) Benchmark, v1.0.0**
+- **CIS Microsoft Windows Server 2019 Benchmark, v1.0.0**
 - **CIS Microsoft Windows 7 Workstation Benchmark, v3.1.0**
 - **CIS Microsoft Windows 8 Benchmark, v1.0.0**
 - **CIS Microsoft Windows 8.1 Workstation Benchmark, v2.3.0**

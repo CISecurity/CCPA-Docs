@@ -8,6 +8,17 @@ CIS-CAT Pro Assessor v4
 ---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
+## CIS-CAT Pro Assessor, v4.0.11 ##
+#### Release Date: September 25, 2019 ####
+
+
+### Benchmark Coverage ###
+- CIS Microsoft Windows Server 2019 v1.0.0
+- CIS MS Windows 10 Enterprise 1809 v1.6.0
+
+### CIS-CAT Pro Updates ###
+- Updated to include the latest JSON 1.1 vulnerability feed data.
+
 ## CIS-CAT Pro Assessor, v4.0.10 ##
 #### Release Date: August 27, 2019 ####
 
