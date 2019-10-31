@@ -21,6 +21,8 @@ See the CIS-CAT Pro Assessor Coverage Guide for information about supported benc
 - ARF XML and HTML report generation issue resolved for Windows 10 1803 remote assessments.
 - Cisco IOS target system correct domain or IP is now correctly shown on the HTML and ARF XML.
 
+**IMPORTANT:** To utilize the new option to compress assessment results on post to Dashboard, users must upgrade to CIS-CAT Pro Dashboard v1.1.9. See the assessor-cli.properties file for more information.
+
 ## CIS-CAT Pro Assessor, v4.0.11 ##
 #### Release Date: September 25, 2019 ####
 
