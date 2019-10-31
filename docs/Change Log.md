@@ -8,6 +8,19 @@ CIS-CAT Pro Assessor v4
 ---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
+## CIS-CAT Pro Assessor, v4.0.12 ##
+#### Release Date: October 31, 2019 ####
+
+
+### Benchmark Coverage ###
+- Alibaba Cloud Aliyun Linux 2 v1.0.0
+
+### CIS-CAT Pro Updates ###
+- An option maintained in the properties file has been added to compress assessment result files prior to automatic import to CIS-CAT Pro Dashboard v1.1.9+ via API.
+- Benchmark version number is now displayed when using the command line in interactive mode.
+- ARF XML and HTML report generation issue resolved for Windows 10 1803 remote assessments.
+- Cisco IOS target system correct domain or IP is now correctly shown on the HTML and ARF XML.
+
 ## CIS-CAT Pro Assessor, v4.0.11 ##
 #### Release Date: September 25, 2019 ####
 
