@@ -541,16 +541,16 @@ A number of scenarios exist which could cause CIS-CAT Pro Assessor to terminate 
 |112        | CIS-CAT Pro Assessor encountered an invalid interactive value.           |
 |113        | CIS-CAT Pro Assessor could not parse an XML file required for assessment.|
 |114        | CIS-CAT Pro Assessor could not find an XML file required for assessment. |
-|115        | An XML file was parsed but contained an invalid XML Signature.           |
+|115        | An XML file was parsed, but contained an invalid XML Signature.           |
 |116        | Process not executing with elevated privileges.  When executing the Assessor in "host-based" mode (using a "local" session only), it must be launched with elevated privileges.  When executing on Windows, this requires the user to launch a command prompt "As an Administrator".  When executing on any Unix or Linux OS, the user must either be logged in as `root` or have the ability to launch the Assessor using `sudo`.                        |
 |117        | CIS-CAT Pro Assessor could not encrypt a sessions or configuration file. |
 |118        | A required command line option for encrypting a sessions or configuration file was missing.          |
 |119        | CIS-CAT Pro Assessor could not decrypt a sessions or configuration file. |
-|500        | An XML file was parsed but XML Schema validation errors.                 |
+|500        | An XML file was parsed, but contained XML Schema validation errors.                 |
 
 
 ## Troubleshooting and Support ###
 CIS-CAT Pro Assessor v4 is generally available, and member support is available through the normal CIS SecureSuite channels:
 
-- Email support at [support@cisecurity.org](mailto:support@cisecurity.org)
-- Start a discussion on the [CIS-CAT Discussion Group](https://workbench.cisecurity.org/communities/30) (login required)
+- For CIS support, email our Product Support team at [support@cisecurity.org](mailto:support@cisecurity.org)
+- Start a discussion on the [CIS-CAT Discussion Group](https://workbench.cisecurity.org/communities/30) (login required).  These discussions are a great way for members to use their experience to support each other.
