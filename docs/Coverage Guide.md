@@ -25,6 +25,7 @@ CIS-CAT Pro Assessor v4 strives to be a standards-based application focused on v
 - **CIS Apple OSX 10.12 Benchmark, v1.0.0**
 - **CIS CentOS Linux 6 Benchmark, v2.0.2**
 - **CIS CentOS Linux 7 Benchmark, v2.2.0**
+- **CIS CentOS Linux 8 Benchmark, v1.0.0**
 - **CIS Cisco IOS 12 Benchmark, v4.0.0**
 - **CIS Cisco IOS 15 Benchmark, v4.0.0**
 - **CIS Debian Linux 7 Benchmark, v1.0.0**
@@ -62,14 +63,14 @@ CIS-CAT Pro Assessor v4 strives to be a standards-based application focused on v
 	- `xccdf_org.cisecurity_value_jdbc.url`: SQL Server connection string.
 - **CIS Microsoft Windows 10 Enterprise Release 1709 Benchmark, v1.4.0**
 - **CIS Microsoft Windows 10 Enterprise Release 1803 Benchmark, v1.5.0.1**
-- **CIS Microsoft Windows 10 Enterprise Release 1809 Benchmark, v1.6.0**
+- **CIS Microsoft Windows 10 Enterprise Release 1809 Benchmark, v1.6.1**
 - **CIS Microsoft Windows Server 2003 Benchmark, v3.1.0**
 - **CIS Microsoft Windows Server 2008 (non-R2) Benchmark, v3.1.0**
 - **CIS Microsoft Windows Server 2008 R2 Benchmark, v3.1.0**
 - **CIS Microsoft Windows Server 2012 (non-R2) Benchmark, v2.1.0**
 - **CIS Microsoft Windows Server 2012 R2 Benchmark, v2.3.0**
 - **CIS Microsoft Windows Server 2016 RTM (Release 1607) Benchmark, v1.0.0**
-- **CIS Microsoft Windows Server 2019 Benchmark, v1.0.0**
+- **CIS Microsoft Windows Server 2019 Benchmark, v1.0.1**
 - **CIS Microsoft Windows 7 Workstation Benchmark, v3.1.0**
 - **CIS Microsoft Windows 8 Benchmark, v1.0.0**
 - **CIS Microsoft Windows 8.1 Workstation Benchmark, v2.3.0**
@@ -97,6 +98,7 @@ CIS-CAT Pro Assessor v4 strives to be a standards-based application focused on v
 	- `xccdf_org.cisecurity_value_listener.ora`: Path to the listener.ora file
 - **CIS Oracle Linux 6 Benchmark, v1.0.0**
 - **CIS Oracle Linux 7 Benchmark, v2.0.0**
+- **CIS Oracle Linux 8 Benchmark, v1.0.0**
 - **CIS PostgreSQL 9.5 Benchmark, v1.1.0.1**
 	- `xccdf_org.cisecurity_value_jdbc.url`: PostgreSQL Database connection string.
 - **CIS PostgreSQL 9.6 Benchmark, v1.0.0**
@@ -108,6 +110,7 @@ CIS-CAT Pro Assessor v4 strives to be a standards-based application focused on v
 - **CIS Red Hat Enterprise Linux 5 Benchmark, v2.2.0**
 - **CIS Red Hat Enterprise Linux 6 Benchmark, v2.0.2**
 - **CIS Red Hat Enterprise Linux 7 Benchmark, v2.2.0**
+- **CIS Red Hat Enterprise Linux 8 Benchmark, v1.0.0**
 - **CIS SUSE Linux Enterprise 11 Benchmark, v2.0.0**
 - **CIS SUSE Linux Enterprise 12 Benchmark, v2.0.0**
 - **CIS Ubuntu Linux 14.04 LTS Benchmark, v2.0.0**

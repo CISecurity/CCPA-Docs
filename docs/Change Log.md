@@ -8,6 +8,22 @@ CIS-CAT Pro Assessor v4
 ---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
+## CIS-CAT Pro Assessor, v4.0.13 ##
+#### Release Date: December 4, 2019 ####
+
+
+### Benchmark Coverage ###
+- CIS CentOS Linux 8 Benchmark v1.0.0
+- CIS Microsoft Windows 10 Enterprise Release 1809 Benchmark v1.6.1
+- CIS Microsoft Windows Server 2019 Benchmark v1.0.1
+- CIS Oracle Linux 8 Benchmark v1.0.0
+- CIS Red Hat Enterprise Linux 8 Benchmark v1.0.0
+
+### CIS-CAT Pro Updates ###
+- Benchmarks are now sorted alphabetically when viewed on Linux CLI in interactive mode (using option -i).
+- Linux assessments results for recommendation 5.3.4 are now accurate. 
+- Updated to include the latest JSON 1.1 vulnerability feed data.
+
 ## CIS-CAT Pro Assessor, v4.0.12 ##
 #### Release Date: October 31, 2019 ####
 
