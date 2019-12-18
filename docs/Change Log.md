@@ -8,6 +8,19 @@ CIS-CAT Pro Assessor v4
 ---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
+## CIS-CAT Pro Assessor, v4.0.14 ##
+#### Release Date: December 18, 2019 ####
+
+
+### Benchmark Coverage ###
+- Controls Assessment Module - Implementation Group 1 for MS Server 2016 v1.0.0
+
+### CIS-CAT Pro Updates ###
+- Enhanced Linux assessment process accommodates large user IDs.
+- Controls Assessment Module file name change to identify Windows 10 v1.0.3.
+- Updated to include the latest JSON 1.1 vulnerability feed data.
+
+
 ## CIS-CAT Pro Assessor, v4.0.13 ##
 #### Release Date: December 4, 2019 ####
 
