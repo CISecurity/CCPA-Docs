@@ -13,11 +13,11 @@ See the CIS-CAT Pro Assessor Coverage Guide for information about supported benc
 
 
 ### Benchmark Coverage ###
-- Controls Assessment Module - Implementation Group 1 for MS Server 2016 v1.0.0
+- Controls Assessment Module - Implementation Group 1 for Microsoft Windows Server 2016 v1.0.0
 
 ### CIS-CAT Pro Updates ###
 - Enhanced Linux assessment process accommodates large user IDs.
-- Controls Assessment Module file name change to identify Windows 10 v1.0.3.
+- Controls Assessment Module file name change to identify Microsoft Windows 10 v1.0.3.
 - Updated to include the latest JSON 1.1 vulnerability feed data.
 
 
