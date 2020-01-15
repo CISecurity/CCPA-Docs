@@ -601,7 +601,7 @@ Setting AUTODETECT=1 will cause this script to detect the following:
 3.	Which JRE to leverage (32- or 64-bit). Defaults to 32-bit
 
 
-**Configuration Note:**  The “cis-cat-centralized.bat” script sets local environment variables denoting file system paths and folder names.  CIS recommends, for simplicity, that these paths do not contain spaces, as without modification to the script, spaces in paths can cause unexpected behavior.
+**Configuration Note:**  The “cis-cat-centralized.bat” script sets local environment variables denoting file system paths and folder names.  The tool has been enhanced to now handle spaces in file paths.
 
 Near line 780 of the “cis-cat-centralized.bat” script, the following code section illustrates the configuration of the CIS-CAT command-line for execution.
 

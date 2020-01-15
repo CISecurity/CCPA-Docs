@@ -8,6 +8,26 @@ CIS-CAT Pro Assessor v4
 ---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
+## CIS-CAT Pro Assessor, v4.0.16 ##
+#### Release Date: January 15, 2020 ####
+
+
+### Benchmark Coverage ###
+- Microsoft Windows 10 Enterprise 1909 v1.8.0
+- Microsoft Windows 10 Enterprise 1903 v1.7.0
+
+### CIS-CAT Pro Updates ###
+- Reduction in quantity of executables called during an assessment, which assists with whitelisting activities.
+- Improvement to the tool's overall security posture with third party Python library upgrade to v3.7, utilized primarily during Windows assessments.
+- Upgrade to 1.2.3 version of Logback third-party library, which facilitates assessor
+ activity logging.
+- Upgrade to 2.5.6 version of Apache Groovy third-party library.
+- Customize graphics and styling for HTML assessment report formats.
+- CIS-CAT Pro Assessor v4 now handles instances when file paths with spaces are encountered during the assessment process. Previously, the assessment would end abruptly with an exception.
+- Linux users are no longer prompted incorrectly for Kerberos (not supported) credentials.
+- Additional option added on the command line to display profile names for a given benchmark. Follow a "-b" option with a benchmark file path for the xccdf with the new "-bi" option to show the list of profiles found in that benchmark.
+- Corrected an error when assessing with DISA Stig data stream content.
+
 
 ## CIS-CAT Pro Assessor, v4.0.15 ##
 #### Release Date: December 19, 2019 ####
