@@ -26,7 +26,7 @@ See the CIS-CAT Pro Assessor Coverage Guide for information about supported benc
 - CIS-CAT Pro Assessor v4 now handles instances when file paths with spaces are encountered during the assessment process. Previously, the assessment would end abruptly with an exception.
 - Linux users are no longer prompted incorrectly for Kerberos (not supported) credentials.
 - Additional option added on the command line to display profile names for a given benchmark. Follow a "-b" option with a benchmark file path for the xccdf with the new "-bi" option to show the list of profiles found in that benchmark.
-- Corrected an error when assessing with DISA Stig data stream content.
+- Corrected an error when assessing with DISA STIG data stream content.
 
 
 ## CIS-CAT Pro Assessor, v4.0.15 ##
