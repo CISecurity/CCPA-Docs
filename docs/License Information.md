@@ -18,7 +18,7 @@ The following 3rd-party libraries are bundled with CIS-CAT Pro Assessor v4.  Inf
 
 | Library                         | Version   | License                   | License Link                              |
 |---------------------------------|-----------|---------------------------|-------------------------------------------|
-| Groovy                          |2.5.1      |Apache 2.0                 |[https://github.com/apache/groovy/blob/master/LICENSE](https://github.com/apache/groovy/blob/master/LICENSE) |
+| Groovy                          |2.5.6      |Apache 2.0                 |[https://github.com/apache/groovy/blob/master/LICENSE](https://github.com/apache/groovy/blob/master/LICENSE) |
 | winrm4j                         |0.5.0      |Apache 2.0                 |[https://github.com/cloudsoft/winrm4j/blob/master/LICENSE](https://github.com/cloudsoft/winrm4j/blob/master/LICENSE) |
 | smbj                            |0.8.0      |Apache 2.0                 |[https://github.com/hierynomus/smbj/blob/master/LICENSE_HEADER](https://github.com/hierynomus/smbj/blob/master/LICENSE_HEADER) |
 | MapDB                           |3.0.2      |Apache 2.0                 |[https://github.com/jankotek/mapdb/blob/master/LICENSE.txt](https://github.com/jankotek/mapdb/blob/master/LICENSE.txt) |
@@ -27,8 +27,8 @@ The following 3rd-party libraries are bundled with CIS-CAT Pro Assessor v4.  Inf
 | HttpBuilder-NG                  |1.0.3      |Apache 2.0                 |[https://github.com/http-builder-ng/http-builder-ng](https://github.com/http-builder-ng/http-builder-ng) |
 | GPars                           |1.2.1      |Apache 2.0                 |[https://github.com/GPars/GPars/blob/master/LICENSE.txt](https://github.com/GPars/GPars/blob/master/LICENSE.txt) |
 | jPowerShell                     |2.1        |Apache 2.0                 |[https://github.com/profesorfalken/jPowerShell/blob/master/LICENSE](https://github.com/profesorfalken/jPowerShell/blob/master/LICENSE) |
-| Logback Classic Module          |1.1.7      |LGPL 2.1                   |[https://github.com/qos-ch/logback/blob/master/LICENSE.txt](https://github.com/qos-ch/logback/blob/master/LICENSE.txt) |
-| Logback Core Module             |1.1.7      |LGPL 2.1                   |[https://github.com/qos-ch/logback/blob/master/LICENSE.txt](https://github.com/qos-ch/logback/blob/master/LICENSE.txt) |
+| Logback Classic Module          |1.2.3      |LGPL 2.1                   |[https://github.com/qos-ch/logback/blob/master/LICENSE.txt](https://github.com/qos-ch/logback/blob/master/LICENSE.txt) |
+| Logback Core Module             |1.2.3      |LGPL 2.1                   |[https://github.com/qos-ch/logback/blob/master/LICENSE.txt](https://github.com/qos-ch/logback/blob/master/LICENSE.txt) |
 | MariaDB Java Client             |1.5.6      |LGPL 2.1                   |[https://github.com/MariaDB/mariadb-connector-j/blob/master/LICENSE](https://github.com/MariaDB/mariadb-connector-j/blob/master/LICENSE) |
 | UnboundID LDAP SDK for Java     |4.0.3      |UnboundID LDAP SDK License |[https://github.com/pingidentity/ldapsdk/blob/master/LICENSE-UnboundID-LDAPSDK.txt](https://github.com/pingidentity/ldapsdk/blob/master/LICENSE-UnboundID-LDAPSDK.txt) |
 | jni4net                         |0.8.8.0    |MIT                        |[https://github.com/jni4net/jni4net](https://github.com/jni4net/jni4net) |
