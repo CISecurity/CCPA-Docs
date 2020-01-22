@@ -1,7 +1,7 @@
 site_name: CIS-CAT Pro Assessor v4
 
 nav:
-  - Home: index.md
+  - 'Home': 'index.md'
   - 'User Guide - CLI': 'User's Guide.md'
   - 'User Guide - Assesor Service': 'User Guide - Assessor Service.md'
   - 'User Guide - Controls Assessment Module': 'Controls Assessment Module.md'
