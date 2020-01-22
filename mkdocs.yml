@@ -4,7 +4,7 @@ nav:
     - Home: index.md
     - Source:
         - User Guide - CLI: User's Guide.md
-        - User Guide - Assesor Service: User Guide for Assessor Service.md
+        - User Guide for Assesor Service: User Guide for Assessor Service.md
         - User Guide - Controls Assessment Module: Controls Assessment Module.md
         - Configuration Guide: Configuration Guide.md
         - Coverage Guide: Coverage Guide.md
