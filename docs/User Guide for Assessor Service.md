@@ -8,22 +8,26 @@ Introduction
 ------------
 CIS-CAT Pro Assessor v4 Service is a Web service version of CIS-CAT Pro Assessor v4.  It provides REST APIs in the form of URLs that call specific Assessor v4 functionality.  Responses to the calling client are in JSON format.  CIS-CAT Pro Assessor v4 Service is designed to interact with the CIS-CAT Pro Dashboard v1.1.11+ to allow configuration assessments to be run from CIS-CAT Pro Dashboard against a specified target system.
 
-## System Requirements ##
+## System Recommendations ##
 The host system is the machine where CIS-CAT Pro Assessor v4 Service resides. Most operating system can support CIS-CAT Pro Assessor v4 Service provided the system can run Java. See below for an example implementation used in our testing labs.
 
-CIS-CAT Pro Assessor v4 Service is a Java application and requires an available Java Runtime Environment (JRE) to execute on the host machine. To allow the greatest flexibility for configuring server performance, CIS highly recommends installing CIS-CAT Pro Assessor v4 Service on a host separate from hosts supporting CIS-CAT Pro Dashboard. Although a single scan is not expected to need a powerful server, future functionality such as the ability to schedule scanning of multiple target systems could. The following components are required to run CIS-CAT Pro Assessor v4 Service.
+CIS-CAT Pro Assessor v4 Service is a Java application and requires an available Java Runtime Environment (JRE) to execute on the host system. To allow the greatest flexibility for configuring server performance, CIS highly recommends installing CIS-CAT Pro Assessor v4 Service on a host separate from hosts supporting CIS-CAT Pro Dashboard. Although a single scan is not expected to need a powerful server, future functionality such as the ability to schedule scanning of multiple target systems could. The following components are recommended to run CIS-CAT Pro Assessor v4 Service.
 
+Required:
 
-- Java 8+ installed on host or accessed via a network share
+- Java 8 installed on host or accessed via a network share
   - OpenJDK implementations of 8 or higher are supported. See https://openjdk.java.net/ for information about these free and open-source implementations of Java.
+
+Recommended:
+
 - 2 GHz dual processor*
 - 4 GB of RAM*
 - HTTPS communication protocol between Assessor Service host and Dashboard (highly recommended)
 - CIS-CAT Pro Dashboard v1.1.11+
 
-\* - These minimum requirements are based on the assumption the Assessor Service will only be utilized for ad-hoc assessments initiated from the Dashboard.  If you anticipate higher usage of Assessor Service, these requirements may need to be adjusted higher.
+\*  These minimum host system recommendations are based on the assumption the Assessor Service will only be utilized for ad-hoc assessments initiated from the Dashboard.  If higher usage is anticipated, system specifications may need to be adjusted.
 
-Our test environment utilizes an AWS t2.large instance, which has:
+As an example, our test environment utilizes an AWS t2.large instance, which has:
 
 - 8GB RAM
 - 2 vCPUs

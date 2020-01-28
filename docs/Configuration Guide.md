@@ -8,6 +8,27 @@ Introduction
 ------------
 Utilizing the CIS-CAT Pro Assessor CLI, users are capable of performing both host-based (local) assessments, as well as remote-based assessments.  In order to perform assessments of remote endpoints, certain configurations must be made.  The intent of this document is to serve as a guide for enabling systems for remote-based assessments using CIS-CAT Pro Assessor.
 
+System Recommendations
+------------
+
+The host system is the machine where CIS-CAT Pro Assessor v4 resides. Most operating system can support CIS-CAT Pro Assessor v4 provided the system can run Java Runtime Environment (JRE). See below for an example server specifications.
+
+CIS-CAT Pro Assessor v4 is a Java application and requires an available Java Runtime Environment (JRE) to execute on the host system. To allow the greatest flexibility for configuring server performance, CIS recommends installing CIS-CAT Pro Assessor v4 on a host separate from hosts supporting CIS-CAT Pro Dashboard or CIS-CAT Pro Assessor v4 Service. It is possible to have multiple installations of CIS-CAT Pro Assessor on separate host systems, but each CIS-CAT Pro Assessor host system must have access to a JRE. 
+
+
+**Required**:
+
+- JRE 8, 9, 10, or 11 work best and must be installed on the host system or accessed via a network share
+  - OpenJDK implementations are supported. See https://openjdk.java.net/ for information about these free and open-source implementations of Java.
+- For remote scanning, the CIS-CAT host system must be able to communicate with the target system
+
+**Recommended Minimum**:
+
+Depending on your organization's use of CIS-CAT Pro Assessor, the actual server specifications mentioned below could vary.
+
+- 2 GHz dual processor
+- 4 GB of RAM
+
 Sessions
 --------
 CIS-CAT Pro Assessor v4's remote assessment capability depends on the configuration of "sessions"; connection parameters used to create a secure connection to the remote endpoint.  A session configuration requires a number of entries, which will vary depending on the connection type.
