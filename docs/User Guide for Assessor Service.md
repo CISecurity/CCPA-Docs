@@ -16,7 +16,7 @@ CIS-CAT Pro Assessor v4 Service is a Java application and requires an available 
 Required:
 
 - Java 8 installed on host or accessed via a network share
-  - OpenJDK implementations of 8 or higher are supported. See https://openjdk.java.net/ for information about these free and open-source implementations of Java.
+  - OpenJDK implementations of Java 8 are supported. See https://openjdk.java.net/ for information about these free and open-source implementations of Java.
 
 Recommended:
 
