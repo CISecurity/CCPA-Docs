@@ -30,7 +30,9 @@ CIS-CAT Pro Assessor v4 strives to be a standards-based application focused on v
 - **CIS Cisco IOS 15 Benchmark, v4.0.0**
 - **CIS Debian Linux 7 Benchmark, v1.0.0**
 - **CIS Debian Linux 8 Benchmark, v2.0.1**
-- **CIS Debian Linux 9 Benchmark, v1.0.0**
+- **CIS Debian Linux 9 Benchmark, v1.0.1**
+- **CIS Fedora 28 Family Linux, v1.0.0**
+		- NOTE:  Requires the "ignore.platform.mismatch" property be set to "true" in the Assessor's properties file.
 - **CIS Google Chrome Benchmark, v1.3.0**
 - **CIS Google Chrome Benchmark, v2.0.0**
 - **CIS MIT Kerberos 1.10 Benchmark, v1.0.0**
@@ -70,7 +72,7 @@ CIS-CAT Pro Assessor v4 strives to be a standards-based application focused on v
 - **CIS Microsoft Windows Server 2012 (non-R2) Benchmark, v2.1.0**
 - **CIS Microsoft Windows Server 2012 R2 Benchmark, v2.3.0**
 - **CIS Microsoft Windows Server 2016 RTM (Release 1607) Benchmark, v1.0.0**
-- **CIS Microsoft Windows Server 2019 Benchmark, v1.0.1**
+- **CIS Microsoft Windows Server 2019 Benchmark, v1.1.0**
 - **CIS Microsoft Windows 7 Workstation Benchmark, v3.1.0**
 - **CIS Microsoft Windows 8 Benchmark, v1.0.0**
 - **CIS Microsoft Windows 8.1 Workstation Benchmark, v2.3.0**
@@ -115,7 +117,7 @@ CIS-CAT Pro Assessor v4 strives to be a standards-based application focused on v
 - **CIS SUSE Linux Enterprise 12 Benchmark, v2.0.0**
 - **CIS Ubuntu Linux 14.04 LTS Benchmark, v2.0.0**
 - **CIS Ubuntu Linux 16.04 LTS Benchmark, v1.0.0**
-- **CIS Ubuntu Linux 18.04 LTS Benchmark, v1.0.0**
+- **CIS Ubuntu Linux 18.04 LTS Benchmark, v2.0.1**
 
 
 Platform Coverage for Vulnerability Assessments
