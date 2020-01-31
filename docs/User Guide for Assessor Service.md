@@ -91,7 +91,7 @@ The following steps provide a simple way to generate a self-signed SSL certifica
 15. Ignore the warning about JKS being a proprietary keystore
 
 ### Configure Assessor Service Communication Properties ###
-CIS-CAT Pro Assessor v4 Service includes a properties file used exclusively for setting properties utilized for configuring the embedded Web server. The file is in the “config” folder and is called **server.conf**. Use the information from the certificate generation process to set the property values below.  **All of the properties in the server.conf file must be set with a value, even if you do not intend to use HTTPS for communicating with Assessor Service.**  See the Description of each property for information about how to set its value.
+CIS-CAT Pro Assessor v4 Service includes a properties file used exclusively for setting properties utilized for configuring the embedded Web server. The file is in the “config” folder and is called **server.conf**. Use the information from the certificate generation process to set the property values below.  **All of the properties in the server.conf file must be set with a value, even if you do not intend to use HTTPS for communicating with Assessor Service.**  See the description of each property for information about how to set its value.
 
 **IMPORTANT:**  The **server.conf** file contains sensitive data.  This file is used to configure the embedded Web server when starting the CIS-CAT Pro Assessor v4 Service application, but it is not needed after startup.  As such, CIS recommends storing this file in a secure location after the application has been successfully started. 
 
