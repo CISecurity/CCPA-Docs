@@ -91,19 +91,21 @@ The following steps provide a simple way to generate a self-signed SSL certifica
 15. Ignore the warning about JKS being a proprietary keystore
 
 ### Configure Assessor Service Communication Properties ###
-CIS-CAT Pro Assessor v4 Service includes a properties file used exclusively for setting properties utilized for configuring the embedded Web server. The file is in the “config” folder and is called **server.conf**. Use the information from the certificate generation process to set the property values below.
+CIS-CAT Pro Assessor v4 Service includes a properties file used exclusively for setting properties utilized for configuring the embedded Web server. The file is in the “config” folder and is called **server.conf**. Use the information from the certificate generation process to set the property values below.  **All of the properties in the server.conf file must be set with a value, even if you do not intend to use HTTPS for communicating with Assessor Service.**  See the Description of each property for information about how to set its value.
 
 **IMPORTANT:**  The **server.conf** file contains sensitive data.  This file is used to configure the embedded Web server when starting the CIS-CAT Pro Assessor v4 Service application, but it is not needed after startup.  As such, CIS recommends storing this file in a secure location after the application has been successfully started. 
 
 
 | Property                         | Description                                        |
 | -------------------------------- | -------------------------------------------------- |
-| server.http.port  | The listening port for Web service requests from CIS-CAT Pro Dashboard. Default is set to 8080. HTTP is NOT recommended when CIS-CAT Pro Assessor v4 Service resides on a separate host than CIS-CAT Pro Dashboard Web server.
-| server.https.port | The listening port for Web service requests from CIS-CAT Pro Dashboard. Default is set to 443. 
-| server.ssl.keystore.location | Sets the full path and file name to the location of the keystore for HTTPS connections. 
-| server.ssl.keystore.password | Sets the password of the keystore used for HTTPS connections. 
-| server.ssl.certificate.alias | Sets the alias of the public certificate used for HTTPS connections. Currently should be set to “Jetty”. 
-| server.ssl.ignore.certificate.warnings | Indicates if HTTPS requests sent to the CIS-CAT Pro Dashboard should ignore an SSL certificate warnings. |
+| server.http.port  | The listening port for Web service requests from CIS-CAT Pro Dashboard. You must ensure this port is open on the Assessor Service host machine, if you intend to use HTTP.  Default is set to 8080. HTTP is NOT recommended when CIS-CAT Pro Assessor v4 Service resides on a separate host than CIS-CAT Pro Dashboard Web server. If you will be using HTTPS, you can leave this property set to its default value.
+| server.https.port | The listening port for Web service requests from CIS-CAT Pro Dashboard. You must ensure this port is open on the Assessor Service host machine, if you intend to use HTTPS.  Default is set to 443. If you do not intend to use HTTPS, you can leave this property set to its default value.
+| server.ssl.keystore.location | Sets the full path and file name to the location of the keystore for HTTPS connections. If you do not intend to use HTTPS, use the **"cacerts"** truststore file that is included with Java to set this property.  This file is usually found in the **lib\security** folder of your Java installation.  For example, when running Assessor Service on a Microsoft Windows host, you would set this property to something like **C:\\\Program Files\\\Java\\\jre1.8.0_241\\\lib\\\security\\\cacerts**, depending on where you have Java installed.
+| server.ssl.keystore.password | Sets the password of the keystore used for HTTPS connections. If you do not intend to use HTTPS, use "changeit" to set this property since this is the default password for the cacerts truststore.
+|server.ssl.key.password| Sets the password of the key used for HTTPS connections.  If you do not intend to use HTTPS, you can leave this property set to its default value.
+| server.ssl.certificate.alias | Sets the alias of the public certificate used for HTTPS connections. Set this property to the alias of the ssl certificate you will be using.  If you do not intend to use HTTPS, you can leave this property set to its default value. 
+| server.ssl.ignore.certificate.warnings | Indicates if HTTPS requests sent to the CIS-CAT Pro Dashboard should ignore an SSL certificate warnings.  If you do not intend to use HTTPS, you can leave this property set to its default value. |
+
 
 ### Configure CIS-CAT Pro Dashboard for Assessment ###
 See the [CIS-CAT Pro Dashboard instructions](https://cis-cat-pro-dashboard.readthedocs.io/en/stable/source/Dashboard%20Deployment%20Guide%20for%20Windows/#cis-cat-pro-assessor-v4-service-integration) for configuration instructions that enable features to orchestrate assessments from the Dashboard.
