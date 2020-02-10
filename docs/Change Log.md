@@ -6,7 +6,7 @@ Change Log
 
 CIS-CAT Pro Assessor v4
 ---------------------------
-See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities..
+See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
 
 ## CIS-CAT Pro Assessor, v4.0.17 ##
