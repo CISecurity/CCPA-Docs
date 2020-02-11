@@ -179,7 +179,8 @@ Finally, note that the CIS Microsoft Windows Benchmarks are written assuming Act
 ### An Example Flowchart ###
 The following flowchart outlines the decision-making process when configuring and environment for remote assessment using CIS-CAT Pro Assessor v4:
 
-![](https://i.imgur.com/ye16W1v.png)
+![](https://i.imgur.com/qJScDnp.png)
+
 
 ### Windows Firewall Configuration ###
 CIS-CAT Pro Assessor v4 uses both the SMB and WinRM protocols in order to enable file manipulation and process execution, respectively.  As such, to connect to the remote host using SMB, ensure the host is reachable on port `445`.  To enable connection to the remote host using WinRM, ensure the host is reachable on either port `5985` (for WinRM over HTTP) or port `5986` (for WinRM over HTTPS).
@@ -247,7 +248,8 @@ Configure the following settings:
 
 - **Allow remote server management through WinRM**:  Set to `Enabled`
 	- This policy setting allows you to manage whether the Windows Remote Management (WinRM) service automatically listens on the network for requests. 
-	- **NOTE**: Options exist for this setting.  Consult the descriptions in this group policy setting to configure any IPv4 or IPv6 filters in order to restrict which IP addresses are listened for.  Members could use an asterisk (*) to indicate that the service listens on all available IP addresses on the computer.
+- **Configure an asterisk in either the IPv4 or IPv6 Filter**: If the filter is left blank, the service does not listen on any addresses. The service listens on the addresses specified by the IPv4 and IPv6 filters. The IPv4 filter specifies one or more ranges of IPv4 addresses, and the IPv6 filter specifies one or more ranges of IPv6addresses. If specified, the service enumerates the available IP addresses on the computer and uses only addresses that fall within one of the filter ranges.
+You should use an asterisk (*) to indicate that the service listens on all available IP addresses on the computer. When * is used, other ranges in the filter are ignored. Utilize an asterisk (*) to indicate that the service listens on all available IP addresses on the computer.
 - **Allow unencrypted traffic**: Set to `Enabled`
 	- **NOTE** This configuration is only required when using *WinRM over HTTP*.  See the [Security Considerations](#security-considerations) above for more information.  This setting is **NOT REQUIRED** when using *WinRM over HTTPS*.
 
