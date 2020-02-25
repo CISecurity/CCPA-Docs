@@ -8,6 +8,30 @@ CIS-CAT Pro Assessor v4
 ---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
+## CIS-CAT Pro Assessor, v4.0.18 ##
+#### Release Date: February 25, 2020 ####
+
+
+### Benchmark Coverage ###
+- CIS Debian Linux 10 Benchmark v1.0.0
+- CIS Kubernetes Benchmark v 1.5.1
+- CIS Microsoft SQL Server 2019 Benchmark v1.0.0
+- CIS Microsoft Windows 10 Enterprise 1903 v1.7.1
+- CIS Microsoft Windows 10 Enterprise 1909 v1.8.1
+- CIS MongoDB 3.6 v1.0.0
+
+### CIS-CAT Pro Updates ###
+- Remote Window sessions can now successfully connect for an assessment when using versions of Java 9 and above. A "javax" exception will no longer occur.
+- Remote Microsoft SQL database assessments will no longer end in error when executed from operating systems other than Microsoft where PowerShell was installed instead of default.
+- Enhanced Linux assessment process to handle some large system values encountered.
+- Assessments of Microsoft SQL databases will have improved connection success as additional environment analysis has been added to the process.
+- Database JDBC connection strings now obfuscated in log files.
+- An error was resolved for Cisco remote assessments.
+- Updated to include the latest JSON 1.1 vulnerability feed data.
+
+### Documentation ###
+- Updated Windows endpoint remote configuration for WinRM in flowchart and IPv4 and IPv6 filter settings.
+- Linux assessments where user home directories exist on an auto-mounted, large storage drive, will experience longer assessment duration as some benchmarks check will take longer to complete.
 
 ## CIS-CAT Pro Assessor, v4.0.17 ##
 #### Release Date: January 29, 2020 ####
