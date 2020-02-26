@@ -31,10 +31,12 @@ CIS-CAT Pro Assessor v4 strives to be a standards-based application focused on v
 - **CIS Debian Linux 7 Benchmark, v1.0.0**
 - **CIS Debian Linux 8 Benchmark, v2.0.1**
 - **CIS Debian Linux 9 Benchmark, v1.0.1**
+- **CIS Debian Linux 10 Benchmark, v1.0.0**
 - **CIS Fedora 28 Family Linux, v1.0.0**
 		- NOTE:  Requires the "ignore.platform.mismatch" property be set to "true" in the Assessor's properties file.
 - **CIS Google Chrome Benchmark, v1.3.0**
 - **CIS Google Chrome Benchmark, v2.0.0**
+- **CIS Kubernetes Benchmark, v 1.5.1**
 - **CIS MIT Kerberos 1.10 Benchmark, v1.0.0**
 - **CIS Microsoft IIS 7 Benchmark, v1.8.0**
 - **CIS Microsoft IIS 8 Benchmark, v1.5.0**
@@ -79,6 +81,7 @@ CIS-CAT Pro Assessor v4 strives to be a standards-based application focused on v
 - **CIS Microsoft Windows 8 Benchmark, v1.0.0**
 - **CIS Microsoft Windows 8.1 Workstation Benchmark, v2.3.0**
 - **CIS Microsoft Windows XP Benchmark, v3.1.0**
+- **CIS MongoDB 3.6, v1.0.0**
 - **CIS Mozilla Firefox 24 ESR Benchmark, v1.0.0**
 - **CIS Mozilla Firefox 38 ESR Benchmark, v1.0.0**
 - **CIS NGINX Benchmark, v1.1.0**
