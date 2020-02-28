@@ -25,7 +25,7 @@ CIS-CAT Pro Assessor v4 strives to be a standards-based application focused on v
 - **CIS Apple OSX 10.12 Benchmark, v1.0.0**
 - **CIS CentOS Linux 6 Benchmark, v2.0.2**
 - **CIS CentOS Linux 7 Benchmark, v2.2.0**
-- **CIS CentOS Linux 8 Benchmark, v1.0.0**
+- **CIS CentOS Linux 8 Benchmark, v1.0.0.1**
 - **CIS Cisco IOS 12 Benchmark, v4.0.0**
 - **CIS Cisco IOS 15 Benchmark, v4.0.0**
 - **CIS Debian Linux 7 Benchmark, v1.0.0**
@@ -114,7 +114,7 @@ CIS-CAT Pro Assessor v4 strives to be a standards-based application focused on v
 - **CIS Red Hat Enterprise Linux 5 Benchmark, v2.2.0**
 - **CIS Red Hat Enterprise Linux 6 Benchmark, v2.0.2**
 - **CIS Red Hat Enterprise Linux 7 Benchmark, v2.2.0**
-- **CIS Red Hat Enterprise Linux 8 Benchmark, v1.0.0**
+- **CIS Red Hat Enterprise Linux 8 Benchmark, v1.0.0.1**
 - **CIS SUSE Linux Enterprise 11 Benchmark, v2.0.0**
 - **CIS SUSE Linux Enterprise 12 Benchmark, v2.0.0**
 - **CIS Ubuntu Linux 14.04 LTS Benchmark, v2.0.0**
