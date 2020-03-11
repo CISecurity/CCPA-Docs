@@ -19,7 +19,7 @@ CIS-CAT Pro Assessor v4 is a Java application and requires an available Java Run
 **Required**:
 
 - JRE 8, 9, 10, or 11 work best and must be installed on the host system or accessed via a network share
-  - OpenJDK implementations are supported. See https://openjdk.java.net/ for information about these free and open-source implementations of Java.
+  - OpenJDK implementations are supported. See [OpenJDK.java.net](https://openjdk.java.net "Apache Java website") for information about these free and open-source implementations of Java.
 - For remote scanning, the CIS-CAT host system must be able to communicate with the target system
 
 **Recommended Minimum**:
