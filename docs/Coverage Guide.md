@@ -129,7 +129,7 @@ CIS-CAT Pro Assessor v4 strives to be a standards-based application focused on v
 
 Platform Coverage for Vulnerability Assessments
 -----------------------------------------------
-Using the `-vdd` command-line option, CIS-CAT Pro Assessor v4 is able to download the latest vulnerability definitions from various repositories.  A number of different platforms are officially supported by CIS-CAT Pro Assessor v4, including:
+Using the `-vdd` command-line option, CIS-CAT Pro Assessor v4 is able to download the latest vulnerability definitions from various repositories.  These files can also be manually downloaded from the repositories and copied into a folder name "vulnerabilities" located within the same parent folder location as the "benchmarks" folder. If you manually download vulnerability definition files, you will need to create the "vulnerabilities" folder if it does not already exist.  A number of different platforms are officially supported by CIS-CAT Pro Assessor v4, including:
 
 
 | Platform                         | Downloaded From                                                    |
@@ -145,6 +145,7 @@ Using the `-vdd` command-line option, CIS-CAT Pro Assessor v4 is able to downloa
 | Microsoft Windows Server 2012    | https://oval.cisecurity.org/repository/download/5.10/vulnerability |
 | Microsoft Windows Server 2012 R2 | https://oval.cisecurity.org/repository/download/5.10/vulnerability |
 | Microsoft Windows Server 2016    | https://oval.cisecurity.org/repository/download/5.10/vulnerability |
+| Microsoft Windows Server 2019    | https://oval.cisecurity.org/repository/download/5.10/vulnerability |
 | Red Hat Enterprise Linux         | https://www.redhat.com/security/data/oval                          |
 | SuSE Linux Enterprise Server 9   | https://support.novell.com/security/oval                           |
 | SuSE Linux Enterprise Server 10  | https://support.novell.com/security/oval                           |

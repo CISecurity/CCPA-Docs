@@ -64,7 +64,7 @@ A number of configuration properties exist, and will vary based on the session t
 ### Examples ###
 The examples below provide insight into the creation of a `sessions.properties` file, which can then be consumed by CIS-CAT Pro Assessor CLI to provide connection configurations when assessing a particular benchmark.  By default, CIS-CAT Pro Assessor CLI will ALWAYS attempt to load a default configuration file located in the application's `config` folder, named `sessions.properties`.
 
-Microsoft Windows install
+#### Microsoft Windows Sessions ####
 -----------------------------------------
 
 For example, if CCPA is installed at `C:\CIS\Assessor-CLI`, a file named `C:\CIS\Assessor-CLI\config\sessions.properties` will be searched for and loaded (if found).  If no `sessions.properties` files are found or specified, a default `local` session will be used.
@@ -114,7 +114,7 @@ Configure a Cisco IOS session pointing to an exported configuration file:
     session.6.type=ios
 	session.6.tech=C:\\CiscoFiles\\configuration.cfg
 
-Linux install
+#### Linux Sessions ####
 ------------------------
 
 Configure a remote Linux session using a username/private key:
@@ -125,7 +125,7 @@ Configure a remote Linux session using a username/private key:
     session.7.user=ec2-user
     session.7.identity=/home/myuser/cis/pkey.pem
 
-MacOS install
+#### MacOS Sessions ####
 --------------------------
 
 Configure a remote Linux session using a username/private key:
@@ -135,6 +135,33 @@ Configure a remote Linux session using a username/private key:
     session.8.port=22
     session.8.user=ec2-user
     session.8.identity=/Users/myuser/cis/pkey.pem
+
+Properties
+--------
+A number of different system properties exist to provide additional functionality.  These properties are found in a file named `assessor-cli.properties`,located in the application's `config` folder.  For any property value updates to take effect, the CIS-CAT Pro Assessor application must be re-started.
+
+| Property Name          | Data Type   |   Description |
+| -----------------------| ---------- | ------------- |
+| validate.xml.schema                  | `true/false`    | Controls XML Schema validation.  Can be set to "false" to turn off schema validation for the selected benchmark/data stream collection. |
+| exit.on.invalid.signature | `true/false`      | Controls the behavior of the application when an XML benchmark document is selected which contains an invalid digital signature.  Default behavior is to exit the application.|
+| user.assigned.machine.name | `string`  | Allows users to specify a distinct identifier for a machine under assessment.|
+| ignore.platform.mismatch     | `true/false`      | Controls whether users can assess benchmarks for platforms not matching the target under assessment.  By setting this property to "true" CIS-CAT Pro will continue to evaluate the assessment rules, despite the platform mismatch. |
+| include.csv.remediation | `true/false` | Controls whether remediation text is generated in the CSV-formatted assessment report. |
+| include.csv.headers | `true/false` | Controls whether a row of column headers is generated in the CSV-formatted assessment report. |
+| include.csv.target_ip | `true/false` | Controls whether the target IP address is generated in the CSV-formatted assessment report. |
+| include.csv.scoring | `true/false` | Controls whether the overall scoring information is generated in the CSV-formatted assessment report. |
+| include.csv.rule.scoring | `true/false` | Controls whether individual rule scoring information is generated in the CSV-formatted assessment report. |
+| ciscat.post.parameter.ccpd.token | `string` | Allows for the inclusion of a CIS-CAT Pro Dashboard-generated bearer token, to upload ARF reports. |
+| ciscat.post.parameter.report.name | `string` | Allows for the customization of the CIS-CAT POST parameter for the Report Name.  To POST assessment reports to the CIS-CAT Pro Dashboard, the value of this property must be set to "report-name". |
+| ciscat.post.parameter.report.body | `string` | Allows for the customization of the CIS-CAT POST parameter for the Report Body.  To POST assessment reports to the CIS-CAT Pro Dashboard, the value of this property must be set to "ciscat-report". |
+| ciscat.zip.post.files | `true/false` | Allows for assessment reports to be zipped/compressed when they are sent to the Dashboard via a POST request.  This property is only supported with Dashboard version 1.1.9 or higher. |
+| vulnerability.proxy.host | `string` | Manual configuration of a proxy host when downloading vulnerability definitions. |
+| vulnerability.proxy.port | `string` | Manual configuration of a proxy port when downloading vulnerability definitions |
+| excluded.filesystems | `string` | A comma-delimited list of filesystem names/mount points to exclude from any full-filesystem searches on Linux. |
+| custom.html.coverpage.background | `string` | The name of the graphics file, saved to the "custom" folder, to be used as the HTML report's cover page background. |
+| custom.html.coverpage.logo | `string` | The name of the graphics file, saved to the "custom" folder, to be used as the HTML report's cover page organizational logo. |
+| custom.html.coverpage.subtitle.background | `string` | The name of the graphics file, saved to the "custom" folder, to be used as the HTML report's cover page subtitle background. |
+| custom.html.css | `string` | The name of the CSS file, saved to the "custom" folder, which overrides the HTML report's styling. |
 
 
 Microsoft Windows Endpoint Configuration
@@ -282,6 +309,15 @@ If users intend to connect to remote endpoints using WinRM over HTTP (and not HT
 	winrm set winrm/config/service @{AllowUnencrypted="true"}
 
 **NOTE** This configuration is only required when using *WinRM over HTTP*.  See the Security Considerations above for more information.  This setting is **NOT REQUIRED** when using *WinRM over HTTPS*.
+
+##### Review WinRM Configuration Settings #####
+Enter the following command to review the WinRM configuration settings:
+
+	winrm get winrm/config/winrs
+
+If you experience errors running an assessment over WinRM (e.g., out-of-memory errors), you may need to update the default **MaxMemoryPerShellMB** configuration setting in order to increase the maximum amount of memory available.  The following sample command updates this setting to 1 GB (1024 MB):
+
+winrm set winrm/config/winrs @{MaxMemoryPerShellMB="1024"} 
 
 ##### Disable UAC remote restrictions #####
 To better protect those users who are members of the local Administrators group, Microsoft implemented UAC restrictions on the network. This mechanism helps prevent against "loopback" attacks. This mechanism also helps prevent local malicious software from running remotely with administrative rights.
@@ -597,8 +633,8 @@ Replace `NETWORK_SHARE` with the fully qualified domain name or IP address of th
 	SET JavaPath64=Java64\jre
 Note that the 32-bit and 64-bit JRE paths are those installed in step 4 under the **Create CIS Share on the CIS Hosting Server** section above.
 
-	SET JavaMaxMemoryMB=768
-Indicate the maximum amount of memory CIS-CAT will allocate for execution.  The default is 768 MB.  When executing with 32-bit versions of the JRE, this value can be set to a maximum of 2048 MB.  64-bit JRE’s may allocate as much memory as is required, limited by the available memory of machines invoking CIS-CAT.
+	SET JavaMaxMemoryMB=2048
+Indicate the maximum amount of memory CIS-CAT will allocate for execution.  The default is 2048 MB.  When executing with 32-bit versions of the JRE, this value can be set to a maximum of 2048 MB.  64-bit JRE’s may allocate as much memory as is required, limited by the available memory of machines invoking CIS-CAT.
 
 	SET CisCatPath=Assessor-CLI
 Set the CisCatPath value to the location, relative to the network share, of the installed version of CIS-CAT.  For example, the value above indicates the path to CIS-CAT is `\\NETWORK_SHARE\CIS\Assessor-CLI`.
@@ -663,8 +699,8 @@ Replace `CisHostServer` with the fully qualified domain name or IP address of th
 	SET JavaPath64=Java64\jre
 Note that the 32-bit and 64-bit JRE paths are those installed in step 4 under the **Create CIS Share on the CIS Hosting Server** section above.
 
-	SET JavaMaxMemoryMB=768
-Indicate the maximum amount of memory CIS-CAT will allocate for execution.  The default is 768 MB.  When executing with 32-bit versions of the JRE, this value can be set to a maximum of 2048 MB.  64-bit JRE’s may allocate as much memory as is required, limited by the available memory of machines invoking CIS-CAT.
+	SET JavaMaxMemoryMB=2048
+Indicate the maximum amount of memory CIS-CAT will allocate for execution.  The default is 2048 MB.  When executing with 32-bit versions of the JRE, this value can be set to a maximum of 2048 MB.  64-bit JRE’s may allocate as much memory as is required, limited by the available memory of machines invoking CIS-CAT.
 
 	SET CisCatPath=Assessor-CLI
 Set the CisCatPath value to the location, relative to the network share, of the installed version of CIS-CAT.  For example, the value above indicates the path to CIS-CAT is `\\NETWORK_SHARE\CIS\Assessor-CLI`.
