@@ -157,7 +157,7 @@ A number of different system properties exist to provide additional functionalit
 | ciscat.zip.post.files | `true/false` | Allows for assessment reports to be zipped/compressed when they are sent to the Dashboard via a POST request.  This property is only supported with Dashboard version 1.1.9 or higher. |
 | vulnerability.proxy.host | `string` | Manual configuration of a proxy host when downloading vulnerability definitions. |
 | vulnerability.proxy.port | `string` | Manual configuration of a proxy port when downloading vulnerability definitions |
-| excluded.filesystems | `string` | A comma-delimited list of filesystem names/mount points to exclude from any full-filesystem searches on Linux. |
+| excluded.filesystems | `string` | A comma-delimited list of filesystem names/mount points to exclude from any full-filesystem searches on Linux.  Linux assessments where user home directories exist on an auto-mounted, large storage drive, will experience longer assessment duration as some benchmarks check will take longer to complete. |
 | custom.html.coverpage.background | `string` | The name of the graphics file, saved to the "custom" folder, to be used as the HTML report's cover page background. |
 | custom.html.coverpage.logo | `string` | The name of the graphics file, saved to the "custom" folder, to be used as the HTML report's cover page organizational logo. |
 | custom.html.coverpage.subtitle.background | `string` | The name of the graphics file, saved to the "custom" folder, to be used as the HTML report's cover page subtitle background. |
