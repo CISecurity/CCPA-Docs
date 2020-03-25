@@ -25,6 +25,9 @@ See the CIS-CAT Pro Assessor Coverage Guide for information about supported benc
 - Assessor will no longer incur an error when a detected file is subsequently deleted during an assessment of a textfilecontent54_test OVAL test.
 - Updated to include the latest JSON 1.1 vulnerability feed data.
 
+### Documentation ###
+- Default options available for configuration in the assessor-cli.properties file are now described in further detail in the online documentation. See the "Properties" section of the Configuration Guide.
+
 ## CIS-CAT Pro Assessor, v4.0.18 ##
 #### Release Date: February 25, 2020 ####
 
