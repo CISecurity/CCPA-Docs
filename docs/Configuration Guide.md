@@ -142,10 +142,10 @@ A number of different system properties exist to provide additional functionalit
 
 | Property Name          | Data Type   |   Description |
 | -----------------------| ---------- | ------------- |
-| validate.xml.schema                  | `true/false`    | Controls XML Schema validation.  Can be set to "false" to turn off schema validation for the selected benchmark/data stream collection. |
-| exit.on.invalid.signature | `true/false`      | Controls the behavior of the application when an XML benchmark document is selected which contains an invalid digital signature.  Default behavior is to exit the application.|
+| validate.xml.schema                  | `true/false`    | Configuration of `true` results in schema validation of benchmark/datastream files. On validation failure, assessment process halts with exit with a code of 500. Configuration of `false` will not result in formal validation, but errors in the structure will result in an exception. |
+| exit.on.invalid.signature | `true/false`      | Detects alteration in signed benchmark/datastream files prior to assessment. When set to `true`, and signature is found to be invalid, the assessment process will stop. When set to `false`, a notification appears if signature is found invalid and assessment continues without intervention.|
 | user.assigned.machine.name | `string`  | Allows users to specify a distinct identifier for a machine under assessment.|
-| ignore.platform.mismatch     | `true/false`      | Controls whether users can assess benchmarks for platforms not matching the target under assessment.  By setting this property to "true" CIS-CAT Pro will continue to evaluate the assessment rules, despite the platform mismatch. |
+| ignore.platform.mismatch     | `true/false`      | For both `true` and `false` when an operating system benchmark is selected, the target system's operating system will be compared to that of the selected benchmark. When set to `true` and a mismatch is detected, the assessment will continue without intervention but may result in errors or multiple failed results. When set to `false` and a mismatch is detected, a message "The checklist does not match the target platform" is displayed on the command line. The assessment continues without intervention, and all results will be "Not Applicable" with a score of 0%. |
 | include.csv.remediation | `true/false` | Controls whether remediation text is generated in the CSV-formatted assessment report. |
 | include.csv.headers | `true/false` | Controls whether a row of column headers is generated in the CSV-formatted assessment report. |
 | include.csv.target_ip | `true/false` | Controls whether the target IP address is generated in the CSV-formatted assessment report. |
