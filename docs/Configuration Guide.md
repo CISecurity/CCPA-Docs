@@ -634,7 +634,7 @@ Replace `NETWORK_SHARE` with the fully qualified domain name or IP address of th
 Note that the 32-bit and 64-bit JRE paths are those installed in step 4 under the **Create CIS Share on the CIS Hosting Server** section above.
 
 	SET JavaMaxMemoryMB=2048
-Indicate the maximum amount of memory CIS-CAT will allocate for execution.  The default is 2048 MB.  When executing with 32-bit versions of the JRE, this value can be set to a maximum of 2048 MB.  64-bit JRE’s may allocate as much memory as is required, limited by the available memory of machines invoking CIS-CAT.
+Indicate the maximum amount of memory CIS-CAT will allocate for execution.  The default is 2048 MB.  When executing with 32-bit versions of the JRE, this value should be set to a maximum of 1024 MB. This value may need to be lower depending on other processes running on the machine.  64-bit JRE’s may allocate as much memory as is required, limited by the available memory of machines invoking CIS-CAT.
 
 	SET CisCatPath=Assessor-CLI
 Set the CisCatPath value to the location, relative to the network share, of the installed version of CIS-CAT.  For example, the value above indicates the path to CIS-CAT is `\\NETWORK_SHARE\CIS\Assessor-CLI`.
@@ -700,7 +700,7 @@ Replace `CisHostServer` with the fully qualified domain name or IP address of th
 Note that the 32-bit and 64-bit JRE paths are those installed in step 4 under the **Create CIS Share on the CIS Hosting Server** section above.
 
 	SET JavaMaxMemoryMB=2048
-Indicate the maximum amount of memory CIS-CAT will allocate for execution.  The default is 2048 MB.  When executing with 32-bit versions of the JRE, this value can be set to a maximum of 2048 MB.  64-bit JRE’s may allocate as much memory as is required, limited by the available memory of machines invoking CIS-CAT.
+Indicate the maximum amount of memory CIS-CAT will allocate for execution.  The default is 2048 MB.  When executing with 32-bit versions of the JRE, this value should be set to a maximum of 1024 MB.  This value may need to be lower depending on other processes running on the machine. 64-bit JRE’s may allocate as much memory as is required, limited by the available memory of machines invoking CIS-CAT.
 
 	SET CisCatPath=Assessor-CLI
 Set the CisCatPath value to the location, relative to the network share, of the installed version of CIS-CAT.  For example, the value above indicates the path to CIS-CAT is `\\NETWORK_SHARE\CIS\Assessor-CLI`.
