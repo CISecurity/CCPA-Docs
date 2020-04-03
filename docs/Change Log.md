@@ -21,7 +21,7 @@ See the CIS-CAT Pro Assessor Coverage Guide for information about supported benc
 - Resolved an error when assessing Microsoft Windows Server 2008 R2.
 - When downloading the latest, supported vulnerability definitions using CIS-CAT Pro commands, Microsoft Windows Server 2019 will now be included. SuSe Linux definition collection has also been updated.
 - Using the -npr option on the command line, configuration assessment results can be produced in json format.
-- Default Java memory allocation increased to 2 GB (2048MB) in all assessor-cli.bat and .sh, centralized and dissolvable scripts. This will require 64 bit Java installation. When running 32 bit Java, the scripts will need to be updated to 1024 MB. The Documentation now includes recommendations to set WinRM memory allocation and verify the current setting on target systems.
+- Default Java memory allocation increased to 2 GB (2048MB) in all assessor-cli.bat and .sh and centralized scripts. This will require 64 bit Java installation. When running 32 bit Java, the scripts will need to be updated to 1024 MB. The Documentation now includes recommendations to set WinRM memory allocation and verify the current setting on target systems.
 - Assessor will no longer incur an error when a detected file is subsequently deleted during an assessment of a textfilecontent54_test OVAL test.
 - Updated to include the latest JSON 1.1 vulnerability feed data.
 
