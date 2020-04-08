@@ -291,7 +291,8 @@ Once downloaded and made available in the GPMC, configure the following:
 
 - **Apply UAC restrictions to local accounts on network logons**:  Set to `Disabled`
 	- This setting controls whether local accounts can be used for remote administration via network logon (e.g., NET USE, connecting to C$, etc.). 
-	- Configuring this setting to `Disabled` allows local accounts to have full administrative rights when authenticating via network logon, by configuring the `LocalAccountTokenFilterPolicy` registry value to 1.
+	- Configuring this setting to `Disabled` allows local accounts to have full administrative rights when authenticating via network logon, by 
+	- configuring the `LocalAccountTokenFilterPolicy` registry value to 1.
 	- Local accounts are at high risk for credential theft when the same account and password is configured on multiple systems.  Again, see the Security Considerations above to determine if local accounts are necessary to perform remote assessment with CIS-CAT Pro Assessor.
 
 #### Manual Configuration ####
@@ -731,41 +732,14 @@ If successful, the above command will run an auto-assessment and result in outpu
 ![](https://i.imgur.com/7LV3Yce.png)
 
 ### Configuring the Scheduled Task via Group Policy ###
-Perform the following steps to create and assign a Group Policy that will cause target systems in the Workstation Group to execute CIS-CAT via a Scheduled Task.  Note that some steps may vary slightly, depending on which version of Windows you are using.
+A task should be scheduled to have each target system invoke either the cis-cat-centralized.bat or cis-cat-centralized-ccpd.bat batch script on a regular basis to run assessments against those systems. The cis-cat-centralized-ccpd.bat script includes additional options to automatically POST assessment reports to the CIS-CAT Pro Dashboard (CCPD).
 
-1. Run `gpmc.msc` to modify the group policy
-2. Select a group policy that is already targeted towards the computers that CIS-CAT needs to scan or create a new policy.
-3. Next, create the scheduled task by navigating to **Computer Configuration -> Preferences -> Control Panel Settings -> Scheduled Tasks.**  Once there, click on **Action -> New -> Scheduled Task (Windows Vista and Later)**. Fill in the name of the task.
-4. When setting the user who will be running the task, click the **“Change User or Group”** button, and click the **“Locations”** button on the **“Select User or Group”** popup:
+Various products and tools can be utilized to schedule this task. In a Windows environment, tasks are often scheduled using the Group Policy feature of Windows. For example, refer to an unofficial site ([https://www.faqforge.com/windows-server-2016/configure-scheduled-task-item-using-group-policy/](https://www.faqforge.com/windows-server-2016/configure-scheduled-task-item-using-group-policy/)) on instructions to schedule a task using Group Policy.
 
-    ![](https://i.imgur.com/KCdqvEZ.png)
-1. On the **“Locations”** popup, expand the domain selection, select **“Builtin”** and click OK:
+Ensure that the user selected to run the task has the highest privilege. When scheduling the task, refer to the fully qualified domain name or IP address of the CIS-CAT Pro Assessor Host Server. See the below example:
 
-    ![](https://i.imgur.com/icaKMog.png)
-1. Returning to the **“Select User or Group”** window, enter **“SYSTEM”** in the **“Enter the object name to select”** box, and click the **“Check Names”** button.  Select **“OK”** to select the SYSTEM user:
+`/c \\<CisHostServer>\CIS\cis-cat-centralized.bat`
 
-    ![](https://i.imgur.com/fLXSZlH.png)
-    
-    When returned to the scheduled task window, the **“NT AUTHORITY\System”** user should be indicated in the **“When running the task, use the following user account”** box.
-1. Ensure the **“Run whether user is logged on or not”** radio button is selected, and make sure **“Run with highest privileges”** is checked.  It should look similar to the below screen shot.  Note that the **“Do not store password.  The task will only have access to local resources.”** checkbox will automatically be checked and disabled.  The inability to store credentials in the scheduled task is the result of applying the patch for **Microsoft security update MS14-025**.
-
-    ![](https://i.imgur.com/0gtyt4M.png)
-1. Add in whatever scheduling is needed via the **Triggers** tab.  Then go to the **Actions** tab click New and specify the following settings:
-   * Set the **Action** drop down to **Start a program**
-   * Set **Program/script** to **cmd.exe**
-   * Set **Add arguments(optional)** to one of the following values, depending on whether you want to use the `cis-cat-centralized.bat` file **or** the `cis-cat-centralized-ccpd.bat` file.  Replace `<CisHostServer>` with the fully qualified domain name or IP address of the *CIS-CAT Host Server* you setup previously:
-
-		`/c \\<CisHostServer>\CIS\cis-cat-centralized.bat`
-	
-		**or**
-	
-		`/c \\<CisHostServer>\CIS\cis-cat-centralized-ccpd.bat`
-
-Once these steps are implemented, the **New Action** Dialog will look similar to the following:
-
-![](https://i.imgur.com/AESSqVw.png)
-
-Click **OK**.  CIS-CAT is now scheduled to run on all computers that are associated with the group policy.  The CIS-CAT assessment reports will be stored in the reports location or Dashboard you specified in the `cis-cat-centralized.bat` or `cis-cat-centralized-ccpd.bat` file, respectively.
 
 ### Bandwidth Considerations ###
 Through the deployment and testing of the CIS-CAT Centralized workflow, bandwidth utilization can reach approximately 300 MB of data for each machine invoking CIS-CAT.  This bandwidth utilization is the cost of invoking CIS-CAT over the network.
