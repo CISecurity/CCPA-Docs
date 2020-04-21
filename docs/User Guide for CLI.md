@@ -16,8 +16,6 @@ Endpoints to be assessed must be configured appropriately to allow for remote ac
 ## Cisco Configuration Assessment ##
 CIS-CAT Pro Assessor v4 includes the capability to assess Cisco networking devices in two ways.  Users can choose to connect directly to an online network device, via SSH, using a privileged account and perform evaluations against the current running configuration.  New to v4, users now have the ability to export device configurations, specifically the full output of the `show tech-support` command, to a file, and CIS-CAT Pro Assessor v4 can parse that output and perform the assessment.  Specifying the path to the exported configuration file is through the "session" configurations.  Detailed information on "sessions" can be found in the [CIS-CAT Pro Assessor Configuration Guide](./Configuration%20Guide).
 
-## Deployment ##
-CIS-CAT Pro Assessor CLI is a simple Java-based application and as such, requires a Java Runtime Environment (JRE) at or above version 1.8, in order to execute.  OpenJDK versions of Java are also supported.  See [https://openjdk.java.net/](https://openjdk.java.net/) for information about these free and open-source implementations of Java.  A suitable JRE/JDK may be installed to the machine on which CIS-CAT is installed, or may be located on a network share.  As long as the machine executing the CIS-CAT Pro Assessor CLI application can access a suitable JRE, it may be used to run the tool.
 
 ### Benchmark Coverage ###
 See the [CIS-CAT Pro Assessor Coverage Guide](./Coverage%20Guide) for the most up-to-date information regarding platform and application coverage.

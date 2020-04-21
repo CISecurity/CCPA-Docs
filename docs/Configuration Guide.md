@@ -18,9 +18,13 @@ CIS-CAT Pro Assessor v4 is a Java application and requires an available Java Run
 
 **Required**:
 
-- JRE 8, 9, 10, or 11 work best and must be installed on the host system or accessed via a network share
-  - OpenJDK implementations are supported. See [OpenJDK.java.net](https://openjdk.java.net "Apache Java website") for information about these free and open-source implementations of Java.
-- For remote scanning, the CIS-CAT host system must be able to communicate with the target system
+- Compatible version of JRE present on host or accessed via network share
+- JRE 8 required when utilizing CIS-CAT Pro Assessor to POST reports to CIS-CAT Pro Dashboard
+- JRE 9+ supported only for CIS-CAT Pro Assessor v4 activities
+	- Java versions 9+ will receive “WARNING: An illegal reflective access operation has occurred”. This can be ignored and will not halt the assessment.
+	- Java 9+ will prevent posting reports to Dashboard
+- OpenJDK (free and open-source) implementations are supported. See [OpenJDK.java.net](https://openjdk.java.net "Apache Java website") for information.
+- Remote scanning requires unrestricted access from the CIS-CAT host system to the assessed target system
 
 **Recommended Minimum**:
 
@@ -28,6 +32,23 @@ Depending on your organization's use of CIS-CAT Pro Assessor, the actual server 
 
 - 2 GHz dual processor
 - 4 GB of RAM
+
+
+## Deployment ##
+CIS-CAT Pro Assessor v4 requires only a Java Runtime Environment (JRE) at or above version 1.8, in order to execute.  We have found that the 1.8 version works best for all operations of the tool. Navigate to CIS WorkBench to [download the latest version.](https://workbench.cisecurity.org/files) Extract the bundle to a location where use of admin or elevated privileges can be utilized to execute command line options or scripts.
+
+There are many ways to implement routine scanning with CIS-CAT Pro. The selected method of scanning will determine where Java needs to be installed.
+
+JRE is required to be installed on the CIS-CAT Pro host system when scanning via:
+
+- [Remote scanning](https://ccpa-docs.readthedocs.io/en/latest/Configuration%20Guide/#sessions) (a system outside of a domain and not physically present on the CIS-CAT Pro system)
+- Local scanning (the system where CIS-CAT Pro is physically present)
+
+JRE is required to be installed on a shared network location when scanning via:
+
+- [Centralized scanning for Windows](https://ccpa-docs.readthedocs.io/en/latest/Configuration%20Guide/#assessing-multiple-windows-targets) (systems within the same network)
+- [Centralized scanning for Linux](https://ccpa-docs.readthedocs.io/en/latest/Configuration%20Guide/#assessing-multiple-unixlinux-targets) (systems within the same network)
+
 
 Sessions
 --------
