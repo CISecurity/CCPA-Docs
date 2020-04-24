@@ -35,7 +35,7 @@ Depending on your organization's use of CIS-CAT Pro Assessor, the actual server 
 - 4 GB of RAM
 
 
-##      Deployment ##
+## Deployment ##
 CIS-CAT Pro Assessor v4 requires only a Java Runtime Environment (JRE) at or above version 1.8, in order to execute.  We have found that the 1.8 64-bit version works best for all operations of the tool. Navigate to CIS WorkBench to [download the latest version.](https://workbench.cisecurity.org/files) Extract the bundle to a location where use of admin or elevated privileges can be utilized to execute command line options or scripts.
 
 There are many ways to implement routine scanning with CIS-CAT Pro. The selected method of scanning will determine where Java needs to be installed.
