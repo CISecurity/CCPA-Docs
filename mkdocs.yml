@@ -1,14 +1,12 @@
 site_name: CIS-CAT Pro Assessor v4
-
 nav:
-   - Home: index.md
-   - Coverage Guide: Coverage Guide.md  
-   - Configuration Guide: Configuration Guide.md
-   - User Guide for CLI: User Guide for CLI.md
-   - User Guide for Assesor Service: User Guide for Assessor Service.md
-   - User Guide for Controls Assessment Module: User Guide for Controls Assessment Module.md
-   - 3rd-Party Licenses: License Information.md
-   - Change Log: Change Log.md
-
+   - "Home": index.md
+   - "Coverage Guide": Coverage Guide.md  
+   - "Configuration Guide": Configuration Guide.md
+   - "User Guide for CLI": User Guide for CLI.md
+   - "User Guide for Assesor Service": User Guide for Assessor Service.md
+   - "User Guide for Controls Assessment Module": User Guide for Controls Assessment Module.md
+   - "License Information": License Information.md
+   - "Change Log": Change Log.md
 theme:
   name: readthedocs
