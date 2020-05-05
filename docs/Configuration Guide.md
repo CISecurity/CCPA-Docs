@@ -572,12 +572,8 @@ Assessing with the VMWare ESXi benchmark in CIS-CAT Pro Assessor v4 requires use
 
 - PowerShell installed
 	- VMware.VimAutomation.Core module required as cmdlets for managing vSphere are needed
-- PowerCLI 6.3+ installed
+- PowerCLI 6.5.1+ installed
 
-On successful execution of commands, the log file will show the following information.
-
-	INFO - VMwareUtilities::isPowerCLIInstalled – Comparing 11.5.0.14912921 to 6.3 result: 1
-	INFO - VMwareUtilities::isPowerCLIInstalled – Version check passed
 
 Older versions of powerCLI will receive a warning when older, deprecated versions are encountered. 
 On failure, the first line of the above example will show a result of "2" and will indicate that the version check has failed. A failure to connect and execute commands will in assessment results of "unknown" as CIS-CAT Pro Assessor will not be able to collect the system's state information.

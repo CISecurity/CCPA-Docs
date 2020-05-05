@@ -340,27 +340,28 @@ Tools and services that use OVAL for the three steps of system assessment — re
 ### VMware ESXi (Extension) ###
 | Test Name                | Implemented? | Notes |
 |--------------------------|--------------|-------|
-| VMHost Acceptance Level | N | In development |
-| VMHost VIB | N | In development |
-| VMHost Module | N | In development |
-| VMHost Coredump | N | In development |
-| VMHost Web Server SSL | N | In development |
-| VMHost Authentication | N | In development |
-| VMHost Account | N | In development |
-| VMHost SNMP | N | In development |
-| VMHost Advanced Setting | N | In development |
-| VMHost Service | N | In development |
-| VMHost NTP Server | N | In development |
-| VMHost Lockdown | N | In development |
-| VMHost Firewall Exception | N | In development |
-| VMHost Bus Adapter | N | In development |
-| VMHost iSCSI Host Bus Adapter | N | In development |
-| VMHost vSwitch Policy | N | In development |
-| VM Advanced Setting | N | In development |
-| VM Device | N | In development |
-| VM Hard Disk Device | N | In development |
-| VM Resource Config | N | In development |
-| Virtual Port Group | N | In development |
+| VMHost Acceptance Level | Y |  |
+| VMHost VIB | Y |  |
+| VMHost Module | Y |  |
+| VMHost Coredump | Y |  |
+| VMHost Web Server SSL | Y |  |
+| VMHost Authentication | Y |  |
+| VMHost Account | Y |  |
+| VMHost SNMP | N |  |
+| VMHost Advanced Setting | Y |  |
+| VMHost Service | Y |  |
+| VMHost NTP Server | Y |  |
+| VMHost Lockdown | Y |  |
+| VMHost Firewall Exception | Y |  |
+| VMHost Bus Adapter | Y |  |
+| VMHost iSCSI Host Bus Adapter | N |  |
+| VMHost vSwitch Policy | Y |  |
+| VM Advanced Setting | Y |  |
+| VM Device | Y |  |
+| VM Hard Disk Device | Y |  |
+| VM Resource Config | N |  |
+| Virtual Distributed Switch | Y |  |
+| Virtual Distributed Switch Port Group | Y |  |
 
 ### Other ###
 | Test Name                | Implemented? | Notes |
