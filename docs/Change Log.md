@@ -17,18 +17,18 @@ See the CIS-CAT Pro Assessor Coverage Guide for information about supported benc
 - Apple macOS 10.15 v1.0.0.1
 - Google Chrome Benchmark v1.3.0 removed, v2.0.0 included only
 - Google Kubernetes Engine v1.1.0
-- Microsoft SQL Server 2008 R2 Benchmark v1.6.0
-- Microsoft SQL Server 2012 v1.5.0.1
-- Microsoft SQL Server 2014 v1.4.0.1
+- Microsoft SQL Server 2008 R2 Benchmark v1.6.0 - Final release
+- Microsoft SQL Server 2012 v1.5.0.1 - Final release
+- Microsoft SQL Server 2014 v1.4.0.1 - Final release
 - Microsoft SQL Server 2016 v1.1.0.1
 - Microsoft SQL Server 2017 v1.0.0.1
 - Microsoft SQL Server 2019 v1.0.0.1
-- Microsoft Windows 7 Workstation v3.2.0 - Final update
+- Microsoft Windows 7 Workstation v3.2.0 - Final release
 - Microsoft Windows Server 2008 R2 v3.2.0
 - Oracle 12c v3.0.0
 - PostgreSQL 12 v1.0.0
 - VMware ESXi 6.7 Benchmark v1.0.1
-- The following CIS Benchmarks have moved to end of life and are no longer officially supported. See the Coverage Guide for more information.
+- The following CIS Benchmarks have moved to end of life and are no longer officially supported. See the [Coverage Guide](https://ccpa-docs.readthedocs.io/en/latest/Coverage%20Guide/) for more information.
 	- Apple OSX 10.10
 	- Apple OSX 10.11
 	- Debian Linux 7
@@ -36,6 +36,10 @@ See the CIS-CAT Pro Assessor Coverage Guide for information about supported benc
 	- Microsoft Windows XP Professional
 	- Mozilla Firefox 24 ESR
 	- Oracle Database Server 11g R2
+
+NOTE: To import VMware ESXi 6.7 Benchmark v1.0.1 configuration reports to CIS-CAT Pro Dashboard, Members MUST upgrade to CIS-CAT Pro Dashboard v1.1.13.
+
+CIS Benchmarks marked with a "Final release" above will be moved to End of Life in the following CIS-CAT release.
 
 ### CIS-CAT Pro Updates ###
 - Assessor can now collect and interpret system registry values while assessing Windows target systems when values contain non-English characters.
