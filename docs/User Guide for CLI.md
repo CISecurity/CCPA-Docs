@@ -90,7 +90,7 @@ The benchmark and data-stream collection options provide users the ability to se
 | `-dm`         | `--data-stream` | `<DATA-STREAM>` | Used only when the `-b` option selects a data-stream-collection document, the `-dm` option specifies, within the collection, the ID of the data-stream to be assessed. |
 | `-cl` | `--checklist` | `<CHECKLIST>` | Used only in conjunction with the `-dm` option, the `-cl` option specifies, within the data-stream, the ID of the checklist (benchmark) to be assessed.|
 | `-p` | `--profile` | `<PROFILE>` | Specify either a profile name, such as `Level-1`, or the profile ID, such as `xccdf_org.cisecurity.benchmarks_profile_Level_1`.  Note that when using the profile name, if any spaces occur, the entire profile name must be wrapped in double-quotes, such as `"Level 2"`|
-| `-bi` | `--benchmark-info` | N/A | Used in conjunction with the `-b` option, this option displays information about the selected content, including (for data-stream collections) data-streams, checklists, and (for all content) profile information. |
+| `-bi` | `--benchmark-info` | N/A | When used in conjunction with the `-b` option, this option displays information about the selected content, including (for data-stream collections) data-streams, checklists, and (for all content) profile information. When used by itself, this options creates a text file listing all of the Benchmarks available in the bencharks folder along with the profiles available for each Benchmark.  This list is generated in the folder where the Assessor is installed. |
 
 #### Examples ####
 
@@ -126,6 +126,9 @@ Display extensive information about a specific benchmark:
 
 	> Assessor-CLI.bat -b benchmarks\CIS_Microsoft_Windows_Server_2016_Benchmark_v1.0.0-datastream.xml -bi
 
+Create a text file listing all available Benchmarks and their profiles:
+
+	> Assessor-CLI.bat -bi
 
 ### OVAL Definitions Assessment Options ###
 CIS-CAT Pro Assessor also has the ability to assess OVAL definitions files, such as vulnerability definitions downloaded from the OVAL repository.  Using an OVAL Variables file also allows for the injection of "external" variable values into the assessment of OVAL definitions content.
