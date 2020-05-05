@@ -8,6 +8,47 @@ CIS-CAT Pro Assessor v4
 ---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
+## CIS-CAT Pro Assessor, v4.0.20 ##
+#### Release Date: May 5, 2020 ####
+
+
+### Benchmark Coverage ###
+- Apple macOS 10.14 v1.0.0.1
+- Apple macOS 10.15 v1.0.0.1
+- Google Chrome Benchmark v1.3.0 removed, v2.0.0 included only
+- Google Kubernetes Engine v1.1.0
+- Microsoft SQL Server 2008 R2 Benchmark v1.6.0
+- Microsoft SQL Server 2012 v1.5.0.1
+- Microsoft SQL Server 2014 v1.4.0.1
+- Microsoft SQL Server 2016 v1.1.0.1
+- Microsoft SQL Server 2017 v1.0.0.1
+- Microsoft SQL Server 2019 v1.0.0.1
+- Microsoft Windows 7 Workstation v3.2.0 - Final update
+- Microsoft Windows Server 2008 R2 v3.2.0
+- Oracle 12c v3.0.0
+- PostgreSQL 12 v1.0.0
+- VMware ESXi 6.7 Benchmark v1.0.1
+- The following CIS Benchmarks have moved to end of life and are no longer officially supported. See the Coverage Guide for more information.
+	- Apple OSX 10.10
+	- Apple OSX 10.11
+	- Debian Linux 7
+	- Microsoft Internet Explorer 10
+	- Microsoft Windows XP Professional
+	- Mozilla Firefox 24 ESR
+	- Oracle Database Server 11g R2
+
+### CIS-CAT Pro Updates ###
+- Assessor can now collect and interpret system registry values while assessing Windows target systems when values contain non-English characters.
+- Due to EOL of Canonical's Ubuntu 12, CIS-CAT no longer officially supports vulnerability assessments for this version of the operating system.
+- A new property (esxi.max.wait) allows configuration of the maximum timeout value for the execution of each machine state collection command during a VMWare assessment.
+- A deprecated property, user.assigned.machine.name property, was removed from the assessor-cli.property file.
+- Updated to include the latest JSON 1.1 vulnerability feed data.
+
+### Documentation ###
+- Step-by-step instructions for Windows Task scheduling removed and replaced with more generic guidance with the understanding that Members have multiple different environments.
+- Modified "Configuration Guide" to be more specific about preferred versions of Java to utilize with CIS-CAT Pro.
+- Additional information now available on property settings.
+
 ## CIS-CAT Pro Assessor, v4.0.19 ##
 #### Release Date: March 25, 2020 ####
 

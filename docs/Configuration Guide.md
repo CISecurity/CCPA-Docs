@@ -21,10 +21,11 @@ CIS-CAT Pro Assessor v4 is a Java application and requires an available Java Run
 - Compatible version of JRE present on host or accessed via network share
 - JRE 8 required when utilizing CIS-CAT Pro Assessor to POST reports to CIS-CAT Pro Dashboard
 	- 64-bit Java recommended for faster performance
-- JRE 9+ supported only for CIS-CAT Pro Assessor v4 activities
+	- Versions 8.251+ of Java are NOT supported
+- JRE 9, 10, 11, 12 and 13 are supported only for CIS-CAT Pro Assessor v4 activities
 	- Java versions 9+ will receive “WARNING: An illegal reflective access operation has occurred”. This can be ignored and will not halt the assessment.
-	- Java 9+ will prevent posting reports to Dashboard
-- OpenJDK (free and open-source) implementations are supported. See [OpenJDK.java.net](https://openjdk.java.net "Apache Java website") for information.
+	- Java 8.251+, 9, 10, 11, 12 and 13 will prevent posting reports to Dashboard
+- OpenJDK (free and open-source) implementations are supported. We have found this [website](https://adoptopenjdk.net/") easy to navigate. The official source is [OpenJDK](https://openjdk.java.net).
 - Remote scanning requires unrestricted access from the CIS-CAT host system to the assessed target system
 
 **Recommended Minimum**:
@@ -160,26 +161,36 @@ Configure a remote Linux session using a username/private key:
 
 Properties
 --------
-A number of different system properties exist to provide additional functionality.  These properties are found in a file named `assessor-cli.properties`,located in the application's `config` folder.  For any property value updates to take effect, the CIS-CAT Pro Assessor application must be re-started.
+A number of different system properties exist to provide additional functionality.  These properties are found in a file named `assessor-cli.properties`, located in the application's `config` folder.  For any property value updates to take effect, the CIS-CAT Pro Assessor application must be re-started. All settings are optional for most Assessor activities. However, as use of CIS-CAT Pro expands, certain settings will be mandatory. For example, if utilizing CIS-CAT Pro Dashboard, it is required that the `ciscat.post.parameter.ccpd.token` is set.
+
 
 | Property Name          | Data Type   |   Description |
 | -----------------------| ---------- | ------------- |
+| **Define Behavior When Benchmark Content Fails Validation** |  |  |
 | validate.xml.schema                  | `true/false`    | Configuration of `true` results in schema validation of benchmark/datastream files. On validation failure, assessment process halts with exit with a code of 500. Configuration of `false` will not result in formal validation, but errors in the structure will result in an exception. |
+| **Define Assessor Behavior When Signed Benchmark Content Has Been Altered** |  |  |
 | exit.on.invalid.signature | `true/false`      | Detects alteration in signed benchmark/datastream files prior to assessment. When set to `true`, and signature is found to be invalid, the assessment process will stop. When set to `false`, a notification appears if signature is found invalid and assessment continues without intervention.|
-| user.assigned.machine.name | `string`  | Allows users to specify a distinct identifier for a machine under assessment.|
-| ignore.platform.mismatch     | `true/false`      | For both `true` and `false` when an operating system benchmark is selected, the target system's operating system will be compared to that of the selected benchmark. When set to `true` and a mismatch is detected, the assessment will continue without intervention but may result in errors or multiple failed results. When set to `false` and a mismatch is detected, a message "The checklist does not match the target platform" is displayed on the command line. The assessment continues without intervention, and all results will be "Not Applicable" with a score of 0%. |
+| **Define Behavior When Benchmark Does Not Match Operating System** |  |  |
+| ignore.platform.mismatch     | `true/false`      | **As Needed**. For both `true` and `false` when an operating system benchmark is selected, the target system's operating system will be compared to that of the selected benchmark. When set to `true` and a mismatch is detected, the assessment will continue without intervention but may result in errors or multiple failed results. When set to `false` and a mismatch is detected, a message "The checklist does not match the target platform" is displayed on the command line. The assessment continues without intervention, and all results will be "Not Applicable" with a score of 0%. |
+| **CIS-CAT Pro Dashboard Parameters** |  |  |
+| ciscat.post.parameter.ccpd.token | `string` | **Mandatory**. Allows for the inclusion of a CIS-CAT Pro Dashboard-generated bearer token, to upload ARF reports. |
+| ciscat.post.parameter.report.name | `string` | Allows for the customization of the CIS-CAT POST parameter for the Report Name.  To POST assessment reports to the CIS-CAT Pro Dashboard, the value of this property must be set to "report-name". |
+| ciscat.post.parameter.report.body | `string` | Allows for the customization of the CIS-CAT POST parameter for the Report Body.  To POST assessment reports to the CIS-CAT Pro Dashboard, the value of this property must be set to "ciscat-report". |
+| ciscat.zip.post.files | `true/false` | **Highly Recommended**. Allows for assessment reports to be zipped/compressed when they are sent to the Dashboard via a POST request.  This property is only supported with Dashboard version 1.1.9 or higher. |
+| **Set VMWare Command Timeout** |  |  |
+| esxi.max.wait | `numeric - milliseconds` | Sets the Maximum Wait time (time out) in milliseconds for each PowerCLI command to execute. Used only when assessing with a VMWare Benchmark. Default value is 30 seconds. May reduce overall assessment time where organizations do not have settings configured on the VM. |
+| **Define CSV Output Header Information** |  |  |
 | include.csv.remediation | `true/false` | Controls whether remediation text is generated in the CSV-formatted assessment report. |
 | include.csv.headers | `true/false` | Controls whether a row of column headers is generated in the CSV-formatted assessment report. |
 | include.csv.target_ip | `true/false` | Controls whether the target IP address is generated in the CSV-formatted assessment report. |
 | include.csv.scoring | `true/false` | Controls whether the overall scoring information is generated in the CSV-formatted assessment report. |
 | include.csv.rule.scoring | `true/false` | Controls whether individual rule scoring information is generated in the CSV-formatted assessment report. |
-| ciscat.post.parameter.ccpd.token | `string` | Allows for the inclusion of a CIS-CAT Pro Dashboard-generated bearer token, to upload ARF reports. |
-| ciscat.post.parameter.report.name | `string` | Allows for the customization of the CIS-CAT POST parameter for the Report Name.  To POST assessment reports to the CIS-CAT Pro Dashboard, the value of this property must be set to "report-name". |
-| ciscat.post.parameter.report.body | `string` | Allows for the customization of the CIS-CAT POST parameter for the Report Body.  To POST assessment reports to the CIS-CAT Pro Dashboard, the value of this property must be set to "ciscat-report". |
-| ciscat.zip.post.files | `true/false` | Allows for assessment reports to be zipped/compressed when they are sent to the Dashboard via a POST request.  This property is only supported with Dashboard version 1.1.9 or higher. |
+| **Set Proxy Information - Facilitates Vulnerability Definition Update** |  |  |
 | vulnerability.proxy.host | `string` | Manual configuration of a proxy host when downloading vulnerability definitions. |
 | vulnerability.proxy.port | `string` | Manual configuration of a proxy port when downloading vulnerability definitions |
-| excluded.filesystems | `string` | A comma-delimited list of filesystem names/mount points to exclude from any full-filesystem searches on Linux.  Linux assessments where user home directories exist on an auto-mounted, large storage drive, will experience longer assessment duration as some benchmarks check will take longer to complete. |
+| **Exclude Mounted File Systems from Assessment** |  |  |
+| excluded.filesystems | `string` | **As Needed**. A comma-delimited list of filesystem names/mount points to exclude from any full-filesystem searches on Linux.  Linux assessments where user home directories exist on an auto-mounted, large storage drive, will experience longer assessment duration as some benchmarks check will take longer to complete. |
+| **Customize HTML Output Graphics** |  |  |
 | custom.html.coverpage.background | `string` | The name of the graphics file, saved to the "custom" folder, to be used as the HTML report's cover page background. |
 | custom.html.coverpage.logo | `string` | The name of the graphics file, saved to the "custom" folder, to be used as the HTML report's cover page organizational logo. |
 | custom.html.coverpage.subtitle.background | `string` | The name of the graphics file, saved to the "custom" folder, to be used as the HTML report's cover page subtitle background. |
@@ -555,8 +566,49 @@ or
 
 VMware ESXi Endpoint Configuration
 ----------------------------------
-Currently in development for support in CIS-CAT Pro Assessor v4.
+Assessing with the VMWare ESXi benchmark in CIS-CAT Pro Assessor v4 requires use of a connection string to connect to the ESXi/vSphere host. The VMWare benchmark will require entry of the connection string on the command line or setting of the string in advance in the `assessor-cli.properties` file or configuration XML file. Additional requirements necessary for the host of CIS-CAT Pro when assessing with the VMWare benchmark are listed below.
 
+**Requirements**
+
+- PowerShell installed
+	- VMware.VimAutomation.Core module required as cmdlets for managing vSphere are needed
+- PowerCLI 6.3+ installed
+
+On successful execution of commands, the log file will show the following information.
+
+	INFO - VMwareUtilities::isPowerCLIInstalled – Comparing 11.5.0.14912921 to 6.3 result: 1
+	INFO - VMwareUtilities::isPowerCLIInstalled – Version check passed
+
+Older versions of powerCLI will receive a warning when older, deprecated versions are encountered. 
+On failure, the first line of the above example will show a result of "2" and will indicate that the version check has failed. A failure to connect and execute commands will in assessment results of "unknown" as CIS-CAT Pro Assessor will not be able to collect the system's state information.
+
+A version comparison result of "-1", indicates that the version check resulted in an "unrecognized format". Since the version could not fully be determined, accuracy of the results should be analyzed.
+
+**Connection Strings**
+
+If no connection strings are set in the configuration file or `assessor-cli.properties` file, the user will be prompted to enter connection information for the ESXi host. The format of this connection string is user/password@host. See the example below:
+
+	root/qu3rty@192.168.41.60
+
+**Assessment Duration**
+
+The VMWare benchmark will execute 40 to 60 commands to collect state information. In cases where particular settings are not configured on the VM, the assessor will attempt to collect state information up to the max wait time. If unsuccessful, the assessor will continue to the next check. The default max wait time is set to 30 seconds (30000ms) in the `assessor-cli.properties` file. This can be modified to serve organizational requirements. For more information, see the `assessor-cli.properties` file or the ["Properties"](https://ccpa-docs.readthedocs.io/en/latest/Configuration%20Guide/#properties) section in this guide.
+
+**Connections and Certificates**
+
+For performance and simplicity reasons, we recommend utilizing a local "session" type for the configuration assessment. The connection strings can be placed in a configuration xml or in the assessor-cli.properties file. If the connection string is not defined in either file, the command line will prompt the user to enter the information.
+
+If CIS-CAT Pro Assessor is unable to connect to the ESXi host, this information will be available in the CIS-CAT Pro log, if generated. The log may indicate that an error has occurred with a certificate. If this error is present, run the following command to verify the status of a certificate.
+
+    Get-PowerCLIConfiguration
+
+If a certificate validation is set to ignore, the result of the above command would be `InvalidCertificateAction = Ignore` for the scope of the `Session`.
+
+The certificate must be ignored for an assessment to execute. Setting this option to `Ignore` should be reviewed against organizational policies. 
+
+To modify the setting, run the following command:
+
+    Set-PowerCLIConfiguration -InvalidCertificateAction Ignore -Confirm:$false
 
 Extra configuration Options
 ---------------------------

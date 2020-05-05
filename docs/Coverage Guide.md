@@ -18,32 +18,32 @@ For some older Windows platforms such as Microsoft Windows 7 and Microsoft Windo
 
 CIS-CAT Pro Assessor v4 strives to be a standards-based application focused on vendor-supported technology platforms and applications where OVAL coverage is available. Some benchmarks released in CIS-CAT Pro Assessor v3 were developed using CIS' proprietary Embedded Check Language (ECL). These can be identified by the absence of "oval" or "xccdf" in the filename. These are not supported in v4 and will eventually be archived due to their age and diminishing relevance. If a benchmark was released only in v3, then it is likely that V4 does not support it. CIS-CAT Pro Assessor v4 will offer coverage only for CIS Benchmark content where OVAL content exists. Only the below technologies are supported in CIS-CAT Pro Assessor v4. CIS-CAT Pro Assessor v4 supported CIS Benchmarks will be present in the benchmark directory of your downloaded CIS-CAT bundle and contain "oval" or "xccdf" in the filename. Please contact [support@cisecurity.org](mailto:support@cisecurity.org) for additional coverage requests.
 
+CIS Benchmarks that have reached end of life are no longer officially supported for use with CIS-CAT. As Members are working to upgrade systems within their organization to more current technology, CIS offers end of life CIS Benchmark automated assessment content on the CIS WorkBench. Navigate to [https://workbench.cisecurity.org/files/2724](https://workbench.cisecurity.org/files/2724) for more information.
+
 - **CIS Alibaba Cloud Aliyun Linux 2, v1.0.0**
 - **CIS Amazon Linux Benchmark, v2.0.0**
 - **CIS Amazon Linux 2 Benchmark, v1.0.0.1**
 - **CIS Apple macOS 10.13 Benchmark, v1.0.0.1**
-- **CIS Apple OSX 10.10 Benchmark, v1.2.0**
-- **CIS Apple OSX 10.11 Benchmark, v1.1.0**
+- **CIS Apple macOS 10.14 Benchmark, v1.0.0.1**
+- **CIS Apple macOS 10.15 Benchmark, v1.0.0.1**
 - **CIS Apple OSX 10.12 Benchmark, v1.0.0**
 - **CIS CentOS Linux 6 Benchmark, v2.0.2**
 - **CIS CentOS Linux 7 Benchmark, v2.2.0**
 - **CIS CentOS Linux 8 Benchmark, v1.0.0.1**
 - **CIS Cisco IOS 12 Benchmark, v4.0.0**
 - **CIS Cisco IOS 15 Benchmark, v4.0.0**
-- **CIS Debian Linux 7 Benchmark, v1.0.0**
 - **CIS Debian Linux 8 Benchmark, v2.0.1**
 - **CIS Debian Linux 9 Benchmark, v1.0.1**
 - **CIS Debian Linux 10 Benchmark, v1.0.0**
 - **CIS Fedora 28 Family Linux, v1.0.0**
 		- NOTE:  Requires the "ignore.platform.mismatch" property be set to "true" in the Assessor's properties file.
-- **CIS Google Chrome Benchmark, v1.3.0**
 - **CIS Google Chrome Benchmark, v2.0.0**
+- **CIS Google Kubernetes Engine, v1.1.0**
 - **CIS Kubernetes Benchmark, v 1.5.1**
 - **CIS MIT Kerberos 1.10 Benchmark, v1.0.0**
 - **CIS Microsoft IIS 7 Benchmark, v1.8.0**
 - **CIS Microsoft IIS 8 Benchmark, v1.5.0**
 - **CIS Microsoft IIS 10 Benchmark, v1.1.1**
-- **CIS Microsoft Internet Explorer 10 Benchmark, v1.1.0**
 - **CIS Microsoft Internet Explorer 11 Benchmark, v1.0.0**
 - **CIS Microsoft Office Access 2013 Benchmark, v1.0.1**
 - **CIS Microsoft Office Access 2016 Benchmark, v1.0.1**
@@ -57,34 +57,32 @@ CIS-CAT Pro Assessor v4 strives to be a standards-based application focused on v
 - **CIS Microsoft Office Word 2016 Benchmark, v1.1.0**
 - **CIS Microsoft Office 2013 Benchmark, v1.1.0**
 - **CIS Microsoft Office 2016 Benchmark, v1.1.0**
-- **CIS Microsoft SQL Server 2008 R2 Benchmark, v1.5.0**
+- **CIS Microsoft SQL Server 2008 R2 Benchmark, v1.6.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: SQL Server connection string.
-- **CIS Microsoft SQL Server 2012 Benchmark, v1.5.0**
+- **CIS Microsoft SQL Server 2012 Benchmark, v1.6.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: SQL Server connection string.
-- **CIS Microsoft SQL Server 2014 Benchmark, v1.4.0**
+- **CIS Microsoft SQL Server 2014 Benchmark, v1.4.0.1**
 	- `xccdf_org.cisecurity_value_jdbc.url`: SQL Server connection string.
-- **CIS Microsoft SQL Server 2016 Benchmark, v1.1.0**
+- **CIS Microsoft SQL Server 2016 Benchmark, v1.1.0.1**
 	- `xccdf_org.cisecurity_value_jdbc.url`: SQL Server connection string.
-- **CIS Microsoft SQL Server 2017 Benchmark, v1.0.0**
+- **CIS Microsoft SQL Server 2017 Benchmark, v1.0.0.1**
 	- `xccdf_org.cisecurity_value_jdbc.url`: SQL Server connection string.
-- **CIS Microsoft SQL Server 2019 Benchmark, v1.0.0**
+- **CIS Microsoft SQL Server 2019 Benchmark, v1.0.0.1**
 	- `xccdf_org.cisecurity_value_jdbc.url`: SQL Server connection string.
 - **CIS Microsoft Windows 10 Enterprise Release 1809 Benchmark, v1.6.1**
 - **CIS Microsoft Windows 10 Enterprise Release 1903 Benchmark, v1.7.1**
 - **CIS Microsoft Windows 10 Enterprise Release 1909 Benchmark, v1.8.1**
 - **CIS Microsoft Windows Server 2003 Benchmark, v3.1.0**
 - **CIS Microsoft Windows Server 2008 (non-R2) Benchmark, v3.1.0**
-- **CIS Microsoft Windows Server 2008 R2 Benchmark, v3.1.0**
+- **CIS Microsoft Windows Server 2008 R2 Benchmark, v3.2.0**
 - **CIS Microsoft Windows Server 2012 (non-R2) Benchmark, v2.1.0**
 - **CIS Microsoft Windows Server 2012 R2 Benchmark, v2.3.0**
 - **CIS Microsoft Windows Server 2016 RTM (Release 1607) Benchmark, v1.0.0**
 - **CIS Microsoft Windows Server 2019 Benchmark, v1.1.0**
-- **CIS Microsoft Windows 7 Workstation Benchmark, v3.1.0**
+- **CIS Microsoft Windows 7 Workstation Benchmark, v3.2.0**
 - **CIS Microsoft Windows 8 Benchmark, v1.0.0**
 - **CIS Microsoft Windows 8.1 Workstation Benchmark, v2.3.0**
-- **CIS Microsoft Windows XP Benchmark, v3.1.0**
 - **CIS MongoDB 3.6, v1.0.0**
-- **CIS Mozilla Firefox 24 ESR Benchmark, v1.0.0**
 - **CIS Mozilla Firefox 38 ESR Benchmark, v1.0.0**
 - **CIS NGINX Benchmark, v1.1.0**
 - **CIS Oracle MySQL Community Server 5.6 Benchmark, v1.0.0**
@@ -99,10 +97,7 @@ CIS-CAT Pro Assessor v4 strives to be a standards-based application focused on v
 - **CIS Oracle MySQL Enterprise Edition 5.7 Benchmark, v1.0.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: MySQL Server connection string.
 	- `xccdf_org.cisecurity_value_repl.user`: MySQL replication user name.
-- **CIS Oracle Database 11g R2 Benchmark, v2.2.0**
-	- `xccdf_org.cisecurity_value_jdbc.url`: Oracle 11g R2 Server connection string.
-	- `xccdf_org.cisecurity_value_listener.ora`: Path to the listener.ora file
-- **CIS Oracle Database 12c Benchmark, v2.1.0**
+- **CIS Oracle Database 12c Benchmark, v3.0.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: Oracle Database connection string.
 	- `xccdf_org.cisecurity_value_listener.ora`: Path to the listener.ora file
 - **CIS Oracle Linux 6 Benchmark, v1.0.0**
@@ -115,6 +110,8 @@ CIS-CAT Pro Assessor v4 strives to be a standards-based application focused on v
 - **CIS PostgreSQL 10 Benchmark, v1.0.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: PostgreSQL Database connection string.
 - **CIS PostgreSQL 11 Benchmark, v1.0.0**
+	- `xccdf_org.cisecurity_value_jdbc.url`: PostgreSQL Database connection string.
+- **CIS PostgreSQL 12 Benchmark, v1.0.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: PostgreSQL Database connection string.
 - **CIS Red Hat Enterprise Linux 5 Benchmark, v2.2.0**
 - **CIS Red Hat Enterprise Linux 6 Benchmark, v2.0.2**
