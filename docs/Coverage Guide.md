@@ -83,6 +83,7 @@ CIS Benchmarks that have reached end of life are no longer officially supported 
 - **CIS Microsoft Windows 8 Benchmark, v1.0.0**
 - **CIS Microsoft Windows 8.1 Workstation Benchmark, v2.3.0**
 - **CIS MongoDB 3.6, v1.0.0**
+    - `xccdf_org.cisecurity_value_runnin_config_file.url`: MongoDB running configuration file (mongod.conf) location.
 - **CIS Mozilla Firefox 38 ESR Benchmark, v1.0.0**
 - **CIS NGINX Benchmark, v1.1.0**
 - **CIS Oracle MySQL Community Server 5.6 Benchmark, v1.0.0**
