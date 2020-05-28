@@ -475,6 +475,27 @@ Notable optional parameters involve ensuring JDBC connections are made via SSL:
 - The default port number for MySQL is 3306
 - The full set of connection properties/optional URL parameters supported by MariaDB can be found at [https://mariadb.com/kb/en/mariadb/about-the-mariadb-java-client/](https://mariadb.com/kb/en/mariadb/about-the-mariadb-java-client/)
 
+### Mongo Database ###
+The MongoDB benchmark requires one interactive property for the location of the MongoDB configuration file. This value allows for a user-supplied running configuration file for assessment.
+
+	default value is:/etc/mongod.conf
+
+
+| Property Name | Property Value |
+|---------------|----------------------|
+| MongoDB config file location   | /etc/mongod.conf |
+
+
+To verify the MongoDB running configuration file, connect to the MongoDB instance using MongoDB client with valid username/password and execute this command:
+
+	db.runCommand( { getCmdLineOpts: 1 } )
+
+The response will contain MongoDB running configuration file location. For example:
+
+	"config" : "/user/data/mongod.conf",	
+
+
+
 ### PostgreSQL Database ###
 CIS-CAT Pro Assessor has implemented support for assessments against PostgreSQL database instances using the PostgreSQL JDBC driver.  The format for the PostgreSQL JDBC connection string is:
 
