@@ -537,6 +537,93 @@ Configuring the use of custom graphics or CSS files is accomplished using the `c
 - `custom.html.coverpage.subtitle.background`: This property specifies the graphics file to be generated which serves as the background to the title text of the HTML report, which displays the name and version of the assessed benchmark, the assessed profile, and time of the assessment.  Note that by default, the styling of the text fronting this graphic is set to white, so a dark, high-contrast graphic is recommended, unless the CSS is customized for this text as well.  By default, the dimensions of this graphic are 885x190 px.
 - `custom.html.css`: This property specifies the name of a custom CSS file to be applied to the HTML report.  Note that the default CSS will still be applied to the HTML report and any properties contained in the custom CSS will override the defaults.  This allows organizations to customize only those components which are necessary to brand the reports appropriately.
 
+## Report - About the HTML Report ##
+
+###Configuration Assessment Report
+
+The configuration assessment HTML report is the most detailed output of a single configuration assessment. 
+
+The report is separated into 4 sections:
+
+- Summary
+- Profiles
+- Assessment Results
+- Assessment Details
+
+Below is an example CIS Ubuntu Linux 18.04 LTS Benchmark configuration assessment.
+
+
+**Summary**
+
+The Summary section provides an overall view of each section within the benchmark that contributes to the overall score. Recommendations are organized into categories and sub-categories. Each recommendation, when included in the CIS-CAT Pro automated assessment process, may consist of one or more "checks", also referred to as "tests". In order for a recommendation to reach an overall "Pass" result, all checks/tests must result in a "Pass". Recommendations requiring user input, often referred to as "Manual" or "Informational" will not appear in this section. The summary is separated into a few columns. An explanation of each column can be found in the table below.
+
+The totals in each highlighted major section in the Tests area are composed of the next level heading counts respective to each section.
+
+|Header Section| Test Result Type | Value                                              |
+|--------------|------------------|-------------------------------------------------------------|
+|Tests         |Pass           | Count of checks or tests meeting the criteria specified by the recommendation.  |
+|Tests         |Fail           | Count of checks or tests not meeting the criteria specified by the recommendation.                                              |
+|Tests         |Error          | Count of checks or tests that resulted in an error.                                                                     |
+|Tests         |Unkn.          | Count of checks or tests where CIS-CAT was unable to determine if the criteria of the test was met.                                                                     |
+|Scoring       |Score          | Count of recommendations with a result of "pass" in a given section.               |
+|Scoring       |Max            | Total count of recommendations that could result in a pass or fail.                                |
+|Scoring       |Percent        | Percent of recommendations passed in a given section ((Score/Max)*100)   |
+
+
+![ubuntusummary](https://i.imgur.com/ZryQOEX.png)
+
+![googlesummary](https://i.imgur.com/seub2up.png)
+
+**Note:** This area will result in multiple 0's when the selected Benchmark does not match the selected target system's operating system and `ignore.platform.mismatch=false`. The command line console will show the results as "Not Applicable" in cases, for example, where a Windows Benchmark was selected to scan a Linux platform. The command line console will also show "The checklist does not match the target platform." If `ignore.platform.mismatch=true`, the report may show a combination of failed results and 0 results in the same scenario.
+
+**Profiles**
+
+
+The profile section shows the available selections when performing an automated assessment. Profiles represent a pre-defined tailoring of the recommendations applicable to a particular security level. It is advisable to download and review the published version of the CIS Benchmark that coordinates with the machine readable assessment content to determine the best profile to utilize with each target system. Consult with organizational security policy to determine whether Level 1 or Level 2 is the best fit. 
+
+The intent of the Level 1 profile Benchmark is to lower the attack surface of your organization while keeping endpoints usable and not hindering business functionality. The Level 2 profile is an extension of the Level 1 profile, including all Level 1 recommendations with additional recommendations. The Level 2 profile is considered to be a more "defense in depth" posture, intended for environments where security is paramount. The recommendations associated with the Level 2 profile can have an adverse effect on your organization if not implemented appropriately or without due care.
+
+Every recommendation within each CIS Benchmark is associated with at least one profile. Regardless of which level profile you plan to implement in your environment, we recommend applying CIS Benchmark guidance in a test environment first, to determine potential impact.
+
+![ubuntuprofiles](https://i.imgur.com/9t22nAa.png)
+
+**Assessment Results**
+
+All rules with at least one automated check or test will be included in this section. Some CIS Benchmark recommendations cannot be reliably automated by default, and therefore, require each organization to carefully complete a manual review.
+
+All scored recommendations currently have a weight of 1. This is reflected in the column titled "w".
+
+Possible values are listed in the below table:
+
+|Value|Included in Scoring?|Description|
+|-----|--------------------|-----------|
+|Pass|Yes|The target system's state matched the recommendation's expected state.|
+|Fail|Yes|The target system's state deviates from the recommendation's expected state.|
+|Error|Yes|Assessor's attempt at collecting the system's state failed.|
+|Unknown|Yes|Assessor was unable to collect, interpret, or evaluate against the benchmark's recommended state.|
+|Informational|No|This recommendation cannot be fully automated and requires manual evaluation. On CIS Benchmarks, a recommendation is deemed important during the consensus process but cannot be fully and reliably verified without organizational manual verification. |
+
+![ubuntuassessmentresultsummary](https://i.imgur.com/lBQ8Ckc.png)
+
+
+**Assessment Details**
+
+The details section consists of the following:
+
+|Section Name|  Description                                              |
+|--------------|-------------------------------------------------------------|
+|Description        |  Provides additional information regarding the recommendation.         |
+|Rationale         |Articulates the reason the recommendation is made. May include the threat model addressed by the recommendation.           |
+|Remediation         |   Steps used to correct a target system resulting in a score of "Fail".        |
+|Impact         |   States unexpected, adverse consequences that may occur by implementing the recommendation.        |
+|Assessment         |  Shows the scanned target system's state information that was collected and the benchmark expected conditions for a passing score.        |
+|References         | May include CCE (Common Configuration Enumeration) identifiers or URLS to documentation supporting the recommendation.          |
+|CIS Controls         | If applicable, represents the CIS Control that this recommendation supports. The CIS Control represented will be the latest available at the time the CIS Benchmark version was made available. Not all recommendations within a Benchmark can be mapped to a CIS Control. The CIS Controls version 7 on this report maps to all CIS Controls 7 series.   |
+
+![ubuntudetail](https://i.imgur.com/69tRhH8.png)
+
+To view the XCCDF constructs, click the `Show Rule Result XML` link below the "Assessments" section. This information is primarily used for debugging purposes.
+
 ## Exit Codes ##
 A number of scenarios exist which could cause CIS-CAT Pro Assessor to terminate prior to completing its work.  Various errors could occur, such as the inability to ingest assessment content, session connectivity problems, etc.  The following table describes the set of CIS-CAT Pro Assessor's exit codes:
 
