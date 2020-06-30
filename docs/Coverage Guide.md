@@ -79,7 +79,6 @@ CIS Benchmarks that have reached end of life are no longer officially supported 
 - **CIS Microsoft Windows Server 2012 R2 Benchmark, v2.4.0**
 - **CIS Microsoft Windows Server 2016 RTM (Release 1607) Benchmark, v1.2.0**
 - **CIS Microsoft Windows Server 2019 Benchmark, v1.1.0**
-- **CIS Microsoft Windows 7 Workstation Benchmark, v3.2.0**
 - **CIS Microsoft Windows 8 Benchmark, v1.0.0**
 - **CIS Microsoft Windows 8.1 Workstation Benchmark, v2.4.0**
 - **CIS MongoDB 3.6, v1.0.0**
