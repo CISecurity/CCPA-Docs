@@ -603,7 +603,7 @@ Possible values are listed in the below table:
 |Fail|Yes|The target system's state deviates from the recommendation's expected state.|
 |Error|Yes|Assessor's attempt at collecting the system's state failed.|
 |Unknown|Yes|Assessor was unable to collect, interpret, or evaluate against the benchmark's recommended state.|
-|Informational|No|This recommendation cannot be fully automated and requires manual evaluation. On CIS Benchmarks, a recommendation is deemed important during the consensus process but cannot be fully and reliably verified without organizational manual verification. |
+|Manual|No|This recommendation cannot be fully automated and requires manual evaluation. On CIS Benchmarks, a recommendation is deemed important during the consensus process but cannot be fully and reliably verified without organizational manual verification. |
 
 ![ubuntuassessmentresultsummary](https://i.imgur.com/lBQ8Ckc.png)
 
