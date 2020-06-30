@@ -8,6 +8,40 @@ CIS-CAT Pro Assessor v4
 ---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
+## CIS-CAT Pro Assessor, v4.0.21 ##
+#### Release Date: June 30, 2020 ####
+
+
+### Benchmark Coverage ###
+- CentOS Linux 7 v3.0.0
+- Microsoft Windows 8.1 v2.4.0
+- Microsoft Windows Server 2012 v2.2.0
+- Microsoft Windows Server 2012 R2 v2.4.0
+- Microsoft Windows Server 2016 RTM (Release 1607) Benchmark v1.2.0
+- Oracle Linux 7 v3.0.0
+- Red Hat Enterprise Linux 7 v3.0.0
+- VMware ESXi 6.7 v1.1.0
+- The following CIS Benchmarks have moved to end of life and are no longer officially supported. See the [Coverage Guide](https://ccpa-docs.readthedocs.io/en/latest/Coverage%20Guide/) for more information.
+	- Microsoft Windows 7 Workstation
+
+### CIS-CAT Pro Updates ###
+- Issue resolved with upload to CIS-CAT Pro Dashboard for Cisco IOS assessment of a show tech file.
+- Target system collected state information now shown in detail on the HTML configuration report for all operating systems in "Assessment Details" section under "Assessment".
+- Improved efficiency of VMware ESXi 6.7 scan specific to recommendation 2.1.
+- Use -bi option on command line to produce a text file (benchmarks-info.txt) list of benchmarks and profiles.
+- Improvements to the assessment process when Mac addresses are unable to be collected.
+- Added new properties to specify custom graphics for the footer of the cover page of an HTML report or to simply not show the default footer of the cover page.
+- Resolved an exception when non-standard namespaces are found in automated assessment content. The information is now properly parsed and handled.
+- Enhanced Microsoft Windows assessment process in some scenarios when searching file systems.
+- Enhanced Microsoft Windows assessment process in some scenarios when utilizing check sums to evaluate file systems.
+- Enhancements to Microsoft Windows assessment process when collecting Windows services for evaluation.
+- Some unscored CIS recommendations are now presented on CIS-CAT configuration reports as "Manual" instead of "Informational". Manual recommendations require additional Member verification and cannot be fully automated.
+
+	NOTE: Export results values for these recommendations will change from "informational" to "manual". This may effect organizational processes that convert results using txt or csv assessment result output.
+
+### Documentation ###
+- Information on interpreting the HTML configuration report included in the guide. 
+
 ## CIS-CAT Pro Assessor, v4.0.20 ##
 #### Release Date: May 5, 2020 ####
 
