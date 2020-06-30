@@ -587,7 +587,7 @@ The intent of the Level 1 profile Benchmark is to lower the attack surface of yo
 
 Every recommendation within each CIS Benchmark is associated with at least one profile. Regardless of which level profile you plan to implement in your environment, we recommend applying CIS Benchmark guidance in a test environment first, to determine potential impact.
 
-![ubuntuprofiles](https://i.imgur.com/9t22nAa.png)
+![](img/Profile.png)
 
 **Assessment Results**
 
