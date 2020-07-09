@@ -676,8 +676,8 @@ On the “Permissions” popup, grant **Change** and **Read** to the Authenticat
 	- Reports 
 4. To copy the java runtime (JRE) to the CIS folder do the following:
 	- Browse to the location where Java is installed, by default Java is located at “%ProgramFiles%\Java”.
-	- Copy the 32-bit JRE that applies to the targets you will be evaluating, such as jre1.8.0_201, to the Java folder you created in step 3.
-	- Copy the 64-bit JRE that applies to the targets you will be evaluating, such as jre1.8.0_201, to the Java64 folder you created in step 3.
+	- Copy the 32-bit JRE that applies to the targets you will be evaluating, such as jre1.8.0_201, to the Java folder created above
+	- Copy the 64-bit JRE that applies to the targets you will be evaluating, such as jre1.8.0_201, to the Java64 folder created above
 5. Move the Assessor-CLI\misc\Windows\cis-cat-centralized.bat file or the Assessor-CLI\misc\Windows\cis-cat-centralized-ccpd.bat file to the root of the CIS folder, depending on whether you want to write the assessment reports to the *CIS Host Server* or configure the centralized script to send the assessment reports directly to a CIS-CAT Pro Dashboard (CCPD).
 6. Share the **CIS** folder as CIS.
 
@@ -846,14 +846,15 @@ The *CIS Host Server* is where the CIS-CAT bundle (including the various Java Ru
 
 Using the default configuration, consider the root folder for this workflow to be located at `/cis`.  
 
-1. The first setup step in setting up the *CIS Host Server* is to copy the required scripts to the root folder.  The four scripts which are required reside in the `
-2. /Unix-Linux` folder of a CIS-CAT installation bundle:
-   * cis-cat-centralized.sh **OR** cis-cat-centralized-ccpd.sh
-   * detect-os-variant.sh
-   * make-jre-directories.sh
-   * map-to-benchmark.sh
-1. The next step is to copy the `Assessor-CLI` folder, and its contents, contained in the unzipped bundle to the workflow's root folder.
-2. The last step in setting up the *CIS Host Server* is to configure the JRE sub-folders. The **“cis-cat-centralized.sh”** and **“cis-cat-centralized-ccpd.sh”** scripts are configured with an option to create the **“jres”** subfolder and all OS-specific folders underneath it.  Run one of the following commands, depending on whether you are using the **“cis-cat-centralized.sh”** or the **“cis-cat-centralized-ccpd.sh”** script: 
+1. Locate the required scripts in the `misc\Unix-Linux` folder of the CIS-CAT bundle
+2. Copy the following scripts to the root folder on the *CIS Host Server*:
+   - cis-cat-centralized.sh **OR** cis-cat-centralized-ccpd.sh
+   - detect-os-variant.sh
+   - make-jre-directories.sh
+   - map-to-benchmark.sh
+3. Copy the `Assessor-CLI` folder, and its contents, contained in the unzipped bundle to the workflow's root folder.
+2. Configure the JRE sub-folders
+   - Optionally use the **“cis-cat-centralized.sh”** and **“cis-cat-centralized-ccpd.sh”** scripts to create the **“jres”** subfolder and all OS-specific folders underneath it.  - Run one of the following commands, depending on whether you are using the **“cis-cat-centralized.sh”** or the **“cis-cat-centralized-ccpd.sh”** script: 
 
 	`/cis> ./cis-cat-centralized.sh --make-jre-directories`
 
