@@ -10,7 +10,7 @@ This document provides information regarding terms of use for CIS-CAT Pro Assess
 
 CIS Terms of Use
 ----------------
-TBD
+See our [website](https://www.cisecurity.org/cis-securesuite/cis-securesuite-membership-terms-of-use/).
 
 Third-Party Licenses
 --------------------
