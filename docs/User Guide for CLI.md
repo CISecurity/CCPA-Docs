@@ -146,7 +146,7 @@ Execute an assessment against the Microsoft Windows 10 vulnerability definitions
 
 Execute an assessment against the Microsoft Windows 10 vulnerability definitions, producing both an OVAL Result XML file, and an HTML report:
 
-	> Assessor-CLI.bat -od vulnerabilities\microsoft_windows_10.xml -
+	> Assessor-CLI.bat -od vulnerabilities\microsoft_windows_10.xml -html
 
 
 
@@ -156,7 +156,7 @@ Execute an assessment against an OVAL Definitions file containing "external" var
 
 Execute an assessment against an OVAL Definitions file containing "external" variables, using an OVAL Variables file to provide those variable values, producing both an OVAL Results XML file, and an HTML report:
 
-	> Assessor-CLI.bat -od C:\CIS\oval_definitions.xml -ov C:\CIS\oval_variables.xml -
+	> Assessor-CLI.bat -od C:\CIS\oval_definitions.xml -ov C:\CIS\oval_variables.xml -html
 
 
 
@@ -182,18 +182,14 @@ The following table summarizes a number of options controlling which reports to 
 #### Examples ####
 Execute CIS-CAT Pro Assessor CLI interactively, generating both an Asset Reporting Format result (by default) and an HTML report, saving them to the default reports folder:
 
-	> Assessor-CLI.bat -i -
+	> Assessor-CLI.bat -i -html
+	> 
 
 
 
 Execute an assessment against the CIS Microsoft Windows 10 benchmark, using the relative path to the benchmark file, automatically selecting the first profile.  Generate both the Asset Reporting Format (ARF) by default and an HTML report.  Save the reports to a specific reports folder:
 
-	> Assessor-CLI.bat -b benchmarks\CIS_Microsoft_Windows_10_Enterprise_Release_1703_Benchmark_v1.3.0-xccdf.xml -
-	> 
-	> 
-	> 
-	> 
-	>  -rd C:\CIS\custom\reports
+	> Assessor-CLI.bat -b benchmarks\CIS_Microsoft_Windows_10_Enterprise_Release_1703_Benchmark_v1.3.0-xccdf.xml -html -rd C:\CIS\custom\reports
 
 Execute an assessment against the CIS Microsoft Windows 10 benchmark, using the relative path to the benchmark file, automatically selecting the first profile.  Generate both the Asset Reporting Format (ARF) by default and an HTML report.  Save the reports to the default reports folder, but name the reports in a custom format:
 
