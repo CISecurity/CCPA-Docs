@@ -851,7 +851,7 @@ Using the default configuration, consider the root folder for this workflow to b
 	* detect-os-variant.sh
 	* make-jre-directories.sh
 	* map-to-benchmark.sh
-2. Copy the scripts to the root folder on the *CIS Host Server*:
+2. Copy the scripts to the root folder on the *CIS Host Server*
 1. Configure the JRE sub-folders
     * Optionally use the **“cis-cat-centralized.sh”** and **“cis-cat-centralized-ccpd.sh”** scripts to create the **“jres”** subfolder and all OS-specific folders underneath it.
 	* Run one of the following commands, depending on whether you are using the **“cis-cat-centralized.sh”** or the **“cis-cat-centralized-ccpd.sh”** script:
