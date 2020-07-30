@@ -8,6 +8,36 @@ CIS-CAT Pro Assessor v4
 ---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
+## CIS-CAT Pro Assessor, v4.0.22 ##
+#### Release Date: July 30, 2020 ####
+
+
+### Benchmark Coverage ###
+- Microsoft SQL Server 2008 R2 v1.7.0 - Final release *
+- Microsoft SQL Server 2012 v1.6.0 - Final release *
+- Microsoft SQL Server 2014 v1.5.0 - Final release *
+- Microsoft SQL Server 2016 v1.2.0
+- Microsoft SQL Server 2017 v1.1.0
+- Microsoft SQL Server 2019 v1.1.0
+- Oracle 18c v1.0.0
+- SUSE Linux 15 Enterprise v1.0.0
+- Ubuntu Linux 20.04 v1.0.0
+
+### CIS-CAT Pro Updates ###
+- Errors will no longer occur if the default sessions.properties file is removed or renamed.
+- Ubuntu vulnerability definitions are now saved in assessor folder in an unzipped format and ready for use.
+- Target system state resulting in a score of "Fail" on a configuration assessment HTML assessment report are now emphasized with color and text.
+- Resolved an error with Windows 10 vulnerability assessments.
+- Resolved an error with vulnerability HTML report generation.
+- The link to initiate a support request that appears on an HTML report has changed to URL location where Members can enter support issues cisecurity.org\support.
+- Added support for Java versions 8.251 through 14. Imports to Dashboard will now be successful when imported via the API.
+
+### Documentation ###
+- Corrected steps for CIS Host Server setup in "Assessing Multiple Unix/Linux Targets" section.
+- Third party license version number information maintained in license.file relevant to each release of CIS-CAT Pro Assessor v4.
+
+\* CIS Benchmarks marked with a "Final release" above will be moved to End of Life in the following CIS-CAT release.
+
 ## CIS-CAT Pro Assessor, v4.0.21 ##
 #### Release Date: June 30, 2020 ####
 

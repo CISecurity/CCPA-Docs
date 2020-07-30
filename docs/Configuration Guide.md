@@ -19,12 +19,9 @@ CIS-CAT Pro Assessor v4 is a Java application and requires an available Java Run
 **Required**:
 
 - Compatible version of JRE present on host or accessed via network share
-- JRE 8 required when utilizing CIS-CAT Pro Assessor to POST reports to CIS-CAT Pro Dashboard
-	- 64-bit Java recommended for faster performance
-	- Versions 8.251+ of Java are NOT supported
-- JRE 9, 10, 11, 12 and 13 are supported only for CIS-CAT Pro Assessor v4 activities
-	- Java versions 9+ will receive “WARNING: An illegal reflective access operation has occurred”. This can be ignored and will not halt the assessment.
-	- Java 8.251+, 9, 10, 11, 12 and 13 will prevent posting reports to Dashboard
+- Any JRE version from 8 to 14 is supported
+- 64-bit Java recommended for faster performance
+- Java versions 9+ will receive “WARNING: An illegal reflective access operation has occurred”. This can be ignored and will not halt the assessment.
 - OpenJDK (free and open-source) implementations are supported. We have found this [website](https://adoptopenjdk.net/) easy to navigate. The official source is [OpenJDK](https://openjdk.java.net).
 - Remote scanning requires unrestricted access from the CIS-CAT host system to the assessed target system
 
@@ -37,7 +34,7 @@ Depending on your organization's use of CIS-CAT Pro Assessor, the actual server 
 
 
 ## Deployment ##
-CIS-CAT Pro Assessor v4 requires only a Java Runtime Environment (JRE) at or above version 1.8, in order to execute.  We have found that the 1.8 64-bit version works best for all operations of the tool. Navigate to CIS WorkBench to [download the latest version.](https://workbench.cisecurity.org/files) Extract the bundle to a location where use of admin or elevated privileges can be utilized to execute command line options or scripts.
+CIS-CAT Pro Assessor v4 requires only a Java Runtime Environment (JRE) at or above version 1.8, in order to execute.  Navigate to CIS WorkBench to [download the latest version.](https://workbench.cisecurity.org/files) Extract the bundle to a location where use of admin or elevated privileges can be utilized to execute command line options or scripts.
 
 There are many ways to implement routine scanning with CIS-CAT Pro. The selected method of scanning will determine where Java needs to be installed.
 

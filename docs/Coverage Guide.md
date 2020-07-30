@@ -57,17 +57,17 @@ CIS Benchmarks that have reached end of life are no longer officially supported 
 - **CIS Microsoft Office Word 2016 Benchmark, v1.1.0**
 - **CIS Microsoft Office 2013 Benchmark, v1.1.0**
 - **CIS Microsoft Office 2016 Benchmark, v1.1.0**
-- **CIS Microsoft SQL Server 2008 R2 Benchmark, v1.6.0**
+- **CIS Microsoft SQL Server 2008 R2 Benchmark, v1.7.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: SQL Server connection string.
-- **CIS Microsoft SQL Server 2012 Benchmark, v1.5.0.1**
+- **CIS Microsoft SQL Server 2012 Benchmark, v1.6.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: SQL Server connection string.
-- **CIS Microsoft SQL Server 2014 Benchmark, v1.4.0.1**
+- **CIS Microsoft SQL Server 2014 Benchmark, v1.5.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: SQL Server connection string.
-- **CIS Microsoft SQL Server 2016 Benchmark, v1.1.0.1**
+- **CIS Microsoft SQL Server 2016 Benchmark, v1.2.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: SQL Server connection string.
-- **CIS Microsoft SQL Server 2017 Benchmark, v1.0.0.1**
+- **CIS Microsoft SQL Server 2017 Benchmark, v1.1.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: SQL Server connection string.
-- **CIS Microsoft SQL Server 2019 Benchmark, v1.0.0.1**
+- **CIS Microsoft SQL Server 2019 Benchmark, v1.1.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: SQL Server connection string.
 - **CIS Microsoft Windows 10 Enterprise Release 1809 Benchmark, v1.6.1**
 - **CIS Microsoft Windows 10 Enterprise Release 1903 Benchmark, v1.7.1**
@@ -100,6 +100,9 @@ CIS Benchmarks that have reached end of life are no longer officially supported 
 - **CIS Oracle Database 12c Benchmark, v3.0.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: Oracle Database connection string.
 	- `xccdf_org.cisecurity_value_listener.ora`: Path to the listener.ora file
+- **CIS Oracle Database 18c Benchmark, v1.0.0**
+	- `xccdf_org.cisecurity_value_jdbc.url`: Oracle Database connection string.
+	- `xccdf_org.cisecurity_value_listener.ora`: Path to the listener.ora file
 - **CIS Oracle Linux 6 Benchmark, v1.0.0**
 - **CIS Oracle Linux 7 Benchmark, v3.0.0**
 - **CIS Oracle Linux 8 Benchmark, v1.0.0**
@@ -119,9 +122,11 @@ CIS Benchmarks that have reached end of life are no longer officially supported 
 - **CIS Red Hat Enterprise Linux 8 Benchmark, v1.0.0.1**
 - **CIS SUSE Linux Enterprise 11 Benchmark, v2.0.0**
 - **CIS SUSE Linux Enterprise 12 Benchmark, v2.0.0**
+- **CIS SUSE Linux Enterprise 15 Benchmark, v1.0.0**
 - **CIS Ubuntu Linux 14.04 LTS Benchmark, v2.0.0**
 - **CIS Ubuntu Linux 16.04 LTS Benchmark, v1.0.0**
 - **CIS Ubuntu Linux 18.04 LTS Benchmark, v2.0.1**
+- **CIS Ubuntu Linux 20.04 LTS Benchmark, v1.0.0**
 - **CIS VMware ESXi 6.7 v1.1.0**
 	- `xccdf_org.cisecurity.benchmarks_value_esxi.connection`: ESXi host connection string
 
@@ -149,10 +154,12 @@ Using the `-vdd` command-line option, CIS-CAT Pro Assessor v4 is able to downloa
 | SuSE Linux Enterprise Server 9   | https://support.novell.com/security/oval                           |
 | SuSE Linux Enterprise Server 10  | https://support.novell.com/security/oval                           |
 | SuSE Linux Enterprise Server 11  | https://support.novell.com/security/oval                           |
-| SuSE Linux Enterprise Server 12  | https://support.novell.com/security/oval                           |
+| SuSE Linux Enterprise Server 12  | https://support.novell.com/security/oval
+| SuSE Linux Enterprise Server 15  | https://support.novell.com/security/oval                           |
 | Ubuntu Linux 14.04               | https://people.canonical.com/~ubuntu-security/oval                 |
 | Ubuntu Linux 16.04               | https://people.canonical.com/~ubuntu-security/oval                 |
-| Ubuntu Linux 18.04               | https://people.canonical.com/~ubuntu-security/oval                 |
+| Ubuntu Linux 18.04               | https://people.canonical.com/~ubuntu-security/oval
+| Ubuntu Linux 20.04               | https://people.canonical.com/~ubuntu-security/oval                 |
 
 OVAL Capabilities
 -----------------
