@@ -24,13 +24,14 @@ See the CIS-CAT Pro Assessor Coverage Guide for information about supported benc
 - Ubuntu Linux 20.04 v1.0.0
 
 ### CIS-CAT Pro Updates ###
-- Errors will no longer occur if the default sessions.properties file is removed or renamed.
-- Ubuntu vulnerability definitions are now saved in assessor folder in an unzipped format and ready for use.
-- Target system state resulting in a score of "Fail" on a configuration assessment HTML assessment report are now emphasized with color and text.
-- Resolved an error with Windows 10 vulnerability assessments.
-- Resolved an error with vulnerability HTML report generation.
-- The link to initiate a support request that appears on an HTML report has changed to URL location where Members can enter support issues cisecurity.org\support.
 - Added support for Java versions 8.251 through 14. Imports to Dashboard will now be successful when imported via the API.
+- Errors will no longer occur if the default sessions.properties file is removed or renamed.
+- Resolved an error with vulnerability HTML report generation.
+- SuSE 15 and Ubuntu 20.04 now supported for vulnerability assessments.
+- Target system state resulting in a score of "Fail" on a configuration assessment HTML assessment report are now emphasized with color and text.
+- The link to initiate a support request that appears on an HTML report has changed to URL location where Members can enter support issues cisecurity.org\support.
+- Resolved an error with Windows 10 vulnerability assessments.
+- Ubuntu vulnerability definitions are now saved in assessor folder in an unzipped format and ready for use. 
 
 ### Documentation ###
 - Corrected steps for CIS Host Server setup in "Assessing Multiple Unix/Linux Targets" section.
