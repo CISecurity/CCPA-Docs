@@ -637,7 +637,9 @@ The `-sessions` option allows users to configure multiple endpoints for assessme
 If no `sessions.properties` file exists or no connections are configured in the file, CIS-CAT Pro Assessor CLI will assess the local machine.
 
 <a name="assessMultipleWindowsTargets"></a>
-## Assessing Multiple Windows Targets ##
+Assessing Multiple Windows Targets
+-----------------------------------------
+
 It is possible to assess a population of Microsoft Windows targets in an automated manner without installing CIS-CAT or the JRE on each target. The following diagram depicts this deployment pattern:
 
 ![](https://i.imgur.com/gGUgx7K.png)
@@ -836,9 +838,11 @@ Ensure that the user selected to run the task has the highest privilege. When sc
 ### Bandwidth Considerations ###
 Through the deployment and testing of the CIS-CAT Centralized workflow, bandwidth utilization can reach approximately 300 MB of data for each machine invoking CIS-CAT.  This bandwidth utilization is the cost of invoking CIS-CAT over the network.
 
+
 <a name="assessCentalizedLinux"></a>
 Centralized - Unix/Linux  
---------
+-------------------------------
+
 
 The Centralized assessment method is an in-domain or in-network configuration assessment. In cases where organizational policy restricts use of remote assessments, the centralized method may be a possible solution for configuration assessments. This method also has the benefit of allowing installation of CIS-CAT Pro Assessor v4 and a suitable JRE on a network location vs. each target.
 
