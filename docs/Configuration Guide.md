@@ -646,7 +646,7 @@ The `-sessions` option allows users to configure multiple endpoints for assessme
 If no `sessions.properties` file exists or no connections are configured in the file, CIS-CAT Pro Assessor CLI will assess the local machine.
 
 <a name="assessMultipleWindowsTargets"></a>
-# Assessing Multiple Windows Targets #
+# Centralized - Windows #
 
 
 It is possible to assess a population of Microsoft Windows targets in an automated manner without installing CIS-CAT or the JRE on each target. The following diagram depicts this deployment pattern:
@@ -1006,9 +1006,10 @@ For example, if the network location is mounted to `/network` on each server, th
 	JRE_BASE=/network/cis/jres
 
 <a name="defineReportOutput"></a> 
-**Define the Report Output **
+**Define the Report Output**
 
-####cis-cat-centralized-ccpd.bat####
+
+**cis-cat-centralized-ccpd.bat**
 
 If using CIS-CAT Pro Dashboard, modify `cis-cat-centralized-ccpd.bat` to define the location of your installed CIS-CAT Pro Dashboard and entry of the authentication token.
 
@@ -1043,7 +1044,7 @@ Define the network location where the configuration assessment report output sho
 
 
 <a name="validateInstall"></a>
-###Validate the Install###
+**Validate the Install**
 
 To test the setup, log into one of the target systems that has access to the *CIS Host Server* as either a root user or a user capable of executing commands using sudo.  Execute one of the following commands, depending on which **.sh** file you intend to use (**cis-cat-centralized.sh** or **cis-cat-centralized-ccpd.sh**):
 
