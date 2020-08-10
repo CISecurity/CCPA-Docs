@@ -92,7 +92,7 @@ A number of different system properties exist to provide additional functionalit
 --------
 CIS-CAT Pro Assessor v4's remote assessment capability depends on the configuration of "sessions"; connection parameters used to create a secure connection to the remote endpoint.  A session configuration requires a number of entries, which will vary depending on the connection type. This connection is not necessary when selecting the centralized (in-network) method of assessment.
 
-### Connection Types ###
+#### Connection Types ####
 A number of different connection types exist to allow for maximum flexibility and coverage for the assessment of various endpoints, ranging from the local host to remote Windows, Unix, Linux, and Apple OSX endpoints, as well as Cisco network devices.
 
 | Type                   | Value      |   Description |
@@ -104,7 +104,7 @@ A number of different connection types exist to allow for maximum flexibility an
 
 
 
-### Sessions Configuration Properties ###
+#### Sessions Configuration Properties ####
 A number of configuration properties exist, and will vary based on the session type.
 
 | Property   | Description |
