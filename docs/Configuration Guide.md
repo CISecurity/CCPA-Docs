@@ -92,7 +92,8 @@ A number of different system properties exist to provide additional functionalit
 --------
 CIS-CAT Pro Assessor v4's remote assessment capability depends on the configuration of "sessions"; connection parameters used to create a secure connection to the remote endpoint.  A session configuration requires a number of entries, which will vary depending on the connection type. This connection is not necessary when selecting the centralized (in-network) method of assessment.
 
-#### Connection Types ####
+**Connection Types**
+
 A number of different connection types exist to allow for maximum flexibility and coverage for the assessment of various endpoints, ranging from the local host to remote Windows, Unix, Linux, and Apple OSX endpoints, as well as Cisco network devices.
 
 | Type                   | Value      |   Description |
@@ -104,7 +105,7 @@ A number of different connection types exist to allow for maximum flexibility an
 
 
 
-#### Sessions Configuration Properties ####
+**Sessions Configuration Properties**
 A number of configuration properties exist, and will vary based on the session type.
 
 | Property   | Description |
@@ -120,7 +121,7 @@ A number of configuration properties exist, and will vary based on the session t
 | `tech`     | The `tech` property is REQUIRED when assessing the exported configuration of a network device.  This property specifies the full path to the exported configuration file. <br/><br/> When assessing non-network device endpoints, or assessing a network devices' current running configuration via SSH, the `tech` property is unnecessary.<br/><br/> The `tech` property is not needed when the session type is `local`.|
 | `tmp`| The `tmp` property allows users to configure the location of the temporary "ephemeral" directory on the target host.  The "ephemeral" directory is named `ccpa-temp-TIMESTAMP` and is created as a sub-folder of the directory specified in this setting.  For example, if `tmp` is specified as `C:\Temp`, the "ephemeral" directory will be created at `C:\Temp\ccpa-temp-TIMESTAMP`.  **NOTE**: When specifying a value for `tmp`, this directory MUST ALREADY EXIST on the target endpoint.  In the above example, if the `C:\Temp` folder does not exist, the connection from CIS-CAT Pro Assessor v4 will not succeed.  If this property is left blank or not included, the Assessor will use the default "temp" folder as defined for the operating system, such as `/tmp` or `C:\Windows\Temp`.|
 
-### Examples ###
+**Examples**
 The examples below provide insight into the creation of a `sessions.properties` file, which can then be consumed by CIS-CAT Pro Assessor CLI to provide connection configurations when assessing a particular benchmark.  By default, CIS-CAT Pro Assessor CLI will ALWAYS attempt to load a default configuration file located in the application's `config` folder, named `sessions.properties`.
 
 #### Microsoft Windows Sessions ####
@@ -197,7 +198,7 @@ Configure a remote Linux session using a username/private key:
 
 
 
-Configure Microsoft Windows Target for Remote Assessment
+Remote Setup - Microsoft Windows
 ----------------------------------------
 CIS-CAT Pro Assessor v4 utilizes the SMB protocol for file manipulation and uses WinRM for process execution during a remote assessment.  Once connected to a remote Windows endpoint, CIS-CAT Pro Assessor establishes an "ephemeral" directory to host scripts required for the collection of system characteristics from the endpoint.  Once the collection/assessment has completed and the session disconnected, the "ephemeral" directory is removed from the endpoint.
 
@@ -376,7 +377,7 @@ In Windows domain environments, this setting can be configured through [Group Po
 Otherwise, the Group Policy Objects can be found either [here](http://blogs.technet.com/b/secguide/archive/2014/08/13/security-baselines-for-windows-8-1-windows-server-2012-r2-and-internet-explorer-11-final.aspx) or [here](https://blogs.technet.microsoft.com/secguide/2017/08/30/security-baseline-for-windows-10-creators-update-v1703-final/).
 
 
-#Remote Unix/Linux/OSX Target Assessment
+Remote Setup - Unix/Linux/OSX
 -------------------------------------
 CIS-CAT Pro Assessor assesses remote Unix/Linux/OSX targets via SSH connections.  Ensure the target system can be accessed via SSH and that the user connecting to the remote target is either the `root` user or a user granted privileges to execute commands using `sudo`.
 
@@ -385,14 +386,14 @@ By default, CIS-CAT Pro Assessor v4 will attempt to create the "ephemeral" direc
 
 It is *highly recommended* that, when the `/tmp` partition is mounted with the `noexec` option, that users configure the `sessions.properties` or `assessor-config.xml` files to customize the `tmp` setting to an existing directory on the target endpoint which will allow for script execution.  Not doing so will result in numerous incorrect assessment results.
 
-#Remote/Local Cisco Network Device Assessment
+Remote/Local Setup - Cisco Network Device
 -------------------------------------------
 CIS-CAT Pro Assessor v4 can assess either the current running configuration of a Cisco network device, or an exported configuration file.
 
-### Connecting to a Device ###
+**Connecting to a Device**
 CIS-CAT Pro Assessor assesses Cisco network device targets via SSH connections.  Ensure the target system can be accessed via SSH and that the user connecting to the remote target is a privileged user.  When connecting to Cisco devices, CIS-CAT Pro Assessor will be configured to enter "privileged EXEC" mode, so any user connecting to the Cisco device via SSH must be granted appropriate permission to do so.
 
-### Exported Configuration File ###
+**Exported Configuration File**
 CIS-CAT Pro Assessor can also assess an exported configuration file; the output of the `show tech-support` command.  The output from the `show tech-support` command is very long. To better manage this output, you can redirect the output to a file (for example, `show tech-support > *filename*` ) in the local writable storage file system or the remote file system.
 
 You can use one of the following redirection methods:
@@ -406,11 +407,11 @@ This example shows how to redirect the technical support information to a file:
 
 Once the exported configuration file is available to CIS-CAT Pro Assessor, the assessment can be performed against it.  See the example above entitled "Configure a Cisco IOS session pointing to an exported configuration file" to configure the appropriate Assessor "session".
 
-# Remote Database Assessment
+Database Assessment
 -------------------------------
 Assessing database benchmarks in CIS-CAT Pro Assessor v4 uses the same JDBC connection mechanism as previous versions.  Database benchmarks will require a user to enter the JDBC connection string, or utilize the `assessor-cli.properties` file to set the appropriate value for assessment.
 
-### Oracle Database ###
+**Oracle Database**
 The JDBC string parameter is the connection string used to connect to and authenticate to the Oracle Database service and instance that CIS-CAT will assess.  The Oracle JDBC driver has the ability to connect to Oracle database instances using either the SID or Service Name.
 
 When connecting to an Oracle database using the SID, the format of the JDBC connection string is:
@@ -441,7 +442,7 @@ The following table describes the components of the Oracle JDBC connection strin
 | Service Name  | The database Service Name.|
 
 
-### Oracle MySQL Database ###
+**Oracle MySQL Database**
 Oracle MySQL database support is implemented using the MariaDB JDBC driver.  The format for the MariaDB JDBC connection string for MySQL is:
 
 	jdbc:mysql://<host>:<port>/<database>?<key1>=<value1>&<key2>=<value2>...
@@ -475,7 +476,7 @@ Notable optional parameters involve ensuring JDBC connections are made via SSL:
 - The default port number for MySQL is 3306
 - The full set of connection properties/optional URL parameters supported by MariaDB can be found at [https://mariadb.com/kb/en/mariadb/about-the-mariadb-java-client/](https://mariadb.com/kb/en/mariadb/about-the-mariadb-java-client/)
 
-### Mongo Database ###
+**Mongo Database**
 The MongoDB benchmark requires one interactive property for the location of the MongoDB configuration file. This value allows for a user-supplied running configuration file for assessment.
 
 	default value is:/etc/mongod.conf
@@ -496,7 +497,7 @@ The response will contain MongoDB running configuration file location. For examp
 
 
 
-### PostgreSQL Database ###
+**PostgreSQL Database**
 CIS-CAT Pro Assessor has implemented support for assessments against PostgreSQL database instances using the PostgreSQL JDBC driver.  The format for the PostgreSQL JDBC connection string is:
 
 	jdbc:postgresql://<host>:<port>/<database>?<key1>=<value1>&<key2>=<value2>...
@@ -537,7 +538,7 @@ For example, in order to force the database connection to require SSL, the conne
 - The default port number for PostgreSQL is 5432
 - The full set of connection properties/optional URL parameters supported by PostgreSQL can be found at [https://jdbc.postgresql.org/documentation/head/connect.html](https://jdbc.postgresql.org/documentation/head/connect.html)
 
-### Microsoft SQL Server ###
+**Microsoft SQL Server**
 Microsoft SQL Server database support is implemented using the jTDS open source JDBC driver.  The jTDS driver provides support for SQL Server 6.5, 7, 2000, 2005, 2008, and 2012.
 
 The format of the jTDS JDBC URL for MS SQL Server is:
@@ -558,7 +559,7 @@ Consider a Microsoft SQL Server database instance with the following information
 | SQL Server Database User/Password | db_user/db_pass |
 | Instance Name                     | InstanceName |
 
-#### Windows Authentication ####
+**Windows Authentication**
 Windows Authentication Mode allows a user to connect to a SQL Server instance through a Microsoft Windows user account.  This mode allows domain user account information to be supplied in order to establish a connection.  The following JDBC connection string would be valid for establishing a connection using the above example information:
 
 	jdbc:jtds:sqlserver://CIS-SERVER:1433/TestDB;domain=WIN-DOMAIN;user=jsmith;password=qw3rty;instance=InstanceName
@@ -571,7 +572,7 @@ Windows Authentication Mode may also be used against databases running on machin
 
 	jdbc:jtds:sqlserver://CIS-SERVER:1433;DatabaseName=TestDB;domain=SQLSERVER;user=jsmith;password=qw3rty;instance=InstanceName;useNTLMv2=true
 
-#### SQL Server Authentication ####
+**SQL Server Authentication**
 SQL Server Authentication provides the ability for connections to a database instance to be made using trusted username and password information, allowing SQL Server to perform the authentication itself by checking to see if a SQL Server login account has been setup and if the password matches one previously recorded for that user.  The following JDBC URLs would be valid for establishing a connection using the above example information:
 
 	jdbc:jtds:sqlserver://CIS-SERVER:1433/TestDB;user=db_user;password=db_pass;instance=InstanceName
@@ -585,7 +586,7 @@ or
 - The default port number for MS SQL Server databases is `1433`.
 - The full set of connection properties supported by jTDS can be found at [http://jtds.sourceforge.net/faq.html#urlFormat](http://jtds.sourceforge.net/faq.html#urlFormat).
 
-#VMware ESXi Target Assessment
+VMware ESXi Assessment
 ----------------------------------
 Assessing with the VMWare ESXi benchmark in CIS-CAT Pro Assessor v4 requires use of a connection string to connect to the ESXi/vSphere host. The VMWare benchmark will require entry of the connection string on the command line or setting of the string in advance in the `assessor-cli.properties` file or configuration XML file. Additional requirements necessary for the host of CIS-CAT Pro when assessing with the VMWare benchmark are listed below.
 
@@ -836,7 +837,8 @@ Ensure that the user selected to run the task has the highest privilege. When sc
 Through the deployment and testing of the CIS-CAT Centralized workflow, bandwidth utilization can reach approximately 300 MB of data for each machine invoking CIS-CAT.  This bandwidth utilization is the cost of invoking CIS-CAT over the network.
 
 <a name="assessCentalizedLinux"></a>
-## Centralized Configuration Assessment of Unix/Linux Targets ##
+Centralized - Unix/Linux  
+--------
 
 The Centralized assessment method is an in-domain or in-network configuration assessment. In cases where organizational policy restricts use of remote assessments, the centralized method may be a possible solution for configuration assessments. This method also has the benefit of allowing installation of CIS-CAT Pro Assessor v4 and a suitable JRE on a network location vs. each target.
 
@@ -857,7 +859,7 @@ The CIS-CAT Pro Assessor v4 bundle is set up at a centralized file share locatio
 	- [Customize the default benchmarks and profiles](#customizeDefault)
 	- [Define the location of assessor and JRE](#defineAssessorLocation)
 1. [Define the report output](#defineReportOutput) for the selected script (cis-cat-centralized.sh or cis-cat-centralized-ccpd.sh)
-2. Validate the install
+2. [Validate the install](#validateInstall)
  
 
 <a name="hostServerSetup"></a>
@@ -1018,7 +1020,7 @@ Define the network location where the configuration assessment report output sho
 	
 
 
-
+<a name="validateInstall"></a>
 ### Validate the Install ###
 To test the setup, log into one of the target systems that has access to the *CIS Host Server* as either a root user or a user capable of executing commands using sudo.  Execute one of the following commands, depending on which **.sh** file you intend to use (**cis-cat-centralized.sh** or **cis-cat-centralized-ccpd.sh**):
 
