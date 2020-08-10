@@ -391,9 +391,11 @@ Remote/Local Setup - Cisco Network Device
 CIS-CAT Pro Assessor v4 can assess either the current running configuration of a Cisco network device, or an exported configuration file.
 
 **Connecting to a Device**
+
 CIS-CAT Pro Assessor assesses Cisco network device targets via SSH connections.  Ensure the target system can be accessed via SSH and that the user connecting to the remote target is a privileged user.  When connecting to Cisco devices, CIS-CAT Pro Assessor will be configured to enter "privileged EXEC" mode, so any user connecting to the Cisco device via SSH must be granted appropriate permission to do so.
 
 **Exported Configuration File**
+
 CIS-CAT Pro Assessor can also assess an exported configuration file; the output of the `show tech-support` command.  The output from the `show tech-support` command is very long. To better manage this output, you can redirect the output to a file (for example, `show tech-support > *filename*` ) in the local writable storage file system or the remote file system.
 
 You can use one of the following redirection methods:
@@ -412,6 +414,7 @@ Database Assessment
 Assessing database benchmarks in CIS-CAT Pro Assessor v4 uses the same JDBC connection mechanism as previous versions.  Database benchmarks will require a user to enter the JDBC connection string, or utilize the `assessor-cli.properties` file to set the appropriate value for assessment.
 
 **Oracle Database**
+
 The JDBC string parameter is the connection string used to connect to and authenticate to the Oracle Database service and instance that CIS-CAT will assess.  The Oracle JDBC driver has the ability to connect to Oracle database instances using either the SID or Service Name.
 
 When connecting to an Oracle database using the SID, the format of the JDBC connection string is:
@@ -443,6 +446,7 @@ The following table describes the components of the Oracle JDBC connection strin
 
 
 **Oracle MySQL Database**
+
 Oracle MySQL database support is implemented using the MariaDB JDBC driver.  The format for the MariaDB JDBC connection string for MySQL is:
 
 	jdbc:mysql://<host>:<port>/<database>?<key1>=<value1>&<key2>=<value2>...
@@ -477,6 +481,7 @@ Notable optional parameters involve ensuring JDBC connections are made via SSL:
 - The full set of connection properties/optional URL parameters supported by MariaDB can be found at [https://mariadb.com/kb/en/mariadb/about-the-mariadb-java-client/](https://mariadb.com/kb/en/mariadb/about-the-mariadb-java-client/)
 
 **Mongo Database**
+
 The MongoDB benchmark requires one interactive property for the location of the MongoDB configuration file. This value allows for a user-supplied running configuration file for assessment.
 
 	default value is:/etc/mongod.conf
@@ -498,6 +503,7 @@ The response will contain MongoDB running configuration file location. For examp
 
 
 **PostgreSQL Database**
+
 CIS-CAT Pro Assessor has implemented support for assessments against PostgreSQL database instances using the PostgreSQL JDBC driver.  The format for the PostgreSQL JDBC connection string is:
 
 	jdbc:postgresql://<host>:<port>/<database>?<key1>=<value1>&<key2>=<value2>...
@@ -539,6 +545,7 @@ For example, in order to force the database connection to require SSL, the conne
 - The full set of connection properties/optional URL parameters supported by PostgreSQL can be found at [https://jdbc.postgresql.org/documentation/head/connect.html](https://jdbc.postgresql.org/documentation/head/connect.html)
 
 **Microsoft SQL Server**
+
 Microsoft SQL Server database support is implemented using the jTDS open source JDBC driver.  The jTDS driver provides support for SQL Server 6.5, 7, 2000, 2005, 2008, and 2012.
 
 The format of the jTDS JDBC URL for MS SQL Server is:
@@ -560,6 +567,7 @@ Consider a Microsoft SQL Server database instance with the following information
 | Instance Name                     | InstanceName |
 
 **Windows Authentication**
+
 Windows Authentication Mode allows a user to connect to a SQL Server instance through a Microsoft Windows user account.  This mode allows domain user account information to be supplied in order to establish a connection.  The following JDBC connection string would be valid for establishing a connection using the above example information:
 
 	jdbc:jtds:sqlserver://CIS-SERVER:1433/TestDB;domain=WIN-DOMAIN;user=jsmith;password=qw3rty;instance=InstanceName
@@ -573,6 +581,7 @@ Windows Authentication Mode may also be used against databases running on machin
 	jdbc:jtds:sqlserver://CIS-SERVER:1433;DatabaseName=TestDB;domain=SQLSERVER;user=jsmith;password=qw3rty;instance=InstanceName;useNTLMv2=true
 
 **SQL Server Authentication**
+
 SQL Server Authentication provides the ability for connections to a database instance to be made using trusted username and password information, allowing SQL Server to perform the authentication itself by checking to see if a SQL Server login account has been setup and if the password matches one previously recorded for that user.  The following JDBC URLs would be valid for establishing a connection using the above example information:
 
 	jdbc:jtds:sqlserver://CIS-SERVER:1433/TestDB;user=db_user;password=db_pass;instance=InstanceName
@@ -644,20 +653,25 @@ It is possible to assess a population of Microsoft Windows targets in an automat
 
 ![](https://i.imgur.com/gGUgx7K.png)
 
-### CIS Host Server ###
+**CIS Host Server**
+
 The *CIS Host Server* is where the CIS-CAT bundle, Java Runtime Environment, and Reports are placed. Targets within the Workstations Group will access these resources to perform a self-assessment using CIS-CAT.
 
-### Workstations Group ###
+**Workstations Group**
+
 The *Workstations Group* represents a population of Microsoft Windows targets to be assessed with CIS-CAT. The Domain Administrator will create Group Policy that causes devices in this group to invoke CIS-CAT via a Scheduled Task.  In order to maintain a secure configuration of the CIS Host Server, authenticated users should only be allowed to execute the “cis-cat-centralized.bat” and "cis-cat-centralized-ccpd.bat" files.
 
-### Prerequisites ###
+**Prerequisites**
+
 1. All targets must be joined to an Active Directory Domain
 2. All targets must have read access to the *CIS-CAT Share* hosted off of the *CIS Host Server*
 
-### Setup ###
+**Setup**
+
 Perform the following steps to cause the *Workstations Group* to execute the CIS-CAT instance on the *CIS Host Server*.
 
-#### Create CIS Share on the CIS Hosting Server ####
+**Create CIS Share on the CIS Hosting Server**
+
 1. Create a shared folder on the *CIS Host Server* named **CIS**. Share permissions on the CIS folder should allow the Authenticated Users group the ability to both **Read** and **Change** information in the folder. To configure the permissions on the CIS share, right-click on the CIS folder and select “Properties”. Click on the “Sharing” tab, and select “Advanced Sharing”:
 
 ![](https://i.imgur.com/XvCEvEJ.png)
@@ -700,7 +714,8 @@ The resulting directory structure should be as follows:
 	- CIS\Java64
 	- CIS\Reports
 
-#### Security Considerations ####
+**Security Considerations**
+
 The CIS\Reports folder will contain reports that detail configuration related vulnerabilities for each system evaluated by CIS-CAT. As such, “Authenticated Users” should **only** be granted “Write” and “List Folder Contents” access to the contents of this folder, and read access to the CIS\Reports folder should be restricted to only those personnel who are necessary to the appropriate functioning of the *CIS Host Server*:
 
 ![](https://i.imgur.com/wCMWpV1.png)
@@ -718,7 +733,7 @@ Permissions which should be applied within the **CIS** folder on the *CIS Host S
 
 Additionally, Write, Modify, Read and Execute permissions on the above resources should be limited to only those users necessary to the appropriate functioning of the *CIS Host Server*.
 
-#### Update cis-cat-centralized.bat ####
+**Update cis-cat-centralized.bat**
 Once the **CIS** folder is setup on the *CIS Hosting Server*, a few modifications must be made to either `cis-cat-centralized.bat` or `cis-cat-centralized-ccpd.bat`. If you want to write the assessment reports to the *CIS Host Server*, utilize the `cis-cat-centralized.bat` script and modify it as directed in this section.  If you want to send the assessment reports directly to a CIS-CAT Pro Dashboard (CCPD), skip this section and go to the **"Update cis-cat-centralized-ccpd.bat"** section, instead. 
 
 	SET NetworkShare=\\NETWORK_SHARE\CIS
@@ -784,7 +799,8 @@ When spaces are included in any path names for environment variables, they must 
 	SET FULL_CISCAT_CMD=”%mJavaPath%\bin\java.exe” -Xmx%JavaMaxMemoryMB%M -jar “%mCisCatPath%\CISCAT.jar” -a 
 	-s %CISCAT_OPTS% -b “%mCisCatPath%\benchmarks\%Benchmark%”
 
-#### Update cis-cat-centralized-ccpd.bat ####
+**Update cis-cat-centralized-ccpd.bat**
+
 If you want to send the assessment reports directly to a CIS-CAT Pro Dashboard (CCPD) you have already setup, you must use the `cis-cat-centralized-ccpd.bat` file instead of the `cis-cat-centralized.bat` file.  Modify the `cis-cat-centralized-ccpd.bat` file as follows: 
 
 	SET NetworkShare=\\CisHostServer\CIS
@@ -812,7 +828,7 @@ To generate the token, please follow the instructions at [Establish authenticati
 Replace **[Generate_An_Authentication_Token_In_CCPD]** with the Authentication Token generated by an "API" user in the CIS-CAT Pro Dashboard to which the CIS-CAT assessment reports will be uploaded to.
 
 
-### Validate the Install ###
+**Validate the Install**
 To test the setup, log into one of the target systems in the Workstation Group as a user capable of executing commands from an elevated command prompt, such as a domain admin.  Execute one of the following commands **from an elevated command prompt**, depending on which **.bat** file you intend to use (**cis-cat-centralized.bat** or **cis-cat-centralized-ccpd.bat**):
 
 	C:\>\\CIS_HOST_SERVER\CIS\cis-cat-centralized.bat
@@ -825,7 +841,8 @@ If successful, the above command will run an auto-assessment and result in outpu
 
 ![](https://i.imgur.com/7LV3Yce.png)
 
-### Configuring the Scheduled Task via Group Policy ###
+**Configuring the Scheduled Task via Group Policy**
+
 A task should be scheduled to have each target system invoke either the cis-cat-centralized.bat or cis-cat-centralized-ccpd.bat batch script on a regular basis to run assessments against those systems. The cis-cat-centralized-ccpd.bat script includes additional options to automatically POST assessment reports to the CIS-CAT Pro Dashboard (CCPD).
 
 Various products and tools can be utilized to schedule this task. In a Windows environment, tasks are often scheduled using the Group Policy feature of Windows. For example, refer to an unofficial site ([https://www.faqforge.com/windows-server-2016/configure-scheduled-task-item-using-group-policy/](https://www.faqforge.com/windows-server-2016/configure-scheduled-task-item-using-group-policy/)) on instructions to schedule a task using Group Policy.
@@ -835,7 +852,8 @@ Ensure that the user selected to run the task has the highest privilege. When sc
 `/c \\<CisHostServer>\CIS\cis-cat-centralized.bat`
 
 
-### Bandwidth Considerations ###
+**Bandwidth Considerations**
+
 Through the deployment and testing of the CIS-CAT Centralized workflow, bandwidth utilization can reach approximately 300 MB of data for each machine invoking CIS-CAT.  This bandwidth utilization is the cost of invoking CIS-CAT over the network.
 
 
@@ -866,7 +884,8 @@ The CIS-CAT Pro Assessor v4 bundle is set up at a centralized file share locatio
  
 
 <a name="hostServerSetup"></a>
-### CIS Host Server Setup###
+**CIS Host Server Setup**
+
 The *CIS Host Server* is where the CIS-CAT Pro Assessor v4 bundle (including any Java Runtime Environments) and possibly the reports are placed.  Configured target machines will access these resources to perform a local assessment using CIS-CAT Pro Assessor v4.
  
 The setup for centralized scanning begins with creating a folder on the network file share location to use as the root of the Centralized Assessor.  The below instructions have selected `/cis` as the root for the Centralized assessment process.
@@ -915,7 +934,7 @@ The setup for centralized scanning begins with creating a folder on the network 
 	/cis/jres/Ubuntu
 
 <a name="prepareJRE"></a>
-### Prepare JRE Subfolders ###
+**Prepare JRE Subfolders**
 
 The centralized scripts look for a specific JRE per operating system type. Some users find that some versions of JRE do not operate on some operating systems. Therefore, the script is designed to allow users to specify a JRE version per operating system. It is a requirement to place a JRE version in each of the operating system folders above that represent an operating system that will be scanned to avoid the error of "no Java version found".
 
@@ -924,7 +943,7 @@ The centralized scripts look for a specific JRE per operating system type. Some 
 2. Copy the appropriate JRE into the appropriate folders
 
 <a name="selectScript"></a> 
-### Select a Script to Modify###
+**Select a Script to Modify**
 
 The choice of which of these two files to use depends on where the assessment reports are to be written.  
 
@@ -936,7 +955,7 @@ Follow the shared script modifications, and then follow the specific modificatio
 
 
 <a name="setBenchmarkProfile"></a> 
-### Set the Benchmark Profile###
+**Set the Benchmark Profile**
 
 During a configuration assessment, only one profile can be executed per report. For additional explanation of profiles, see the HTML report explanation.
 
@@ -958,7 +977,7 @@ The above functionality is achieved within the detect-os-variant.sh and map-to-b
     * Profile selected = Level 2 – Server
 
 <a name="customizeDefault"></a> 
-### Customize the Default Benchmark and Profiles###
+**Customize the Default Benchmark and Profiles**
 
 By default, the centralized script will assess a target system with the Level 1 profile. This can be customized to be more specific by modifying the appropriate line in the map-to-benchmark.sh script. It is also possible to customize the Benchmark selected for assessment. The profile names must match the Benchmark's profile name. To produce a text file of Benchmarks and profiles, see the [command line option](https://ccpa-docs.readthedocs.io/en/latest/User%20Guide%20for%20CLI/#command-line-options) `-bi` to produce the file.
  
@@ -974,7 +993,7 @@ then
 You can change PROFILE1="Level 1 - Server" to PROFILE1="Level 1 - Workstation"
  
 <a name="defineAssessorLocation"></a>
-### Define the Locations of Assessor and JRE###
+**Define the Locations of Assessor and JRE**
  
 Update the below values to align with the *CIS Host Server* folder structure created as it will be accessed from each server.
  
@@ -987,7 +1006,7 @@ For example, if the network location is mounted to `/network` on each server, th
 	JRE_BASE=/network/cis/jres
 
 <a name="defineReportOutput"></a> 
-### Define the Report Output ###
+**Define the Report Output **
 
 ####cis-cat-centralized-ccpd.bat####
 
