@@ -45,7 +45,7 @@ JRE is required to be installed on the CIS-CAT Pro host system when scanning via
 
 JRE is required to be installed on a shared network location when scanning via:
 
-- [Centralized scanning for Windows](https://ccpa-docs.readthedocs.io/en/latest/Configuration%20Guide/#assessing-multiple-windows-targets) (systems within the same network)
+- [Centralized scanning for Windows](https://ccpa-docs.readthedocs.io/en/latest/Configuration%20Guide/#centralized-windows) (systems within the same network)
 - [Centralized scanning for Linux](#assessCentalizedLinux) (systems within the same network)
 
 Properties
