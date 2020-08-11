@@ -623,7 +623,7 @@ The VMWare benchmark will execute 40 to 60 commands to collect state information
 
 **Connections and Certificates**
 
-For performance and simplicity reasons, we recommend utilizing a local "session" type for the configuration assessment. The connection strings can be placed in a configuration xml or in the assessor-cli.properties file. If the connection string is not defined in either file, the command line will prompt the user to enter the information.
+It is required to utilize a local "session" type for the configuration assessment. The connection strings can be placed in a configuration xml or in the assessor-cli.properties file. If the connection string is not defined in either file, the command line will prompt the user to enter the information.
 
 If CIS-CAT Pro Assessor is unable to connect to the ESXi host, this information will be available in the CIS-CAT Pro log, if generated. The log may indicate that an error has occurred with a certificate. If this error is present, run the following command to verify the status of a certificate.
 
