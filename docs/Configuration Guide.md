@@ -734,6 +734,7 @@ Permissions which should be applied within the **CIS** folder on the *CIS Host S
 Additionally, Write, Modify, Read and Execute permissions on the above resources should be limited to only those users necessary to the appropriate functioning of the *CIS Host Server*.
 
 **Update cis-cat-centralized.bat**
+
 Once the **CIS** folder is setup on the *CIS Hosting Server*, a few modifications must be made to either `cis-cat-centralized.bat` or `cis-cat-centralized-ccpd.bat`. If you want to write the assessment reports to the *CIS Host Server*, utilize the `cis-cat-centralized.bat` script and modify it as directed in this section.  If you want to send the assessment reports directly to a CIS-CAT Pro Dashboard (CCPD), skip this section and go to the **"Update cis-cat-centralized-ccpd.bat"** section, instead. 
 
 	SET NetworkShare=\\NETWORK_SHARE\CIS
@@ -829,6 +830,7 @@ Replace **[Generate_An_Authentication_Token_In_CCPD]** with the Authentication T
 
 
 **Validate the Install**
+
 To test the setup, log into one of the target systems in the Workstation Group as a user capable of executing commands from an elevated command prompt, such as a domain admin.  Execute one of the following commands **from an elevated command prompt**, depending on which **.bat** file you intend to use (**cis-cat-centralized.bat** or **cis-cat-centralized-ccpd.bat**):
 
 	C:\>\\CIS_HOST_SERVER\CIS\cis-cat-centralized.bat
@@ -894,6 +896,7 @@ The setup for centralized scanning begins with creating a folder on the network 
 2. Copy the latest CIS-CAT Pro Assessor v4 bundle to `/cis` and extract. The structure should look like:
 
 	`/cis/Assessor-CLI`
+
 2. Decide where assessment reports should output to and select the correct supporting centralized script.
 3. Locate the required scripts in the `/cis/Assessor-CLI/misc/Unix-Linux` folder of the CIS-CAT Pro Assessor v4 bundle.
     * cis-cat-centralized.sh **OR** cis-cat-centralized-ccpd.sh
