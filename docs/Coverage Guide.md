@@ -32,9 +32,11 @@ CIS Benchmarks that have reached end of life are no longer officially supported 
 - **CIS CentOS Linux 8 Benchmark, v1.0.0.1**
 - **CIS Cisco IOS 12 Benchmark, v4.0.0**
 - **CIS Cisco IOS 15 Benchmark, v4.0.0**
+- **CIS Debian Family Linux, v1.0.0**
 - **CIS Debian Linux 8 Benchmark, v2.0.1**
 - **CIS Debian Linux 9 Benchmark, v1.0.1**
 - **CIS Debian Linux 10 Benchmark, v1.0.0**
+- **CIS Fedora 19 Family Linux, v1.0.0**
 - **CIS Fedora 28 Family Linux, v1.0.0**
 		- NOTE:  Requires the "ignore.platform.mismatch" property be set to "true" in the Assessor's properties file.
 - **CIS Google Chrome Benchmark, v2.0.0**
@@ -57,21 +59,15 @@ CIS Benchmarks that have reached end of life are no longer officially supported 
 - **CIS Microsoft Office Word 2016 Benchmark, v1.1.0**
 - **CIS Microsoft Office 2013 Benchmark, v1.1.0**
 - **CIS Microsoft Office 2016 Benchmark, v1.1.0**
-- **CIS Microsoft SQL Server 2008 R2 Benchmark, v1.7.0**
-	- `xccdf_org.cisecurity_value_jdbc.url`: SQL Server connection string.
-- **CIS Microsoft SQL Server 2012 Benchmark, v1.6.0**
-	- `xccdf_org.cisecurity_value_jdbc.url`: SQL Server connection string.
-- **CIS Microsoft SQL Server 2014 Benchmark, v1.5.0**
-	- `xccdf_org.cisecurity_value_jdbc.url`: SQL Server connection string.
 - **CIS Microsoft SQL Server 2016 Benchmark, v1.2.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: SQL Server connection string.
 - **CIS Microsoft SQL Server 2017 Benchmark, v1.1.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: SQL Server connection string.
 - **CIS Microsoft SQL Server 2019 Benchmark, v1.1.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: SQL Server connection string.
-- **CIS Microsoft Windows 10 Enterprise Release 1809 Benchmark, v1.6.1**
 - **CIS Microsoft Windows 10 Enterprise Release 1903 Benchmark, v1.7.1**
 - **CIS Microsoft Windows 10 Enterprise Release 1909 Benchmark, v1.8.1**
+- **CIS Microsoft Windows 10 Enterprise Release 2004 Benchmark, v1.9.0**
 - **CIS Microsoft Windows Server 2003 Benchmark, v3.1.0**
 - **CIS Microsoft Windows Server 2008 (non-R2) Benchmark, v3.1.0**
 - **CIS Microsoft Windows Server 2008 R2 Benchmark, v3.2.0**

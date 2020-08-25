@@ -8,6 +8,21 @@ CIS-CAT Pro Assessor v4
 ---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
+## CIS-CAT Pro Assessor, v4.0.23 ##
+#### Release Date: August 25, 2020 ####
+
+
+### Benchmark Coverage ###
+- Debian Family Linux v1.0.0
+- Fedora 19 Family v1.0.0
+- Microsoft Windows 10 Enterprise Release 2004 v1.9.0
+
+### CIS-CAT Pro Updates ###
+- Resolved an issue with configuration results for MacOS for the Gatekeeper recommendation 2.6.2 check.
+
+### Documentation ###
+- Updated Linux centralized assessment workflow. Renamed "Assessing Multiple Windows and Linux" sections of the Configuration Guide to be prefaced with "Centralized".
+
 ## CIS-CAT Pro Assessor, v4.0.22 ##
 #### Release Date: July 30, 2020 ####
 
