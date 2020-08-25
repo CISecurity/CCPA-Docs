@@ -45,15 +45,55 @@ JRE is required to be installed on the CIS-CAT Pro host system when scanning via
 
 JRE is required to be installed on a shared network location when scanning via:
 
-- [Centralized scanning for Windows](https://ccpa-docs.readthedocs.io/en/latest/Configuration%20Guide/#assessing-multiple-windows-targets) (systems within the same network)
-- [Centralized scanning for Linux](https://ccpa-docs.readthedocs.io/en/latest/Configuration%20Guide/#assessing-multiple-unixlinux-targets) (systems within the same network)
+- [Centralized scanning for Windows](https://ccpa-docs.readthedocs.io/en/latest/Configuration%20Guide/#centralized-windows) (systems within the same network)
+- [Centralized scanning for Linux](#assessCentalizedLinux) (systems within the same network)
 
-
-Sessions
+Properties
 --------
-CIS-CAT Pro Assessor v4's remote assessment capability depends on the configuration of "sessions"; connection parameters used to create a secure connection to the remote endpoint.  A session configuration requires a number of entries, which will vary depending on the connection type.
+A number of different system properties exist to provide additional functionality.  These properties are found in a file named `assessor-cli.properties`, located in the application's `config` folder.  For any property value updates to take effect, the CIS-CAT Pro Assessor application must be re-started. All settings are optional for most Assessor activities. However, as use of CIS-CAT Pro expands, certain settings will be mandatory. For example, if utilizing CIS-CAT Pro Dashboard, it is required that the `ciscat.post.parameter.ccpd.token` is set.
 
-### Connection Types ###
+
+| Property Name          | Data Type   |   Description |
+| -----------------------| ---------- | ------------- |
+| **Define Behavior When Benchmark Content Fails Validation** |  |  |
+| validate.xml.schema                  | `true/false`    | Configuration of `true` results in schema validation of benchmark/datastream files. On validation failure, assessment process halts with exit with a code of 500. Configuration of `false` will not result in formal validation, but errors in the structure will result in an exception. |
+| **Define Assessor Behavior When Signed Benchmark Content Has Been Altered** |  |  |
+| exit.on.invalid.signature | `true/false`      | Detects alteration in signed benchmark/datastream files prior to assessment. When set to `true`, and signature is found to be invalid, the assessment process will stop. When set to `false`, a notification appears if signature is found invalid and assessment continues without intervention.|
+| **Define Behavior When Benchmark Does Not Match Operating System** |  |  |
+| ignore.platform.mismatch     | `true/false`      | **As Needed**. For both `true` and `false` when an operating system benchmark is selected, the target system's operating system will be compared to that of the selected benchmark. When set to `true` and a mismatch is detected, the assessment will continue without intervention but may result in errors or multiple failed results. When set to `false` and a mismatch is detected, a message "The checklist does not match the target platform" is displayed on the command line. The assessment continues without intervention, and all results will be "Not Applicable" with a score of 0%. |
+| **CIS-CAT Pro Dashboard Parameters** |  |  |
+| ciscat.post.parameter.ccpd.token | `string` | **Mandatory**. Allows for the inclusion of a CIS-CAT Pro Dashboard-generated bearer token, to upload ARF reports. |
+| ciscat.post.parameter.report.name | `string` | Allows for the customization of the CIS-CAT POST parameter for the Report Name.  To POST assessment reports to the CIS-CAT Pro Dashboard, the value of this property must be set to "report-name". |
+| ciscat.post.parameter.report.body | `string` | Allows for the customization of the CIS-CAT POST parameter for the Report Body.  To POST assessment reports to the CIS-CAT Pro Dashboard, the value of this property must be set to "ciscat-report". |
+| ciscat.zip.post.files | `true/false` | **Highly Recommended**. Allows for assessment reports to be zipped/compressed when they are sent to the Dashboard via a POST request.  This property is only supported with Dashboard version 1.1.9 or higher. |
+| **Set VMWare Command Timeout** |  |  |
+| esxi.max.wait | `numeric - milliseconds` | Sets the Maximum Wait time (time out) in milliseconds for each PowerCLI command to execute. Used only when assessing with a VMWare Benchmark. Default value is 30 seconds. May reduce overall assessment time where organizations do not have settings configured on the VM. |
+| **Define CSV Output Header Information** |  |  |
+| include.csv.remediation | `true/false` | Controls whether remediation text is generated in the CSV-formatted assessment report. |
+| include.csv.headers | `true/false` | Controls whether a row of column headers is generated in the CSV-formatted assessment report. |
+| include.csv.target_ip | `true/false` | Controls whether the target IP address is generated in the CSV-formatted assessment report. |
+| include.csv.scoring | `true/false` | Controls whether the overall scoring information is generated in the CSV-formatted assessment report. |
+| include.csv.rule.scoring | `true/false` | Controls whether individual rule scoring information is generated in the CSV-formatted assessment report. |
+| **Set Proxy Information - Facilitates Vulnerability Definition Update** |  |  |
+| vulnerability.proxy.host | `string` | Manual configuration of a proxy host when downloading vulnerability definitions. |
+| vulnerability.proxy.port | `string` | Manual configuration of a proxy port when downloading vulnerability definitions |
+| **Exclude Mounted File Systems from Assessment** |  |  |
+| excluded.filesystems | `string` | **As Needed**. A comma-delimited list of filesystem names/mount points to exclude from any full-filesystem searches on Linux.  Linux assessments where user home directories exist on an auto-mounted, large storage drive, will experience longer assessment duration as some benchmarks check will take longer to complete. |
+| **Customize HTML Output Graphics** |  |  |
+| custom.html.coverpage.background | `string` | The name of the graphics file, saved to the "custom" folder, to be used as the HTML report's cover page background. |
+| custom.html.coverpage.logo | `string` | The name of the graphics file, saved to the "custom" folder, to be used as the HTML report's cover page organizational logo. |
+| custom.html.coverpage.subtitle.background | `string` | The name of the graphics file, saved to the "custom" folder, to be used as the HTML report's cover page subtitle background. |
+| include.default.html.coverpage.footer | `true/false` | This property specifies whether or not the default footer is displayed on the coverpage of the HTML report.  If this property is not set or is commented out, the default value of "true" will be used for this property. If you want to display a custom graphic for the coverpage footer, utilize the custom.html.coverpage.footer property. |
+| custom.html.coverpage.footer | `string` | This property specifies the name of the graphics file, saved to the "custom" folder, to be generated as the footer of the HTML coverpage. Note that default coverpage footer covers an area of approximately 725x64 px. |
+| custom.html.css | `string` | The name of the CSS file, saved to the "custom" folder, which overrides the HTML report's styling. |
+
+
+#Remote Assessment - Sessions#
+--------
+CIS-CAT Pro Assessor v4's remote assessment capability depends on the configuration of "sessions"; connection parameters used to create a secure connection to the remote endpoint.  A session configuration requires a number of entries, which will vary depending on the connection type. This connection is not necessary when selecting the centralized (in-network) method of assessment.
+
+**Connection Types**
+
 A number of different connection types exist to allow for maximum flexibility and coverage for the assessment of various endpoints, ranging from the local host to remote Windows, Unix, Linux, and Apple OSX endpoints, as well as Cisco network devices.
 
 | Type                   | Value      |   Description |
@@ -65,7 +105,7 @@ A number of different connection types exist to allow for maximum flexibility an
 
 
 
-### Configuration Properties ###
+**Sessions Configuration Properties**
 A number of configuration properties exist, and will vary based on the session type.
 
 | Property   | Description |
@@ -81,7 +121,7 @@ A number of configuration properties exist, and will vary based on the session t
 | `tech`     | The `tech` property is REQUIRED when assessing the exported configuration of a network device.  This property specifies the full path to the exported configuration file. <br/><br/> When assessing non-network device endpoints, or assessing a network devices' current running configuration via SSH, the `tech` property is unnecessary.<br/><br/> The `tech` property is not needed when the session type is `local`.|
 | `tmp`| The `tmp` property allows users to configure the location of the temporary "ephemeral" directory on the target host.  The "ephemeral" directory is named `ccpa-temp-TIMESTAMP` and is created as a sub-folder of the directory specified in this setting.  For example, if `tmp` is specified as `C:\Temp`, the "ephemeral" directory will be created at `C:\Temp\ccpa-temp-TIMESTAMP`.  **NOTE**: When specifying a value for `tmp`, this directory MUST ALREADY EXIST on the target endpoint.  In the above example, if the `C:\Temp` folder does not exist, the connection from CIS-CAT Pro Assessor v4 will not succeed.  If this property is left blank or not included, the Assessor will use the default "temp" folder as defined for the operating system, such as `/tmp` or `C:\Windows\Temp`.|
 
-### Examples ###
+**Examples**
 The examples below provide insight into the creation of a `sessions.properties` file, which can then be consumed by CIS-CAT Pro Assessor CLI to provide connection configurations when assessing a particular benchmark.  By default, CIS-CAT Pro Assessor CLI will ALWAYS attempt to load a default configuration file located in the application's `config` folder, named `sessions.properties`.
 
 #### Microsoft Windows Sessions ####
@@ -156,49 +196,11 @@ Configure a remote Linux session using a username/private key:
     session.8.user=ec2-user
     session.8.identity=/Users/myuser/cis/pkey.pem
 
-Properties
---------
-A number of different system properties exist to provide additional functionality.  These properties are found in a file named `assessor-cli.properties`, located in the application's `config` folder.  For any property value updates to take effect, the CIS-CAT Pro Assessor application must be re-started. All settings are optional for most Assessor activities. However, as use of CIS-CAT Pro expands, certain settings will be mandatory. For example, if utilizing CIS-CAT Pro Dashboard, it is required that the `ciscat.post.parameter.ccpd.token` is set.
 
 
-| Property Name          | Data Type   |   Description |
-| -----------------------| ---------- | ------------- |
-| **Define Behavior When Benchmark Content Fails Validation** |  |  |
-| validate.xml.schema                  | `true/false`    | Configuration of `true` results in schema validation of benchmark/datastream files. On validation failure, assessment process halts with exit with a code of 500. Configuration of `false` will not result in formal validation, but errors in the structure will result in an exception. |
-| **Define Assessor Behavior When Signed Benchmark Content Has Been Altered** |  |  |
-| exit.on.invalid.signature | `true/false`      | Detects alteration in signed benchmark/datastream files prior to assessment. When set to `true`, and signature is found to be invalid, the assessment process will stop. When set to `false`, a notification appears if signature is found invalid and assessment continues without intervention.|
-| **Define Behavior When Benchmark Does Not Match Operating System** |  |  |
-| ignore.platform.mismatch     | `true/false`      | **As Needed**. For both `true` and `false` when an operating system benchmark is selected, the target system's operating system will be compared to that of the selected benchmark. When set to `true` and a mismatch is detected, the assessment will continue without intervention but may result in errors or multiple failed results. When set to `false` and a mismatch is detected, a message "The checklist does not match the target platform" is displayed on the command line. The assessment continues without intervention, and all results will be "Not Applicable" with a score of 0%. |
-| **CIS-CAT Pro Dashboard Parameters** |  |  |
-| ciscat.post.parameter.ccpd.token | `string` | **Mandatory**. Allows for the inclusion of a CIS-CAT Pro Dashboard-generated bearer token, to upload ARF reports. |
-| ciscat.post.parameter.report.name | `string` | Allows for the customization of the CIS-CAT POST parameter for the Report Name.  To POST assessment reports to the CIS-CAT Pro Dashboard, the value of this property must be set to "report-name". |
-| ciscat.post.parameter.report.body | `string` | Allows for the customization of the CIS-CAT POST parameter for the Report Body.  To POST assessment reports to the CIS-CAT Pro Dashboard, the value of this property must be set to "ciscat-report". |
-| ciscat.zip.post.files | `true/false` | **Highly Recommended**. Allows for assessment reports to be zipped/compressed when they are sent to the Dashboard via a POST request.  This property is only supported with Dashboard version 1.1.9 or higher. |
-| **Set VMWare Command Timeout** |  |  |
-| esxi.max.wait | `numeric - milliseconds` | Sets the Maximum Wait time (time out) in milliseconds for each PowerCLI command to execute. Used only when assessing with a VMWare Benchmark. Default value is 30 seconds. May reduce overall assessment time where organizations do not have settings configured on the VM. |
-| **Define CSV Output Header Information** |  |  |
-| include.csv.remediation | `true/false` | Controls whether remediation text is generated in the CSV-formatted assessment report. |
-| include.csv.headers | `true/false` | Controls whether a row of column headers is generated in the CSV-formatted assessment report. |
-| include.csv.target_ip | `true/false` | Controls whether the target IP address is generated in the CSV-formatted assessment report. |
-| include.csv.scoring | `true/false` | Controls whether the overall scoring information is generated in the CSV-formatted assessment report. |
-| include.csv.rule.scoring | `true/false` | Controls whether individual rule scoring information is generated in the CSV-formatted assessment report. |
-| **Set Proxy Information - Facilitates Vulnerability Definition Update** |  |  |
-| vulnerability.proxy.host | `string` | Manual configuration of a proxy host when downloading vulnerability definitions. |
-| vulnerability.proxy.port | `string` | Manual configuration of a proxy port when downloading vulnerability definitions |
-| **Exclude Mounted File Systems from Assessment** |  |  |
-| excluded.filesystems | `string` | **As Needed**. A comma-delimited list of filesystem names/mount points to exclude from any full-filesystem searches on Linux.  Linux assessments where user home directories exist on an auto-mounted, large storage drive, will experience longer assessment duration as some benchmarks check will take longer to complete. |
-| **Customize HTML Output Graphics** |  |  |
-| custom.html.coverpage.background | `string` | The name of the graphics file, saved to the "custom" folder, to be used as the HTML report's cover page background. |
-| custom.html.coverpage.logo | `string` | The name of the graphics file, saved to the "custom" folder, to be used as the HTML report's cover page organizational logo. |
-| custom.html.coverpage.subtitle.background | `string` | The name of the graphics file, saved to the "custom" folder, to be used as the HTML report's cover page subtitle background. |
-| include.default.html.coverpage.footer | `true/false` | This property specifies whether or not the default footer is displayed on the coverpage of the HTML report.  If this property is not set or is commented out, the default value of "true" will be used for this property. If you want to display a custom graphic for the coverpage footer, utilize the custom.html.coverpage.footer property. |
-| custom.html.coverpage.footer | `string` | This property specifies the name of the graphics file, saved to the "custom" folder, to be generated as the footer of the HTML coverpage. Note that default coverpage footer covers an area of approximately 725x64 px. |
-| custom.html.css | `string` | The name of the CSS file, saved to the "custom" folder, which overrides the HTML report's styling. |
-
-
-Microsoft Windows Endpoint Configuration
+Remote Setup - Microsoft Windows
 ----------------------------------------
-CIS-CAT Pro Assessor v4 utilizes the SMB protocol for file manipulation and uses WinRM for process execution.  Once connected to a remote Windows endpoint, CIS-CAT Pro Assessor establishes an "ephemeral" directory to host scripts required for the collection of system characteristics from the endpoint.  Once the collection/assessment has completed and the session disconnected, the "ephemeral" directory is removed from the endpoint.
+CIS-CAT Pro Assessor v4 utilizes the SMB protocol for file manipulation and uses WinRM for process execution during a remote assessment.  Once connected to a remote Windows endpoint, CIS-CAT Pro Assessor establishes an "ephemeral" directory to host scripts required for the collection of system characteristics from the endpoint.  Once the collection/assessment has completed and the session disconnected, the "ephemeral" directory is removed from the endpoint.
 
 CIS-CAT Pro Assessor v4 supports authentication to remote Windows endpoints using either local or domain accounts.  When authenticating with domain accounts, the new-style domain syntax, e.g. **`ciscatuser@example.org`** must be used, and **NOT** the old-style domain syntax, such as `DOMAIN\User`.
 
@@ -375,7 +377,7 @@ In Windows domain environments, this setting can be configured through [Group Po
 Otherwise, the Group Policy Objects can be found either [here](http://blogs.technet.com/b/secguide/archive/2014/08/13/security-baselines-for-windows-8-1-windows-server-2012-r2-and-internet-explorer-11-final.aspx) or [here](https://blogs.technet.microsoft.com/secguide/2017/08/30/security-baseline-for-windows-10-creators-update-v1703-final/).
 
 
-Unix/Linux/OSX Endpoint Configuration
+Remote Setup - Unix/Linux/OSX
 -------------------------------------
 CIS-CAT Pro Assessor assesses remote Unix/Linux/OSX targets via SSH connections.  Ensure the target system can be accessed via SSH and that the user connecting to the remote target is either the `root` user or a user granted privileges to execute commands using `sudo`.
 
@@ -384,14 +386,16 @@ By default, CIS-CAT Pro Assessor v4 will attempt to create the "ephemeral" direc
 
 It is *highly recommended* that, when the `/tmp` partition is mounted with the `noexec` option, that users configure the `sessions.properties` or `assessor-config.xml` files to customize the `tmp` setting to an existing directory on the target endpoint which will allow for script execution.  Not doing so will result in numerous incorrect assessment results.
 
-Cisco Network Device Endpoint Configuration
+Remote/Local Setup - Cisco Network Device
 -------------------------------------------
 CIS-CAT Pro Assessor v4 can assess either the current running configuration of a Cisco network device, or an exported configuration file.
 
-### Connecting to a Device ###
+**Connecting to a Device**
+
 CIS-CAT Pro Assessor assesses Cisco network device targets via SSH connections.  Ensure the target system can be accessed via SSH and that the user connecting to the remote target is a privileged user.  When connecting to Cisco devices, CIS-CAT Pro Assessor will be configured to enter "privileged EXEC" mode, so any user connecting to the Cisco device via SSH must be granted appropriate permission to do so.
 
-### Exported Configuration File ###
+**Exported Configuration File**
+
 CIS-CAT Pro Assessor can also assess an exported configuration file; the output of the `show tech-support` command.  The output from the `show tech-support` command is very long. To better manage this output, you can redirect the output to a file (for example, `show tech-support > *filename*` ) in the local writable storage file system or the remote file system.
 
 You can use one of the following redirection methods:
@@ -405,11 +409,12 @@ This example shows how to redirect the technical support information to a file:
 
 Once the exported configuration file is available to CIS-CAT Pro Assessor, the assessment can be performed against it.  See the example above entitled "Configure a Cisco IOS session pointing to an exported configuration file" to configure the appropriate Assessor "session".
 
-Database Endpoint Configuration
+Database Assessment
 -------------------------------
 Assessing database benchmarks in CIS-CAT Pro Assessor v4 uses the same JDBC connection mechanism as previous versions.  Database benchmarks will require a user to enter the JDBC connection string, or utilize the `assessor-cli.properties` file to set the appropriate value for assessment.
 
-### Oracle Database ###
+**Oracle Database**
+
 The JDBC string parameter is the connection string used to connect to and authenticate to the Oracle Database service and instance that CIS-CAT will assess.  The Oracle JDBC driver has the ability to connect to Oracle database instances using either the SID or Service Name.
 
 When connecting to an Oracle database using the SID, the format of the JDBC connection string is:
@@ -440,7 +445,8 @@ The following table describes the components of the Oracle JDBC connection strin
 | Service Name  | The database Service Name.|
 
 
-### Oracle MySQL Database ###
+**Oracle MySQL Database**
+
 Oracle MySQL database support is implemented using the MariaDB JDBC driver.  The format for the MariaDB JDBC connection string for MySQL is:
 
 	jdbc:mysql://<host>:<port>/<database>?<key1>=<value1>&<key2>=<value2>...
@@ -474,7 +480,8 @@ Notable optional parameters involve ensuring JDBC connections are made via SSL:
 - The default port number for MySQL is 3306
 - The full set of connection properties/optional URL parameters supported by MariaDB can be found at [https://mariadb.com/kb/en/mariadb/about-the-mariadb-java-client/](https://mariadb.com/kb/en/mariadb/about-the-mariadb-java-client/)
 
-### Mongo Database ###
+**Mongo Database**
+
 The MongoDB benchmark requires one interactive property for the location of the MongoDB configuration file. This value allows for a user-supplied running configuration file for assessment.
 
 	default value is:/etc/mongod.conf
@@ -495,7 +502,8 @@ The response will contain MongoDB running configuration file location. For examp
 
 
 
-### PostgreSQL Database ###
+**PostgreSQL Database**
+
 CIS-CAT Pro Assessor has implemented support for assessments against PostgreSQL database instances using the PostgreSQL JDBC driver.  The format for the PostgreSQL JDBC connection string is:
 
 	jdbc:postgresql://<host>:<port>/<database>?<key1>=<value1>&<key2>=<value2>...
@@ -536,7 +544,8 @@ For example, in order to force the database connection to require SSL, the conne
 - The default port number for PostgreSQL is 5432
 - The full set of connection properties/optional URL parameters supported by PostgreSQL can be found at [https://jdbc.postgresql.org/documentation/head/connect.html](https://jdbc.postgresql.org/documentation/head/connect.html)
 
-### Microsoft SQL Server ###
+**Microsoft SQL Server**
+
 Microsoft SQL Server database support is implemented using the jTDS open source JDBC driver.  The jTDS driver provides support for SQL Server 6.5, 7, 2000, 2005, 2008, and 2012.
 
 The format of the jTDS JDBC URL for MS SQL Server is:
@@ -557,7 +566,8 @@ Consider a Microsoft SQL Server database instance with the following information
 | SQL Server Database User/Password | db_user/db_pass |
 | Instance Name                     | InstanceName |
 
-#### Windows Authentication ####
+**Windows Authentication**
+
 Windows Authentication Mode allows a user to connect to a SQL Server instance through a Microsoft Windows user account.  This mode allows domain user account information to be supplied in order to establish a connection.  The following JDBC connection string would be valid for establishing a connection using the above example information:
 
 	jdbc:jtds:sqlserver://CIS-SERVER:1433/TestDB;domain=WIN-DOMAIN;user=jsmith;password=qw3rty;instance=InstanceName
@@ -570,7 +580,8 @@ Windows Authentication Mode may also be used against databases running on machin
 
 	jdbc:jtds:sqlserver://CIS-SERVER:1433;DatabaseName=TestDB;domain=SQLSERVER;user=jsmith;password=qw3rty;instance=InstanceName;useNTLMv2=true
 
-#### SQL Server Authentication ####
+**SQL Server Authentication**
+
 SQL Server Authentication provides the ability for connections to a database instance to be made using trusted username and password information, allowing SQL Server to perform the authentication itself by checking to see if a SQL Server login account has been setup and if the password matches one previously recorded for that user.  The following JDBC URLs would be valid for establishing a connection using the above example information:
 
 	jdbc:jtds:sqlserver://CIS-SERVER:1433/TestDB;user=db_user;password=db_pass;instance=InstanceName
@@ -584,7 +595,7 @@ or
 - The default port number for MS SQL Server databases is `1433`.
 - The full set of connection properties supported by jTDS can be found at [http://jtds.sourceforge.net/faq.html#urlFormat](http://jtds.sourceforge.net/faq.html#urlFormat).
 
-VMware ESXi Endpoint Configuration
+VMware ESXi Assessment
 ----------------------------------
 Assessing with the VMWare ESXi benchmark in CIS-CAT Pro Assessor v4 requires use of a connection string to connect to the ESXi/vSphere host. The VMWare benchmark will require entry of the connection string on the command line or setting of the string in advance in the `assessor-cli.properties` file or configuration XML file. Additional requirements necessary for the host of CIS-CAT Pro when assessing with the VMWare benchmark are listed below.
 
@@ -612,7 +623,7 @@ The VMWare benchmark will execute 40 to 60 commands to collect state information
 
 **Connections and Certificates**
 
-For performance and simplicity reasons, we recommend utilizing a local "session" type for the configuration assessment. The connection strings can be placed in a configuration xml or in the assessor-cli.properties file. If the connection string is not defined in either file, the command line will prompt the user to enter the information.
+It is required to utilize a local "session" type for the configuration assessment. The connection strings can be placed in a configuration xml or in the assessor-cli.properties file. If the connection string is not defined in either file, the command line will prompt the user to enter the information.
 
 If CIS-CAT Pro Assessor is unable to connect to the ESXi host, this information will be available in the CIS-CAT Pro log, if generated. The log may indicate that an error has occurred with a certificate. If this error is present, run the following command to verify the status of a certificate.
 
@@ -635,25 +646,32 @@ The `-sessions` option allows users to configure multiple endpoints for assessme
 If no `sessions.properties` file exists or no connections are configured in the file, CIS-CAT Pro Assessor CLI will assess the local machine.
 
 <a name="assessMultipleWindowsTargets"></a>
-## Assessing Multiple Windows Targets ##
+# Centralized - Windows #
+
+
 It is possible to assess a population of Microsoft Windows targets in an automated manner without installing CIS-CAT or the JRE on each target. The following diagram depicts this deployment pattern:
 
 ![](https://i.imgur.com/gGUgx7K.png)
 
-### CIS Host Server ###
+**CIS Host Server**
+
 The *CIS Host Server* is where the CIS-CAT bundle, Java Runtime Environment, and Reports are placed. Targets within the Workstations Group will access these resources to perform a self-assessment using CIS-CAT.
 
-### Workstations Group ###
+**Workstations Group**
+
 The *Workstations Group* represents a population of Microsoft Windows targets to be assessed with CIS-CAT. The Domain Administrator will create Group Policy that causes devices in this group to invoke CIS-CAT via a Scheduled Task.  In order to maintain a secure configuration of the CIS Host Server, authenticated users should only be allowed to execute the “cis-cat-centralized.bat” and "cis-cat-centralized-ccpd.bat" files.
 
-### Prerequisites ###
+**Prerequisites**
+
 1. All targets must be joined to an Active Directory Domain
 2. All targets must have read access to the *CIS-CAT Share* hosted off of the *CIS Host Server*
 
-### Setup ###
+**Setup**
+
 Perform the following steps to cause the *Workstations Group* to execute the CIS-CAT instance on the *CIS Host Server*.
 
-#### Create CIS Share on the CIS Hosting Server ####
+**Create CIS Share on the CIS Hosting Server**
+
 1. Create a shared folder on the *CIS Host Server* named **CIS**. Share permissions on the CIS folder should allow the Authenticated Users group the ability to both **Read** and **Change** information in the folder. To configure the permissions on the CIS share, right-click on the CIS folder and select “Properties”. Click on the “Sharing” tab, and select “Advanced Sharing”:
 
 ![](https://i.imgur.com/XvCEvEJ.png)
@@ -696,7 +714,8 @@ The resulting directory structure should be as follows:
 	- CIS\Java64
 	- CIS\Reports
 
-#### Security Considerations ####
+**Security Considerations**
+
 The CIS\Reports folder will contain reports that detail configuration related vulnerabilities for each system evaluated by CIS-CAT. As such, “Authenticated Users” should **only** be granted “Write” and “List Folder Contents” access to the contents of this folder, and read access to the CIS\Reports folder should be restricted to only those personnel who are necessary to the appropriate functioning of the *CIS Host Server*:
 
 ![](https://i.imgur.com/wCMWpV1.png)
@@ -714,7 +733,8 @@ Permissions which should be applied within the **CIS** folder on the *CIS Host S
 
 Additionally, Write, Modify, Read and Execute permissions on the above resources should be limited to only those users necessary to the appropriate functioning of the *CIS Host Server*.
 
-#### Update cis-cat-centralized.bat ####
+**Update cis-cat-centralized.bat**
+
 Once the **CIS** folder is setup on the *CIS Hosting Server*, a few modifications must be made to either `cis-cat-centralized.bat` or `cis-cat-centralized-ccpd.bat`. If you want to write the assessment reports to the *CIS Host Server*, utilize the `cis-cat-centralized.bat` script and modify it as directed in this section.  If you want to send the assessment reports directly to a CIS-CAT Pro Dashboard (CCPD), skip this section and go to the **"Update cis-cat-centralized-ccpd.bat"** section, instead. 
 
 	SET NetworkShare=\\NETWORK_SHARE\CIS
@@ -780,7 +800,8 @@ When spaces are included in any path names for environment variables, they must 
 	SET FULL_CISCAT_CMD=”%mJavaPath%\bin\java.exe” -Xmx%JavaMaxMemoryMB%M -jar “%mCisCatPath%\CISCAT.jar” -a 
 	-s %CISCAT_OPTS% -b “%mCisCatPath%\benchmarks\%Benchmark%”
 
-#### Update cis-cat-centralized-ccpd.bat ####
+**Update cis-cat-centralized-ccpd.bat**
+
 If you want to send the assessment reports directly to a CIS-CAT Pro Dashboard (CCPD) you have already setup, you must use the `cis-cat-centralized-ccpd.bat` file instead of the `cis-cat-centralized.bat` file.  Modify the `cis-cat-centralized-ccpd.bat` file as follows: 
 
 	SET NetworkShare=\\CisHostServer\CIS
@@ -808,7 +829,8 @@ To generate the token, please follow the instructions at [Establish authenticati
 Replace **[Generate_An_Authentication_Token_In_CCPD]** with the Authentication Token generated by an "API" user in the CIS-CAT Pro Dashboard to which the CIS-CAT assessment reports will be uploaded to.
 
 
-### Validate the Install ###
+**Validate the Install**
+
 To test the setup, log into one of the target systems in the Workstation Group as a user capable of executing commands from an elevated command prompt, such as a domain admin.  Execute one of the following commands **from an elevated command prompt**, depending on which **.bat** file you intend to use (**cis-cat-centralized.bat** or **cis-cat-centralized-ccpd.bat**):
 
 	C:\>\\CIS_HOST_SERVER\CIS\cis-cat-centralized.bat
@@ -821,7 +843,8 @@ If successful, the above command will run an auto-assessment and result in outpu
 
 ![](https://i.imgur.com/7LV3Yce.png)
 
-### Configuring the Scheduled Task via Group Policy ###
+**Configuring the Scheduled Task via Group Policy**
+
 A task should be scheduled to have each target system invoke either the cis-cat-centralized.bat or cis-cat-centralized-ccpd.bat batch script on a regular basis to run assessments against those systems. The cis-cat-centralized-ccpd.bat script includes additional options to automatically POST assessment reports to the CIS-CAT Pro Dashboard (CCPD).
 
 Various products and tools can be utilized to schedule this task. In a Windows environment, tasks are often scheduled using the Group Policy feature of Windows. For example, refer to an unofficial site ([https://www.faqforge.com/windows-server-2016/configure-scheduled-task-item-using-group-policy/](https://www.faqforge.com/windows-server-2016/configure-scheduled-task-item-using-group-policy/)) on instructions to schedule a task using Group Policy.
@@ -831,117 +854,201 @@ Ensure that the user selected to run the task has the highest privilege. When sc
 `/c \\<CisHostServer>\CIS\cis-cat-centralized.bat`
 
 
-### Bandwidth Considerations ###
+**Bandwidth Considerations**
+
 Through the deployment and testing of the CIS-CAT Centralized workflow, bandwidth utilization can reach approximately 300 MB of data for each machine invoking CIS-CAT.  This bandwidth utilization is the cost of invoking CIS-CAT over the network.
 
-<a name="assessMultipleUnixLinuxTargets"></a>
-## Assessing Multiple Unix/Linux Targets ##
-Similar to the **“Assessing Multiple Windows Targets”** section above, it is possible to assess multiple Unix, Linux, MacOS, Debian, Solaris, SUSE, etc targets in an automated manner without installing CIS-CAT or the JRE on each target.  Either the `cis-cat-centralized.sh` script or the `cis-cat-centralized-ccpd.sh` script is intended to reside on a centralized file share (referred to as the *CIS Host Server* in this document) that is accessible by the computers to be assessed by CIS-CAT.  The choice of which of these two files to use depends on where the assessment reports are to be written.  If you want to send the assessment reports to a Reports folder on the *CIS Host Server*, then use the cis-`cat-centralized.sh` file.  If you want to send the assessment reports directly to a CIS-CAT Pro Dashboard (CCPD) you have already setup, you must use the `cis-cat-centralized-ccpd.bat` file instead.  See the **"Update cis-cat-centralized.sh"** and **"Update cis-cat-centralized-ccpd.sh"** sections that follow for more information.
 
-### CIS Host Server ###
-The *CIS Host Server* is where the CIS-CAT bundle (including the various Java Runtime Environments) and possibly the Reports are placed.  Configured target machines will access these resources to perform a self-assessment using CIS-CAT.
+<a name="assessCentalizedLinux"></a>
+# Centralized - Unix/Linux  #
 
-Using the default configuration, consider the root folder for this workflow to be located at `/cis`.  
 
-1. Locate the required scripts in the `misc\Unix-Linux` folder of the CIS-CAT bundle
+The Centralized assessment method is an in-domain or in-network configuration assessment. In cases where organizational policy restricts use of remote assessments, the centralized method may be a possible solution for configuration assessments. This method also has the benefit of allowing installation of CIS-CAT Pro Assessor v4 and a suitable JRE on a network location vs. each target.
+
+The CIS-CAT Pro Assessor v4 bundle is set up at a centralized file share location (referred to as the *CIS Host Server* in this document) that is accessible by target computers to be assessed. Either the `cis-cat-centralized.sh` script or the `cis-cat-centralized-ccpd.sh` script is prepared on that centralized file share.  The target computers then access and run the prepared centralized script to perform a local assessment over the network connection.
+ 
+
+
+**Key steps to begin setup:**
+
+1. Identify the host server where CIS-CAT and a JRE will reside
+2. Follow the [CIS Host Server Setup](#hostServerSetup)
+3. [Prepare the Java Runtime Environment(JRE)](#prepareJRE)
+4. Decide if your organization desires reports to automatically upload to CIS-CAT Pro Dashboard
+5. [Select the appropriate script](#selectScript) to use (cis-cat-centralized.sh or cis-cat-centralized-ccpd.sh)
+6. Modify the selected script
+7. Update common script components
+	- [Set the benchmark profile](#setBenchmarkProfile)
+	- [Customize the default benchmarks and profiles](#customizeDefault)
+	- [Define the location of assessor and JRE](#defineAssessorLocation)
+1. [Define the report output](#defineReportOutput) for the selected script (cis-cat-centralized.sh or cis-cat-centralized-ccpd.sh)
+2. [Validate the install](#validateInstall)
+ 
+
+<a name="hostServerSetup"></a>
+**CIS Host Server Setup**
+
+The *CIS Host Server* is where the CIS-CAT Pro Assessor v4 bundle (including any Java Runtime Environments) and possibly the reports are placed.  Configured target machines will access these resources to perform a local assessment using CIS-CAT Pro Assessor v4.
+ 
+The setup for centralized scanning begins with creating a folder on the network file share location to use as the root of the Centralized Assessor.  The below instructions have selected `/cis` as the root for the Centralized assessment process.
+ 
+1. Create a `/cis` root folder on the network file share location
+2. Copy the latest CIS-CAT Pro Assessor v4 bundle to `/cis` and extract. The structure should look like:
+
+	`/cis/Assessor-CLI`
+
+2. Decide where assessment reports should output to and select the correct supporting centralized script.
+3. Locate the required scripts in the `/cis/Assessor-CLI/misc/Unix-Linux` folder of the CIS-CAT Pro Assessor v4 bundle.
     * cis-cat-centralized.sh **OR** cis-cat-centralized-ccpd.sh
-	* detect-os-variant.sh
-	* make-jre-directories.sh
-	* map-to-benchmark.sh
-2. Copy the scripts to the root folder on the *CIS Host Server*
-1. Configure the JRE sub-folders
-    * Optionally use the **“cis-cat-centralized.sh”** and **“cis-cat-centralized-ccpd.sh”** scripts to create the **“jres”** subfolder and all OS-specific folders underneath it.
-	* Run one of the following commands, depending on whether you are using the **“cis-cat-centralized.sh”** or the **“cis-cat-centralized-ccpd.sh”** script:
+    * detect-os-variant.sh
+    * make-jre-directories.sh
+    * map-to-benchmark.sh
+3. Copy the scripts from `/cis/Assessor-CLI/misc/Unix-Linux` to the root folder, `/cis`.
+4. Create JRE sub-folders by executing one of the following commands in `/cis` for the selected script
+	
+	
+	`> ./cis-cat-centralized.sh --make-jre-directories`
 
+	**or**
 
-	`/cis> ./cis-cat-centralized.sh --make-jre-directories`
+	`> ./cis-cat-centralized-ccpd.sh --make-jre-directories`
 
-	or
-
-	`/cis> ./cis-cat-centralized-ccpd.sh --make-jre-directories`
-
-The default configuration of the *CIS Host Server* folder structure should now be as follows:
+   **The default configuration of the *CIS Host Server* folder structure should now be as follows:**
 
 	/cis
-
+ 
+	/cis
 	/cis/Assessor-CLI
-	/cis/Assessor-CLI/reports
-	...
-
-	/cis/cis-cat-centralized.sh OR /cis/cis-cat-centralized-ccpd.sh   <-- Copied from misc/Unix-Linux
+	/cis/cis-cat-centralized.sh                                       <-- Copied from misc/Unix-Linux
 	/cis/detect-os-variant.sh                                         <-- Copied from misc/Unix-Linux
 	/cis/make-jre-directories.sh                                      <-- Copied from misc/Unix-Linux
 	/cis/map-to-benchmark.sh                                          <-- Copied from misc/Unix-Linux
-	
+ 
 	/cis/jres
 	/cis/jres/AIX
-	/cis/jres/AIX/bin/java
-	...
+	/cis/jres/CentOS
 	/cis/jres/Debian
 	/cis/jres/HPUX
 	/cis/jres/Linux
 	/cis/jres/OSX
 	/cis/jres/RedHat
 	/cis/jres/Solaris
-	/cis/jres/SolarisSparc
 	/cis/jres/SUSE
+	/cis/jres/Ubuntu
 
-### Update cis-cat-centralized.sh ###
-Once the *CIS Host Server* is setup, a few modifications must be made to either `cis-cat-centralized.sh` or `cis-cat-centralized-ccpd.sh`. If you want to write the assessment reports to the *CIS Host Server*, utilize the `cis-cat-centralized.sh` script and modify it as directed in this section.  If you want to send the assessment reports directly to a CIS-CAT Pro Dashboard (CCPD), skip this section and go to the **"Update cis-cat-centralized-ccpd.sh"** section, instead.
+<a name="prepareJRE"></a>
+**Prepare JRE Subfolders**
 
-	CISCAT_DIR=/cis/Assessor-CLI
-	REPORTS_DIR=/cis/Assessor-CLI/reports
-	JRE_BASE=/cis/jres
-CISCAT_DIR, REPORTS_DIR, and JRE_BASE should be configured to align with the *CIS Host Server* folder structure. 
+The centralized scripts look for a specific JRE per operating system type. Some users find that some versions of JRE do not operate on some operating systems. Therefore, the script is designed to allow users to specify a JRE version per operating system. It is a requirement to place a JRE version in each of the operating system folders above that represent an operating system that will be scanned to avoid the error of "no Java version found".
 
-	SSLF='0'
-The script can be configured to execute either the **“Level 1”** or **“Level 2”** **profile** (if available), based on an environment variable value.  This variable is named `SSLF`, and may be set to either 0 or 1.  Setting the value to 0 results in CIS-CAT evaluating the "Level 1" profile, while setting the value to 1 results in CIS-CAT evaluating the “Level 2” profile.
 
+1. Download the desired version of Java for each of the operating systems that will be scanned
+2. Copy the appropriate JRE into the appropriate folders
+
+<a name="selectScript"></a> 
+**Select a Script to Modify**
+
+The choice of which of these two files to use depends on where the assessment reports are to be written.  
+
+Select the `cis-cat-centralized.sh` file to send the assessment reports to a Reports folder on the *CIS Host Server* (or another network location).  
+
+Select the `cis-cat-centralized-ccpd.bat` file to send the assessment reports directly to an installed CIS-CAT Pro Dashboard (CCPD).  
+
+Follow the shared script modifications, and then follow the specific modifications pertinent to the selected script, cis-cat-centralized.sh or cis-cat-centralized-ccpd.sh.
+
+
+<a name="setBenchmarkProfile"></a> 
+**Set the Benchmark Profile**
+
+During a configuration assessment, only one profile can be executed per report. For additional explanation of profiles, see the HTML report explanation.
+
+The script contains a variable called `SSLF` (Specialized Security Limited Functionality). This is a global setting and is mandatory. The variable can be set to "0" or "1". By default, it is set to "0" which correlates to a "Level 1" Benchmark profile.
+ 
+The script can be configured to execute either the “Level 1” or “Level 2” profile (if available).  Setting the value to 0 results in CIS-CAT evaluating the "Level 1" profile, while setting the value to 1 results in CIS-CAT evaluating the “Level 2” profile.
+ 
 The shell script automatically detects the Operating System of the target system that is being assessed. Depending on the version of the OS, the appropriate benchmark and profile are selected for the assessment.
-
+ 
 The above functionality is achieved within the detect-os-variant.sh and map-to-benchmark.sh scripts. For the Linux distributions that it is possible to detect if the OS is a Workstation or a Server variant the script takes care of the profile selection for the level that was selected above (SSLF). For the ones that the script cannot detect it selects the corresponding “Server” profile with the level again set in the above variable (SSLF).
-
-Examples: 
-
+ 
+**Examples:**
+ 
 1. Operating system = RHEL 7, Workstation and SSLF is set to ‘0’
-    * Benchmark selected  = CIS_Red_Hat_Enterprise_Linux_7_Benchmark
+    * Benchmark selected = CIS_Red_Hat_Enterprise_Linux_7_Benchmark
 	* Profile selected = Level 1 – Workstation
 2. Operating system = Debian 9 and SSLF is set to ‘1’
-    * Benchmark selected  = CIS_Debian_Linux_9_Benchmark
+    * Benchmark selected = CIS_Debian_Linux_9_Benchmark
     * Profile selected = Level 2 – Server
 
-If the current mapping to the benchmark and profile for a particular version of an operating system doesn’t serve your needs, you can always manually update the benchmark and profile you want by modifying the appropriate line in the map-to-benchmark.sh script.
+<a name="customizeDefault"></a> 
+**Customize the Default Benchmark and Profiles**
 
+By default, the centralized script will assess a target system with the Level 1 profile. This can be customized to be more specific by modifying the appropriate line in the map-to-benchmark.sh script. It is also possible to customize the Benchmark selected for assessment. The profile names must match the Benchmark's profile name. To produce a text file of Benchmarks and profiles, see the [command line option](https://ccpa-docs.readthedocs.io/en/latest/User%20Guide%20for%20CLI/#command-line-options) `-bi` to produce the file.
+ 
 Example for Debian 9:
+ 
+if [ `expr $_VER \>= 9` -eq 1 ]
+then
 
-	if [ `expr $_VER \>= 9` -eq 1 ]
-	then
-	    BENCHMARK="CIS_Debian_Linux_9_Benchmark_v1.0.0-xccdf.xml"
-	    PROFILE1="Level 1 - Server"
-	    PROFILE2="Level 2 - Server"
-
+    BENCHMARK="CIS_Debian_Linux_9_Benchmark_v1.0.0-xccdf.xml"
+    PROFILE1="Level 1 - Server"
+    PROFILE2="Level 2 - Server"
+ 
 You can change PROFILE1="Level 1 - Server" to PROFILE1="Level 1 - Workstation"
-
-
-### Update cis-cat-centralized-ccpd.sh ###
-If you want to send the assessment reports directly to a CIS-CAT Pro Dashboard (CCPD) you have already setup, you must use the `cis-cat-centralized-ccpd.sh` file instead of the `cis-cat-centralized.sh` file.  Modify the `cis-cat-centralized-ccpd.sh` file as follows: 
-
+ 
+<a name="defineAssessorLocation"></a>
+**Define the Locations of Assessor and JRE**
+ 
+Update the below values to align with the *CIS Host Server* folder structure created as it will be accessed from each server.
+ 
 	CISCAT_DIR=/cis/Assessor-CLI
-	JRE_BASE=/cis/jres
-CISCAT_DIR and JRE_BASE should be configured to align with the *CIS Host Server* folder structure. 
+	JRE_BASE=/network/cis/jres
+ 
+For example, if the network location is mounted to `/network` on each server, the values should be:
+ 
+	CISCAT_DIR=/network/cis/Assessor-CLI
+	JRE_BASE=/network/cis/jres
 
-	CCPD_URL=http://[YOUR-SERVER]/CCPD/api/reports/upload
-CCPD_URL is used to set the URL for the CIS-CAT Pro Dashboard API to which CIS-CAT assessment reports will be uploaded.  The resource for CIS-CAT Pro Dashboard upload is **ALWAYS** mapped to the `/api/reports/upload` location, so the path to the application is all that should be modified here.  For example: http://applications.example.org/CCPD/api/reports/upload.
+<a name="defineReportOutput"></a> 
+**Define the Report Output**
 
-	AUTHENTICATION_TOKEN=[Generate_An_Authentication_Token_In_CCPD]
-To generate the token, please follow the instructions in [Establish authentication with Assessor](https://cis-cat-pro-dashboard.readthedocs.io/en/stable/source/Dashboard%20Deployment%20Guide%20for%20Linux/#establishAuthWithAssessor) section from the Dashboard Deployment guide.
 
-Replace **[Generate_An_Authentication_Token_In_CCPD]** with the Authentication Token generated by an "API" user in the CIS-CAT Pro Dashboard to which the CIS-CAT assessment reports will be uploaded to.
+**cis-cat-centralized-ccpd.bat**
 
-	SSLF='0'
-The script can be configured to execute either the **“Level 1”** or **“Level 2”** **profile** (if available), based on an environment variable value.  This variable is named `SSLF`, and may be set to either 0 or 1.  Setting the value to 0 results in CIS-CAT evaluating the "Level 1" profile, while setting the value to 1 results in CIS-CAT evaluating the “Level 2” profile.
+If using CIS-CAT Pro Dashboard, modify `cis-cat-centralized-ccpd.bat` to define the location of your installed CIS-CAT Pro Dashboard and entry of the authentication token.
 
-### Validate the Install ###
+ 
+Set the CCPD_URL to match the URL for the CIS-CAT Pro Dashboard API URL. This is a location valid only for the API and cannot be browsed.
+ 
+	CCPD_URL=http://[YOUR-SERVER]:[PORT]/CCPD/api/reports/upload
+ 
+CCPD_URL defines the CIS-CAT Pro Dashboard API to which assessment reports will be uploaded to.  The CIS-CAT Pro Dashboard [Linux](https://cis-cat-pro-dashboard.readthedocs.io/en/stable/source/Dashboard%20Deployment%20Guide%20for%20Linux/#component-deployment) and [Windows](https://cis-cat-pro-dashboard.readthedocs.io/en/stable/source/Dashboard%20Deployment%20Guide%20for%20Windows/) deployment guides configure the port as 8080. However, it is possible for the to utilize a port of your choosing, provided proper coordination with Dashboard setup. The port is also unnecessary when utilizing HTTPS protocol (recommended). The resource for CIS-CAT Pro Dashboard upload is **ALWAYS** mapped to the `/api/reports/upload` location, so the path to the application is all that should be modified here.  If you have configured your Dashboard to use HTTPS, you must make sure `https` is used in the value. For example, if we set up our CIS-CAT Pro Dashboard at https://cis.test.com/CCPD, we would update the value to be:
+ 
+	CCPD_URL=https://cis.test.com/CCPD/api/reports/upload
+ 
+Set the authentication token value to the one generated by CIS-CAT Pro Dashboard.
+ 
+	AUTHENTICATION_TOKEN='<Generate_An_Authentication_Token_In_CCPD>'
+ 
+To generate the token, please follow the instructions in [Establish authentication with Assessor](https://cis-cat-pro-dashboard.readthedocs.io/en/stable/source/Dashboard%20Deployment%20Guide%20for%20Linux/#establishAuthWithAssessor) section from the Dashboard Deployment guide. Replace  `<Generate_An_Authentication_Token_In_CCPD>` with the Authentication Token generated by the built-in "API" user in the CIS-CAT Pro Dashboard.
+ 
+**cis-cat-centralized.sh**
+
+ 
+Define the network location where the configuration assessment report output should be written to.
+ 
+	REPORTS_DIR=/cis/Assessor-CLI/reports
+	
+ 
+ For example, if the network location is mounted to `/network` on each server, the values should be:
+ 
+	
+	REPORTS_DIR=/network/cis/Assessor-CLI/reports
+	
+
+
+<a name="validateInstall"></a>
+**Validate the Install**
+
 To test the setup, log into one of the target systems that has access to the *CIS Host Server* as either a root user or a user capable of executing commands using sudo.  Execute one of the following commands, depending on which **.sh** file you intend to use (**cis-cat-centralized.sh** or **cis-cat-centralized-ccpd.sh**):
 
 	> /path/to/cis/cis-cat-centralized.sh
