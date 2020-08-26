@@ -16,6 +16,10 @@ See the CIS-CAT Pro Assessor Coverage Guide for information about supported benc
 - Debian Family Linux v1.0.0
 - Fedora 19 Family v1.0.0
 - Microsoft Windows 10 Enterprise Release 2004 v1.9.0
+- The following CIS Benchmarks have moved to end of life and are no longer officially supported. See the [Coverage Guide](https://ccpa-docs.readthedocs.io/en/latest/Coverage%20Guide/) for more information.
+	- Microsoft SQL Server 2008 R2
+	- Microsoft SQL Server 2012
+	- Microsoft SQL Server 2014
 
 ### CIS-CAT Pro Updates ###
 - Resolved an issue with configuration results for MacOS for the Gatekeeper recommendation 2.6.2 check.
