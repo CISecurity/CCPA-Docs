@@ -595,6 +595,38 @@ or
 - The default port number for MS SQL Server databases is `1433`.
 - The full set of connection properties supported by jTDS can be found at [http://jtds.sourceforge.net/faq.html#urlFormat](http://jtds.sourceforge.net/faq.html#urlFormat).
 
+
+Kubernetes Assessment
+----------------------------------
+
+Assessing with the Kubernetes benchmark in CIS-CAT Pro Assessor v4 works like any other local assessment of a Linux benchmark. However, CIS-CAT Pro Assessor v4 must be located on the server being assessed (master or worker node) to perform the assessment, as this benchmark is limited to local assessments only. 
+
+If using a configuration XML file for the assessment, be sure to use the "local" session type.
+
+**Example methods for executing a Kubernetes assessment**
+
+Execute an assessment on command line on local machine where Kubernetes exists using interactive mode:
+
+	> Assessor-CLI.bat -i
+
+Execute an assessment on command line on local machine where Kubernetes exists using the relative path to the benchmark file, automatically selecting the first profile:
+
+	> Assessor-CLI.bat -b benchmarks\CIS_Kubernetes_Benchmark_v1.5.1-xccdf.xml
+
+
+Execute an assessment on command line on local machine where Kubernetes exists using information found in a saved configuration XML file. See sample configuration file below:
+
+	> Assessor-CLI.bat -cfg C:\CIS\kubernetes_assessment-configuration.xml
+
+
+Sample configuration file:
+
+![](img/Kubernetes_config_file.png)
+
+
+
+
+
 VMware ESXi Assessment
 ----------------------------------
 Assessing with the VMWare ESXi benchmark in CIS-CAT Pro Assessor v4 requires use of a connection string to connect to the ESXi/vSphere host. The VMWare benchmark will require entry of the connection string on the command line or setting of the string in advance in the `assessor-cli.properties` file or configuration XML file. Additional requirements necessary for the host of CIS-CAT Pro when assessing with the VMWare benchmark are listed below.
@@ -636,6 +668,12 @@ The certificate must be ignored for an assessment to execute. Setting this optio
 To modify the setting, run the following command:
 
     Set-PowerCLIConfiguration -InvalidCertificateAction Ignore -Confirm:$false
+
+
+**Example methods for executing a VMWare assessment**
+
+
+
 
 Extra configuration Options
 ---------------------------
