@@ -605,7 +605,7 @@ If using a configuration XML file for the assessment, be sure to use the "local"
 
 **Example methods for executing a Kubernetes assessment**
 
-Execute an assessment on command line on local machine where Kubernetes exists using interactive mode:
+Execute an assessment on command line on local machine where Kubernetes exists using interactive mode, following prompts for benchmark and profile selection:
 
 	> Assessor-CLI.bat -i
 
@@ -619,9 +619,25 @@ Execute an assessment on command line on local machine where Kubernetes exists u
 	> Assessor-CLI.bat -cfg C:\CIS\kubernetes_assessment-configuration.xml
 
 
-Sample configuration file:
+Sample configuration file HTML report generation::
 
-![](img/Kubernetes_config_file.png)
+	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+	<configuration xmlns="http://cisecurity.org/ccpa/config">
+    <starting_dir>C:\CIS\CIS-CAT_Software\Assessor\Assessor-CLI</starting_dir>
+    <vulnerability_definitions download="false"/>
+    <sessions test="false">
+        <session id="Kube1">
+            <type>local</type>
+            <tmp_path/>
+        </session>
+    </sessions>
+    <assessments quiet="false">
+        <benchmark profile="Level 1" session-ref="Kube1" xccdf="C:\CIS\CIS-CAT_Software\Assessor-v4.0.22\Assessor-CLI\benchmarks\CIS_Kubernetes_Benchmark_v1.5.1-xccdf.xml"/>
+    </assessments>
+    <reports html="true">
+        <reports_dir>C:\CIS\CIS-CAT_Software\Assessor-v4.0.22\Assessor-CLI\reports</reports_dir>
+    </reports>
+	</configuration>
 
 
 
@@ -638,7 +654,7 @@ Assessing with the VMWare ESXi benchmark in CIS-CAT Pro Assessor v4 requires use
 - PowerCLI 6.5.1+ installed
 
 
-Older versions of powerCLI will receive a warning when older, deprecated versions are encountered. 
+Older versions of powerCLI will receive a warning printed in the assessor-cli.log when older, deprecated versions are encountered. 
 On failure, the first line of the above example will show a result of "2" and will indicate that the version check has failed. A failure to connect and execute commands will in assessment results of "unknown" as CIS-CAT Pro Assessor will not be able to collect the system's state information.
 
 A version comparison result of "-1", indicates that the version check resulted in an "unrecognized format". Since the version could not fully be determined, accuracy of the results should be analyzed.
@@ -657,7 +673,7 @@ The VMWare benchmark will execute 40 to 60 commands to collect state information
 
 It is required to utilize a local "session" type for the configuration assessment. The connection strings can be placed in a configuration xml or in the assessor-cli.properties file. If the connection string is not defined in either file, the command line will prompt the user to enter the information.
 
-If CIS-CAT Pro Assessor is unable to connect to the ESXi host, this information will be available in the CIS-CAT Pro log, if generated. The log may indicate that an error has occurred with a certificate. If this error is present, run the following command to verify the status of a certificate.
+If CIS-CAT Pro Assessor is unable to connect to the ESXi host, this information will be available in the CIS-CAT Pro log (assessor-cli.log), if generated. The log may indicate that an error has occurred with a certificate. If this error is present, run the following command to verify the status of a certificate.
 
     Get-PowerCLIConfiguration
 
@@ -672,7 +688,51 @@ To modify the setting, run the following command:
 
 **Example methods for executing a VMWare assessment**
 
+Execute a single assessment on command line with connection string specified for the VMWare ESXi:
 
+	> Assessor-CLI.bat -b benchmarks\CIS_VMware_ESXi_6.7_Benchmark_v1.1.0-xccdf.xml -D xccdf_org.cisecurity.benchmarks_value_esxi.connection=root/password@192.168.41.60
+
+It is also possible to add the connection string, represented after the -D option above, to the assessor-cli.properties file. However, only one of these can be added. To complete multiple assessments, use a configuration.XML file or use multiple commands.
+
+
+Execute an multiple assessments on command line on local machine using information found in a saved configuration XML file. See sample configuration file below:
+
+	> Assessor-CLI.bat -cfg C:\CIS\vmware_assessment-configuration.xml
+
+Example configuration file with specified profiles and HTML report generation:
+
+Below is an example of multiple VMWare assessments. It is important to note that the Session type should be `local` even though the connection will not physically be local.
+
+	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+	<configuration xmlns="http://cisecurity.org/ccpa/config">
+    <starting_dir>C:\CIS\CIS-CAT_Software\Assessor-v4.0.22\Assessor-CLI</starting_dir>
+    <vulnerability_definitions download="false"/>
+    <sessions test="false">
+        <session id="vmware1">
+            <type>local</type>
+            <tmp_path/>
+        </session>
+        <session id="vmware2">
+            <type>local</type>
+            <tmp_path/>
+        </session>
+    </sessions>
+    <assessments quiet="false">
+        <benchmark profile="Level 1 (L1) - Corporate/Enterprise Environment (general use)" session-ref="vmware1" xccdf="C:\CIS\CIS-CAT_Software\Assessor-v4.0.22\Assessor-CLI\benchmarks\CIS_VMware_ESXi_6.7_Benchmark_v1.1.0-xccdf.xml">
+            <interactive_values>
+                <value id="xccdf_org.cisecurity.benchmarks_value_esxi.connection">root/password@192.168.41.60</value>
+            </interactive_values>
+        </benchmark>
+        <benchmark profile="Level 1 (L1) - Corporate/Enterprise Environment (general use)" session-ref="vmware2" xccdf="C:\CIS\CIS-CAT_Software\Assessor-v4.0.22\Assessor-CLI\benchmarks\CIS_VMware_ESXi_6.7_Benchmark_v1.1.0-xccdf.xml">
+            <interactive_values>
+                <value id="xccdf_org.cisecurity.benchmarks_value_esxi.connection">root/password@192.168.41.50</value>
+            </interactive_values>
+        </benchmark>
+    </assessments>
+    <reports html="true">
+        <reports_dir>C:\CIS\CIS-CAT_Software\Assessor-v4.0.22\Assessor-CLI\reports</reports_dir>
+    </reports>
+	</configuration>
 
 
 Extra configuration Options
