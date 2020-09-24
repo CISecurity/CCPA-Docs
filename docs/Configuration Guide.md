@@ -655,7 +655,7 @@ Assessing with the VMWare ESXi benchmark in CIS-CAT Pro Assessor v4 requires use
 
 
 Older versions of powerCLI will receive a warning printed in the assessor-cli.log when older, deprecated versions are encountered. 
-On failure, the first line of the above example will show a result of "2" and will indicate that the version check has failed. A failure to connect and execute commands will in assessment results of "unknown" as CIS-CAT Pro Assessor will not be able to collect the system's state information.
+On failure, the first line of the above example will show a result of "2" and will indicate that the version check has failed. A failure to connect and execute commands will result in "unknown" assessment results indicating that CIS-CAT Pro Assessor was unable to collect the system's state information.
 
 A version comparison result of "-1", indicates that the version check resulted in an "unrecognized format". Since the version could not fully be determined, accuracy of the results should be analyzed.
 
@@ -671,7 +671,7 @@ The VMWare benchmark will execute 40 to 60 commands to collect state information
 
 **Connections and Certificates**
 
-It is required to utilize a local "session" type for the configuration assessment. The connection strings can be placed in a configuration xml or in the assessor-cli.properties file. If the connection string is not defined in either file, the command line will prompt the user to enter the information.
+It is required to utilize a local "session" type for the configuration assessment. The connection strings can be placed in a configuration xml, entered on command line or only one string can be placed in the assessor-cli.properties file. If the connection string is not defined in either file, the command line will prompt the user to enter the information.
 
 If CIS-CAT Pro Assessor is unable to connect to the ESXi host, this information will be available in the CIS-CAT Pro log (assessor-cli.log), if generated. The log may indicate that an error has occurred with a certificate. If this error is present, run the following command to verify the status of a certificate.
 
@@ -695,7 +695,7 @@ Execute a single assessment on command line with connection string specified for
 It is also possible to add the connection string, represented after the -D option above, to the assessor-cli.properties file. However, only one of these can be added. To complete multiple assessments, use a configuration.XML file or use multiple commands.
 
 
-Execute an multiple assessments on command line on local machine using information found in a saved configuration XML file. See sample configuration file below:
+Execute multiple assessments on command line on the local machine using information found in a saved configuration XML file. See sample configuration file below:
 
 	> Assessor-CLI.bat -cfg C:\CIS\vmware_assessment-configuration.xml
 
