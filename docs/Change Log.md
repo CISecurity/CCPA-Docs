@@ -8,9 +8,33 @@ CIS-CAT Pro Assessor v4
 ---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
+## CIS-CAT Pro Assessor, v4.0.24 ##
+#### Release Date: October 1, 2020 ####
+
+
+### Benchmark Coverage ###
+- Amazon Elastic Kubernetes Service (EKS) 1.0.1
+- Kubernetes v1.6.1
+- Microsoft Windows Server 2016 STIG v1.0.0
+- Red Hat Linux 7 v3.0.1. Resolves excessive duration assessment process when attached user home drives exist.
+
+### CIS-CAT Pro Updates ###
+- VMWare ESXi assessments for certain configurations now complete without error.
+- Updated Linux SCE scripts to enable more accurate Linux configuration assessment results where recommendations check IPV6 states.
+- The temporary folder will no longer increase in size in some circumstances when an error is encountered during an assessment.
+- The assessor configuration file, used in remote assessments, now supports additional reporting option output for JSON. This option previously was only available on the command line.
+- The "license" folder within CIS-CAT Pro bundle renamed to be more descriptive of the content to third_party_licenses.
+- Readme file updated to show new CIS Support portal information.
+- Linux centralized scripts updated to include latest CIS benchmark versions for CentOS 7, Red Hat 7, and Oracle Linux 7.
+- Corrected an issue in the ARF where "notapplicable" was being written to the result instead of "not applicable".
+- Configuration xml files now support one or multiple Cisco IOS tech files for assessment.
+
+### Documentation ###
+- Examples added for assessing with VMWare ESXi 6.7 Benchmark.
+- Additional information provided for executing a configuration assessment with a CIS Kubernetes Benchmark.
+
 ## CIS-CAT Pro Assessor, v4.0.23 ##
 #### Release Date: August 25, 2020 ####
-
 
 ### Benchmark Coverage ###
 - Debian Family Linux v1.0.0

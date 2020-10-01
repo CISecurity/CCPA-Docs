@@ -21,6 +21,7 @@ CIS-CAT Pro Assessor v4 strives to be a standards-based application focused on v
 CIS Benchmarks that have reached end of life are no longer officially supported for use with CIS-CAT. As Members are working to upgrade systems within their organization to more current technology, CIS offers end of life CIS Benchmark automated assessment content on the CIS WorkBench. Navigate to [https://workbench.cisecurity.org/files/2724](https://workbench.cisecurity.org/files/2724) for more information.
 
 - **CIS Alibaba Cloud Aliyun Linux 2, v1.0.0**
+- **CIS Amazon Elastic Kubernetes Service (EKS) Benchmark, v1.0.1**
 - **CIS Amazon Linux Benchmark, v2.0.0**
 - **CIS Amazon Linux 2 Benchmark, v1.0.0.1**
 - **CIS Apple macOS 10.13 Benchmark, v1.0.0.1**
@@ -41,7 +42,7 @@ CIS Benchmarks that have reached end of life are no longer officially supported 
 		- NOTE:  Requires the "ignore.platform.mismatch" property be set to "true" in the Assessor's properties file.
 - **CIS Google Chrome Benchmark, v2.0.0**
 - **CIS Google Kubernetes Engine, v1.1.0**
-- **CIS Kubernetes Benchmark, v 1.5.1**
+- **CIS Kubernetes Benchmark, v 1.6.1**
 - **CIS MIT Kerberos 1.10 Benchmark, v1.0.0**
 - **CIS Microsoft IIS 7 Benchmark, v1.8.0**
 - **CIS Microsoft IIS 8 Benchmark, v1.5.0**
@@ -74,6 +75,7 @@ CIS Benchmarks that have reached end of life are no longer officially supported 
 - **CIS Microsoft Windows Server 2012 (non-R2) Benchmark, v2.2.0**
 - **CIS Microsoft Windows Server 2012 R2 Benchmark, v2.4.0**
 - **CIS Microsoft Windows Server 2016 RTM (Release 1607) Benchmark, v1.2.0**
+- **CIS Microsoft Windows Server 2016 STIG Benchmark, v1.0.0**
 - **CIS Microsoft Windows Server 2019 Benchmark, v1.1.0**
 - **CIS Microsoft Windows 8 Benchmark, v1.0.0**
 - **CIS Microsoft Windows 8.1 Workstation Benchmark, v2.4.0**
@@ -114,7 +116,7 @@ CIS Benchmarks that have reached end of life are no longer officially supported 
 	- `xccdf_org.cisecurity_value_jdbc.url`: PostgreSQL Database connection string.
 - **CIS Red Hat Enterprise Linux 5 Benchmark, v2.2.0**
 - **CIS Red Hat Enterprise Linux 6 Benchmark, v2.0.2**
-- **CIS Red Hat Enterprise Linux 7 Benchmark, v3.0.0**
+- **CIS Red Hat Enterprise Linux 7 Benchmark, v3.0.1**
 - **CIS Red Hat Enterprise Linux 8 Benchmark, v1.0.0.1**
 - **CIS SUSE Linux Enterprise 11 Benchmark, v2.0.0**
 - **CIS SUSE Linux Enterprise 12 Benchmark, v2.0.0**

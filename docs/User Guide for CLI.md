@@ -395,6 +395,11 @@ Each `session` consists of a number of elements configuring the connection to th
 - `identity_passphrase`: The `identity_passphrase` element contains credentials required to complete authentication using the private key specified in the `identity` element. If this element exists for a session, but its value is left blank in the file, the user will be prompted to enter the passphrase for that session on the command line as part of initializing all of the sessions at the beginning of an assessment.
 - `enable_password`:  When authenticating a privileged user for `ios` sessions, the `enable_password` is mandatory.  This element specifies the credentials which allow the privileged user to enter "enable" mode on the Cisco IOS device.
 - `tmp_path`: Configure a custom "temp" directory location for use in creating the "ephemeral" directory on the target endpoint.  The "ephemeral" directory is named `ccpa-temp-TIMESTAMP` and is created as a sub-folder of the directory specified in this setting.  For example, if `tmp_path` is specified as `C:\Temp`, the "ephemeral" directory will be created at `C:\Temp\ccpa-temp-TIMESTAMP`.  **NOTE**: When specifying a value for `tmp_path`, this directory MUST ALREADY EXIST on the target endpoint.  In the above example, if the `C:\Temp` folder does not exist, the connection from CIS-CAT Pro Assessor v4 will not succeed.  If this property is left blank or not included, the Assessor will use the default "temp" folder as defined for the operating system, such as `/tmp` or `C:\Windows\Temp`.  Further information regarding the `tmp_path` and considerations for Unix/Linux environments can be found in the [CIS-CAT Pro Assessor Configuration Guide](./Configuration%20Guide).
+- `path_to_tech_support` property is REQUIRED when assessing the exported configuration of a network device. This property specifies the full path to the exported configuration file.
+
+When assessing non-network device endpoints, or assessing a network devices' current running configuration via SSH, the path_to_tech_support property is unnecessary.
+
+The path_to_tech_support property is not needed when the session type is local.
 
 
 #### Assessments ####

@@ -603,27 +603,29 @@ Assessing with the Kubernetes benchmark in CIS-CAT Pro Assessor v4 works like an
 
 If using a configuration XML file for the assessment, be sure to use the "local" session type.
 
+Note that CIS Kubernetes versions 1.6.1 and higher have introduced profile levels specific to Master and Work Nodes. Please use the profile that is representative of your configuration.
+
 **Example methods for executing a Kubernetes assessment**
 
-Execute an assessment on command line on local machine where Kubernetes exists using interactive mode, following prompts for benchmark and profile selection:
+Execute an assessment on command line on local machine where Kubernetes exists using interactive mode:
 
-	> Assessor-CLI.bat -i
+	> ./Assessor-CLI.sh -i
 
-Execute an assessment on command line on local machine where Kubernetes exists using the relative path to the benchmark file, automatically selecting the first profile:
+Execute an assessment on command line on local machine where Kubernetes exists using the relative path to the benchmark file, selecting a specific profile by name:
 
-	> Assessor-CLI.bat -b benchmarks\CIS_Kubernetes_Benchmark_v1.5.1-xccdf.xml
+	> ./Assessor-CLI.sh -b benchmarks/CIS_Kubernetes_Benchmark_v1.6.1-xccdf.xml
 
 
 Execute an assessment on command line on local machine where Kubernetes exists using information found in a saved configuration XML file. See sample configuration file below:
 
-	> Assessor-CLI.bat -cfg C:\CIS\kubernetes_assessment-configuration.xml
+	> ./Assessor-CLI.sh -cfg /CIS/kubernetes_assessment-configuration.xml
 
 
 Sample configuration file HTML report generation::
 
 	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 	<configuration xmlns="http://cisecurity.org/ccpa/config">
-    <starting_dir>C:\CIS\CIS-CAT_Software\Assessor\Assessor-CLI</starting_dir>
+    <starting_dir>/CIS/CIS-CAT_Software/Assessor/Assessor-CLI</starting_dir>
     <vulnerability_definitions download="false"/>
     <sessions test="false">
         <session id="Kube1">
@@ -632,14 +634,105 @@ Sample configuration file HTML report generation::
         </session>
     </sessions>
     <assessments quiet="false">
-        <benchmark profile="Level 1" session-ref="Kube1" xccdf="C:\CIS\CIS-CAT_Software\Assessor-v4.0.22\Assessor-CLI\benchmarks\CIS_Kubernetes_Benchmark_v1.5.1-xccdf.xml"/>
+        <benchmark profile="Level 1" session-ref="Kube1" xccdf="/CIS/CIS-CAT_Software/Assessor-v4.0.22/Assessor-CLI/benchmarks/CIS_Kubernetes_Benchmark_v1.5.1-xccdf.xml"/>
     </assessments>
     <reports html="true">
-        <reports_dir>C:\CIS\CIS-CAT_Software\Assessor-v4.0.22\Assessor-CLI\reports</reports_dir>
+        <reports_dir>/CIS/CIS-CAT_Software/Assessor-v4.0.22/Assessor-CLI/reports</reports_dir>
     </reports>
 	</configuration>
 
 
+Amazon Elastic Kubernetes Service (EKS) Assessment
+----------------------------------
+Assessing with the Amazon Elastic Kubernetes Service (EKS) benchmark in CIS-CAT Pro Assessor v4 requires the use of the AWS CLI to authenticate and connect to the EKS cluster.  This CIS Benchmark only runs on a Linux operating system.
+The Amazon EKS benchmark will authenticate and target a specific cluster with AWS CLI, and then submit kubelet and kubectl commands to the cluster to perform the assessment. The commands are present within the Benchmark content.
+This benchmark is only run as a local assessment, as local AWS CLI and Kubernetes commands are used to perform the assessment.
+
+
+**Summary**
+
+- Authentication method selected
+	- AWS CLI authentication
+	- Kubernetes AWS IAM Authenticator
+- AWS CLI installed, if this authentication method selected
+	- Latest version of AWS CLI v2 recommended
+	- If AWS CLI v1 utilized, version 1.16.156+ required
+- Configure aws-auth.yml with authentication
+- Kubeconfig file pointed to desired EKS cluster
+- Port 8080 (and any other needed ports) opened
+- [kubectl installed](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+- CIS-CAT Pro Assessor v4 bundle extracted locally on a Linux environment 
+ 
+This documentation provides instructions for use of AWS CLI. See below for information on the IAM Authenticator.
+
+**Configure AWS CLI Authentication**
+
+To authenticate, AWS CLI must have a user or role configured.  No IAM permissions are needed for the assessment itself, only to authenticate.
+
+The user or role must be granted the eks:DescribeCluster permission, which is utilized for the update-kubeconfig command to target the specific cluster for assessment.
+
+
+**Configure Kubernetes Role Based Access Control (RBAC) System**
+
+The AWS CLI permissions are only used for authentication.  All permissions for interacting with your Amazon EKS cluster’s Kubernetes API is managed through the native Kubernetes Role Based Access Control (RBAC) system. See [EKS Cluster access](https://aws.amazon.com/premiumsupport/knowledge-center/amazon-eks-cluster-access/) for more information.
+
+The following Roles are required to allow CIS-CAT Pro Assessor v4 to submit `kubelet` and `kubect`l commands to the cluster for automated assessments.
+
+|Default Cluster Role          |	Default Cluster Role Binding|	   Description|
+|------------------------------|--------------------------------|-----------------|
+|**system:kube-controller-manager**|**system:kube-controller-manager** user|Allows access to the resources required by the controller manager component. The permissions required by individual controllers are detailed in the controller roles.
+|**system:kubelet-api-admin**|	None|	Allows full access to the kubelet API.|
+
+
+To add a user or role to the aws-auth.yml (required only when user/role performing assessment is not cluster creator as creators are granted system:masters permissions):
+
+- Determine whether permissions will be applied to a user or role
+- Make note of the user or role ARN selected
+- Login as the administrator of the cluster (only cluster admin can perform below commands)
+- Edit aws-auth file with the command: `kubectl edit -n kube-system configmap/aws-auth`.
+- Add a user OR a role to aws-auth.yml file, save and exit file.
+	- Only one addition is required, user or role
+	- See AWS documentation (https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html) on applying a default or adding a user or role
+	- See examples below
+	
+
+	![](img/EKS_AddUser.png)
+
+
+	![](img/EKS_Addrole.png)
+
+
+**Prepare the Environment and AWS CLI**
+
+CIS-CAT Pro Assessor v4 must be extracted locally on a server (EC2 or another server) that has access to the EKS cluster servers. An automated assessment using the CIS Amazon EKS Benchmark must be performed as a local assessment or “local” session type. CIS-CAT Pro Assessor will run various kubectl and kubelet commands to perform the assessment. When utilizing CIS-CAT Pro Assessor v4’s supporting  files for this Benchmark, ensure configuration and session files contain a “local” session. Assessments can also be initiated using commands or the v4 GUI (coming soon) as a local assessment.
+
+Ensure security groups provide access to port 8080 from the server where CIS-CAT Pro Assessor v4 locally resides. Other ports may also need to be opened depending on each organization’s specific configuration.
+
+It is also required that kubectl is installed. See [Kubernetes documentation](https://kubernetes.io/docs/tasks/tools/install-kubectl/) for more information.
+
+Point AWS CLI to the desired EKS cluster for assessment using the following command: where name value of the cluster being assessed is the variable:
+
+`aws eks update-kubeconfig --name <Target Cluster Name>`
+
+**Use AWS IAM Authenticor**
+
+If unable to utilize AWS CLI v1.16.156 or later, it is also possible to utilize the AWS IAM Authenticator.  Review AWS documentation for downloading and preparing the [aws-iam-authenticator](
+https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html).
+
+Once the IAM authenticator is downloaded and installed, manually prepare the kubeconfig file. The kubeconfig file is automatically created as part of AWS CLI, but must be created manually when using the authenticator.  See AWS documentation on [creating the kubeconfig file](
+https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html#create-kubeconfig-manually).
+
+
+**Example method for executing an Amazon Elastic Kubernetes Service (EKS) assessment****
+
+As mentioned above, the Amazon Elastic Kubernetes Service (EKS) benchmark must always be executed as a “local” session type. The session type specifies the method assessor needs to use to execute the assessment and not the physical position of the cluster. 
+
+If using a sessions.properties file or assessor-config.xml file, ensure that the session type is “local”. 
+
+
+Execute an assessment on the command line:
+
+	> ./Assessor-CLI.sh -b benchmarks/CIS_Amazon_Elastic_Kubernetes_Service_(EKS)_Benchmark_v1.0.1-xccdf.xml`
 
 
 

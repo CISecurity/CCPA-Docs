@@ -29,6 +29,7 @@ The following 3rd-party libraries are bundled with CIS-CAT Pro Assessor v4.  Inf
 | Apache Commons IO               |Apache 2.0                 |[https://github.com/apache/commons-io/blob/master/LICENSE.txt](https://github.com/apache/commons-io/blob/master/LICENSE.txt) |
 | Apache Commons CLI              |Apache 2.0                 |[https://github.com/apache/commons-cli/blob/master/LICENSE.txt](https://github.com/apache/commons-cli/blob/master/LICENSE.txt) |
 | HttpBuilder-NG                  |Apache 2.0                 |[https://github.com/http-builder-ng/http-builder-ng](https://github.com/http-builder-ng/http-builder-ng) |
+| OpenDXL Java Client                  |Apache 2.0                 |[https://github.com/opendxl/opendxl-client-java/blob/master/LICENSE](https://github.com/opendxl/opendxl-client-java/blob/master/LICENSE) |
 | GPars                           |Apache 2.0                 |[https://github.com/GPars/GPars/blob/master/LICENSE.txt](https://github.com/GPars/GPars/blob/master/LICENSE.txt) |
 | jPowerShell                     |Apache 2.0                 |[https://github.com/profesorfalken/jPowerShell/blob/master/LICENSE](https://github.com/profesorfalken/jPowerShell/blob/master/LICENSE) |
 | Logback Classic Module          |LGPL 2.1                   |[https://github.com/qos-ch/logback/blob/master/LICENSE.txt](https://github.com/qos-ch/logback/blob/master/LICENSE.txt) |

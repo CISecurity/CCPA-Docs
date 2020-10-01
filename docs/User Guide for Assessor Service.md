@@ -19,8 +19,8 @@ For implementations where CIS-CAT Pro Assessor v4 Service will be on a dedicated
 **Required:**
 
 - CIS-CAT Pro Dashboard v1.1.11+ installed
-- Java 8 installed on host or accessed via a network share
-  - [OpenJDK implementations](https://openjdk.java.net/) of Java 8 supported
+- Any JRE version from 8 to 14 installed on host or accessed via a network share
+  - [OpenJDK implementations](https://openjdk.java.net/) of Java supported
 
 **Recommended:**
 
