@@ -48,6 +48,27 @@ JRE is required to be installed on a shared network location when scanning via:
 - [Centralized scanning for Windows](https://ccpa-docs.readthedocs.io/en/latest/Configuration%20Guide/#centralized-windows) (systems within the same network)
 - [Centralized scanning for Linux](#assessCentalizedLinux) (systems within the same network)
 
+## License ##
+To unlock full feature and content access for CIS-CAT Pro Assessor v4 v4.1.0+, Members are required to download and apply their organization’s SecureSuite license from [https://workbench.cisecurity.org](https://workbench.cisecurity.org "CIS WorkBench").
+
+### Obtain License Files ###
+
+1. Login to CIS WorkBench
+2. In the top right, click on your login name
+3. Click on your Organization Name
+4. Select the “Licenses” tab beneath your organization name on the left side of the screen
+5. Click on Download
+	- NOTE: Ensue that JavaScript is unblocked on your browser if you do not see that the file has downloaded.
+6. Navigate to the downloaded files and extract/unzip the contents
+7. Store all of the extracted files in the "license" folder of CIS-CAT Pro Assessor v4 v4.1.0+
+
+![](img/license-download.png)
+
+### License Renewal ###
+
+The license file will expire when your SecureSuite Membership expires. Once your SecureSuite Membership renewal has been processed, your new license file bundle will be available in WorkBench. Download an updated license by following the initial license installation instructions, replacing the existing license files.
+
+
 Properties
 --------
 A number of different system properties exist to provide additional functionality.  These properties are found in a file named `assessor-cli.properties`, located in the application's `config` folder.  For any property value updates to take effect, the CIS-CAT Pro Assessor application must be re-started. All settings are optional for most Assessor activities. However, as use of CIS-CAT Pro expands, certain settings will be mandatory. For example, if utilizing CIS-CAT Pro Dashboard, it is required that the `ciscat.post.parameter.ccpd.token` is set.
@@ -55,6 +76,9 @@ A number of different system properties exist to provide additional functionalit
 
 | Property Name          | Data Type   |   Description |
 | -----------------------| ---------- | ------------- |
+| **License Files** |  |  |
+| ciscat.integration.config | `string` | Sets the filepath to the "dxlclient.config" file used for online license verification. The filepath should include the filename and extension. |
+| ciscat.license.filepath | `string` | Sets the filepath to the "license.xml" file used for license verification.  The filepath should include the filename and extension. |
 | **Define Behavior When Benchmark Content Fails Validation** |  |  |
 | validate.xml.schema                  | `true/false`    | Configuration of `true` results in schema validation of benchmark/datastream files. On validation failure, assessment process halts with exit with a code of 500. Configuration of `false` will not result in formal validation, but errors in the structure will result in an exception. |
 | **Define Assessor Behavior When Signed Benchmark Content Has Been Altered** |  |  |
@@ -893,7 +917,8 @@ The resulting directory structure should be as follows:
 	- CIS\Assessor-CLI\benchmarks
 	- CIS\Assessor-CLI\config
 	- CIS\Assessor-CLI\lib
-	- CIS\Assessor-CLI\licenses
+	- CIS\Assessor-CLI\
+	- s
 	- CIS\Assessor-CLI\misc
 	- CIS\Assessor-CLI\reports
 	- CIS\Assessor-CLI\sce
