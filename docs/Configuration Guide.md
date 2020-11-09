@@ -435,7 +435,7 @@ Once the exported configuration file is available to CIS-CAT Pro Assessor, the a
 
 Database Assessment
 -------------------------------
-Assessing database benchmarks in CIS-CAT Pro Assessor v4 uses the same JDBC connection mechanism as previous versions.  Database benchmarks will require a user to enter the JDBC connection string, or utilize the `assessor-cli.properties` file to set the appropriate value for assessment.
+Assessing database benchmarks in CIS-CAT Pro Assessor v4 uses a JDBC connection mechanism.  Database benchmarks require a user to enter the JDBC connection string on the command line, utilize the `assessor-cli.properties` file to set a single value for a single assessment or utilize a configuration XML file to assess multiple databases. The connection string utilized should always reflect the host system's name/IP.
 
 **Oracle Database**
 
@@ -570,7 +570,7 @@ For example, in order to force the database connection to require SSL, the conne
 
 **Microsoft SQL Server**
 
-Microsoft SQL Server database support is implemented using the jTDS open source JDBC driver.  The jTDS driver provides support for SQL Server 6.5, 7, 2000, 2005, 2008, and 2012.
+Microsoft SQL Server database support is implemented using the jTDS open source JDBC driver.
 
 The format of the jTDS JDBC URL for MS SQL Server is:
 
