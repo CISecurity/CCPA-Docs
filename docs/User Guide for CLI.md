@@ -1,4 +1,4 @@
-CIS-CAT Pro Assessor CLI User's Guide
+CIS-CAT Pro Assessor V4 User Guide
 =====================================
 
 ![](http://i.imgur.com/5yZfZi5.jpg)
@@ -6,21 +6,18 @@ CIS-CAT Pro Assessor CLI User's Guide
 
 Introduction
 ------------
-The CIS-CAT Pro Assessor CLI is a command-line user interface, allowing users to assess target systems against various forms of machine-readable content.  CIS-CAT Pro Assessor CLI is designed primarily to assess CIS Benchmark configuration recommendations but can also assess content written in conformance with the Security Content Automation Protocol (SCAP), as well as plain OVAL definition content.
+The CIS-CAT Pro Assessor v4 is a command-line and graphical user interface, allowing users to assess target systems against various forms of machine-readable content.  CIS-CAT Pro Assessor is designed primarily to assess CIS Benchmark configuration recommendations but can also assess content written in conformance with the Security Content Automation Protocol (SCAP), as well as plain OVAL definition content.
 
 ## Remote Assessment Capability ##
 Arguably the most important feature to be included in CIS-CAT Pro Assessor v4 is the ability to assess remote endpoints.  Providing appropriate connection information allows CIS-CAT Pro Assessor to establish a "session", execute commands, run scripts, and perform collection and evaluation for the remote endpoint.  For Microsoft Windows endpoints, this "session" is established through the use of WinRM.  For Unix/Linux and Cisco network device endpoints, CIS-CAT Pro Assessor establishes the "session" via SSH.
 
 Endpoints to be assessed must be configured appropriately to allow for remote access.  Please see the [CIS-CAT Pro Assessor Configuration Guide](./Configuration%20Guide) for more information.
 
-## Cisco Configuration Assessment ##
-CIS-CAT Pro Assessor v4 includes the capability to assess Cisco networking devices in two ways.  Users can choose to connect directly to an online network device, via SSH, using a privileged account and perform evaluations against the current running configuration.  New to v4, users now have the ability to export device configurations, specifically the full output of the `show tech-support` command, to a file, and CIS-CAT Pro Assessor v4 can parse that output and perform the assessment.  Specifying the path to the exported configuration file is through the "session" configurations.  Detailed information on "sessions" can be found in the [CIS-CAT Pro Assessor Configuration Guide](./Configuration%20Guide).
 
-
-### Benchmark Coverage ###
+## Benchmark Coverage ##
 See the [CIS-CAT Pro Assessor Coverage Guide](./Coverage%20Guide) for the most up-to-date information regarding platform and application coverage.
 
-## Using CIS-CAT Pro Assessor GUI ##
+## CIS-CAT Pro Assessor GUI ##
 
 
 CIS-CAT Assessor Pro and Lite versions 4.1.0+ includes a graphical user interface (GUI) as part of the downloaded bundle. The GUI is compatible with a Microsoft Windows operating system. Open the application by running the Assessor-GUI.exe. The GUI provides a method to execute a configuration assessment in an easy, quick, and simple setup process. The interface offers a simple workflow for the basic, local system configuration scan as well as advanced workflows where multiple combinations of remote and local scanning can be performed.
@@ -31,7 +28,7 @@ When using the GUI, there's no need to setup additional software components (no 
 
 **NOTE: Assessor-GUI.exe must be executed by the Administrator or an equivalently privileged principal.**
 
-## Basic Workflow ##
+### Basic Workflow ###
 The basic workflow option accommodates a local system scan only. 
 
 ![](img/GUI_Workflow.png)
@@ -55,17 +52,17 @@ The assessment process requires read/write access to a temporary folder. The sys
 
 ![](img/GUI_AdvancedTemp.png)
 
-## Advanced Workflow ##
+### Advanced Workflow ###
 The advanced workflow option accommodates any combination of local or remote configuration assessments. With this option, it is also possible to upload a configuration XML or sessions.properties file to support remote or local configuration assessments.
 
-### Add remote or local target system ###
+#### Add remote or local target system ####
 
 Select this option to begin adding one or many targets for assessment. Required fields contain an asterisk. Help text is available within the application for each field of entry by hovering over the green question mark icon.
 
 
 ![](img/GUI_AddTarget.png) 
 
-### Load a configuration or sessions file ###
+#### Load a configuration or sessions file ####
 
 Select `Load a configuration or sessions file` to utilize an existing file list of systems to scan. The application will only load *.xml or *.properties files with correct schema.
 
@@ -76,7 +73,7 @@ When an encrypted file has been selected, the application will prompt for the en
 When utilizing the Advanced workflow and selecting to remotely scan a target for Windows, Unix/Linux, or Cisco IOS connection types, please remember to properly configure your endpoint to allow a successful communication between the CIS-CAT Pro host and the target.
 
 
-## Assessment Options ##
+### Assessment Options ###
 
 Select reporting options in this screen. CIS-CAT Lite is restricted to producing only HTML.
 
@@ -96,7 +93,7 @@ By default, the GUI creates an file in the `config` directory titled `enc_gui-co
 
 ![](img/GUI_ConfigurationOutputOptions.png)
 
-## Configuration Assessment ##
+### Configuration Assessment ###
 
 The top area of the screen of the screen tracks the progress of each individual assessment. Each step represents a distinct part of the assessment process.
 
@@ -395,6 +392,11 @@ When CIS-CAT Pro Assessor executes, the program will (by default) attempt to loa
 A second method to configure "interactive values" is to utilize the `-D <Property=Value>` command-line option.  This allows the user to configure a single property at a time when executing, therefore eliminating the potential need for multiple properties files.  Configuring this option on the command-line is straightforward, where the property name is the `id` attribute of the "interactive value" and the property value is configured:
 
 	> Assessor-CLI.bat -b benchmarks\CIS_Oracle_Database_11g_R2_Benchmark_v2.2.0-xccdf.xml -p "Level 1 - Windows Server Host OS" -D xccdf_org.cisecurity_value_jdbc.url=jdbc:oracle:thin:user/s3cr3t@DBHOST:1521:devdb
+
+### Cisco Configuration Assessment ###
+CIS-CAT Pro Assessor v4 includes the capability to assess Cisco networking devices in two ways.  Users can choose to connect directly to an online network device, via SSH, using a privileged account and perform evaluations against the current running configuration.  New to v4, users now have the ability to export device configurations, specifically the full output of the `show tech-support` command, to a file, and CIS-CAT Pro Assessor v4 can parse that output and perform the assessment.  Specifying the path to the exported configuration file is through the "session" configurations.  Detailed information on "sessions" can be found in the [CIS-CAT Pro Assessor Configuration Guide](./Configuration%20Guide).
+
+
 
 ## Using a Configuration XML File ##
 CIS-CAT Pro Assessor can be executed using the `-cfg` option, and specifying a configuration XML file.  This XML file allows user to configure sessions, assessments, interactive values, user properties, and reporting options all in a single file.  This configuration XML file essentially allows for multiple benchmark assessments against multiple endpoints both local and/or remote.
