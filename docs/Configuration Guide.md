@@ -24,6 +24,7 @@ CIS-CAT Pro Assessor v4 is a Java application and requires an available Java Run
 - Java versions 9+ will receive “WARNING: An illegal reflective access operation has occurred”. This can be ignored and will not halt the assessment.
 - OpenJDK (free and open-source) implementations are supported. We have found this [website](https://adoptopenjdk.net/) easy to navigate. The official source is [OpenJDK](https://openjdk.java.net).
 - Remote scanning requires unrestricted access from the CIS-CAT host system to the assessed target system
+- Windows remote and local assessments require a 64 bit operating system 
 
 **Recommended Minimum**:
 
@@ -51,6 +52,8 @@ JRE is required to be installed on a shared network location when scanning via:
 ## License ##
 To unlock full feature and content access for CIS-CAT Pro Assessor v4 v4.1.0+, Members are required to download and apply their organization’s SecureSuite license from [https://workbench.cisecurity.org](https://workbench.cisecurity.org "CIS WorkBench").
 
+If a valid license is not present in the defined location, CIS-CAT Pro Assessor will be limited to Lite functionality where only HTML output can be produced for a limited set of CIS content.
+
 ### Obtain License Files ###
 
 1. Login to CIS WorkBench
@@ -60,7 +63,7 @@ To unlock full feature and content access for CIS-CAT Pro Assessor v4 v4.1.0+, M
 5. Click on Download
 	- NOTE: Ensue that JavaScript is unblocked on your browser if you do not see that the file has downloaded.
 6. Navigate to the downloaded files and extract/unzip the contents
-7. Store all of the extracted files in the "license" folder of CIS-CAT Pro Assessor v4 v4.1.0+
+7. Store all of the extracted files in the "license" folder of CIS-CAT Pro Assessor v4 v4.1.0+.  This file location can be overridden by the "ciscat.license.filepath" property in the [assessor-cli.properties](https://ccpa-docs.readthedocs.io/en/latest/Configuration%20Guide/#properties) file.
 
 ![](img/license-download.png)
 
@@ -769,12 +772,15 @@ Assessing with the VMWare ESXi benchmark in CIS-CAT Pro Assessor v4 requires use
 - PowerShell installed
 	- VMware.VimAutomation.Core module required as cmdlets for managing vSphere are needed
 - PowerCLI 6.5.1+ installed
+- SSH enabled for the duration of the assessment*
 
 
 Older versions of powerCLI will receive a warning printed in the assessor-cli.log when older, deprecated versions are encountered. 
 On failure, the first line of the above example will show a result of "2" and will indicate that the version check has failed. A failure to connect and execute commands will result in "unknown" assessment results indicating that CIS-CAT Pro Assessor was unable to collect the system's state information.
 
 A version comparison result of "-1", indicates that the version check resulted in an "unrecognized format". Since the version could not fully be determined, accuracy of the results should be analyzed.
+
+\* In order to complete an assessment, CIS-CAT Pro utilizes PowerCLI which relies on ssh protocol. The CIS Benchmark recommends that ssh should be disabled. Organizations should consider the best management of ssh setting for the purpose of configuration assessments.
 
 **Connection Strings**
 

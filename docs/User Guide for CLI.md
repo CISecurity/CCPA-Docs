@@ -20,6 +20,101 @@ CIS-CAT Pro Assessor v4 includes the capability to assess Cisco networking devic
 ### Benchmark Coverage ###
 See the [CIS-CAT Pro Assessor Coverage Guide](./Coverage%20Guide) for the most up-to-date information regarding platform and application coverage.
 
+## Using CIS-CAT Pro Assessor GUI ##
+
+
+CIS-CAT Assessor Pro and Lite versions 4.1.0+ includes a graphical user interface (GUI) as part of the downloaded bundle. The GUI is compatible with a Microsoft Windows operating system. Open the application by running the Assessor-GUI.exe. The GUI provides a method to execute a configuration assessment in an easy, quick, and simple setup process. The interface offers a simple workflow for the basic, local system configuration scan as well as advanced workflows where multiple combinations of remote and local scanning can be performed.
+
+The size of the downloaded application has increased from approximately 100MB to 175MB. If an organization's assessment workflows do not require use of a GUI and the additional space is a concern, it is safe to delete the executable file after downloading.
+
+When using the GUI, there's no need to setup additional software components (no Java Runtime Environment (JRE) is needed. Command line and centralized assessment processes continue to require a suitable JRE.
+
+**NOTE: Assessor-GUI.exe must be executed by the Administrator or an equivalently privileged principal.**
+
+## Basic Workflow ##
+The basic workflow option accommodates a local system scan only. 
+
+![](img/GUI_Workflow.png)
+
+### Add a benchmark ###
+
+The list of benchmarks will populate with the benchmark files located in the `benchmark` folder. Filter the list for easier selection by entering characters in the "Search" field. CIS-CAT Lite is restricted to a subset of CIS Benchmark selections.
+
+![](img/GUI_BenchmarkSelection.png)
+
+
+Benchmarks selected that require an interactive value will popup an entry box.
+
+![](img/GUI_Interactive.png)
+
+For testing connection strings, select the `Test` button.
+
+### Advanced Options ###
+
+The assessment process requires read/write access to a temporary folder. The system's default temporary folder will automatically be selected. As an option, modify the folder selected for use during the assessment process.
+
+![](img/GUI_AdvancedTemp.png)
+
+## Advanced Workflow ##
+The advanced workflow option accommodates any combination of local or remote configuration assessments. With this option, it is also possible to upload a configuration XML or sessions.properties file to support remote or local configuration assessments.
+
+### Add remote or local target system ###
+
+Select this option to begin adding one or many targets for assessment. Required fields contain an asterisk. Help text is available within the application for each field of entry by hovering over the green question mark icon.
+
+
+![](img/GUI_AddTarget.png) 
+
+### Load a configuration or sessions file ###
+
+Select `Load a configuration or sessions file` to utilize an existing file list of systems to scan. The application will only load *.xml or *.properties files with correct schema.
+
+When an encrypted file has been selected, the application will prompt for the encryption password. If the correct password is provided, the file's contents are decrypted only in memory. The original file will remain encrypted and unaltered. The GUI will provide options to save the newly created file within the workflow
+
+![](img/GUI_Advanced.png)
+
+When utilizing the Advanced workflow and selecting to remotely scan a target for Windows, Unix/Linux, or Cisco IOS connection types, please remember to properly configure your endpoint to allow a successful communication between the CIS-CAT Pro host and the target.
+
+
+## Assessment Options ##
+
+Select reporting options in this screen. CIS-CAT Lite is restricted to producing only HTML.
+
+
+![](img/GUI_AssessmentOptions.png)
+
+
+Logging options, by default, are set to `WARN or ERROR`.  For support issues, ensure to capture a log of `WARN, ERROR, or INFO` and provide this as an attachment to a [technical support ticket](https://www.cisecurity.org/support/).
+
+
+![](img/GUI_LoggingSupport.png)
+
+
+### Saving a configuration file and encryption ###
+
+By default, the GUI creates an file in the `config` directory titled `enc_gui-config.xml`. For security purposes, the file is automatically encrypted with a complex, variable password. In order to utilize the created file in subsequent assessments, it is required to save a new file. Optionally, select to encrypt the file with a provided password.
+
+![](img/GUI_ConfigurationOutputOptions.png)
+
+## Configuration Assessment ##
+
+The top area of the screen of the screen tracks the progress of each individual assessment. Each step represents a distinct part of the assessment process.
+
+![](img/GUI_AssessmentStatus.png)
+
+
+**Platform mismatch**
+
+If a benchmark has been selected that does not match the operating system intended to assess, a platform mismatch error will occur and be displayed. If this occurs, determine if the correct benchmark was selected for the target system. If the benchmark selected was correct, it is possible to turn off this platform check in the assessor-cli.properties file by setting the property `ignore.platform.mismatch=TRUE`.
+
+![](img/GUI_PlatformMismatch.png)
+
+**Reports**
+
+The "reports" area shows the only the generated HTML. The HTML output must be selected prior to the assessment process for this type of format to generate. Select the report to view and select `View HTML`. By default, all reports are shown in the "reports" folder. This can be modified in the "Assessment Options" screen prior to assessment. Navigate to the report folder by selecting `Show reports folder`. 
+
+![](img/GUI_Reports.png)
+
 ## Using CIS-CAT Pro Assessor CLI ##
 Bundled with the application are two script files; a Microsoft Windows batch script, `Assessor-CLI.bat` and a Unix/Linux shell script, `Assessor-CLI.sh`.  These scripts serve as the entry point to the application.  Any examples included in this user's guide will utilize the Microsoft Windows batch script, but usage of the Unix/Linux shell script can be substituted.
 

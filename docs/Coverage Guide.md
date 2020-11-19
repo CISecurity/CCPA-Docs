@@ -24,9 +24,9 @@ CIS Benchmarks that have reached end of life are no longer officially supported 
 - **CIS Amazon Elastic Kubernetes Service (EKS) Benchmark, v1.0.1**
 - **CIS Amazon Linux Benchmark, v2.0.0**
 - **CIS Amazon Linux 2 Benchmark, v1.0.0.1**
-- **CIS Apple macOS 10.13 Benchmark, v1.0.0.1**
-- **CIS Apple macOS 10.14 Benchmark, v1.0.0.1**
-- **CIS Apple macOS 10.15 Benchmark, v1.0.0.1**
+- **CIS Apple macOS 10.13 Benchmark, v1.1.0**
+- **CIS Apple macOS 10.14 Benchmark, v1.1.0**
+- **CIS Apple macOS 10.15 Benchmark, v1.1.0**
 - **CIS Apple OSX 10.12 Benchmark, v1.0.0**
 - **CIS CentOS Linux 6 Benchmark, v2.0.2**
 - **CIS CentOS Linux 7 Benchmark, v3.0.0**
@@ -44,6 +44,7 @@ CIS Benchmarks that have reached end of life are no longer officially supported 
 - **CIS Google Kubernetes Engine, v1.1.0**
 - **CIS Kubernetes Benchmark, v 1.6.1**
 - **CIS MIT Kerberos 1.10 Benchmark, v1.0.0**
+- **CIS Microsoft Edge Benchmark, v1.0.0**
 - **CIS Microsoft IIS 7 Benchmark, v1.8.0**
 - **CIS Microsoft IIS 8 Benchmark, v1.5.0**
 - **CIS Microsoft IIS 10 Benchmark, v1.1.1**
@@ -68,7 +69,7 @@ CIS Benchmarks that have reached end of life are no longer officially supported 
 	- `xccdf_org.cisecurity_value_jdbc.url`: SQL Server connection string.
 - **CIS Microsoft Windows 10 Enterprise Release 1903 Benchmark, v1.7.1**
 - **CIS Microsoft Windows 10 Enterprise Release 1909 Benchmark, v1.8.1**
-- **CIS Microsoft Windows 10 Enterprise Release 2004 Benchmark, v1.9.0**
+- **CIS Microsoft Windows 10 Enterprise Release 2004 Benchmark, v1.9.1**
 - **CIS Microsoft Windows Server 2003 Benchmark, v3.1.0**
 - **CIS Microsoft Windows Server 2008 (non-R2) Benchmark, v3.1.0**
 - **CIS Microsoft Windows Server 2008 R2 Benchmark, v3.2.0**

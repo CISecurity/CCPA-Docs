@@ -8,6 +8,29 @@ CIS-CAT Pro Assessor v4
 ---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
+## CIS-CAT Pro Assessor, v4.1.0 ##
+#### Release Date: November 19, 2020 ####
+
+
+### Benchmark Coverage ###
+- MacOS 10.13 v1.1.0
+- MacOS 10.14 v1.1.0
+- MacOS 10.15 v1.1.0
+- Microsoft Edge v1.0.0
+- Microsoft Windows 10 Enterprise Release 2004 v1.9.1
+
+### CIS-CAT Pro Updates ###
+- The python.log is no longer created.
+- CIS-CAT Pro v4 Assessor v4.1.0 and Assessor v4 Service v1.1.0 versioning has incrementally changed to mark the introduction of licensing and addition of a GUI.
+- Assessor v4.1.0+ and v4 Service v1.1.0+ now require a license key for full functionality and CIS Benchmark availability.
+
+	NOTE: For full tool features, download license key files from CIS WorkBench and place in License folder. This location can be modified, if desired, in the assessor properties files. See the "License" section in the configuration guide for full instructions.
+- All manual recommendations now show on csv, HTML, and text configuration reports. "Manual" recommendations will continue to be excluded from the overall score of the report since the score can only be calculated by considering the fully-automated recommendations. See our [blog](https://www.cisecurity.org/blog/changes-to-cis-benchmark-assessment-recommendation-scoring/).
+
+### Documentation ###
+- VMware configuration documentation updated to mention CIS Benchmark recommendation consideration for ssh enablement.
+- The assessor-cli.properties file corrected to show the proper value name example for Microsoft SQL Server interactive value.
+
 ## CIS-CAT Pro Assessor, v4.0.24 ##
 #### Release Date: October 1, 2020 ####
 

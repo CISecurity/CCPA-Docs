@@ -21,6 +21,7 @@ For implementations where CIS-CAT Pro Assessor v4 Service will be on a dedicated
 - CIS-CAT Pro Dashboard v1.1.11+ installed
 - Any JRE version from 8 to 14 installed on host or accessed via a network share
   - [OpenJDK implementations](https://openjdk.java.net/) of Java supported
+- Windows assessments require a 64 bit operating system
 
 **Recommended:**
 
@@ -125,6 +126,28 @@ It is recommended to add Assessor v4 Service as a running service on the host ma
 
 	![](https://i.imgur.com/CxtZjU3.png)
 4. Run the command "sudo systemctl start AssessorService"
+
+## License ##
+To unlock full feature and content access for CIS-CAT Pro Assessor v4 Service v1.1.0+, Members are required to download and apply their organization’s SecureSuite license from [https://workbench.cisecurity.org](https://workbench.cisecurity.org "CIS WorkBench").
+
+If a valid license is not present in the defined location, CIS-CAT Pro Assessor v4 Service will not process assessment requests from CIS-CAT Pro Dashboard.
+
+### Obtain License Files ###
+
+1. Login to CIS WorkBench
+2. In the top right, click on your login name
+3. Click on your Organization Name
+4. Select the “Licenses” tab beneath your organization name on the left side of the screen
+5. Click on Download
+	- NOTE: Ensue that JavaScript is unblocked on your browser if you do not see that the file has downloaded.
+6. Navigate to the downloaded files and extract/unzip the contents
+7. Store all of the extracted files in the "license" folder of CIS-CAT Pro Assessor v4 Service v1.1.0+.  This file location can be overridden by the "ciscat.license.filepath" property in the [assessor-service.properties](https://ccpa-docs.readthedocs.io/en/latest/Configuration%20Guide/#properties) file.
+
+![](img/license-download.png)
+
+### License Renewal ###
+
+The license file will expire when your SecureSuite Membership expires. Once your SecureSuite Membership renewal has been processed, your new license file bundle will be available in WorkBench. Download an updated license by following the initial license installation instructions, replacing the existing license files.
 
 
 ## Configuration ##
