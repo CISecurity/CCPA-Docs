@@ -142,6 +142,7 @@ If a valid license is not present in the defined location, CIS-CAT Pro Assessor 
 	- NOTE: Ensue that JavaScript is unblocked on your browser if you do not see that the file has downloaded.
 6. Navigate to the downloaded files and extract/unzip the contents
 7. Store all of the extracted files in the "license" folder of CIS-CAT Pro Assessor v4 Service v1.1.0+.  This file location can be overridden by the "ciscat.license.filepath" property in the [assessor-service.properties](https://ccpa-docs.readthedocs.io/en/latest/Configuration%20Guide/#properties) file.
+8. Restart the service anytime changes are made to the assessor-service.properties, which include changes to the license folder
 
 ![](img/license-download.png)
 
