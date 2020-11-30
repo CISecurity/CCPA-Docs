@@ -26,6 +26,8 @@ The size of the downloaded application has increased from approximately 100MB to
 
 When using the GUI, there's no need to setup additional software components (no Java Runtime Environment (JRE) is needed. Command line and centralized assessment processes continue to require a suitable JRE.
 
+The GUI does not currently support initialization from a network location. The Assessor v4 must reside on a machine's local drive.
+
 **NOTE: Assessor-GUI.exe must be executed by the Administrator or an equivalently privileged principal.**
 
 ### Basic Workflow ###

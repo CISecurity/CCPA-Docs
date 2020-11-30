@@ -270,6 +270,7 @@ The following flowchart outlines the decision-making process when configuring an
 ![](https://i.imgur.com/qJScDnp.png)
 
 
+
 ### Windows Firewall Configuration ###
 CIS-CAT Pro Assessor v4 uses both the SMB and WinRM protocols in order to enable file manipulation and process execution, respectively.  As such, to connect to the remote host using SMB, ensure the host is reachable on port `445`.  To enable connection to the remote host using WinRM, ensure the host is reachable on either port `5985` (for WinRM over HTTP) or port `5986` (for WinRM over HTTPS).
 
