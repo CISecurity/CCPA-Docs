@@ -627,15 +627,16 @@ or
 Kubernetes Assessment
 ----------------------------------
 
-Assessing with the Kubernetes benchmark in CIS-CAT Pro Assessor v4 works like any other local assessment of a Linux benchmark. However, CIS-CAT Pro Assessor v4 must be located on the server being assessed (master or worker node) to perform the assessment, as this benchmark is limited to local assessments only. 
+Assessing with the Kubernetes benchmark in CIS-CAT Pro Assessor v4 works like any other assessment of a Linux benchmark. CIS-CAT Pro Assessor v4 can be located on the server being assessed (master or worker node) to perform the assessment. It is also possible to establish a remote connection with the Linux host.
 
-If using a configuration XML file for the assessment, be sure to use the "local" session type.
+If using a configuration XML file for the assessment, use the "local" or “ssh” session type. The 'ssh' session type is for remote assessments.
+
 
 Note that CIS Kubernetes versions 1.6.1 and higher have introduced profile levels specific to Master and Work Nodes. Please use the profile that is representative of your configuration.
 
 **Example methods for executing a Kubernetes assessment**
 
-Execute an assessment on command line on local machine where Kubernetes exists using interactive mode:
+Execute an assessment on command line on a local machine where Kubernetes exists using interactive mode:
 
 	> ./Assessor-CLI.sh -i
 
@@ -649,7 +650,7 @@ Execute an assessment on command line on local machine where Kubernetes exists u
 	> ./Assessor-CLI.sh -cfg /CIS/kubernetes_assessment-configuration.xml
 
 
-Sample configuration file HTML report generation::
+Sample configuration file for a local assessment with HTML report generation::
 
 	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 	<configuration xmlns="http://cisecurity.org/ccpa/config">
