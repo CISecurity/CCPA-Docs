@@ -8,6 +8,26 @@ CIS-CAT Pro Assessor v4
 ---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
+## CIS-CAT Pro Assessor, v4.2.0 ##
+#### Release Date: December 17, 2020 ####
+
+### Benchmark Coverage ###
+- Apache Tomcat 9 v1.1.0
+- Oracle Database 19c v1.0.0
+- Red Hat Enterprise Linux 5 has moved to end of life and is no longer officially supported. See the Coverage Guide for more information on end of life CIS Benchmarks.
+
+### CIS-CAT Pro Updates ###
+- Remote Linux assessment results are now more accurate when executed by "root" user. Please note that CIS Benchmark recommends authenticating as sudo for access over SSH.
+- New property allows option to hide timestamp from generated output reports.
+- Configuration assessment checks depending on a variable value that doesn't exist will no longer provide inaccurate results.
+- A JSON version of the configuration assessment report is now available from the command line. 
+
+### Documentation ###
+- Update to documentation to indicate that v4 GUI cannot initialize from a network location.
+- Updated User Guide for new JSON report format command line option.
+- Remote assessment for CIS Kubernetes Benchmark clarified in the Configuration Guide.
+- A new section entitled "Apache Tomcat 9 Assessment" has been added to the Configuration Guide to provide guidance for this new Benchmark.
+
 ## CIS-CAT Pro Assessor, v4.1.0 ##
 #### Release Date: November 19, 2020 ####
 

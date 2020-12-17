@@ -24,6 +24,7 @@ CIS Benchmarks that have reached end of life are no longer officially supported 
 - **CIS Amazon Elastic Kubernetes Service (EKS) Benchmark, v1.0.1**
 - **CIS Amazon Linux Benchmark, v2.0.0**
 - **CIS Amazon Linux 2 Benchmark, v1.0.0.1**
+- **CIS Apache Tomcat 9 Benchmark, v1.1.0**
 - **CIS Apple macOS 10.13 Benchmark, v1.1.0**
 - **CIS Apple macOS 10.14 Benchmark, v1.1.0**
 - **CIS Apple macOS 10.15 Benchmark, v1.1.0**
@@ -102,6 +103,9 @@ CIS Benchmarks that have reached end of life are no longer officially supported 
 - **CIS Oracle Database 18c Benchmark, v1.0.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: Oracle Database connection string.
 	- `xccdf_org.cisecurity_value_listener.ora`: Path to the listener.ora file
+- **CIS Oracle Database 19c Benchmark, v1.0.0**
+	- `xccdf_org.cisecurity_value_jdbc.url`: Oracle Database connection string.
+	- `xccdf_org.cisecurity_value_listener.ora`: Path to the listener.ora file
 - **CIS Oracle Linux 6 Benchmark, v1.0.0**
 - **CIS Oracle Linux 7 Benchmark, v3.0.0**
 - **CIS Oracle Linux 8 Benchmark, v1.0.0**
@@ -115,7 +119,6 @@ CIS Benchmarks that have reached end of life are no longer officially supported 
 	- `xccdf_org.cisecurity_value_jdbc.url`: PostgreSQL Database connection string.
 - **CIS PostgreSQL 12 Benchmark, v1.0.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: PostgreSQL Database connection string.
-- **CIS Red Hat Enterprise Linux 5 Benchmark, v2.2.0**
 - **CIS Red Hat Enterprise Linux 6 Benchmark, v2.0.2**
 - **CIS Red Hat Enterprise Linux 7 Benchmark, v3.0.1**
 - **CIS Red Hat Enterprise Linux 8 Benchmark, v1.0.0.1**

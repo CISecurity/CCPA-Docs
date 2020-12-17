@@ -764,6 +764,62 @@ Execute an assessment on the command line:
 	> ./Assessor-CLI.sh -b benchmarks/CIS_Amazon_Elastic_Kubernetes_Service_(EKS)_Benchmark_v1.0.1-xccdf.xml`
 
 
+Apache Tomcat 9 Assessment
+----------------------------------
+Assessing with the Apache Tomcat 9 benchmark in CIS-CAT Pro Assessor v4 requires input on two environment variables. Entry of the two variables can be done on the command line, at the GUI prompt or setting of the values in advance in the `assessor-cli.properties` file or configuration XML file. 
+
+**Requirements**
+
+There are approximately 15 checks in the Tomcat 9 benchmark that verify scenarios surrounding the username that has been created for the Tomcat 9 installation. Accurate and more favorable assessment results, will require:
+
+- User named `tomcat_admin`
+- Group name exists with name of `tomcat`
+- Group `tomcat` has ownership of Tomcat files and directories
+- `tomcat_admin` is a member of group `tomcat`
+- Connection to the host of the Tomcat application*
+
+NOTE*: For a remote assessment, it is necessary to ensure there is a connection(session) to the host machine where the instance of Tomcat resides.
+
+**Interactive Values**
+
+The benchmark requires two environment variable input values to inform the assessment process. The interactive environmental environment variables specify the `CATALINA_HOME` and `CATALINA_BASE` paths. The path for `CATALINA_HOME` should point to the location of the common information. The path for `CATALINA_BASE` should point to the directory where all the instance-specific information is held. In the case of a single instance, this path may be the same at the path for `CATALINA_HOME`.
+
+These values are specified in the xccdf files as:
+
+	xccdf_org.cisecurity_value_tomcat.base
+		Default value = /opt/tomcat/
+
+	xccdf_org.cisecurity_value_tomcat.home
+		Default value = /opt/tomcat/
+
+
+**Example configuration file for executing a Tomcat assessment**
+
+Example configuration file with specified profile and HTML report generation:
+
+	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+	<configuration xmlns="http://cisecurity.org/ccpa/config">
+    	<starting_dir>C:\CIS\CIS-CAT_Software\Releases\Assessor-CLI-v4.1.0\Assessor-CLI</starting_dir>
+    	<vulnerability_definitions download="false"/>
+    	<sessions test="false">
+        	<session id="1523-MKUN">
+        	    <type>local</type>
+        	    <tmp_path>C:\Users\mk\AppData\Local\Temp</tmp_path>
+        	</session>
+    	</sessions>
+    	<assessments gui="true" quiet="false">
+        	<benchmark profile="Level 1" session-ref="1523-MKUN" xccdf="benchmarks\CIS_Apache_Tomcat_9_Benchmark_v1.1.0-xccdf.xml">
+        	    <interactive_values>
+        	        <value id="xccdf_org.cisecurity_value_tomcat.base">/opt/tomcat/</value>
+        	        <value id="xccdf_org.cisecurity_value_tomcat.home">/opt/tomcat/</value>
+        	    </interactive_values>
+        	</benchmark>
+    	</assessments>
+    	<reports csv="false" html="true" no-arf="true" npr="false" txt="false">
+    	    <reports_dir>C:\CIS\CIS-CAT_Software\Releases\Assessor-CLI-v4.1.0\Assessor-CLI\reports</reports_dir>
+    	</reports>
+	</configuration>
+
 
 VMware ESXi Assessment
 ----------------------------------
