@@ -618,9 +618,23 @@ or
 
 	jdbc:jtds:sqlserver://CIS-SERVER:1433;DatabaseName=TestDB;user=jsmith;password=qw3rty;instance=InstanceName
 
+**Dynamic Ports**
+
+CIS-CAT Pro supports only local assessments when dynamic ports are configured. In order for the configuration assessment to be successful, the following must be in place:
+
+- CIS-CAT Pro Assessor resides on the database host machine (local)
+- The Microsoft SQL Server `named instance` option is utilized as opposed to `default instance`
+- SQL Server Browser enabled
+- UDP 1434 (SQL Server Browser) and sqlserver.exe [opened on firewall](https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access?view=sql-server-ver15)
+
+
+Modify the connection string by replacing the `Server Name` with `localhost` like the below example:
+
+	jdbc:jtds:sqlserver://localhost/TestDB;user=jsmith;password=qw3rty;instance=InstanceName
+
 **NOTES**:
 
-- The default port number for MS SQL Server databases is `1433`.
+- The default port number for MS SQL Server databases is `1433`. Dynamic ports supported for local assessments only.
 - The full set of connection properties supported by jTDS can be found at [http://jtds.sourceforge.net/faq.html#urlFormat](http://jtds.sourceforge.net/faq.html#urlFormat).
 
 
