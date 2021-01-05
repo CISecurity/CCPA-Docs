@@ -396,19 +396,29 @@ Use an encrypted configuration XML file in the assessment process:
 	> Assessor-CLI.bat -cfg C:\Test\enc_config_file.xml -fp "MyP@ssword$@!*&"
 
 
-#### Configuring Interactive Values ####
-A number of benchmarks supported by/bundled with CIS-CAT Pro Assessor require manual interaction by the user in order to configure specific values used during the assessment.  These "interactive values" will be presented to the user during a manual execution of the assessment, but will block the completion of the assessment if it is being executed off-hours, or as part of an automated script.  CIS-CAT Pro Assessor provides a mechanism for these "interactive values" to be configured using a properties file, thus removing the burden of entering these values manually.  This configuration requires knowledge of the value's `id` attribute within the benchmark or data-stream collection component.  The [CIS-CAT Pro Assessor Coverage Guide](./Coverage%20Guide) provides a listing, for each applicable benchmark, for any "interactive value" `id` attributes.  Once known, a user can modify the `assessor-cli.properties` file to specify the value:
+## Configuring Interactive Values for Select Benchmarks##
+A number of benchmarks supported by/bundled with CIS-CAT Pro Assessor require manual interaction by the user in order to configure specific values used during the assessment.  These "interactive values" will be required to complete some assessments. If the values are not available, the assessor will prompt the user to enter the values on the command line or in the GUI.
+
+Absence of these values will block the completion of the assessment if it is being executed off-hours, or as part of an automated script.  
+
+CIS-CAT Pro Assessor provides various mechanisms for entry of interactive values. In order to configure the value properly, it's important to utilize the value's `id` attribute within the benchmark or data-stream collection component.  The [CIS-CAT Pro Assessor Coverage Guide](./Coverage%20Guide) provides a listing, for each applicable benchmark, for any "interactive value" `id` attributes.
+
+
+- **Properties File:** To accommodate a single assessment, modify the `assessor-cli.properties` file to specify the value, for example:
 
 	xccdf_org.cisecurity_value_jdbc.url=jdbc:oracle:thin:system/manager@dbhost:1521:orcl
 
-When CIS-CAT Pro Assessor executes, the program will (by default) attempt to load properties contained in the `config\assessor-cli.properties`.
+	When CIS-CAT Pro Assessor executes, the program will (by default) attempt to load properties contained in the `config\assessor-cli.properties`. If a Benchmark is selected on the command line that requires an interactive value, assessor will look in the assessor-cli.properties for the `id` attribute it requires to complete the assessment. The first value for the necessary `id` will be selected.
 
-A second method to configure "interactive values" is to utilize the `-D <Property=Value>` command-line option.  This allows the user to configure a single property at a time when executing, therefore eliminating the potential need for multiple properties files.  Configuring this option on the command-line is straightforward, where the property name is the `id` attribute of the "interactive value" and the property value is configured:
+- **Command Line (-D Option):** Use in multiple commands. Specify the interactive value using `-D <Property=Value>` in the command to execute an assessment. If provided, you won't be prompted to enter the value. This allows the user to configure a single property at a time when executing. Configuring this option on the command-line is straightforward, where the property name is the `id` attribute of the "interactive value" and the property value is configured:
 
 	> Assessor-CLI.bat -b benchmarks\CIS_Oracle_Database_11g_R2_Benchmark_v2.2.0-xccdf.xml -p "Level 1 - Windows Server Host OS" -D xccdf_org.cisecurity_value_jdbc.url=jdbc:oracle:thin:user/s3cr3t@DBHOST:1521:devdb
 
-### Cisco Configuration Assessment ###
-CIS-CAT Pro Assessor v4 includes the capability to assess Cisco networking devices in two ways.  Users can choose to connect directly to an online network device, via SSH, using a privileged account and perform evaluations against the current running configuration.  New to v4, users now have the ability to export device configurations, specifically the full output of the `show tech-support` command, to a file, and CIS-CAT Pro Assessor v4 can parse that output and perform the assessment.  Specifying the path to the exported configuration file is through the "session" configurations.  Detailed information on "sessions" can be found in the [CIS-CAT Pro Assessor Configuration Guide](./Configuration%20Guide).
+- **GUI:** The interactive value can be specified in the GUI in the Basic or Advanced workflow. When a Benchmark is selected that requires an interactive value, you will be prompted to enter the value. For multiple endpoints with different interactive values, a separate target must be entered for each target even if they exist on the same host. See the below example.
+
+![interactive](img/InteractiveValueGUI.png)
+
+- **Configuration XML:** This is the best option for assessment of multiple benchmarks. A configuration file can contain multiple targets. The interactive value can be specified on each target. The GUI can be used to help create configuration files, which can then be used on the command line. See [information on using a configuration XML file.](https://ccpa-docs.readthedocs.io/en/latest/User%20Guide%20for%20CLI/#using-cis-cat-pro-assessor-cli)
 
 
 
@@ -680,7 +690,7 @@ Below is an example CIS Ubuntu Linux 18.04 LTS Benchmark configuration assessmen
 
 **Summary**
 
-The Summary section provides an overall view of each section within the benchmark that contributes to the overall score. Recommendations are organized into categories and sub-categories. Each recommendation, when included in the CIS-CAT Pro automated assessment process, may consist of one or more "checks", also referred to as "tests". In order for a recommendation to reach an overall "Pass" result, all checks/tests must result in a "Pass". Recommendations requiring user input, often referred to as "Manual" or "Informational" will not appear in this section. The summary is separated into a few columns. An explanation of each column can be found in the table below.
+The Summary section provides an overall view of each section within the benchmark that contributes to the overall score. Recommendations are organized into categories and sub-categories. Each recommendation, when included in the CIS-CAT Pro automated assessment process, may consist of one or more "checks", also referred to as "tests". In order for a recommendation to reach an overall "Pass" result, all checks/tests must result in a "Pass".  The summary is separated into a few columns. An explanation of each column can be found in the table below.
 
 The totals in each highlighted major section in the Tests area are composed of the next level heading counts respective to each section.
 
@@ -690,14 +700,15 @@ The totals in each highlighted major section in the Tests area are composed of t
 |Tests         |Fail           | Count of checks or tests not meeting the criteria specified by the recommendation.                                              |
 |Tests         |Error          | Count of checks or tests that resulted in an error.                                                                     |
 |Tests         |Unkn.          | Count of checks or tests where CIS-CAT was unable to determine if the criteria of the test was met.                                                                     |
+|Tests         |Man.          | Count of recommendations that cannot be fully automated and require manual evaluation.                                                                     |
 |Scoring       |Score          | Count of recommendations with a result of "pass" in a given section.               |
 |Scoring       |Max            | Total count of recommendations that could result in a pass or fail.                                |
 |Scoring       |Percent        | Percent of recommendations passed in a given section ((Score/Max)*100)   |
 
 
-![ubuntusummary](https://i.imgur.com/ZryQOEX.png)
+![ubuntusummary](img/HTMLSummary.png)
 
-![googlesummary](https://i.imgur.com/seub2up.png)
+![googlesummary](img/HTMLSummaryScore.png)
 
 **Note:** This area will result in multiple 0's when the selected Benchmark does not match the selected target system's operating system and `ignore.platform.mismatch=false`. The command line console will show the results as "Not Applicable" in cases, for example, where a Windows Benchmark was selected to scan a Linux platform. The command line console will also show "The checklist does not match the target platform." If `ignore.platform.mismatch=true`, the report may show a combination of failed results and 0 results in the same scenario.
 
@@ -722,11 +733,11 @@ Possible values are listed in the below table:
 
 |Value|Included in Scoring?|Description|
 |-----|--------------------|-----------|
-|Pass|Yes|The target system's state matched the recommendation's expected state.|
-|Fail|Yes|The target system's state deviates from the recommendation's expected state.|
-|Error|Yes|Assessor's attempt at collecting the system's state failed.|
-|Unknown|Yes|Assessor was unable to collect, interpret, or evaluate against the benchmark's recommended state.|
-|Manual|No|This recommendation cannot be fully automated and requires manual evaluation. On CIS Benchmarks, a recommendation is deemed important during the consensus process but cannot be fully and reliably verified without organizational manual verification. |
+|Pass|Yes|The target system or component state satisfied all the conditions of the check(s)/rule(s) for the recommendation.|
+|Fail|Yes|The target system or component state did not satisfy at least one condition of the check(s)/rule(s) for the recommendation.|
+|Error|Yes|The assessor checking engine encountered a system error and could not complete the test. The status of the target's compliance is not certain.|
+|Unknown|Yes|Assessor was unable to collect, interpret, or evaluate against the check/rule conditions associated with the recommendation.|
+|Manual|No|This recommendation cannot be fully automated and requires manual evaluation. On CIS Benchmarks, a recommendation is deemed important during the consensus process but cannot be fully and reliably verified without organizational manual verification. Corresponds to xccdf terminology of "Informational". |
 
 ![ubuntuassessmentresultsummary](https://i.imgur.com/lBQ8Ckc.png)
 
@@ -748,6 +759,22 @@ The details section consists of the following:
 ![ubuntudetail](https://i.imgur.com/69tRhH8.png)
 
 To view the XCCDF constructs, click the `Show Rule Result XML` link below the "Assessments" section. This information is primarily used for debugging purposes.
+
+## Console Assessment Results ##
+At the end of each configuration assessment, the command line console or the GUI will display a summary of the assessment. The results will include a few more entries than results displayed on the HTML report. The additional results are defined below. The result terminology presented on the console is inline with xccdf specifications.
+
+
+![consolesummary](img/ConsoleResultSummary.png)
+
+The additional values are defined below and do not contribute to the score. Informational is the same as `Manual` that appears on the HTML report format.
+
+|Value|Included in Scoring?|Description|
+|-----|--------------------|-----------|
+|Not Applicable|No|The rule(s)/check(s) were not applicable to the target. This typically occurs when the wrong benchmark is selected for the platform ie: platform mismatch.|
+|Not Checked |No|The recommendation was not evaluated as there are no rule/check properties.|
+|Not Selected|No|This recommendation was not part of the profile selected for the configuration assessment.|
+|Informational|No|This is the same result that is displayed as `Manual` on the HTML report. The recommendation cannot be fully automated and requires manual evaluation. |
+
 
 ## Exit Codes ##
 A number of scenarios exist which could cause CIS-CAT Pro Assessor to terminate prior to completing its work.  Various errors could occur, such as the inability to ingest assessment content, session connectivity problems, etc.  The following table describes the set of CIS-CAT Pro Assessor's exit codes:
