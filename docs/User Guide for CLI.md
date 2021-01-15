@@ -127,7 +127,9 @@ The "reports" area shows the only the generated HTML. The HTML output must be se
 ## Using CIS-CAT Pro Assessor CLI ##
 Bundled with the application are two script files; a Microsoft Windows batch script, `Assessor-CLI.bat` and a Unix/Linux shell script, `Assessor-CLI.sh`.  These scripts serve as the entry point to the application.  Any examples included in this user's guide will utilize the Microsoft Windows batch script, but usage of the Unix/Linux shell script can be substituted.
 
-**NOTE: These CIS-CAT scripts must be executed from the command line using root, Administrator, or an equivalently privileged principal.**
+### Notes ###
+1. **The CIS-CAT application scripts (`Assessor-CLI.bat|.sh)` must be executed from the command line using root, Administrator, or an equivalently privileged principal.**
+2. **The CIS-CAT application may be executed from a command prompt/terminal navigated to any directory on the executing host.  As such, any file references made in command-line options may utilize either absolute or relative paths.  Relative paths will be parsed from the application's "base" directory, which is set on application start-up to be the directory containing the `Assessor-CLI.jar` file.**
 
 ## Command Line Options ##
 CIS-CAT Pro Assessor CLI can perform a variety of functions related to both benchmark and vulnerability assessments.  The myriad command-line options allow for combined usage to initiate these functions.
@@ -136,15 +138,14 @@ CIS-CAT Pro Assessor CLI can perform a variety of functions related to both benc
 
 Basic operation of CIS-CAT Pro Assessor CLI allows a user to get help, list available content, or to interactively step through the selection of a benchmark and profile prior to executing an assessment.
 
-| Short Option  | Long Option   |  Argument(s)      | Description                    |
-| ------------- | ------------- | ------------|---------------------------------- |
-| `-h`          | `--help`      | N/A | Display CIS-CAT Pro Assessor help output. |
-| `-l`          | `--list`      | N/A | List the benchmarks available for assessment.|
-| `-lv`          | `--list-verbose` | N/A |Enable more verbose output when combined with the `-l` option, specifically displaying the full filepath to the benchmark, for later assessment using the `-b` option.|
-| `-i`          | `--interactive` | N/A | Execute the Assessor in "interactive" mode specifically for benchmark assessments, allowing the user to manually select a benchmark and profile for assessment.  Based on the selected benchmark, the user may be required to enter "interactive values" which are then used by the assessment engine. |
-| `-o`          | `--definitions` | N/A | Execute the Assessor in "interactive" mode specifically for the manual selection and evaluation of OVAL Definitions files, and (optionally) selecting and associating an OVAL Variables file as well. Must be used in conjunction with the `-i` option.|
-| `-d`          | `--startingDir` | `<DIRECTORY>` | Configure the relative root folder from which other options, such as benchmarks, can be found. |
-| `-cfg` |`--config-xml`|`<CONFIGURATION XML FILE>`| Execute CIS-CAT Pro Assessor using configuration information found in the `<CONFIGURATION XML FILE>`.  This file allows users to override user properties, configure interactive values, setup sessions and outline the various assessments to be performed.  See the "Using a Configuration XML File" section below for more information and examples regarding the structure and options for the XML configuration file.  Configuration files can be encrypted in order to help protect sensitive data (see the "File Encryption Options" section for details).|
+| Short Option  | Long Option      |  Argument(s)      | Description                       |
+| ------------- | ---------------- | ------------------|---------------------------------- |
+| `-h`          | `--help`         | N/A | Display CIS-CAT Pro Assessor help output. |
+| `-l`          | `--list`         | N/A | List the benchmarks available for assessment.|
+| `-lv`         | `--list-verbose` | N/A |Enable more verbose output when combined with the `-l` option, specifically displaying the full filepath to the benchmark, for later assessment using the `-b` option.|
+| `-i`          | `--interactive`  | N/A | Execute the Assessor in "interactive" mode specifically for benchmark assessments, allowing the user to manually select a benchmark and profile for assessment.  Based on the selected benchmark, the user may be required to enter "interactive values" which are then used by the assessment engine. |
+| `-o`          | `--definitions`  | N/A | Execute the Assessor in "interactive" mode specifically for the manual selection and evaluation of OVAL Definitions files, and (optionally) selecting and associating an OVAL Variables file as well. Must be used in conjunction with the `-i` option.|
+| `-cfg`        |`--config-xml`    | `<CONFIGURATION XML FILE>` | Execute CIS-CAT Pro Assessor using configuration information found in the `<CONFIGURATION XML FILE>`.  This file allows users to override user properties, configure interactive values, setup sessions and outline the various assessments to be performed.  See the "Using a Configuration XML File" section below for more information and examples regarding the structure and options for the XML configuration file.  Configuration files can be encrypted in order to help protect sensitive data (see the "File Encryption Options" section for details).|
 
 #### Examples ####
 
@@ -156,10 +157,6 @@ List all available benchmarks:
 
 	> Assessor-CLI.bat -l
 
-List all available benchmarks relative to a specific folder:
-
-	> Assessor-CLI.bat -l -d C:\CIS\My-Benchmarks
-
 List All Available Benchmarks (including path information for use with the `-b` option)
 
 	> Assessor-CLI.bat -l -v
@@ -168,17 +165,9 @@ Execute an assessment of a benchmark/data-stream in "interactive" mode:
 
 	> Assessor-CLI.bat -i
 
-Execute an assessment of a benchmark/data-stream in "interactive" mode, selecting a benchmark from a location relative to a specific folder:
-
-	> Assessor-CLI.bat -i -d C:\CIS\My-Benchmarks
-
 Execute an assessment of an OVAL Definitions file in "interactive" mode:
 
 	> Assessor-CLI.bat -i -o
-
-Execute an assessment of an OVAL Definitions file in "interactive" mode, selecting the definitions file from a location relative to a specific folder:
-
-	> Assessor-CLI.bat -i -o -d C:\CIS\My-Benchmarks
 
 Execute an assessment or set of assessments using information found in a saved configuration XML file:
 
@@ -190,7 +179,7 @@ The benchmark and data-stream collection options provide users the ability to se
 
 | Short Option  |  Long Option  |   Argument   | Description                      |
 | ------------- | ------------- | -------------|--------------------------------- |
-| `-b`          | `--benchmark` | `<BMK-OR-DSC>` | Specify either the full filepath to the assessment content or a path relative to the starting directory.  The `<BMK-OR-DSC>` argument represents either a Benchmark XCCDF file, or the SCAP 1.2-formatted Data-stream Collection file.|
+| `-b`          | `--benchmark` | `<BMK-OR-DSC>` | Specify either an absolute path to the assessment content or a path relative to the Assessor's "base" directory.  The Assessor's "base" directory is determined by the application, choosing the folder in which the `Assessor-CLI.jar` file resides.  The `<BMK-OR-DSC>` argument represents either a Benchmark XCCDF file, or the SCAP 1.2-formatted Data-stream Collection file.|
 | `-dm`         | `--data-stream` | `<DATA-STREAM>` | Used only when the `-b` option selects a data-stream-collection document, the `-dm` option specifies, within the collection, the ID of the data-stream to be assessed. |
 | `-cl` | `--checklist` | `<CHECKLIST>` | Used only in conjunction with the `-dm` option, the `-cl` option specifies, within the data-stream, the ID of the checklist (benchmark) to be assessed.|
 | `-p` | `--profile` | `<PROFILE>` | Specify either a profile name, such as `Level-1`, or the profile ID, such as `xccdf_org.cisecurity.benchmarks_profile_Level_1`.  Note that when using the profile name, if any spaces occur, the entire profile name must be wrapped in double-quotes, such as `"Level 2"`|
@@ -239,8 +228,8 @@ CIS-CAT Pro Assessor also has the ability to assess OVAL definitions files, such
 
 | Short Option  |  Long Option  |   Argument   | Description                      |
 | ------------- | ------------- | -------------|--------------------------------- |
-| `-od     ` | `--oval-definitions` | `<OVAL_DEFINITIONS>` | Specify either the full filepath to an OVAL Definitions XML file, or a path relative to the starting directory.|
-| `-ov` | `--oval-variables` | `<OVAL_VARIABLES>` | Only used in conjunction with the `-od` option, the `-ov` option specifies either the full filepath to an OVAL Variables XML file, or a path relative to the starting directory.|
+| `-od     ` | `--oval-definitions` | `<OVAL_DEFINITIONS>` | Specify either an absolute path to the OVAL Definitions XML content or a path relative to the Assessor's "base" directory.  The Assessor's "base" directory is determined by the application, choosing the folder in which the `Assessor-CLI.jar` file resides.|
+| `-ov` | `--oval-variables` | `<OVAL_VARIABLES>` | Only used in conjunction with the `-od` option, the `-ov` option specifies either an absolute path to an OVAL Variables XML file, or a path relative to the Assessor's "base" directory.|
 
 #### Examples ####
 
@@ -252,9 +241,7 @@ Execute an assessment against the Microsoft Windows 10 vulnerability definitions
 
 	> Assessor-CLI.bat -od vulnerabilities\microsoft_windows_10.xml -html
 
-
-
-Execute an assessment against an OVAL Definitions file containing "external" variables, using an OVAL Variables file to provide those variable values:
+Execute an assessment against an OVAL Definitions file containing "external" variables, using an OVAL Variables file to provide those variable values, with both files specified using absolute paths.  With no specific reporting options specified, :
 
 	> Assessor-CLI.bat -od C:\CIS\oval_definitions.xml -ov C:\CIS\oval_variables.xml
 
@@ -396,7 +383,7 @@ Use an encrypted configuration XML file in the assessment process:
 	> Assessor-CLI.bat -cfg C:\Test\enc_config_file.xml -fp "MyP@ssword$@!*&"
 
 
-## Configuring Interactive Values for Select Benchmarks##
+## Configuring Interactive Values for Select Benchmarks ##
 A number of benchmarks supported by/bundled with CIS-CAT Pro Assessor require manual interaction by the user in order to configure specific values used during the assessment.  These "interactive values" will be required to complete some assessments. If the values are not available, the assessor will prompt the user to enter the values on the command line or in the GUI.
 
 Absence of these values will block the completion of the assessment if it is being executed off-hours, or as part of an automated script.  
@@ -406,13 +393,17 @@ CIS-CAT Pro Assessor provides various mechanisms for entry of interactive values
 
 - **Properties File:** To accommodate a single assessment, modify the `assessor-cli.properties` file to specify the value, for example:
 
+	```
 	xccdf_org.cisecurity_value_jdbc.url=jdbc:oracle:thin:system/manager@dbhost:1521:orcl
+	```
 
 	When CIS-CAT Pro Assessor executes, the program will (by default) attempt to load properties contained in the `config\assessor-cli.properties`. If a Benchmark is selected on the command line that requires an interactive value, assessor will look in the assessor-cli.properties for the `id` attribute it requires to complete the assessment. The first value for the necessary `id` will be selected.
 
 - **Command Line (-D Option):** Use in multiple commands. Specify the interactive value using `-D <Property=Value>` in the command to execute an assessment. If provided, you won't be prompted to enter the value. This allows the user to configure a single property at a time when executing. Configuring this option on the command-line is straightforward, where the property name is the `id` attribute of the "interactive value" and the property value is configured:
 
+	```
 	> Assessor-CLI.bat -b benchmarks\CIS_Oracle_Database_11g_R2_Benchmark_v2.2.0-xccdf.xml -p "Level 1 - Windows Server Host OS" -D xccdf_org.cisecurity_value_jdbc.url=jdbc:oracle:thin:user/s3cr3t@DBHOST:1521:devdb
+	```
 
 - **GUI:** The interactive value can be specified in the GUI in the Basic or Advanced workflow. When a Benchmark is selected that requires an interactive value, you will be prompted to enter the value. For multiple endpoints with different interactive values, a separate target must be entered for each target even if they exist on the same host. See the below example.
 
@@ -438,10 +429,6 @@ The root element of the configuration XML file is `<configuration>`, and utilize
 All other elements must be contained within the `<configuration>` element.
 
 The following sections describe the elements that are available for configuration through the XML file:
-
-#### CIS-CAT Pro Assessor "starting directory" ####
-	<starting_dir>C:\Projects\CIS-CAT\Assessor-CLI</starting_dir>
-The `starting_dir` element is optional and contains a value noting the base directory from which any relative paths are specified (such as the location of an XCCDF benchmark).  This element is the equivalent of the `-d` command-line option.  If this element is not present in the configuration file, the default starting directory, the folder in which CIS-CAT Pro Assessor is installed, is used.
 
 #### Vulnerability Definitions Download ####
 	<vulnerability_definitions download="(true|false)"/>
@@ -782,6 +769,7 @@ A number of scenarios exist which could cause CIS-CAT Pro Assessor to terminate 
 | Exit Code | Description                                                              |
 |-----------|--------------------------------------------------------------------------|
 |0          | CIS-CAT Pro Assessor Exited Successfully.                                |
+|1          | CIS-CAT Pro Assessor Exited Unsuccessfully.                              |
 |100        | Invalid starting directory                                               |
 |101        | No valid assessment content was found.                                   |
 |102        | CIS-CAT Pro Assessor could not find custom properties file.              |
@@ -802,6 +790,10 @@ A number of scenarios exist which could cause CIS-CAT Pro Assessor to terminate 
 |117        | CIS-CAT Pro Assessor could not encrypt a sessions or configuration file. |
 |118        | A required command line option for encrypting a sessions or configuration file was missing.          |
 |119        | CIS-CAT Pro Assessor could not decrypt a sessions or configuration file. |
+|120        | CIS-CAT Pro Assessor encountered an invalid license.xml file. |
+|121        | CIS-CAT Pro Assessor was unsuccessful in establishing a remote session connection. |
+|122        | An attempt was made to assess an unsupported benchmark using CIS-CAT Lite. |
+|123        | CIS-CAT Pro Assessor could not establish a session enabled with elevated privileges. |
 |500        | An XML file was parsed, but contained XML Schema validation errors.                 |
 
 
