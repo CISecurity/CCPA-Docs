@@ -846,7 +846,6 @@ Assessing with the VMWare ESXi benchmark in CIS-CAT Pro Assessor v4 requires use
 - PowerShell installed
 	- VMware.VimAutomation.Core module required as cmdlets for managing vSphere are needed
 - PowerCLI 6.5.1+ installed
-- SSH enabled for the duration of the assessment*
 
 
 Older versions of powerCLI will receive a warning printed in the assessor-cli.log when older, deprecated versions are encountered. 
@@ -854,7 +853,7 @@ On failure, the first line of the above example will show a result of "2" and wi
 
 A version comparison result of "-1", indicates that the version check resulted in an "unrecognized format". Since the version could not fully be determined, accuracy of the results should be analyzed.
 
-\* In order to complete an assessment, CIS-CAT Pro utilizes PowerCLI which relies on ssh protocol. The CIS Benchmark recommends that ssh should be disabled. Organizations should consider the best management of ssh setting for the purpose of configuration assessments.
+In order to complete an assessment, CIS-CAT Pro utilizes PowerCLI. 
 
 **Connection Strings**
 
