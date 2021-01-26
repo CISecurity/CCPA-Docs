@@ -8,6 +8,27 @@ CIS-CAT Pro Assessor v4
 ---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
+## CIS-CAT Pro Assessor, v4.3.0 ##
+#### Release Date: January 26, 2021 ####
+
+### Benchmark Coverage ###
+- None
+
+### CIS-CAT Pro Updates ###
+- The GUI Advanced Workflow for remote assessments now allows use of domain usernames where "@" is utilized (username = user@domain). The configuration XML schema has been updated to support this change.
+- The default temporary location utilized during remote Linux assessments has changed from /tmp to a temporary location within the user's home directory. Better console messaging and logging information has been added when a temporary location is invalid.
+- The `<starting_dir>` option is no longer used in the configuration XML or on the command line with -d. Use absolute path of assessor-cli.bat or .sh when not executing in the root assessor location.
+- Resolved an issue where CIS tailored Benchmarks with certain names would prevent all benchmarks from loading to the v4 GUI selection screen.
+- Microsoft Windows vulnerability assessment results are more accurate as file versions are now evaluated using a more reliable method.
+- Execution of assessor-cli.bat or .sh can now occur from any directory on the command line when the absolute path is provided to the desired assessor directory.
+- Cisco IOS assessment reports will now consistently import to the Dashboard without error.
+- An error was corrected when scanning Cisco IOS using the GUI.
+
+### Documentation ###
+- Updated User Guide with more information on Assessment Results displayed in the Console and clarified information on report scoring.
+- Update to VMWare ESXi requirements that enabling ssh is not required.
+- Update to Microsoft SQL Server Database section to indicate configuration assessment process can support dynamic port configuration for a local scan.
+
 ## CIS-CAT Pro Assessor, v4.2.0 ##
 #### Release Date: December 17, 2020 ####
 

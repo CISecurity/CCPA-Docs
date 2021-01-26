@@ -411,10 +411,10 @@ Remote Setup - Unix/Linux/OSX
 -------------------------------------
 CIS-CAT Pro Assessor assesses remote Unix/Linux/OSX targets via SSH connections.  Ensure the target system can be accessed via SSH and that the user connecting to the remote target is either the `root` user or a user granted privileges to execute commands using `sudo`.
 
-### A Note on the `/tmp` Partition ###
-By default, CIS-CAT Pro Assessor v4 will attempt to create the "ephemeral" directory in the default temporary directory based on the operating system to which the Assessor is connecting.  For many Unix/Linux systems, this temporary directory is `/tmp`.  However, recommendations in many CIS Unix/Linux benchmarks suggest mounting the `/tmp` partition with the `noexec` option.  Mounting the partition with `noexec` disallows the execution of scripts from that partition, even if the `+x` permissions are enabled.  When CIS-CAT Pro Assessor v4 then uses the default `/tmp` folder to create the "ephemeral" directory, none of the application's scripts can be executed, due to the `noexec` mount option.
+**A Note on the Ephemeral Directory**
 
-It is *highly recommended* that, when the `/tmp` partition is mounted with the `noexec` option, that users configure the `sessions.properties` or `assessor-config.xml` files to customize the `tmp` setting to an existing directory on the target endpoint which will allow for script execution.  Not doing so will result in numerous incorrect assessment results.
+CIS-CAT Pro Assessor v4 will attempt to create an ephemeral directory underneath the user's home directory.  The user's home directory is collected by querying the `/etc/passwd` file for the logged in user.  If an error occurs querying `/etc/passwd`, the ephemeral directory may not be able to be determined.  If this is the case, an error will occur trying to create the directory.  In this case, users must configure a specific location for the ephemeral directory using either the `sessions.properties` file or configuration XML file.
+
 
 Remote/Local Setup - Cisco Network Device
 -------------------------------------------

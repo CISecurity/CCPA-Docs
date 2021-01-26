@@ -34,12 +34,6 @@ The GUI does not currently support initialization from a network location. The A
 
 The Assessor v4 GUI is primarily designed to work with official CIS Benchmarks. The application can also assess with tailored benchmarks if all the necessary files are placed in the Benchmark folder within the same folder structure as the GUI. Benchmarks are loaded on application start. It is important to restart the application if benchmarks were added to the folder while the GUI was open.
 
-Tailored benchmarks must contain a portion of the original file name in order for the contents of the benchmark folder to appear in the benchmark selection window.
-
-For example, if your organization tailors a Microsoft Windows 10 Benchmark, we recommend placing organization -specific descriptions at the beginning of the file. See the example below. Ensure that all files associated with the benchmark contain the original file name. It is important to ensure that `CIS` appears somewhere in the file name.
-
-MyOrganization_CIS_Microsoft_Windows_10_Enterprise_Release_1909_Benchmark_v1.8.0-xccdf.xccdf
-
 ### Basic Workflow ###
 The basic workflow option accommodates a local system scan only. 
 
