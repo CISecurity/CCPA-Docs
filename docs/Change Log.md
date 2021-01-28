@@ -15,7 +15,7 @@ See the CIS-CAT Pro Assessor Coverage Guide for information about supported benc
 - None
 
 ### CIS-CAT Pro Updates ###
-- Configuration files containing the deprecated <starting_dir> will no longer receive a parsing error. Assessor will ignore the element and allow the file to load in the GUI and CLI operations to continue.
+- Configuration files containing the deprecated `<starting_dir>` element will no longer receive a parsing error. Assessor will ignore the element and allow the file to load in the GUI and CLI operations to continue.
 
 ### Documentation ###
 - None
