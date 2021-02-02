@@ -30,7 +30,7 @@ The GUI does not currently support initialization from a network location. The A
 
 **NOTE: Assessor-GUI.exe must be executed by the Administrator or an equivalently privileged principal.**
 
-### Benchmarks and GUI ###
+## Benchmarks and GUI
 
 The Assessor v4 GUI is primarily designed to work with official CIS Benchmarks. The application can also assess with tailored benchmarks if all the necessary files are placed in the Benchmark folder within the same folder structure as the GUI. Benchmarks are loaded on application start. It is important to restart the application if benchmarks were added to the folder while the GUI was open.
 
