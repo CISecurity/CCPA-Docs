@@ -8,6 +8,18 @@ CIS-CAT Pro Assessor v4
 ---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
+## CIS-CAT Pro Assessor, v4.3.1 ##
+#### Release Date: January 28, 2021 ####
+
+### Benchmark Coverage ###
+- None
+
+### CIS-CAT Pro Updates ###
+- Configuration files containing the deprecated `<starting_dir>` element will no longer receive a parsing error. Assessor will ignore the element and allow the file to load in the GUI and CLI operations to continue.
+
+### Documentation ###
+- None
+
 ## CIS-CAT Pro Assessor, v4.3.0 ##
 #### Release Date: January 26, 2021 ####
 
