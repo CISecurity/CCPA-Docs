@@ -2,24 +2,22 @@
 ![](http://i.imgur.com/5yZfZi5.jpg)
 
 
-Introduction
+# Introduction
 ------------
 **CIS-CAT Pro Assessor v4**
 
 The CIS-CAT Pro Assessor v4 is a command-line and graphical user interface, allowing users to assess target systems against various forms of machine-readable content.  CIS-CAT Pro Assessor is designed primarily to assess CIS Benchmark configuration recommendations but can also assess content written in conformance with the Security Content Automation Protocol (SCAP), as well as plain OVAL definition content.
 
-# Remote Assessment Capability #
+## Remote Assessment Capability 
 CIS-CAT Pro Assessor v4 adds the ability to assess remote endpoints.  Providing appropriate connection information allows CIS-CAT Pro Assessor to establish a "session", execute commands, run scripts, and perform collection and evaluation for the remote endpoint.  For Microsoft Windows endpoints, this "session" is established through the use of WinRM.  For Unix/Linux and Cisco network device endpoints, CIS-CAT Pro Assessor establishes the "session" via SSH.
 
 Endpoints to be assessed must be configured appropriately to allow for remote access.  Please see the [CIS-CAT Pro Assessor Configuration Guide](./Configuration%20Guide) for more information.
 
 
-# Benchmark Coverage #
+## Benchmark Coverage #
 See the [CIS-CAT Pro Assessor Coverage Guide](./Coverage%20Guide) for the most up-to-date information regarding platform and application coverage.
 
-# Graphical User Interface (GUI) #
-
-
+## Graphical User Interface (GUI) #
 CIS-CAT Assessor Pro and Lite versions 4.1.0+ includes a graphical user interface (GUI) as part of the downloaded bundle. The GUI is compatible with a Microsoft Windows operating system. Open the application by running the Assessor-GUI.exe. The GUI provides a method to execute a configuration assessment in an easy, quick, and simple setup process. The interface offers a simple workflow for the basic, local system configuration scan as well as advanced workflows where multiple combinations of remote and local scanning can be performed.
 
 The size of the downloaded application has increased from approximately 100MB to 175MB. If an organization's assessment workflows do not require use of a GUI and the additional space is a concern, it is safe to delete the executable file after downloading.
@@ -30,16 +28,15 @@ The GUI does not currently support initialization from a network location. The A
 
 **NOTE: Assessor-GUI.exe must be executed by the Administrator or an equivalently privileged principal.**
 
-## Benchmarks and GUI
-
+#### Benchmarks and GUI 
 The Assessor v4 GUI is primarily designed to work with official CIS Benchmarks. The application can also assess with tailored benchmarks if all the necessary files are placed in the Benchmark folder within the same folder structure as the GUI. Benchmarks are loaded on application start. It is important to restart the application if benchmarks were added to the folder while the GUI was open.
 
-## Basic Workflow 
+#### Basic Workflow 
 The basic workflow option accommodates a local system scan only. 
 
 ![](img/GUI_Workflow.png)
 
-## Add a benchmark 
+#### Add a benchmark 
 
 The list of benchmarks will populate with the benchmark files located in the `benchmark` folder. Filter the list for easier selection by entering characters in the "Search" field. CIS-CAT Lite is restricted to a subset of CIS Benchmark selections.
 
@@ -52,22 +49,22 @@ Benchmarks selected that require an interactive value will popup an entry box.
 
 For testing connection strings, select the `Test` button.
 
-## Advanced Options
+#### Advanced Options
 
 The assessment process requires read/write access to a temporary folder. The system's default temporary folder will automatically be selected. As an option, modify the folder selected for use during the assessment process.
 
 ![](img/GUI_AdvancedTemp.png)
 
-## Advanced Workflow 
+#### Advanced Workflow 
 The advanced workflow option accommodates any combination of local or remote configuration assessments. With this option, it is also possible to upload a configuration XML or sessions.properties file to support remote or local configuration assessments.
 
-## Add remote or local target system 
+#### Add remote or local target system 
 Select this option to begin adding one or many targets for assessment. Required fields contain an asterisk. Help text is available within the application for each field of entry by hovering over the green question mark icon.
 
 
 ![](img/GUI_AddTarget.png) 
 
-## Load a configuration or sessions file 
+#### Load a configuration or sessions file 
 
 Select `Load a configuration or sessions file` to utilize an existing file list of systems to scan. The application will only load *.xml or *.properties files with correct schema.
 
@@ -78,7 +75,7 @@ When an encrypted file has been selected, the application will prompt for the en
 When utilizing the Advanced workflow and selecting to remotely scan a target for Windows, Unix/Linux, or Cisco IOS connection types, please remember to properly configure your endpoint to allow a successful communication between the CIS-CAT Pro host and the target.
 
 
-## Assessment Options 
+#### Assessment Options 
 
 Select reporting options in this screen. CIS-CAT Lite is restricted to producing only HTML.
 
@@ -92,13 +89,13 @@ Logging options, by default, are set to `WARN or ERROR`.  For support issues, en
 ![](img/GUI_LoggingSupport.png)
 
 
-## Saving a configuration file and encryption ##
+#### Saving a configuration file and encryption ##
 
 By default, the GUI creates an file in the `config` directory titled `enc_gui-config.xml`. For security purposes, the file is automatically encrypted with a complex, variable password. In order to utilize the created file in subsequent assessments, it is required to save a new file. Optionally, select to encrypt the file with a provided password.
 
 ![](img/GUI_ConfigurationOutputOptions.png)
 
-## Configuration Assessment ##
+#### Configuration Assessment ##
 
 The top area of the screen of the screen tracks the progress of each individual assessment. Each step represents a distinct part of the assessment process.
 
@@ -117,17 +114,17 @@ The "reports" area shows the only the generated HTML. The HTML output must be se
 
 ![](img/GUI_Reports.png)
 
-# Command Line Interface (CLI) #
+## Command Line Interface (CLI) 
 Bundled with the application are two script files; a Microsoft Windows batch script, `Assessor-CLI.bat` and a Unix/Linux shell script, `Assessor-CLI.sh`.  These scripts serve as the entry point to the application.  Any examples included in this user's guide will utilize the Microsoft Windows batch script, but usage of the Unix/Linux shell script can be substituted.
 
-### Notes ###
+**Notes**
 1. **The CIS-CAT application scripts (`Assessor-CLI.bat|.sh)` must be executed from the command line using root, Administrator, or an equivalently privileged principal.**
 2. **The CIS-CAT application may be executed from a command prompt/terminal navigated to any directory on the executing host.  As such, any file references made in command-line options may utilize either absolute or relative paths.  Relative paths will be parsed from the application's "base" directory, which is set on application start-up to be the directory containing the `Assessor-CLI.jar` file.**
 
-# Command Line Options #
+## Command Line Options 
 CIS-CAT Pro Assessor CLI can perform a variety of functions related to both benchmark and vulnerability assessments.  The myriad command-line options allow for combined usage to initiate these functions.
 
-## Basic Options ##
+#### Basic Options 
 
 Basic operation of CIS-CAT Pro Assessor CLI allows a user to get help, list available content, or to interactively step through the selection of a benchmark and profile prior to executing an assessment.
 
@@ -167,7 +164,7 @@ Execute an assessment or set of assessments using information found in a saved c
 	> Assessor-CLI.bat -cfg C:\CIS\assessment-configuration.xml
 
 
-## Benchmark/Data-Stream Collection Options ##
+#### Benchmark/Data-Stream Collection Options ##
 The benchmark and data-stream collection options provide users the ability to select specific content for assessment.  The `-b` option gives the user the choice to specify the path to either the XCCDF file (containing the `<Benchmark>` element) or the Data-stream collection file.  Using the `-p` option, users can select a specific configuration profile to assess, using either the profile's ID or the profile's title/name.
 
 | Short Option  |  Long Option  |   Argument   | Description                      |
@@ -216,7 +213,7 @@ Create a text file listing all available Benchmarks and their profiles:
 
 	> Assessor-CLI.bat -bi
 
-### OVAL Definitions Assessment Options ###
+#### OVAL Definitions Assessment Options ###
 CIS-CAT Pro Assessor also has the ability to assess OVAL definitions files, such as vulnerability definitions downloaded from the OVAL repository.  Using an OVAL Variables file also allows for the injection of "external" variable values into the assessment of OVAL definitions content.
 
 | Short Option  |  Long Option  |   Argument   | Description                      |
@@ -245,7 +242,7 @@ Execute an assessment against an OVAL Definitions file containing "external" var
 
 
 
-### Reporting Options ###
+#### Reporting Options ###
 A number of options exist for generating assessment results.  When a benchmark or data-stream collection is assessed, the Asset Reporting Format (ARF) results are generated.  The ARF report is an XML document containing Asset Information for the endpoint under assessment, the benchmark/data-stream that was assessed, system characteristics, and assessment results.  When OVAL Definitions are assessed, an "OVAL results with system characteristics" XML document is produced by default.  These reports are automatically generated and cannot be disabled.  These XML documents are designed to be either uploaded directly to CIS-CAT Pro Dashboard, or transformed into more human-readable HTML, CSV or plain-text documents.
 
 The following table summarizes a number of options controlling which reports to generate, naming of reports, and functionality allowing users to upload reports to a URL, such as CIS-CAT Pro Dashboard.
@@ -286,7 +283,7 @@ Execute an assessment against the CIS Microsoft Windows 10 benchmark, using the 
 	> Assessor-CLI.bat -b benchmarks\CIS_Microsoft_Windows_10_Enterprise_Release_1703_Benchmark_v1.3.0-xccdf.xml -nrf -u https://ccpd.example.org/CCPD/api/reports/upload -ui
 **Note:** This command will only work if you follow the instructions from [Direct command line usage](./Configuration%20Guide/#cis-cat-pro-dashboard-integration) section.
 
-### Logging Options ###
+#### Logging Options ###
 The following table describes the various options to control the application log file generation.  By default, the Assessor-CLI application is configured to log at the WARN level.
 
 | Short Option  |   Long Option   |    Argument   | Description                       |
@@ -309,7 +306,7 @@ Execute an assessment against the CIS Microsoft Windows 10 benchmark, using the 
 	> Assessor-CLI.bat -b benchmarks\CIS_Microsoft_Windows_10_Enterprise_Release_1703_Benchmark_v1.3.0-xccdf.xml -p "Level 2" -vvvv
 
 
-### Miscellaneous Options ###
+#### Miscellaneous Options ###
 
 | Short Option  |   Long Option   |    Argument   | Description                       |
 | ------------- | --------------- | --------------|---------------------------------- |
@@ -355,7 +352,7 @@ Execute the Assessor, against the CIS Microsoft Windows 10 benchmark, in "quiet 
 	> Assessor-CLI.bat -b benchmarks\CIS_Microsoft_Windows_10_Enterprise_Release_1703_Benchmark_v1.3.0-xccdf.xml -q
 
 
-### File Encryption Options ###
+#### File Encryption Options ###
 To help protect sensitive data, such as target system login credentials, configuration XML files and sessions.properties files used to drive the assessment process can be encrypted via use of a password.  An encrypted copy of the source file is created and written to the `config` folder, preserving the plaintext source file for possible future updates and as a backup in case the password used to encrypt the file is forgotten or lost.  The name of the encrypted file will be **"enc_"** followed by the source file's name.  The plaintext source files should be stored in a secure location after creating an encrypted copy of them.  The same password used to encrypt a particular file is also used by the Assessor to decrypt that file in memory for use in the assessment process.
 
 Encryption passwords can include special characters.  Many special characters do not need to be escaped when they are used within a quoted string, but certain characters may cause unanticipated consequences.  For example, the percent (%) character has a special meaning for command line parameters in Windows and should be escaped if you intend to use it in a password.  To help ensure passwords are processed appropriately, **it is recommended to enclose passwords in quotes both when encrypting a file and when using an encrypted file in the assessment process.**  The quotes handle most special characters without having to escape those characters and are necessary to preserve any blank spaces in a password.  **Use double quotes on the Windows command line and single quotes for Unix/Linux.**
