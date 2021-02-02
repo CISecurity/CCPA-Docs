@@ -34,12 +34,12 @@ The GUI does not currently support initialization from a network location. The A
 
 The Assessor v4 GUI is primarily designed to work with official CIS Benchmarks. The application can also assess with tailored benchmarks if all the necessary files are placed in the Benchmark folder within the same folder structure as the GUI. Benchmarks are loaded on application start. It is important to restart the application if benchmarks were added to the folder while the GUI was open.
 
-### Basic Workflow ###
+## Basic Workflow 
 The basic workflow option accommodates a local system scan only. 
 
 ![](img/GUI_Workflow.png)
 
-### Add a benchmark ###
+## Add a benchmark 
 
 The list of benchmarks will populate with the benchmark files located in the `benchmark` folder. Filter the list for easier selection by entering characters in the "Search" field. CIS-CAT Lite is restricted to a subset of CIS Benchmark selections.
 
@@ -52,23 +52,22 @@ Benchmarks selected that require an interactive value will popup an entry box.
 
 For testing connection strings, select the `Test` button.
 
-### Advanced Options ###
+## Advanced Options
 
 The assessment process requires read/write access to a temporary folder. The system's default temporary folder will automatically be selected. As an option, modify the folder selected for use during the assessment process.
 
 ![](img/GUI_AdvancedTemp.png)
 
-### Advanced Workflow ###
+## Advanced Workflow 
 The advanced workflow option accommodates any combination of local or remote configuration assessments. With this option, it is also possible to upload a configuration XML or sessions.properties file to support remote or local configuration assessments.
 
-#### Add remote or local target system ####
-
+## Add remote or local target system 
 Select this option to begin adding one or many targets for assessment. Required fields contain an asterisk. Help text is available within the application for each field of entry by hovering over the green question mark icon.
 
 
 ![](img/GUI_AddTarget.png) 
 
-#### Load a configuration or sessions file ####
+## Load a configuration or sessions file 
 
 Select `Load a configuration or sessions file` to utilize an existing file list of systems to scan. The application will only load *.xml or *.properties files with correct schema.
 
@@ -79,7 +78,7 @@ When an encrypted file has been selected, the application will prompt for the en
 When utilizing the Advanced workflow and selecting to remotely scan a target for Windows, Unix/Linux, or Cisco IOS connection types, please remember to properly configure your endpoint to allow a successful communication between the CIS-CAT Pro host and the target.
 
 
-### Assessment Options ###
+## Assessment Options 
 
 Select reporting options in this screen. CIS-CAT Lite is restricted to producing only HTML.
 
@@ -93,13 +92,13 @@ Logging options, by default, are set to `WARN or ERROR`.  For support issues, en
 ![](img/GUI_LoggingSupport.png)
 
 
-### Saving a configuration file and encryption ###
+## Saving a configuration file and encryption ##
 
 By default, the GUI creates an file in the `config` directory titled `enc_gui-config.xml`. For security purposes, the file is automatically encrypted with a complex, variable password. In order to utilize the created file in subsequent assessments, it is required to save a new file. Optionally, select to encrypt the file with a provided password.
 
 ![](img/GUI_ConfigurationOutputOptions.png)
 
-### Configuration Assessment ###
+## Configuration Assessment ##
 
 The top area of the screen of the screen tracks the progress of each individual assessment. Each step represents a distinct part of the assessment process.
 
@@ -118,17 +117,17 @@ The "reports" area shows the only the generated HTML. The HTML output must be se
 
 ![](img/GUI_Reports.png)
 
-## Using CIS-CAT Pro Assessor CLI ##
+# Command Line Interface (CLI) #
 Bundled with the application are two script files; a Microsoft Windows batch script, `Assessor-CLI.bat` and a Unix/Linux shell script, `Assessor-CLI.sh`.  These scripts serve as the entry point to the application.  Any examples included in this user's guide will utilize the Microsoft Windows batch script, but usage of the Unix/Linux shell script can be substituted.
 
 ### Notes ###
 1. **The CIS-CAT application scripts (`Assessor-CLI.bat|.sh)` must be executed from the command line using root, Administrator, or an equivalently privileged principal.**
 2. **The CIS-CAT application may be executed from a command prompt/terminal navigated to any directory on the executing host.  As such, any file references made in command-line options may utilize either absolute or relative paths.  Relative paths will be parsed from the application's "base" directory, which is set on application start-up to be the directory containing the `Assessor-CLI.jar` file.**
 
-## Command Line Options ##
+# Command Line Options #
 CIS-CAT Pro Assessor CLI can perform a variety of functions related to both benchmark and vulnerability assessments.  The myriad command-line options allow for combined usage to initiate these functions.
 
-### Basic Options ###
+## Basic Options ##
 
 Basic operation of CIS-CAT Pro Assessor CLI allows a user to get help, list available content, or to interactively step through the selection of a benchmark and profile prior to executing an assessment.
 
@@ -168,7 +167,7 @@ Execute an assessment or set of assessments using information found in a saved c
 	> Assessor-CLI.bat -cfg C:\CIS\assessment-configuration.xml
 
 
-### Benchmark/Data-Stream Collection Options ###
+## Benchmark/Data-Stream Collection Options ##
 The benchmark and data-stream collection options provide users the ability to select specific content for assessment.  The `-b` option gives the user the choice to specify the path to either the XCCDF file (containing the `<Benchmark>` element) or the Data-stream collection file.  Using the `-p` option, users can select a specific configuration profile to assess, using either the profile's ID or the profile's title/name.
 
 | Short Option  |  Long Option  |   Argument   | Description                      |
