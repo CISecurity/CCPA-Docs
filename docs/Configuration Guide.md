@@ -264,6 +264,15 @@ CIS Benchmark Level 2 profiles are designed toward host-based assessments.  If s
 
 Finally, note that the CIS Microsoft Windows Benchmarks are written assuming Active Directory domain-joined systems using Group Policy, and not necessarily standalone/workgroup systems.  Adjustments/tailoring to some recommendations will be needed to maintain functionality when implementing CIS Benchmark recommendations on standalone systems.
 
+### PowerShell ###
+
+CIS-CAT Pro Assessor utilizes PowerShell to perform assessment activities for Microsoft Windows technologies. It is required that LanguageMode is not configured to ConstrainedLanguage. When configured with ConstrainedLanguage, assessor functions will be blocked as CIS-CAT PowerShell scripts will be unable to be dot-sourced. 
+
+Verify LanguageMode using this command:
+
+	PS> $ExecutionContext.SessionState.LanguageMode
+
+
 ### An Example Flowchart ###
 The following flowchart outlines the decision-making process when configuring and environment for remote assessment using CIS-CAT Pro Assessor v4:
 
@@ -845,6 +854,7 @@ Assessing with the VMWare ESXi benchmark in CIS-CAT Pro Assessor v4 requires use
 
 - PowerShell installed
 	- VMware.VimAutomation.Core module required as cmdlets for managing vSphere are needed
+	- LanguageMode not configured to ConstrainedLanguage
 - PowerCLI 6.5.1+ installed
 
 
@@ -854,6 +864,10 @@ On failure, the first line of the above example will show a result of "2" and wi
 A version comparison result of "-1", indicates that the version check resulted in an "unrecognized format". Since the version could not fully be determined, accuracy of the results should be analyzed.
 
 In order to complete an assessment, CIS-CAT Pro utilizes PowerCLI. 
+It is required that LanguageMode is not configured to ConstrainedLanguage. When configured with ConstrainedLanguage, assessor functions will be blocked as CIS-CAT PowerShell scripts will be unable to be dot-sourced. Verify LanguageMode using this command:
+
+	PS> $ExecutionContext.SessionState.LanguageMode
+
 
 **Connection Strings**
 
