@@ -629,6 +629,14 @@ or
 
 	jdbc:jtds:sqlserver://CIS-SERVER:1433;DatabaseName=TestDB;user=jsmith;password=qw3rty;instance=InstanceName
 
+**Integrated Security**
+
+The current jtds SQL Server driver and CIS-CAT Pro Assessor v4 do support use of `IntegratedSecurity` in the connection string. However, when using SSL=request or SSL=required, JRE or OpenJDK 11 must be utilized.
+
+An example connection string could look like below:
+
+	jdbc:jtds:sqlserver://localhost/TestDB;user=jsmith;password=qw3rty;instance=InstanceName;integratedSecurity=true;
+
 **Dynamic Ports**
 
 CIS-CAT Pro supports only local assessments when dynamic ports are configured. In order for the configuration assessment to be successful, the following must be in place:
