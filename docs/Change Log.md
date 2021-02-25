@@ -8,6 +8,23 @@ CIS-CAT Pro Assessor v4
 ---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
+## CIS-CAT Pro Assessor, v4.4.0 ##
+#### Release Date: February 25, 2021 ####
+
+### Benchmark Coverage ###
+- CentOS Linux 6 v3.0.0
+- Microsoft Windows 10 Enterprise Release 20H2 v1.10.0
+- Oracle Linux 6 v2.0.0
+- Red Hat Linux 6 v3.0.0
+
+### CIS-CAT Pro Updates ###
+- Resolved an issue with assessing with datastream content where evaluation of SCE script content would result in 'unknown' results.
+- A '~' character was removed from line 39 of the assessor-cli.sh as it caused errors when run in bash in automation frameworks.
+
+### Documentation ###
+- Note VMWare ESXi and Windows System configuration should not configure LanguageMode to ConstrainedLanguage as assessment execution will be blocked.
+- Clarified that JRE 11 is required for assessing Microsoft SQL Databases that utilize SSL properties in the connection string such as IntegratedSecurity.
+
 ## CIS-CAT Pro Assessor, v4.3.1 ##
 #### Release Date: January 28, 2021 ####
 
