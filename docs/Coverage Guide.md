@@ -281,61 +281,68 @@ Tools and services that use OVAL for the three steps of system assessment — re
 ### Mac OSX ###
 | Test Name                      | Implemented? | Notes |
 |--------------------------------|--------------|-------|
-| Account Info                   | Y | |
-| Authorization DB               | Y | |
-| CoreStorage                    | Y | |
-| DiskUtil                       | N | In development|
+| Account Info                   | Y ||
+| Authorization DB               | Y ||
+| CoreStorage                    | Y ||
+| Disabled Service               | N | In backlog |
+| DiskUtil                       | N | In backlog|
+| File Vault                     | N | In development |
+| Firmware Password              | N | In development |
 | Gatekeeper                     | Y ||
-| Inet Listening Servers (<5.10) | N | In development|
-| Inet Listening Servers (5.10+) | N | In development|
-| Keychain                       | Y | |
+| Inet Listening Servers (<5.10) | N | In backlog|
+| Inet Listening Servers (5.10+) | N | In backlog|
+| Install History                | N | In backlog |
+| Keychain                       | Y | In backlog |
 | Launchd                        | Y ||
-| Nvram                          | N | In development|
+| Nvram                          | N | In backlog |
+| Nvram (5.12)                   | N | In backlog |
 | Plist (<5.10)                  | Y ||
 | Plist (5.10)                   | Y ||
 | Plist (5.11+)                  | Y ||
-| Pwpolicy (<5.9)                | N | In development|
-| Pwpolicy (5.9+)                | N | In development|
+| Profiles                       | Y ||
+| Pwpolicy (<5.9)                | N | In backlog|
+| Pwpolicy (5.9+)                | N | In backlog|
+| Pwpolicy (5.12+)               | N | In backlog
 | Rlimit                         | Y ||
-| Software Update                | N | In development|
-| System Profiler                | N | In development|
-| System Setup                   | N | In development|
+| Software Update                | N | In backlog|
+| System Profiler                | N | In backlog|
+| System Setup                   | N | In backlog|
 
 ### Cisco ASA ###
 | Test Name                | Implemented? | Notes |
 |--------------------------|--------------|-------|
-| ACL | N | In development|
-| Class Map | N | In development|
-| Interface | N | In development|
-| Line | N | In development|
-| Policy Map | N | In development|
-| Service Policy | N | In development|
-| SNMP Host | N | In development|
-| SNMP Group | N | In development|
-| SNMP User | N | In development|
-| TCP Map | N | In development|
-| Version | N | In development|
+| ACL            | N | In backlog|
+| Class Map      | N | In backlog|
+| Interface      | N | In backlog|
+| Line           | N | In backlog|
+| Policy Map     | N | In backlog|
+| Service Policy | N | In backlog|
+| SNMP Host      | N | In backlog|
+| SNMP Group     | N | In backlog|
+| SNMP User      | N | In backlog|
+| TCP Map        | N | In backlog|
+| Version        | N | In backlog|
 
 ### Cisco IOS ###
 | Test Name                | Implemented? | Notes |
 |--------------------------|--------------|-------|
-| ACL | Y | Partial implementation |
-| BGP Neighbor | Y ||
-| Global | Y ||
-| Interface | Y ||
-| Line | Y ||
-| Router | Y ||
+| ACL                          | Y | Partial implementation |
+| BGP Neighbor                 | Y ||
+| Global                       | Y ||
+| Interface                    | Y ||
+| Line                         | Y ||
+| Router                       | Y ||
 | Routing Protocol Auth. Intf. | Y ||
-| Section | Y ||
-| SNMP | Y ||
-| SNMP Community | Y ||
-| SNMP Group | Y ||
-| SNMP Host | Y ||
-| SNMP User | Y ||
-| SNMP View | Y ||
-| Tclsh | Y ||
-| Version (<5.5) | Y ||
-| Version (5.5+) | Y ||
+| Section                      | Y ||
+| SNMP                         | Y ||
+| SNMP Community               | Y ||
+| SNMP Group                   | Y ||
+| SNMP Host                    | Y ||
+| SNMP User                    | Y ||
+| SNMP View                    | Y ||
+| Tclsh                        | Y ||
+| Version (<5.5)               | Y ||
+| Version (5.5+)               | Y ||
 
 ### Microsoft IIS (Extension) ###
 | Test Name                | Implemented? | Notes |
@@ -345,31 +352,33 @@ Tools and services that use OVAL for the three steps of system assessment — re
 | Site Bindings            | Y ||
 | System Web               | Y ||
 | Web Config               | Y ||
+| Appcmd                   | N | In development |
+| Appcmd List Config       | N | In development |
 
 ### VMware ESXi (Extension) ###
-| Test Name                | Implemented? | Notes |
-|--------------------------|--------------|-------|
-| VMHost Acceptance Level | Y |  |
-| VMHost VIB | Y |  |
-| VMHost Module | Y |  |
-| VMHost Coredump | Y |  |
-| VMHost Web Server SSL | Y |  |
-| VMHost Authentication | Y |  |
-| VMHost Account | Y |  |
-| VMHost SNMP | N |  |
-| VMHost Advanced Setting | Y |  |
-| VMHost Service | Y |  |
-| VMHost NTP Server | Y |  |
-| VMHost Lockdown | Y |  |
-| VMHost Firewall Exception | Y |  |
-| VMHost Bus Adapter | Y |  |
+| Test Name                 | Implemented? | Notes |
+|---------------------------|--------------|-------|
+| VMHost Acceptance Level       | Y |  |
+| VMHost VIB                    | Y |  |
+| VMHost Module                 | Y |  |
+| VMHost Coredump               | Y |  |
+| VMHost Web Server SSL         | Y |  |
+| VMHost Authentication         | Y |  |
+| VMHost Account                | Y |  |
+| VMHost SNMP                   | N |  |
+| VMHost Advanced Setting       | Y |  |
+| VMHost Service                | Y |  |
+| VMHost NTP Server             | Y |  |
+| VMHost Lockdown               | Y |  |
+| VMHost Firewall Exception     | Y |  |
+| VMHost Bus Adapter            | Y |  |
 | VMHost iSCSI Host Bus Adapter | N |  |
-| VMHost vSwitch Policy | Y |  |
-| VM Advanced Setting | Y |  |
-| VM Device | Y |  |
-| VM Hard Disk Device | Y |  |
-| VM Resource Config | N |  |
-| Virtual Distributed Switch | Y |  |
+| VMHost vSwitch Policy         | Y |  |
+| VM Advanced Setting           | Y |  |
+| VM Device                     | Y |  |
+| VM Hard Disk Device           | Y |  |
+| VM Resource Config            | N |  |
+| Virtual Distributed Switch    | Y |  |
 | Virtual Distributed Switch Port Group | Y |  |
 
 ### Other ###
