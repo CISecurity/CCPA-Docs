@@ -766,7 +766,7 @@ To add a user or role to the aws-auth.yml (required only when user/role performi
 
 **Prepare the Environment and AWS CLI**
 
-CIS-CAT Pro Assessor v4 must be extracted locally on a server (EC2 or another server) that has access to the EKS cluster servers. An automated assessment using the CIS Amazon EKS Benchmark must be performed as a local assessment or “local” session type. CIS-CAT Pro Assessor will run various kubectl and kubelet commands to perform the assessment. When utilizing CIS-CAT Pro Assessor v4’s supporting  files for this Benchmark, ensure configuration and session files contain a “local” session. Assessments can also be initiated using commands or the v4 GUI (coming soon) as a local assessment.
+CIS-CAT Pro Assessor v4 must be extracted locally on a server (EC2 or another server) that has access to the EKS cluster servers. An automated assessment using the CIS Amazon EKS Benchmark must be performed as a local assessment or “local” session type. CIS-CAT Pro Assessor will run various kubectl and kubelet commands to perform the assessment. When utilizing CIS-CAT Pro Assessor v4’s supporting  files for this Benchmark, ensure configuration and session files contain a “local” session. Assessments can also be initiated using commands or the v4 GUI as a local assessment.
 
 Ensure security groups provide access to port 8080 from the server where CIS-CAT Pro Assessor v4 locally resides. Other ports may also need to be opened depending on each organization’s specific configuration.
 
