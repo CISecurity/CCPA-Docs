@@ -31,13 +31,13 @@ The following 3rd-party libraries are bundled with CIS-CAT Pro Assessor v4.  Inf
 | HttpBuilder-NG                  |Apache 2.0                 |[https://github.com/http-builder-ng/http-builder-ng](https://github.com/http-builder-ng/http-builder-ng) |
 | OpenDXL Java Client                  |Apache 2.0                 |[https://github.com/opendxl/opendxl-client-java/blob/master/LICENSE](https://github.com/opendxl/opendxl-client-java/blob/master/LICENSE) |
 | GPars                           |Apache 2.0                 |[https://github.com/GPars/GPars/blob/master/LICENSE.txt](https://github.com/GPars/GPars/blob/master/LICENSE.txt) |
-| jPowerShell                     |Apache 2.0                 |[https://github.com/profesorfalken/jPowerShell/blob/master/LICENSE](https://github.com/profesorfalken/jPowerShell/blob/master/LICENSE) |
 | Logback Classic Module          |LGPL 2.1                   |[https://github.com/qos-ch/logback/blob/master/LICENSE.txt](https://github.com/qos-ch/logback/blob/master/LICENSE.txt) |
 | Logback Core Module             |LGPL 2.1                   |[https://github.com/qos-ch/logback/blob/master/LICENSE.txt](https://github.com/qos-ch/logback/blob/master/LICENSE.txt) |
 | MariaDB Java Client             |LGPL 2.1                   |[https://github.com/MariaDB/mariadb-connector-j/blob/master/LICENSE](https://github.com/MariaDB/mariadb-connector-j/blob/master/LICENSE) |
 | UnboundID LDAP SDK for Java     |UnboundID LDAP SDK License |[https://github.com/pingidentity/ldapsdk/blob/master/LICENSE-UnboundID-LDAPSDK.txt](https://github.com/pingidentity/ldapsdk/blob/master/LICENSE-UnboundID-LDAPSDK.txt) |
 | jni4net                         |MIT                        |[https://github.com/jni4net/jni4net](https://github.com/jni4net/jni4net) |
 | slf4j                           |MIT                        |[https://github.com/qos-ch/slf4j/blob/master/LICENSE.txt](https://github.com/qos-ch/slf4j/blob/master/LICENSE.txt) |
+| PowerShellLibJava               |MIT                |[https://github.com/Tuupertunut/PowerShellLibJava/blob/master/LICENSE.md](https://github.com/Tuupertunut/PowerShellLibJava/blob/master/LICENSE.md) |
 | Saxon                           |Mozilla Public License 1.0 |[http://www.saxonica.com/license/license.xml](http://www.saxonica.com/license/license.xml) |
 | Jsch                            |BSD                        |[http://www.jcraft.com/jsch/LICENSE.txt](http://www.jcraft.com/jsch/LICENSE.txt) |
 | PostgreSQL JDBC Driver          |PostgreSQL                 |[https://www.postgresql.org/about/licence/](https://www.postgresql.org/about/licence/) |

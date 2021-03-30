@@ -26,14 +26,16 @@ CIS Benchmarks that have reached end of life are no longer officially supported 
 - **CIS Amazon Linux 2 Benchmark, v1.0.0.1**
 - **CIS Apache Tomcat 9 Benchmark, v1.1.0**
 - **CIS Apple macOS 10.13 Benchmark, v1.1.0**
-- **CIS Apple macOS 10.14 Benchmark, v1.1.0**
-- **CIS Apple macOS 10.15 Benchmark, v1.1.0**
+- **CIS Apple macOS 10.14 Benchmark, v1.3.0**
+- **CIS Apple macOS 10.15 Benchmark, v1.3.0**
+- **CIS Apple macOS 11.0 Benchmark, v1.1.0**
 - **CIS Apple OSX 10.12 Benchmark, v1.0.0**
 - **CIS CentOS Linux 6 Benchmark, v3.0.0**
 - **CIS CentOS Linux 7 Benchmark, v3.0.0**
 - **CIS CentOS Linux 8 Benchmark, v1.0.0.1**
 - **CIS Cisco IOS 12 Benchmark, v4.0.0**
-- **CIS Cisco IOS 15 Benchmark, v4.0.0**
+- **CIS Cisco IOS 15 Benchmark, v4.1.0**
+- **CIS Cisco IOS 16 Benchmark, v1.1.1**
 - **CIS Debian Family Linux, v1.0.0**
 - **CIS Debian Linux 8 Benchmark, v2.0.1**
 - **CIS Debian Linux 9 Benchmark, v1.0.1**
@@ -119,15 +121,18 @@ CIS Benchmarks that have reached end of life are no longer officially supported 
 	- `xccdf_org.cisecurity_value_jdbc.url`: PostgreSQL Database connection string.
 - **CIS PostgreSQL 12 Benchmark, v1.0.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: PostgreSQL Database connection string.
+- **CIS PostgreSQL 13 Benchmark, v1.0.0**
+	- `xccdf_org.cisecurity_value_jdbc.url`: PostgreSQL Database connection string.
 - **CIS Red Hat Enterprise Linux 6 Benchmark, v3.0.0**
 - **CIS Red Hat Enterprise Linux 7 Benchmark, v3.0.1**
 - **CIS Red Hat Enterprise Linux 8 Benchmark, v1.0.0.1**
+- **CIS Red Hat OpenShift Container Platform v4 Benchmark, v1.1**
 - **CIS SUSE Linux Enterprise 11 Benchmark, v2.0.0**
 - **CIS SUSE Linux Enterprise 12 Benchmark, v2.0.0**
 - **CIS SUSE Linux Enterprise 15 Benchmark, v1.0.0**
 - **CIS Ubuntu Linux 14.04 LTS Benchmark, v2.0.0**
-- **CIS Ubuntu Linux 16.04 LTS Benchmark, v1.0.0**
-- **CIS Ubuntu Linux 18.04 LTS Benchmark, v2.0.1**
+- **CIS Ubuntu Linux 16.04 LTS Benchmark, v2.0.0**
+- **CIS Ubuntu Linux 18.04 LTS Benchmark, v2.1.0**
 - **CIS Ubuntu Linux 20.04 LTS Benchmark, v1.0.0**
 - **CIS VMware ESXi 6.7 v1.1.0**
 	- `xccdf_org.cisecurity.benchmarks_value_esxi.connection`: ESXi host connection string

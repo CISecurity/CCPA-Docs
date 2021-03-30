@@ -952,6 +952,27 @@ Below is an example of multiple VMWare assessments. It is important to note that
     </reports>
 	</configuration>
 
+Red Hat OpenShift Container Platform Assessment
+----------------------------------
+CIS-CAT will execute using OpenShift CLI (oc). Utilize official Red Hat documentation on [OpenShift CLI (oc)](https://docs.openshift.com/container-platform/4.2/cli_reference/openshift_cli/getting-started-cli.html) to get started. OpenShift CLI is the preferred and most secure method of running CIS-CAT Pro Assessor commands.
+
+
+**Summary of Requirements**
+
+- OpenShift CLI 9oc) installed
+- Logged in to OpenShift CLI (`oc login`) with active Red Hat account
+	- Follow "Logging in to the CLI" procedure in the [OpenShift CLI (oc) documentation](https://docs.openshift.com/container-platform/4.2/cli_reference/openshift_cli/getting-started-cli.html) 
+- CIS-CAT Pro Assessor v4 bundle extracted locally
+	- SSH is disabled so remote connections are not possible
+
+If using a sessions.properties file or assessor-config.xml file, ensure that the session type is “local”. 
+
+
+Execute an assessment on the command line:
+
+	> ./Assessor-CLI.sh -b benchmarks/CIS_Amazon_Elastic_Kubernetes_Service_(EKS)_Benchmark_v1.0.1-xccdf.xml`
+
+
 
 Extra configuration Options
 ---------------------------

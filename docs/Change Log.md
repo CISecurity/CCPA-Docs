@@ -8,6 +8,27 @@ CIS-CAT Pro Assessor v4
 ---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
+## CIS-CAT Pro Assessor, v4.5.0 ##
+#### Release Date: March 30, 2021 ####
+
+### Benchmark Coverage ###
+- Apple macOS 10.14 v1.3.0
+- Apple macOS 10.15 v1.3.0
+- Apple macOS 11.0 v1.1.0
+- Cisco IOS 15 v4.1.0
+- Cisco IOS 16 v1.1.1
+- PostgreSQL 13 v1.0.0
+- Red Hat OpenShift v1.1
+- Ubuntu 16.04 v2.0.0
+- Ubuntu 18.04 v2.1.0
+
+### CIS-CAT Pro Updates ###
+- Incorporated new PowerShell library to improve performance of local Microsoft Windows/VMWare assessments. This will resolve issues where Windows and VMWare assessments experienced excessive wait time.
+- Resolved an error with benchmark signature validation when the assessed system is configured with FIPS enabled.
+
+### Documentation ###
+- None
+
 ## CIS-CAT Pro Assessor, v4.4.0 ##
 #### Release Date: February 25, 2021 ####
 
