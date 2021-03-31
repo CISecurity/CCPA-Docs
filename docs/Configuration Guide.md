@@ -970,7 +970,7 @@ If using a sessions.properties file or assessor-config.xml file, ensure that the
 
 Execute an assessment on the command line:
 
-	> ./Assessor-CLI.sh -b benchmarks/CIS_Amazon_Elastic_Kubernetes_Service_(EKS)_Benchmark_v1.0.1-xccdf.xml`
+	> ./Assessor-CLI.sh -b benchmarks/CIS_RedHat_OpenShift_Container_Platform_v4_Benchmark_v1.1.0-xccdf.xml`
 
 
 

@@ -126,7 +126,7 @@ CIS Benchmarks that have reached end of life are no longer officially supported 
 - **CIS Red Hat Enterprise Linux 6 Benchmark, v3.0.0**
 - **CIS Red Hat Enterprise Linux 7 Benchmark, v3.0.1**
 - **CIS Red Hat Enterprise Linux 8 Benchmark, v1.0.0.1**
-- **CIS Red Hat OpenShift Container Platform v4 Benchmark, v1.1**
+- **CIS Red Hat OpenShift Container Platform v4 Benchmark, v1.1.0**
 - **CIS SUSE Linux Enterprise 11 Benchmark, v2.0.0**
 - **CIS SUSE Linux Enterprise 12 Benchmark, v2.0.0**
 - **CIS SUSE Linux Enterprise 15 Benchmark, v1.0.0**

@@ -18,7 +18,7 @@ See the CIS-CAT Pro Assessor Coverage Guide for information about supported benc
 - Cisco IOS 15 v4.1.0
 - Cisco IOS 16 v1.1.1
 - PostgreSQL 13 v1.0.0
-- Red Hat OpenShift v1.1
+- RedHat OpenShift Container Platform v4 Benchmark v1.1.0
 - Ubuntu 16.04 v2.0.0
 - Ubuntu 18.04 v2.1.0
 
@@ -27,7 +27,7 @@ See the CIS-CAT Pro Assessor Coverage Guide for information about supported benc
 - Resolved an error with benchmark signature validation when the assessed system is configured with FIPS enabled.
 
 ### Documentation ###
-- None
+- Updated the Configuration Guide to include information about the new Red Hat OpenShift  Container CIS Benchmark.
 
 ## CIS-CAT Pro Assessor, v4.4.0 ##
 #### Release Date: February 25, 2021 ####
