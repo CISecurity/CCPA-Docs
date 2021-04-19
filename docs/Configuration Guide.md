@@ -459,7 +459,7 @@ Assessing database benchmarks in CIS-CAT Pro Assessor v4 uses a JDBC connection 
 | [Microsoft SQL Server](#MSSQLDatabase)          | `xccdf_org.cisecurity_value_jdbc.url`|`jdbc:jtds:sqlserver://<server>[:<port>][/<database>][;<property>=<value>]` |
 | [Mongo](#MongoDatabase)          | `xccdf_org.cisecurity_value_runnin_config_file.url`| `fileLocation` (default value is `/etc/mongod.conf`) |
 | [Oracle MySQL](#OracleMySQLDatabase)     | `xccdf_org.cisecurity_value_jdbc.url` | `jdbc:mysql://<host>:<port>/<database>?<key1>=<value1>&<key2>=<value2>...` |
-|     | `xccdf_org.cisecurity_value_repl.user` |  |
+|     | `xccdf_org.cisecurity_value_repl.user` | `userName` (default value is `repl`) |
 | [Oracle](#OracleDatabase)      | `xccdf_org.cisecurity_value_jdbc.url`| `jdbc:oracle:thin:[username]/[password]@[hostname]:[port]:[SID]` OR `jdbc:oracle:thin:[username]/[password]@//[hostname]:[port]/[service_name]` |
 |      | `xccdf_org.cisecurity_value_listener.ora`| `portValue` (default port is 1521) |
 | [PostgreSQL](#PostGreDatabase)      | `xccdf_org.cisecurity_value_jdbc.url` | `jdbc:postgresql://<host>:<port>/<database>?<key1>=<value1>&<key2>=<value2>...` |
@@ -526,6 +526,8 @@ Notable optional parameters involve ensuring JDBC connections are made via SSL:
 | useSSL                 | Force the usage of SSL on the connection. |
 | trustServerCertificate | When using SSL, do *not* verify the server's certificate.|
 | serverSslCert          | Server's certificate in DER form, or server's CA certificate. Can be used in one of 3 forms:<br/><br/> `serverSslCert=/path/to/cert.pem`:  full path to certificate <br/><br/> `serverSslCert =classpath:relative/cert.pem`:  relative to current classpath <br/><br/> or as verbatim DER-encoded certificate string, starting with<br/> `------BEGIN CERTIFICATE-----`|
+
+An additional interactive value is `xccdf_org.cisecurity_value_repl.user`. This is the replication user, if utilized.
 
 **NOTES**
 
