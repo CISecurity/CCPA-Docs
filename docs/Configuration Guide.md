@@ -450,8 +450,21 @@ Once the exported configuration file is available to CIS-CAT Pro Assessor, the a
 
 Database Assessment
 -------------------------------
-Assessing database benchmarks in CIS-CAT Pro Assessor v4 uses a JDBC connection mechanism.  Database benchmarks require a user to enter the JDBC connection string on the command line, utilize the `assessor-cli.properties` file to set a single value for a single assessment or utilize a configuration XML file to assess multiple databases. The connection string utilized should always reflect the host system's name/IP.
+Assessing database benchmarks in CIS-CAT Pro Assessor v4 uses a JDBC connection mechanism.  Database benchmarks require a user to enter the JDBC connection string as an interactive value on the command line, within the `assessor-cli.properties` file to set a single value for a single assessment, in a popup box on the GUI or by utilizing a configuration XML file to assess multiple databases. The connection string utilized should always reflect the host system's name/IP. See below for a summary table of the interactive values expected for database benchmarks. Follow the links for more information about each database.
 
+**Interactive Value Summary**
+
+| Database Type | Interactive Value Name | Expected Format|
+|---------------|----------------------|----------------|
+| [Microsoft SQL Server](#MSSQLDatabase)          | `xccdf_org.cisecurity_value_jdbc.url`|`jdbc:jtds:sqlserver://<server>[:<port>][/<database>][;<property>=<value>]` |
+| [Mongo](#MongoDatabase)          | `xccdf_org.cisecurity_value_runnin_config_file.url`| `fileLocation` (default value is `/etc/mongod.conf`) |
+| [Oracle MySQL](#OracleMySQLDatabase)     | `xccdf_org.cisecurity_value_jdbc.url` | `jdbc:mysql://<host>:<port>/<database>?<key1>=<value1>&<key2>=<value2>...` |
+|     | `xccdf_org.cisecurity_value_repl.user` |  |
+| [Oracle](#OracleDatabase)      | `xccdf_org.cisecurity_value_jdbc.url`| `jdbc:oracle:thin:[username]/[password]@[hostname]:[port]:[SID]` OR `jdbc:oracle:thin:[username]/[password]@//[hostname]:[port]/[service_name]` |
+|      | `xccdf_org.cisecurity_value_listener.ora`| `portValue` (default port is 1521) |
+| [PostgreSQL](#PostGreDatabase)      | `xccdf_org.cisecurity_value_jdbc.url` | `jdbc:postgresql://<host>:<port>/<database>?<key1>=<value1>&<key2>=<value2>...` |
+
+<a name="OracleDatabase"></a>
 **Oracle Database**
 
 The JDBC string parameter is the connection string used to connect to and authenticate to the Oracle Database service and instance that CIS-CAT will assess.  The Oracle JDBC driver has the ability to connect to Oracle database instances using either the SID or Service Name.
@@ -483,7 +496,7 @@ The following table describes the components of the Oracle JDBC connection strin
 | SID           | The database SID.|
 | Service Name  | The database Service Name.|
 
-
+<a name="OracleMySQLDatabase"></a>
 **Oracle MySQL Database**
 
 Oracle MySQL database support is implemented using the MariaDB JDBC driver.  The format for the MariaDB JDBC connection string for MySQL is:
@@ -519,6 +532,7 @@ Notable optional parameters involve ensuring JDBC connections are made via SSL:
 - The default port number for MySQL is 3306
 - The full set of connection properties/optional URL parameters supported by MariaDB can be found at [https://mariadb.com/kb/en/mariadb/about-the-mariadb-java-client/](https://mariadb.com/kb/en/mariadb/about-the-mariadb-java-client/)
 
+<a name="MongoDatabase"></a>
 **Mongo Database**
 
 The MongoDB benchmark requires one interactive property for the location of the MongoDB configuration file. This value allows for a user-supplied running configuration file for assessment.
@@ -540,7 +554,7 @@ The response will contain MongoDB running configuration file location. For examp
 	"config" : "/user/data/mongod.conf",	
 
 
-
+<a name="PostGreDatabase"></a>
 **PostgreSQL Database**
 
 CIS-CAT Pro Assessor has implemented support for assessments against PostgreSQL database instances using the PostgreSQL JDBC driver.  The format for the PostgreSQL JDBC connection string is:
@@ -583,6 +597,7 @@ For example, in order to force the database connection to require SSL, the conne
 - The default port number for PostgreSQL is 5432
 - The full set of connection properties/optional URL parameters supported by PostgreSQL can be found at [https://jdbc.postgresql.org/documentation/head/connect.html](https://jdbc.postgresql.org/documentation/head/connect.html)
 
+<a name="MSSQLDatabase"></a>
 **Microsoft SQL Server**
 
 Microsoft SQL Server database support is implemented using the jTDS open source JDBC driver.
