@@ -8,6 +8,35 @@ CIS-CAT Pro Assessor v4
 ---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
+## CIS-CAT Pro Assessor, v4.6.0 ##
+#### Release Date: April 29, 2021 ####
+
+### Benchmark Coverage ###
+- CentOS Linux 7 v3.1.0
+- Microsoft SQL Server 2016 Benchmark v1.3.0 (*new driver format for V4 ONLY)
+- Microsoft SQL Server 2017 Benchmark v1.2.0 (*new driver format for V4 ONLY)
+- Microsoft SQL Server 2019 Benchmark v1.2.0 (*new driver format for V4 ONLY)
+- Microsoft Windows Server 2019 Benchmark v1.2.0
+- Microsoft Windows Server 2019 STIG Benchmark v1.0.0
+- Oracle Linux 7 Benchmark v3.1.0
+- Red Hat Enterprise Linux 7 Benchmark v3.1.0
+- Red Hat Enterprise Linux 7 STIG Benchmark v1.0.1
+- SUSE Linux Enterprise Server 12 Benchmark v3.0.0
+- Ubuntu Linux 20.04 LTS Benchmark v1.1.0
+- VMware ESXi 7.0 Benchmark v1.0.0
+
+\* Please be aware that the Microsoft SQL Server driver has changed with this release. See the [database section in the Configuration Guide](https://ccpa-docs.readthedocs.io/en/latest/Configuration%20Guide/#database-assessment) on the new format needed for CIS-CAT Pro Assessor v4.6.0+. Prior versions of CIS-CAT and v3 continue to use the previous connection url format.
+
+### CIS-CAT Pro Updates ###
+- Database assessment output (reports and dashboard imports) are now identified by each database instead of the host machine of the database.
+- Configuration assessments will continue with an "unknown" database name when this value is not set instead of producing an error.
+- Better handling of certain characters causing errors in Windows assessments.
+- A VMWare ESXi hostname will now accurately display on the HTML cover page and preface a results filename.
+- A new jdbc driver added to support Microsoft SQL Server database assessments. NOTE: New driver requires a connection string format change indicated in the [Configuration ](https://ccpa-docs.readthedocs.io/en/latest/Configuration%20Guide/#database-assessment) and [Coverage Guide](https://ccpa-docs.readthedocs.io/en/latest/Coverage%20Guide/#cis-benchmark-coverage).
+
+### Documentation ###
+- Configuration Guide updated in Database section to include summary of Interactive Values needed for Database assessments. Updated Microsoft SQL Server information for new URL connection string format and links to updated driver properties.
+
 ## CIS-CAT Pro Assessor, v4.5.0 ##
 #### Release Date: March 30, 2021 ####
 

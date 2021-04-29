@@ -456,7 +456,7 @@ Assessing database benchmarks in CIS-CAT Pro Assessor v4 uses a JDBC connection 
 
 | Database Type | Interactive Value Name | Expected Format|
 |---------------|----------------------|----------------|
-| [Microsoft SQL Server](#MSSQLDatabase)          | `xccdf_org.cisecurity_value_jdbc.url`|`jdbc:jtds:sqlserver://<server>[:<port>][/<database>][;<property>=<value>]` |
+| [Microsoft SQL Server](#MSSQLDatabase)          | `xccdf_org.cisecurity_value_jdbc.url`|`jdbc:sqlserver://[serverName[\instanceName][:portNumber]][;property=value[;property=value]]` |
 | [Mongo](#MongoDatabase)          | `xccdf_org.cisecurity_value_runnin_config_file.url`| `fileLocation` (default value is `/etc/mongod.conf`) |
 | [Oracle MySQL](#OracleMySQLDatabase)     | `xccdf_org.cisecurity_value_jdbc.url` | `jdbc:mysql://<host>:<port>/<database>?<key1>=<value1>&<key2>=<value2>...` |
 |     | `xccdf_org.cisecurity_value_repl.user` | `userName` (default value is `repl`) |
@@ -602,7 +602,97 @@ For example, in order to force the database connection to require SSL, the conne
 <a name="MSSQLDatabase"></a>
 **Microsoft SQL Server**
 
-Microsoft SQL Server database support is implemented using the jTDS open source JDBC driver.
+As of CIS-CAT Pro Assessor version 4.6.0 and above, Microsoft SQL Server database support is implemented using the Microsoft JDBC driver. See below for prior versions of CIS-CAT Pro.
+
+The format of the Microsoft JDBC URL for Microsoft SQL Server is:
+
+	jdbc:sqlserver://[serverName[\instanceName][:portNumber]][;property=value[;property=value]]
+
+where:
+
+- `jdbc:sqlserver://` (Required) is known as the subprotocol and is constant.
+- `serverName` (Optional) is the address of the server to connect to. This address can be a DNS or IP address, or it can be localhost or 127.0.0.1 for the local computer. If not specified in the connection URL, the server name must be specified in the properties collection.
+- `instanceName` (Optional) is the instance to connect to on serverName. If not specified, a connection to the default instance is made.
+- `portNumber` (Optional) is the port to connect to on serverName. The default is 1433. If you're using the default, you don't have to specify the port, nor its preceding ':', in the URL.
+- `property` (Optional) is one or more option connection properties. For more information, see [Setting the connection properties](https://docs.microsoft.com/en-us/sql/connect/jdbc/setting-the-connection-properties?view=sql-server-ver15). Any property from the list can be specified. Properties can only be delimited by using the semicolon (';'), and they can't be duplicated.
+
+
+Consider a Microsoft SQL Server database instance with the following information:
+
+| Property Name                     | Property Value |
+|-----------------------------------|----------------------|
+| Server Name                       | CIS-SERVER |
+| Database Name                     | TestDB |
+| Database Port                     | 1433 |
+| Windows Domain                    | WIN-DOMAIN |
+| Windows Domain User/Password      | jsmith/qw3rty |
+| SQL Server Database User/Password | db_user/db_pass |
+| Instance Name                     | TestInstance |
+
+**Basic Connection**
+Connect to the default database on the local computer by using a username/password:
+
+	jdbc:sqlserver://localhost;user=MyUserName;password=*****;
+
+**Windows Authentication**
+
+Windows Authentication Mode allows a user to connect to a SQL Server instance through a Microsoft Windows user account.  This mode allows domain user account information to be supplied in order to establish a connection.  The following JDBC connection string would be valid for establishing a connection using the above example information:
+
+	jdbc:sqlserver://CIS-SERVER:1433;databaseName=TestDB;domain=WIN-DOMAIN;user=jsmith;password=qw3rty;instanceName=TestInstance;
+
+Windows Authentication Mode may also be used against databases running on machines not joined to a domain (standalone servers).  When authenticating with Microsoft Windows user accounts to non-domain joined servers, substitute in the computer name for the domain.  For example, if the name of the standalone server is `SQLSERVER`, the JDBC connection string would look as such:
+
+	jdbc:sqlserver://CIS-SERVER:1433;databaseName=TestDB;domain=SQLSERVER;user=jsmith;password=qw3rty;instanceName=TestInstance;
+
+
+**SQL Server Authentication**
+
+SQL Server Authentication provides the ability for connections to a database instance to be made using trusted username and password information, allowing SQL Server to perform the authentication itself by checking to see if a SQL Server login account has been setup and if the password matches one previously recorded for that user.  The following JDBC URLs would be valid for establishing a connection using the above example information:
+
+	jdbc:sqlserver://CIS-SERVER:1433;databaseName=TestDB;user=db_user;password=db_pass;instanceName=TestInstance;
+
+or
+
+	jdbc:sqlserver://CIS-SERVER:1433;databaseName=TestDB;user=jsmith;password=qw3rty;instanceName=TestInstance;
+
+**Integrated Security**
+
+The Microsoft SQL Server driver and CIS-CAT Pro Assessor v4 do support use of `IntegratedSecurity` in the connection string. 
+
+An example connection string could look like below:
+
+	jdbc:sqlserver://CIS-SERVER:1433;integratedSecurity=true;
+
+When utilizing integrated security, the Microsoft SQL Server JDBC driver requires at least an additional `.dll` file to properly function.  Additional information regarding the `.dll` file is located [on the official Microsoft website](https://docs.microsoft.com/en-us/sql/connect/jdbc/building-the-connection-url?view=sql-server-ver15#Connectingintegrated).  CIS-CAT Pro includes the `mssql-jdbc_auth-<version>-<arch>.dll` 64-bit file in the `misc` folder of the CIS-CAT build directories. The `.dll` files must be placed into the `bin` directory of the  64-bit Java Runtime Environment (JRE) utilized to execute CIS-CAT Pro Assessor. CIS-CAT Pro does not support 32-bit Java when assessing a Windows environment.
+
+**Dynamic Ports**
+
+CIS-CAT Pro supports remote and local assessments when dynamic ports are configured. In order for the configuration assessment to be successful, the following must be in place:
+
+- CIS-CAT Pro Assessor resides on the database host machine for local assessment
+- The Microsoft SQL Server `named instance` option is utilized as opposed to `default instance`
+- SQL Server Browser enabled
+- UDP 1434 (SQL Server Browser) and sqlserver.exe [opened on firewall](https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access?view=sql-server-ver15)
+	
+
+Modify the connection string by replacing the `Server Name` with `localhost` like the below example when completing a local assessment:
+
+	jdbc:sqlserver://localhost;databaseName=TestDB;user=jsmith;password=qw3rty;instanceName=TestInstance;
+
+When assessing remote hosts in the cloud, the below additional requirements are needed:
+
+- Ports 49,152 to 65,535 opened as the dynamic port could be any where in that range. Please ensure this is in line with your organizational security policies or utilize a static port.
+- UDP 1434 must be opened in the security group
+
+**NOTES**:
+
+- The default port number for MS SQL Server databases is `1433`
+- Review the [official Microsoft resource](https://docs.microsoft.com/en-us/sql/connect/jdbc/building-the-connection-url?view=sql-server-ver15) for more information about supported connection properties
+
+
+**CIS-CAT Pro Versions 4.5.0 and Prior and SQL Driver**
+
+Prior versions of Assessor v4 utilize the jTDS open source JDBC driver.
 
 The format of the jTDS JDBC URL for MS SQL Server is:
 
@@ -621,58 +711,6 @@ Consider a Microsoft SQL Server database instance with the following information
 | Windows Domain User/Password      | jsmith/qw3rty |
 | SQL Server Database User/Password | db_user/db_pass |
 | Instance Name                     | InstanceName |
-
-**Windows Authentication**
-
-Windows Authentication Mode allows a user to connect to a SQL Server instance through a Microsoft Windows user account.  This mode allows domain user account information to be supplied in order to establish a connection.  The following JDBC connection string would be valid for establishing a connection using the above example information:
-
-	jdbc:jtds:sqlserver://CIS-SERVER:1433/TestDB;domain=WIN-DOMAIN;user=jsmith;password=qw3rty;instance=InstanceName
-
-Windows Authentication Mode may also be used against databases running on machines not joined to a domain (standalone servers).  When authenticating with Microsoft Windows user accounts to non-domain joined servers, substitute in the computer name for the domain.  For example, if the name of the standalone server is `SQLSERVER`, the JDBC connection string would look as such:
-
-	jdbc:jtds:sqlserver://CIS-SERVER:1433;DatabaseName=TestDB;domain=SQLSERVER;user=jsmith;password=qw3rty;instance=InstanceName
-
-**NOTE**:  When connecting to a SQL Server using Windows Authentication, a common error message indicates that “the user is attempting to log in from an untrusted domain” (or similar message).  In order to resolve this issue, add the **`useNTLMv2=true`** property/value:
-
-	jdbc:jtds:sqlserver://CIS-SERVER:1433;DatabaseName=TestDB;domain=SQLSERVER;user=jsmith;password=qw3rty;instance=InstanceName;useNTLMv2=true
-
-**SQL Server Authentication**
-
-SQL Server Authentication provides the ability for connections to a database instance to be made using trusted username and password information, allowing SQL Server to perform the authentication itself by checking to see if a SQL Server login account has been setup and if the password matches one previously recorded for that user.  The following JDBC URLs would be valid for establishing a connection using the above example information:
-
-	jdbc:jtds:sqlserver://CIS-SERVER:1433/TestDB;user=db_user;password=db_pass;instance=InstanceName
-
-or
-
-	jdbc:jtds:sqlserver://CIS-SERVER:1433;DatabaseName=TestDB;user=jsmith;password=qw3rty;instance=InstanceName
-
-**Integrated Security**
-
-The current jtds SQL Server driver and CIS-CAT Pro Assessor v4 do support use of `IntegratedSecurity` in the connection string. However, when using SSL=request or SSL=required, JRE or OpenJDK 11 must be utilized.
-
-An example connection string could look like below:
-
-	jdbc:jtds:sqlserver://localhost/TestDB;user=jsmith;password=qw3rty;instance=InstanceName;integratedSecurity=true;
-
-**Dynamic Ports**
-
-CIS-CAT Pro supports only local assessments when dynamic ports are configured. In order for the configuration assessment to be successful, the following must be in place:
-
-- CIS-CAT Pro Assessor resides on the database host machine (local)
-- The Microsoft SQL Server `named instance` option is utilized as opposed to `default instance`
-- SQL Server Browser enabled
-- UDP 1434 (SQL Server Browser) and sqlserver.exe [opened on firewall](https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access?view=sql-server-ver15)
-
-
-Modify the connection string by replacing the `Server Name` with `localhost` like the below example:
-
-	jdbc:jtds:sqlserver://localhost/TestDB;user=jsmith;password=qw3rty;instance=InstanceName
-
-**NOTES**:
-
-- The default port number for MS SQL Server databases is `1433`. Dynamic ports supported for local assessments only.
-- The full set of connection properties supported by jTDS can be found at [http://jtds.sourceforge.net/faq.html#urlFormat](http://jtds.sourceforge.net/faq.html#urlFormat).
-
 
 Kubernetes Assessment
 ----------------------------------
@@ -968,6 +1006,10 @@ Below is an example of multiple VMWare assessments. It is important to note that
         <reports_dir>C:\CIS\CIS-CAT_Software\Assessor-v4.0.22\Assessor-CLI\reports</reports_dir>
     </reports>
 	</configuration>
+
+**Report Results**
+
+Configuration assessment result files for VMWare ESXi will be prefaced with the ESXi host's hostname (or IP address) for easier identification. The preface will automatically be applied for every configuration assessment report generated.
 
 Red Hat OpenShift Container Platform Assessment
 ----------------------------------

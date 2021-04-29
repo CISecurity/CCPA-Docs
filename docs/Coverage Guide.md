@@ -31,7 +31,7 @@ CIS Benchmarks that have reached end of life are no longer officially supported 
 - **CIS Apple macOS 11.0 Benchmark, v1.1.0**
 - **CIS Apple OSX 10.12 Benchmark, v1.0.0**
 - **CIS CentOS Linux 6 Benchmark, v3.0.0**
-- **CIS CentOS Linux 7 Benchmark, v3.0.0**
+- **CIS CentOS Linux 7 Benchmark, v3.1.0**
 - **CIS CentOS Linux 8 Benchmark, v1.0.0.1**
 - **CIS Cisco IOS 12 Benchmark, v4.0.0**
 - **CIS Cisco IOS 15 Benchmark, v4.1.0**
@@ -64,11 +64,11 @@ CIS Benchmarks that have reached end of life are no longer officially supported 
 - **CIS Microsoft Office Word 2016 Benchmark, v1.1.0**
 - **CIS Microsoft Office 2013 Benchmark, v1.1.0**
 - **CIS Microsoft Office 2016 Benchmark, v1.1.0**
-- **CIS Microsoft SQL Server 2016 Benchmark, v1.2.0**
+- **CIS Microsoft SQL Server 2016 Benchmark, v1.3.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: SQL Server connection string.
-- **CIS Microsoft SQL Server 2017 Benchmark, v1.1.0**
+- **CIS Microsoft SQL Server 2017 Benchmark, v1.2.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: SQL Server connection string.
-- **CIS Microsoft SQL Server 2019 Benchmark, v1.1.0**
+- **CIS Microsoft SQL Server 2019 Benchmark, v1.2.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: SQL Server connection string.
 - **CIS Microsoft Windows 10 Enterprise Release 1909 Benchmark, v1.8.1**
 - **CIS Microsoft Windows 10 Enterprise Release 2004 Benchmark, v1.9.1**
@@ -80,7 +80,8 @@ CIS Benchmarks that have reached end of life are no longer officially supported 
 - **CIS Microsoft Windows Server 2012 R2 Benchmark, v2.4.0**
 - **CIS Microsoft Windows Server 2016 RTM (Release 1607) Benchmark, v1.2.0**
 - **CIS Microsoft Windows Server 2016 STIG Benchmark, v1.0.0**
-- **CIS Microsoft Windows Server 2019 Benchmark, v1.1.0**
+- **CIS Microsoft Windows Server 2019 Benchmark, v1.2.0**
+- **CIS Microsoft Windows Server 2019 STIG Benchmark, v1.0.0**
 - **CIS Microsoft Windows 8 Benchmark, v1.0.0**
 - **CIS Microsoft Windows 8.1 Workstation Benchmark, v2.4.0**
 - **CIS MongoDB 3.6, v1.0.0**
@@ -109,7 +110,7 @@ CIS Benchmarks that have reached end of life are no longer officially supported 
 	- `xccdf_org.cisecurity_value_jdbc.url`: Oracle Database connection string.
 	- `xccdf_org.cisecurity_value_listener.ora`: Path to the listener.ora file
 - **CIS Oracle Linux 6 Benchmark, v2.0.0**
-- **CIS Oracle Linux 7 Benchmark, v3.0.0**
+- **CIS Oracle Linux 7 Benchmark, v3.1.0**
 - **CIS Oracle Linux 8 Benchmark, v1.0.0**
 - **CIS PostgreSQL 9.5 Benchmark, v1.1.0.1**
 	- `xccdf_org.cisecurity_value_jdbc.url`: PostgreSQL Database connection string.
@@ -124,17 +125,20 @@ CIS Benchmarks that have reached end of life are no longer officially supported 
 - **CIS PostgreSQL 13 Benchmark, v1.0.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: PostgreSQL Database connection string.
 - **CIS Red Hat Enterprise Linux 6 Benchmark, v3.0.0**
-- **CIS Red Hat Enterprise Linux 7 Benchmark, v3.0.1**
+- **CIS Red Hat Enterprise Linux 7 Benchmark, v3.1.0**
+- **CIS Red Hat Enterprise Linux 7 STIG Benchmark, v1.0.1**
 - **CIS Red Hat Enterprise Linux 8 Benchmark, v1.0.0.1**
 - **CIS Red Hat OpenShift Container Platform v4 Benchmark, v1.1.0**
 - **CIS SUSE Linux Enterprise 11 Benchmark, v2.0.0**
-- **CIS SUSE Linux Enterprise 12 Benchmark, v2.0.0**
+- **CIS SUSE Linux Enterprise 12 Benchmark, v3.0.0**
 - **CIS SUSE Linux Enterprise 15 Benchmark, v1.0.0**
 - **CIS Ubuntu Linux 14.04 LTS Benchmark, v2.0.0**
 - **CIS Ubuntu Linux 16.04 LTS Benchmark, v2.0.0**
 - **CIS Ubuntu Linux 18.04 LTS Benchmark, v2.1.0**
-- **CIS Ubuntu Linux 20.04 LTS Benchmark, v1.0.0**
+- **CIS Ubuntu Linux 20.04 LTS Benchmark, v1.1.0**
 - **CIS VMware ESXi 6.7 v1.1.0**
+	- `xccdf_org.cisecurity.benchmarks_value_esxi.connection`: ESXi host connection string
+- **CIS VMware ESXi 7.0 v1.0.0**
 	- `xccdf_org.cisecurity.benchmarks_value_esxi.connection`: ESXi host connection string
 
 
