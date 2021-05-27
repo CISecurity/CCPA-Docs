@@ -715,12 +715,13 @@ Consider a Microsoft SQL Server database instance with the following information
 Kubernetes Assessment
 ----------------------------------
 
-Assessing with the Kubernetes benchmark in CIS-CAT Pro Assessor v4 works like any other assessment of a Linux benchmark. CIS-CAT Pro Assessor v4 can be located on the server being assessed (master or worker node) to perform the assessment. It is also possible to establish a remote connection with the Linux host.
+Assessing with the Kubernetes benchmark in CIS-CAT Pro Assessor v4 works like any other assessment of a Linux benchmark. CIS Benchmark Consensus has determined that best practice should allow for only remote connection with the Linux host connecting via ssh for a configuration assessment.
 
-If using a configuration XML file for the assessment, use the "local" or “ssh” session type. The 'ssh' session type is for remote assessments.
-
+If using a configuration XML file for the assessment, use “ssh” session type for remote assessments.
 
 Note that CIS Kubernetes versions 1.6.1 and higher have introduced profile levels specific to Master and Work Nodes. Please use the profile that is representative of your configuration.
+
+CIS Kubernetes versions 1.7.0 and highly recommend remote assessments. The recommendations in version 1.7.0 and higher require segmentation of worker and master nodes, which would not be running on the same system.
 
 **Example methods for executing a Kubernetes assessment**
 
@@ -730,7 +731,7 @@ Execute an assessment on command line on a local machine where Kubernetes exists
 
 Execute an assessment on command line on local machine where Kubernetes exists using the relative path to the benchmark file, selecting a specific profile by name:
 
-	> ./Assessor-CLI.sh -b benchmarks/CIS_Kubernetes_Benchmark_v1.6.1-xccdf.xml
+	> ./Assessor-CLI.sh -b benchmarks/CIS_Kubernetes_Benchmark_v1.7.0-xccdf.xml
 
 
 Execute an assessment on command line on local machine where Kubernetes exists using information found in a saved configuration XML file. See sample configuration file below:
@@ -742,19 +743,18 @@ Sample configuration file for a local assessment with HTML report generation::
 
 	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 	<configuration xmlns="http://cisecurity.org/ccpa/config">
-    <starting_dir>/CIS/CIS-CAT_Software/Assessor/Assessor-CLI</starting_dir>
     <vulnerability_definitions download="false"/>
     <sessions test="false">
         <session id="Kube1">
-            <type>local</type>
+            <type>ssh</type>
             <tmp_path/>
         </session>
     </sessions>
     <assessments quiet="false">
-        <benchmark profile="Level 1" session-ref="Kube1" xccdf="/CIS/CIS-CAT_Software/Assessor-v4.0.22/Assessor-CLI/benchmarks/CIS_Kubernetes_Benchmark_v1.5.1-xccdf.xml"/>
+        <benchmark profile="Level 1" session-ref="Kube1" xccdf="/CIS/CIS-CAT_Software/Assessor-v4.7.0/Assessor-CLI/benchmarks/CIS_Kubernetes_Benchmark_v1.7.0-xccdf.xml"/>
     </assessments>
     <reports html="true">
-        <reports_dir>/CIS/CIS-CAT_Software/Assessor-v4.0.22/Assessor-CLI/reports</reports_dir>
+        <reports_dir>/CIS/CIS-CAT_Software/Assessor-v4.7.0/Assessor-CLI/reports</reports_dir>
     </reports>
 	</configuration>
 

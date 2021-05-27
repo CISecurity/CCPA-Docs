@@ -8,6 +8,38 @@ CIS-CAT Pro Assessor v4
 ---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
+## CIS-CAT Pro Assessor, v4.7.0 ##
+#### Release Date: May 27, 2021 ####
+
+### Benchmark Coverage ###
+All Benchmarks released to CIS-CAT this version and after will contain Controls 8 annotations.  Controls 6 mappings are deprecated and will no longer appear on the report.
+Only the latest Microsoft Windows 10 Benchmark will be included. See the Coverage Guide for more information.
+
+- Apple macOS 10.14 v1.4.0 
+- Apple macOS 10.15 v1.4.0 
+- Apple macOS 11.0 v1.2.0 
+- CentOS Linux 7 v3.1.1
+- CentOS Linux 8 v1.0.1
+- Debian Linux 8 v2.0.2 - Final Release
+- Kubernetes v1.20 Benchmark v1.0.0
+- Microsoft Intune v1.0.1
+- Microsoft Windows Server 2019 v1.2.1
+- Microsoft Windows Server 2019 STIG v1.0.1
+- Microsoft Windows 10 20H2 v1.10.1
+- Oracle Linux 7 v3.1.1
+- Oracle Linux 8 v1.0.1
+- Red Hat Linux 7 v3.1.1
+- Red Hat Linux 8 v1.0.1
+
+### CIS-CAT Pro Updates ###
+- Windows assessment errors resolved when user group setup contain circular references.
+- Update to third-party library mariadb-java-client to latest version, 2.7.2.
+- HTML configuration assessment reports now support CIS Benchmark Control 8 mapping. New and updated Benchmarks released in V4.7.0+ will be mapped to Controls 8 released May 18, 2021.
+- Windows centralized scripts updated to utilize the just the latest Windows 10 Benchmark for Windows 10 platforms.
+
+### Documentation ###
+- Updated configuration assessment guidance for Kubernetes Benchmark.
+
 ## CIS-CAT Pro Assessor, v4.6.0 ##
 #### Release Date: April 29, 2021 ####
 
