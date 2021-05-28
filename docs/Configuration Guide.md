@@ -18,13 +18,17 @@ CIS-CAT Pro Assessor v4 is a Java application and requires an available Java Run
 
 **Required**:
 
-- Compatible version of JRE present on host or accessed via network share
-- Any JRE version from 8 to 14 is supported
-- 64-bit Java recommended for faster performance
-- Java versions 9+ will receive “WARNING: An illegal reflective access operation has occurred”. This can be ignored and will not halt the assessment.
-- OpenJDK (free and open-source) implementations are supported. We have found this [website](https://adoptopenjdk.net/) easy to navigate. The official source is [OpenJDK](https://openjdk.java.net).
+- JRE or JDK for command line/centralized assessments
+	- If using just GUI, JRE is embedded so no additional Java needed
+	- Stable version 8 or 11 of JRE or JDK (free openJDK also supported) present on host or accessed via network share
+	- Newer Java builds may work in certain environments, however Technical Support will not be able to help with troubleshooting as CIS focuses on implementation of stable, non-proprietary versions
+	- Some users have experienced issues with proprietary Java versions and headless Java versions
+	- 64-bit Java recommended for faster performance
+	- Java versions 9+ will receive “WARNING: An illegal reflective access operation has occurred”. This can be ignored and will not halt the assessment.
+	- OpenJDK (free and open-source) implementations are supported. We have found this [website](https://adoptopenjdk.net/) easy to navigate. The official source is [OpenJDK](https://openjdk.java.net).
 - Remote scanning requires unrestricted access from the CIS-CAT host system to the assessed target system
 - Windows remote and local assessments require a 64 bit operating system 
+
 
 **Recommended Minimum**:
 
@@ -719,9 +723,9 @@ Assessing with the Kubernetes benchmark in CIS-CAT Pro Assessor v4 works like an
 
 If using a configuration XML file for the assessment, use “ssh” session type for remote assessments.
 
-Note that CIS Kubernetes versions 1.6.1 and higher have introduced profile levels specific to Master and Work Nodes. Please use the profile that is representative of your configuration.
+Note that CIS Kubernetes version 1.6.1 have introduced profile levels specific to Master and Work Nodes. Please use the profile that is representative of your configuration.
 
-CIS Kubernetes versions 1.7.0 and highly recommend remote assessments. The recommendations in version 1.7.0 and higher require segmentation of worker and master nodes, which would not be running on the same system.
+CIS Kubernetes V1.20 Benchmark v1.0.0+ highly recommend remote assessments. The recommendations in version V1.7.0  require segmentation of worker and master nodes, which would not be running on the same system.
 
 **Example methods for executing a Kubernetes assessment**
 
@@ -731,7 +735,7 @@ Execute an assessment on command line on a local machine where Kubernetes exists
 
 Execute an assessment on command line on local machine where Kubernetes exists using the relative path to the benchmark file, selecting a specific profile by name:
 
-	> ./Assessor-CLI.sh -b benchmarks/CIS_Kubernetes_Benchmark_v1.7.0-xccdf.xml
+	> ./Assessor-CLI.sh -b benchmarks/CIS_Kubernetes_V1.20_Benchmark_v1.0.0-xccdf.xml
 
 
 Execute an assessment on command line on local machine where Kubernetes exists using information found in a saved configuration XML file. See sample configuration file below:
@@ -751,7 +755,7 @@ Sample configuration file for a local assessment with HTML report generation::
         </session>
     </sessions>
     <assessments quiet="false">
-        <benchmark profile="Level 1" session-ref="Kube1" xccdf="/CIS/CIS-CAT_Software/Assessor-v4.7.0/Assessor-CLI/benchmarks/CIS_Kubernetes_Benchmark_v1.7.0-xccdf.xml"/>
+        <benchmark profile="Level 1" session-ref="Kube1" xccdf="/CIS/CIS-CAT_Software/Assessor-v4.7.0/Assessor-CLI/benchmarks/CIS_Kubernetes_V1.20_Benchmark_v1.0.0-xccdf.xml"/>
     </assessments>
     <reports html="true">
         <reports_dir>/CIS/CIS-CAT_Software/Assessor-v4.7.0/Assessor-CLI/reports</reports_dir>
