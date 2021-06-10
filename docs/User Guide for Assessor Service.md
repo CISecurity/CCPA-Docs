@@ -19,8 +19,15 @@ For implementations where CIS-CAT Pro Assessor v4 Service will be on a dedicated
 **Required:**
 
 - CIS-CAT Pro Dashboard v1.1.11+ installed
-- Any JRE version from 8 to 14 installed on host or accessed via a network share
-  - [OpenJDK implementations](https://openjdk.java.net/) of Java supported
+- JRE or JDK installed
+	- If using just GUI, JRE is embedded so no additional Java needed
+	- Stable version 8 or 11 of JRE or JDK (free openJDK also supported) present on host or accessed via network share
+	- Newer Java builds may work in certain environments, however Technical Support will not be able to help with troubleshooting as CIS focuses on implementation of stable, non-proprietary versions
+	- Some users have experienced issues with proprietary Java versions and headless Java versions
+	- 64-bit Java recommended for faster performance
+	- Java versions 9+ will receive “WARNING: An illegal reflective access operation has occurred”. This can be ignored and will not halt the assessment.
+	- OpenJDK (free and open-source) implementations are supported. We have found this [website](https://adoptopenjdk.net/) easy to navigate. The official source is [OpenJDK](https://openjdk.java.net).
+- Remote scanning requires unrestricted access from the CIS-CAT host system to the assessed target system
 - Windows assessments require a 64 bit operating system
 
 **Recommended:**
