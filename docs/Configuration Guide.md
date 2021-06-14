@@ -468,6 +468,11 @@ Assessing database benchmarks in CIS-CAT Pro Assessor v4 uses a JDBC connection 
 |      | `xccdf_org.cisecurity_value_listener.ora`| `portValue` (default port is 1521) |
 | [PostgreSQL](#PostGreDatabase)      | `xccdf_org.cisecurity_value_jdbc.url` | `jdbc:postgresql://<host>:<port>/<database>?<key1>=<value1>&<key2>=<value2>...` |
 
+**Database Assessments and Host Operating System**
+
+Many CIS Database Benchmarks analyze configuration for database settings as well as the host system of the database. CIS-CAT Pro Assessor will collect information from the host system to compare to CIS Benchmark recommended values. Review the [CIS-CAT Pro Assessor Coverage Guide](https://ccpa-docs.readthedocs.io/en/latest/Coverage%20Guide/#cis-benchmark-coverage) for a general list of operating systems that are supported. Operating systems such as Solaris, for example, are not supported for database or host assessments.
+
+
 <a name="OracleDatabase"></a>
 **Oracle Database**
 
