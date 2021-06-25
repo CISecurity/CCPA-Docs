@@ -465,7 +465,7 @@ Assessing database benchmarks in CIS-CAT Pro Assessor v4 uses a JDBC connection 
 | [Oracle MySQL](#OracleMySQLDatabase)     | `xccdf_org.cisecurity_value_jdbc.url` | `jdbc:mysql://<host>:<port>/<database>?<key1>=<value1>&<key2>=<value2>...` |
 |     | `xccdf_org.cisecurity_value_repl.user` | `userName` (default value is `repl`) |
 | [Oracle](#OracleDatabase)      | `xccdf_org.cisecurity_value_jdbc.url`| `jdbc:oracle:thin:[username]/[password]@[hostname]:[port]:[SID]` OR `jdbc:oracle:thin:[username]/[password]@//[hostname]:[port]/[service_name]` |
-|      | `xccdf_org.cisecurity_value_listener.ora`| `portValue` (default port is 1521) |
+|      | `xccdf_org.cisecurity_value_listener.ora`| `{env:ORACLE_HOME}/network/admin/listener.ora` |
 | [PostgreSQL](#PostGreDatabase)      | `xccdf_org.cisecurity_value_jdbc.url` | `jdbc:postgresql://<host>:<port>/<database>?<key1>=<value1>&<key2>=<value2>...` |
 
 **Database Assessments and Host Operating System**
@@ -504,6 +504,9 @@ The following table describes the components of the Oracle JDBC connection strin
 | port          | The port number on which the database is listening.  By default, Oracle databases are configured to listen on port 1521.|
 | SID           | The database SID.|
 | Service Name  | The database Service Name.|
+
+
+The interactive value listener.ora is utilized in the assessment process to support recommendations in section 2.1 of the CIS Oracle Database Benchmarks. The default for this value is {env:ORACLE_HOME}/network/admin/listener.ora. If this is not the correct path to the listener.ora, then this value should be provided in the configuration XML file or from the GUI popup.
 
 <a name="OracleMySQLDatabase"></a>
 **Oracle MySQL Database**
