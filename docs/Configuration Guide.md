@@ -1057,9 +1057,9 @@ If no `sessions.properties` file exists or no connections are configured in the 
 # Centralized - Windows #
 
 
-It is possible to assess a population of Microsoft Windows targets in an automated manner without installing CIS-CAT or the JRE on each target. The following diagram depicts this deployment pattern:
+It is possible to assess a population of Microsoft Windows targets in an automated manner without installing CIS-CAT or the JRE on each target. The following diagram depicts this deployment method:
 
-![](https://i.imgur.com/gGUgx7K.png)
+![](img\centralized.png)
 
 **CIS Host Server**
 
