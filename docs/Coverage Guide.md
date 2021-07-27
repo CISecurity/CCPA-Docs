@@ -23,7 +23,7 @@ CIS Benchmarks that have reached end of life are no longer officially supported 
 - **CIS Alibaba Cloud Aliyun Linux 2, v1.0.0**
 - **CIS Amazon Elastic Kubernetes Service (EKS) Benchmark, v1.0.1**
 - **CIS Amazon Linux Benchmark, v2.0.0**
-- **CIS Amazon Linux 2 Benchmark, v1.0.0.1**
+- **CIS Amazon Linux 2 Benchmark, v2.0.0**
 - **CIS Apache Tomcat 9 Benchmark, v1.1.0**
 - **CIS Apple macOS 10.13 Benchmark, v1.1.0**
 - **CIS Apple macOS 10.14 Benchmark, v1.4.0**
@@ -72,13 +72,13 @@ CIS Benchmarks that have reached end of life are no longer officially supported 
 	- `xccdf_org.cisecurity_value_jdbc.url`: SQL Server connection string.
 - **CIS Microsoft SQL Server 2019 Benchmark, v1.2.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: SQL Server connection string.
-- **CIS Microsoft Windows 10 Enterprise Release 20H2 Benchmark, v1.10.1**
+- **CIS Microsoft Windows 10 Enterprise Release 21H1 Benchmark, v1.11.0**
 - **CIS Microsoft Windows Server 2003 Benchmark, v3.1.0**
 - **CIS Microsoft Windows Server 2008 (non-R2) Benchmark, v3.1.0**
 - **CIS Microsoft Windows Server 2008 R2 Benchmark, v3.2.0**
 - **CIS Microsoft Windows Server 2012 (non-R2) Benchmark, v2.2.0**
 - **CIS Microsoft Windows Server 2012 R2 Benchmark, v2.4.0**
-- **CIS Microsoft Windows Server 2016 RTM (Release 1607) Benchmark, v1.2.0**
+- **CIS Microsoft Windows Server 2016 RTM (Release 1607) Benchmark, v1.3.0**
 - **CIS Microsoft Windows Server 2016 STIG Benchmark, v1.0.0**
 - **CIS Microsoft Windows Server 2019 Benchmark, v1.2.1**
 - **CIS Microsoft Windows Server 2019 STIG Benchmark, v1.0.1**
@@ -98,6 +98,9 @@ CIS Benchmarks that have reached end of life are no longer officially supported 
 	- `xccdf_org.cisecurity_value_jdbc.url`: MySQL Server connection string.
 	- `xccdf_org.cisecurity_value_repl.user`: MySQL replication user name.
 - **CIS Oracle MySQL Enterprise Edition 5.7 Benchmark, v1.0.0**
+	- `xccdf_org.cisecurity_value_jdbc.url`: MySQL Server connection string.
+	- `xccdf_org.cisecurity_value_repl.user`: MySQL replication user name.
+- **CIS Oracle MySQL Enterprise Edition 8.0 Benchmark, v1.1.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: MySQL Server connection string.
 	- `xccdf_org.cisecurity_value_repl.user`: MySQL replication user name.
 - **CIS Oracle Database 12c Benchmark, v3.0.0**
@@ -136,6 +139,7 @@ CIS Benchmarks that have reached end of life are no longer officially supported 
 - **CIS Ubuntu Linux 16.04 LTS Benchmark, v2.0.0**
 - **CIS Ubuntu Linux 18.04 LTS Benchmark, v2.1.0**
 - **CIS Ubuntu Linux 20.04 LTS Benchmark, v1.1.0**
+- **CIS Ubuntu Linux 20.04 LTS STIG Benchmark, v1.0.0**
 - **CIS VMware ESXi 6.7 v1.1.0**
 	- `xccdf_org.cisecurity.benchmarks_value_esxi.connection`: ESXi host connection string
 - **CIS VMware ESXi 7.0 v1.0.0**

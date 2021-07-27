@@ -8,6 +8,25 @@ CIS-CAT Pro Assessor v4
 ---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
+## CIS-CAT Pro Assessor, v4.8.0 ##
+#### Release Date: July 27, 2021 ####
+
+### Benchmark Coverage ###
+All Benchmarks released to CIS-CAT this version and after will contain Controls 8 annotations.  Controls 6 mappings are deprecated and will no longer appear on the report.
+
+
+- Amazon Linux 2 v2.0.0
+- Microsoft Windows 10 21H1 v1.11.0
+- Microsoft Windows Server 2016 v1.3.0
+- Oracle MySQL Enterprise Edition 8.0 v1.1.0
+- Ubuntu Linux 20.04 LTS STIG v1.0.0
+
+### CIS-CAT Pro Updates ###
+- Corrected an error where SCE scripts to support Linux assessments were not properly collected when an absolute path of assessor was used.
+
+### Documentation ###
+- Updated deployment guide to contain more information on Java requirements.
+
 ## CIS-CAT Pro Assessor, v4.7.0 ##
 #### Release Date: May 27, 2021 ####
 
