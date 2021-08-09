@@ -255,18 +255,18 @@ Tools and services that use OVAL for the three steps of system assessment — re
 ### Unix ###
 | Test Name                | Implemented? | Notes |
 |--------------------------|--------------|-------|
-| DNSCache                 | N | On roadmap |
+| DNSCache                 | N ||
 | File                     | Y ||
 | File Extended Attribute  | Y ||
 | Gconf                    | Y ||
 | Inetd                    | Y ||
 | Interface                | Y ||
 | Password                 | Y ||
-| Process (<5.8)           | N | On roadmap |
+| Process (<5.8)           | N |  |
 | Process (5.8+)           | Y ||
-| Routing Table            | N | On roadmap |
+| Routing Table            | N | |
 | Runlevel                 | Y ||
-| SCCS                     | N | On roadmap |
+| SCCS                     | N |  |
 | Shadow                   | Y ||
 | Symlink                  | Y ||
 | Sysctl                   | Y ||
@@ -278,16 +278,16 @@ Tools and services that use OVAL for the three steps of system assessment — re
 |--------------------------|--------------|-------|
 | AppArmor Status | Y ||
 | DpkgInfo | Y ||
-| IfListeners| N | On roadmap|
+| IfListeners| N | |
 | Inet Listening Servers | Y ||
 | Partition | Y ||
 | RPM Info | Y ||
-| RPM Verify | N | On roadmap|
-| RPM Verify File | N | On roadmap|
-| RPM Verify Package | N | On roadmap|
+| RPM Verify | N | |
+| RPM Verify File | N | |
+| RPM Verify Package | N | |
 | SELinux Booleans | Y ||
-| SELinux Security Context | N | On roadmap|
-| Slackware PkgInfo| N | On roadmap|
+| SELinux Security Context | N | |
+| Slackware PkgInfo| N | |
 | Systemd Unit Dependency | Y ||
 | Systemd Unit Property | Y ||
 
@@ -297,29 +297,29 @@ Tools and services that use OVAL for the three steps of system assessment — re
 | Account Info                   | Y ||
 | Authorization DB               | Y ||
 | CoreStorage                    | Y ||
-| Disabled Service               | N | In backlog |
-| DiskUtil                       | N | In backlog|
+| Disabled Service               | N | |
+| DiskUtil                       | N | |
 | File Vault                     | N | In development |
 | Firmware Password              | N | In development |
 | Gatekeeper                     | Y ||
-| Inet Listening Servers (<5.10) | N | In backlog|
-| Inet Listening Servers (5.10+) | N | In backlog|
-| Install History                | N | In backlog |
-| Keychain                       | Y | In backlog |
+| Inet Listening Servers (<5.10) | N | |
+| Inet Listening Servers (5.10+) | N | |
+| Install History                | N | |
+| Keychain                       | Y | |
 | Launchd                        | Y ||
-| Nvram                          | N | In backlog |
-| Nvram (5.12)                   | N | In backlog |
+| Nvram                          | N |  |
+| Nvram (5.12)                   | N |  |
 | Plist (<5.10)                  | Y ||
 | Plist (5.10)                   | Y ||
 | Plist (5.11+)                  | Y ||
 | Profiles                       | Y ||
-| Pwpolicy (<5.9)                | N | In backlog|
-| Pwpolicy (5.9+)                | N | In backlog|
-| Pwpolicy (5.12+)               | N | In backlog
+| Pwpolicy (<5.9)                | N | |
+| Pwpolicy (5.9+)                | N | |
+| Pwpolicy (5.12+)               | N | |
 | Rlimit                         | Y ||
-| Software Update                | N | In backlog|
-| System Profiler                | N | In backlog|
-| System Setup                   | N | In backlog|
+| Software Update                | N | |
+| System Profiler                | N | |
+| System Setup                   | N | |
 
 ### Cisco ASA ###
 | Test Name                | Implemented? | Notes |
