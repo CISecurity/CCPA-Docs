@@ -8,6 +8,29 @@ CIS-CAT Pro Assessor v4
 ---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
+## CIS-CAT Pro Assessor, v4.9.0 ##
+#### Release Date: Aug 31, 2021 ####
+
+
+### Benchmark Coverage ###
+
+- CentOS Linux 7 v3.1.2
+- MongoDB 4 Benchmark v1.0.0
+- VMWare ESXi 7 v1.1.0
+    
+### Application ###
+- None
+
+### Security ###
+- None 
+
+
+### Documentation ###
+- The TNS Listener interactive value for Oracle 12c, 18c, and 19c defined in Configuration Guide in the Database section.
+- More clarification on supported operating systems for database assessments added to Configuration Guide. Specifically do not support Solaris-hosted databases.
+
+
+
 ## CIS-CAT Pro Assessor, v4.8.2 ##
 #### Release Date: Aug 9, 2021 ####
 
