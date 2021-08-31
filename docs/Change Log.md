@@ -15,7 +15,7 @@ See the CIS-CAT Pro Assessor Coverage Guide for information about supported benc
 ### Benchmark Coverage ###
 
 - CentOS Linux 7 v3.1.2
-- MongoDB 4 Benchmark v1.0.0
+- MongoDB 4 v1.0.0
 - VMWare ESXi 7 v1.1.0
     
 ### Application ###
