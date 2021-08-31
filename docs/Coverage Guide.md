@@ -31,7 +31,7 @@ CIS Benchmarks that have reached end of life are no longer officially supported 
 - **CIS Apple macOS 11.0 Benchmark, v1.2.0**
 - **CIS Apple OSX 10.12 Benchmark, v1.0.0**
 - **CIS CentOS Linux 6 Benchmark, v3.0.0**
-- **CIS CentOS Linux 7 Benchmark, v3.1.1**
+- **CIS CentOS Linux 7 Benchmark, v3.1.2**
 - **CIS CentOS Linux 8 Benchmark, v1.0.1**
 - **CIS Cisco IOS 12 Benchmark, v4.0.0**
 - **CIS Cisco IOS 15 Benchmark, v4.1.0**
@@ -85,6 +85,8 @@ CIS Benchmarks that have reached end of life are no longer officially supported 
 - **CIS Microsoft Windows 8 Benchmark, v1.0.0**
 - **CIS Microsoft Windows 8.1 Workstation Benchmark, v2.4.0**
 - **CIS MongoDB 3.6, v1.0.0**
+    - `xccdf_org.cisecurity_value_runnin_config_file.url`: MongoDB running configuration file (mongod.conf) location.
+- **CIS MongoDB 4, v1.0.0**
     - `xccdf_org.cisecurity_value_runnin_config_file.url`: MongoDB running configuration file (mongod.conf) location.
 - **CIS Mozilla Firefox 38 ESR Benchmark, v1.0.0**
 - **CIS NGINX Benchmark, v1.1.0**
@@ -142,7 +144,7 @@ CIS Benchmarks that have reached end of life are no longer officially supported 
 - **CIS Ubuntu Linux 20.04 LTS STIG Benchmark, v1.0.0**
 - **CIS VMware ESXi 6.7 v1.1.0**
 	- `xccdf_org.cisecurity.benchmarks_value_esxi.connection`: ESXi host connection string
-- **CIS VMware ESXi 7.0 v1.0.0**
+- **CIS VMware ESXi 7.0 v1.1.0**
 	- `xccdf_org.cisecurity.benchmarks_value_esxi.connection`: ESXi host connection string
 
 
