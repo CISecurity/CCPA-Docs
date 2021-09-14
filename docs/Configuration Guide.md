@@ -946,6 +946,16 @@ It is required that LanguageMode is not configured to ConstrainedLanguage. When 
 
 **Connection Strings**
 
+The connection string is validated as an `anyURI`. When invalid values are used in the connection string, an error message will indicate that the value is not valid and the connection will exit. 
+
+We have found this [article](http://www.datypic.com/sc/xsd/t-xsd_anyURI.html) helpful when determining valid values.
+
+Examples of invalid values are:
+
+- http://datypic.com#frag1#frag2  : too many # characters
+- http://datypic.com#f% rag  : % character followed by something other than two hexadecimal digits
+
+
 If no connection strings are set in the configuration file or `assessor-cli.properties` file, the user will be prompted to enter connection information for the ESXi host. The format of this connection string is user/password@host. See the example below:
 
 	root/qu3rty@192.168.41.60
