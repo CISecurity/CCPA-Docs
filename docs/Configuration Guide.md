@@ -71,6 +71,13 @@ If a valid license is not present in the defined location, CIS-CAT Pro Assessor 
 
 ![](img/license-download.png)
 
+
+### Verification Method ###
+
+CIS-CAT Assessor v4 and Assessor v4 Service validate a Member’s license at the beginning of each command execution performed from the GUI, the command line, or a web request from the Dashboard (v4 Service only). The license will attempt to validate against a CIS-hosted location via SSL port 8883 first. If the host machine is unable to validate online, CIS-CAT will validate the license from the key that is present in the specified location. By default, the location is in the “License” folder. To modify this location, specify a different location using the ciscat.license.filepath property in the assessor-cli.properties (v4 Assessor) or  assessor-service.properties (v4 Service) file.
+
+The method utilized to validate the license will be present in the assessor-cli.log when producing an INFO level log. CIS utilizes a Data Exchange Layer (DXL) communication fabric to enable the online validation.
+
 ### License Renewal ###
 
 The license file will expire when your SecureSuite Membership expires. Once your SecureSuite Membership renewal has been processed, your new license file bundle will be available in WorkBench. Download an updated license by following the initial license installation instructions, replacing the existing license files.
