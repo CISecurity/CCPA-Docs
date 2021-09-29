@@ -8,6 +8,32 @@ CIS-CAT Pro Assessor v4
 ---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
+## CIS-CAT Pro Assessor, v4.10.0 ##
+#### Release Date: Sep. 28, 2021 ####
+
+
+### Benchmark Coverage ###
+
+- Microsoft Windows Server 2012 v2.3.0
+- Microsoft Windows Server 2012 R2 v2.5.0
+- Microsoft Windows Server 2016 STIG v1.1.0
+- SUSE Linux 15 v1.1.0
+- VMWare ESXi 6.7 v1.2.0
+    
+### Application ###
+- MacOS assessment results are now more accurate for recommendations that check conditions for profiles (plist).
+- The GUI application has upgraded to a more current version of the baseline software.
+
+### Security ###
+- None 
+
+
+### Documentation ###
+- Additional information added to VMWare ESXi in configuration guide on valid connection string values. 
+- Configuration Guide updated to include more information on how a Member's license key is validated.
+
+
+
 ## CIS-CAT Pro Assessor, v4.9.0 ##
 #### Release Date: Aug 31, 2021 ####
 
