@@ -255,6 +255,9 @@ The answers to two of the above questions have security implications:
 
 - If the Assessor will access remote endpoints using **WinRM over HTTP**, each endpoint must be configured to "Allow Unencrypted Traffic";
 - If the Assessor will authenticate to remote endpoints using a **local administrator account**, each endpoint must disable the "Apply UAC restrictions to local accounts on network logons" configuration.
+	- This setting controls whether local accounts can be used for remote administration via network logon (e.g., NET USE, connecting to C$, etc.). 
+	- Configuring this setting to `Disabled` allows local accounts to have full administrative rights when authenticating via network logon, by configuring the `LocalAccountTokenFilterPolicy` registry value to 1.
+	- Local accounts are at high risk for credential theft when the same account and password is configured on multiple systems.
 
 The majority of CIS benchmarks for Microsoft Windows operating systems contain recommendations that affect enabling remote assessment in CIS-CAT Pro.  If users plan to utilize remote assessment in their environment for Microsoft Windows operating systems, we recommend considering the risks of making deviations from the recommended CIS Benchmark setting.  Each notation below applies to the Level 1 Profile.
 
@@ -339,46 +342,40 @@ If no results are returned, members may create a self-signed certificate using P
 In order for CIS-CAT Pro Assessor to connect to a remote Windows host, a number of configurations must be applied to those hosts.  This configuration can be applied either manually or through Group Policy.
 
 #### <a name="gpo"></a>Group Policy Configuration ####
-The WinRM service can be configured using Group Policy in two ways.  In domain environments, policies are maintained on the Domain Controller's Group Policy Management Console (GPMC).  Group Policy administrators can access the GPMC by clicking the Start menu and typing "Group Policy Management".  Once displayed in the available applications menu, right-click and select "Run as Administrator".  Once opened, the member should first create a new Group Policy Object, followed by right-clicking on the GPO and selecting "Edit".  In standalone (non-domain) environments, local administrators can edit the endpoint's Local Group Policy Object in a similar fashion.  To start the Local Group Policy editor, click the Start menu and type “gpedit.msc”.  Right-click and run it as an Administrator.  Alternatively, you can add the local Group Policy Object Editor to the Microsoft Management Console as a snap-in component:
+
+The WinRM service can be configured using Group Policy. 
+
+CIS Microsoft Windows Benchmarks are designed for systems that are joined to a domain. When using CIS-CAT to assess stand-alone systems, where local policy may have been modified, configuration assessment results will produce failures for many CIS Benchmark recommendations as local registry settings are stored differently than those set by Group Policy. CIS Microsoft Windows Benchmarks are designed to check for those settings set by Group Policy.
+
+In domain environments, policies are maintained on the Domain Controller's Group Policy Management Console (GPMC). Create a new Group Policy Object to set the WinRM services. 
+An example is below.
+
+	Computer Configuration\Policies\Administrative Templates\Windows Components\Windows Remote Management (WinRM)\WinRM Service
+
+In standalone (non-domain) environments, Local Group Policy Objects can be set. However, keep in mind, that Group Policy may take precedence and assessments will not have optimal results for systems that are not domain joined. Consult the official Microsoft site for your distribution of Microsoft Windows on how to set Local Group Policy (Example: [Windows 10](https://docs.microsoft.com/en-us/windows/security/threat-protection/security-policy-settings/how-to-configure-security-policy-settings)).
 
 
-1. Open the Start menu and enter **mmc**.  Right-click and run this application as an Administrator.
-2. Select **File** and **Add/Remove Snap-ins**.
-3. Under **Available Snap-ins**, select **Group Policy Object Editor** and click the **Add >** button.
-4. In the wizard, make sure it’s choosing “Local Computer” and click **Finish**.
-5. Click **OK**.
-
-Once the Group Policy Object has been opened for editing, navigate to 
-
-
-    Computer Configuration\Policies\Administrative Templates\Windows Components\Windows Remote Management (WinRM)\WinRM Service
-
-Configure the following settings:
+To enable WinRM, configure the following settings in Group Policy:
 
 - **Allow remote server management through WinRM**:  
 	- **Select "Enabled"**: Manages whether the Windows Remote Management (WinRM) service automatically listens on the network for requests. 
 	- **Enter an asterisk  in either the IPv4 or IPv6 Filter**: If the filter is left blank, the service does not listen on any addresses. The service listens on the addresses specified by the IPv4 and IPv6 filters. The IPv4 filter specifies one or more ranges of IPv4 addresses, and the IPv6 filter specifies one or more ranges of IPv6addresses. If specified, the service enumerates the available IP addresses on the computer and uses only addresses that fall within one of the filter ranges.
 Use an asterisk ( * ) to indicate that the service listens on all available IP addresses on the computer. When * is used, other ranges in the filter are ignored. 
-- **Allow unencrypted traffic**: 
-	- **Select "Enabled"**
-		- **NOTE** This configuration is only required when using *WinRM over HTTP*.  See the [Security Considerations](#security-considerations) above for more information.  This setting is **NOT REQUIRED** when using *WinRM over HTTPS*.
 
-If the Assessor will authenticate to remote endpoints using a **local administrator account** (See the [Security Considerations](#security-considerations) above for more information), navigate to:
+Configure the following **ONLY** when (See [Security Considerations](#security-considerations) to understand risk of below settings):
 
-    Computer Configuration\Policies\Administrative Templates\SCM: Pass the Hash Mitigations
+- Connecting over *HTTP* 
+	- Set `Allow unencrypted traffic` to `Enabled`
+- Authenticating with local administrator account
+	- Navigate to `Computer Configuration\Policies\Administrative Templates\SCM: Pass the Hash Mitigations`*
+	- Set `Apply UAC restrictions to local accounts on network logons` to `Disabled`
+	
 
-If this group policy setting is not available, it may need to be downloaded and imported into the GPMC.  The administrative template (ADMX) files can be downloaded from either [here](http://blogs.technet.com/b/secguide/archive/2014/08/13/security-baselines-for-windows-8-1-windows-server-2012-r2-and-internet-explorer-11-final.aspx) or [here](https://blogs.technet.microsoft.com/secguide/2017/08/30/security-baseline-for-windows-10-creators-update-v1703-final/).
+*If this group policy setting is not available, it may need to be downloaded and imported into the GPMC.  The administrative template (ADMX) files can be downloaded from either [here](http://blogs.technet.com/b/secguide/archive/2014/08/13/security-baselines-for-windows-8-1-windows-server-2012-r2-and-internet-explorer-11-final.aspx) or [here](https://blogs.technet.microsoft.com/secguide/2017/08/30/security-baseline-for-windows-10-creators-update-v1703-final/).
 
-Once downloaded and made available in the GPMC, configure the following:
-
-- **Apply UAC restrictions to local accounts on network logons**:  Set to `Disabled`
-	- This setting controls whether local accounts can be used for remote administration via network logon (e.g., NET USE, connecting to C$, etc.). 
-	- Configuring this setting to `Disabled` allows local accounts to have full administrative rights when authenticating via network logon, by 
-	- configuring the `LocalAccountTokenFilterPolicy` registry value to 1.
-	- Local accounts are at high risk for credential theft when the same account and password is configured on multiple systems.  Again, see the Security Considerations above to determine if local accounts are necessary to perform remote assessment with CIS-CAT Pro Assessor.
 
 #### Manual Configuration ####
-Configuring WinRM manually is not a complicated task, but does involve a number of commands on each endpoint that will be assessed remotely.  CIS recommends configuring endpoints via Group Policy in a domain environment, but manual configuration can be useful for testing environments.
+CIS recommends configuring endpoints via Group Policy in a domain environment, but manual configuration can be useful for testing environments.
 
 ##### Enable WinRM #####
 On the remote Windows host, open a Command Prompt using the "Run as Administrator" option.  Enter the following command to enable the default configuration for WinRM:
@@ -387,11 +384,14 @@ On the remote Windows host, open a Command Prompt using the "Run as Administrato
 
 A confirmation prompt may be presented to the user.  If so, type `Y` and hit `Enter`.  Performing the `quickconfig` will start the Windows Remote Management service, configure an HTTP listener and create exceptions in the Windows Firewall for the WinRM service.
 
-If users intend to connect to remote endpoints using WinRM over HTTP (and not HTTPS), then WinRM must be configured to "Allow unencrypted traffic":
 
-	winrm set winrm/config/service @{AllowUnencrypted="true"}
+Configure the following **ONLY** when (See [Security Considerations](#security-considerations) to understand risk of below settings):
 
-**NOTE** This configuration is only required when using *WinRM over HTTP*.  See the Security Considerations above for more information.  This setting is **NOT REQUIRED** when using *WinRM over HTTPS*.
+- Connecting over *HTTP* 
+	- Set `Allow unencrypted traffic` to `Enabled` by setting the following
+
+			winrm set winrm/config/service @{AllowUnencrypted="true"}
+
 
 ##### Review WinRM Configuration Settings #####
 Enter the following command to review the WinRM configuration settings:
@@ -400,14 +400,16 @@ Enter the following command to review the WinRM configuration settings:
 
 If you experience errors running an assessment over WinRM (e.g., out-of-memory errors), you may need to update the default **MaxMemoryPerShellMB** configuration setting in order to increase the maximum amount of memory available.  The following sample command updates this setting to 1 GB (1024 MB):
 
-winrm set winrm/config/winrs @{MaxMemoryPerShellMB="1024"} 
+	winrm set winrm/config/winrs @{MaxMemoryPerShellMB="1024"} 
+
 
 ##### Disable UAC remote restrictions #####
+
 To better protect those users who are members of the local Administrators group, Microsoft implemented UAC restrictions on the network. This mechanism helps prevent against "loopback" attacks. This mechanism also helps prevent local malicious software from running remotely with administrative rights.
 
 When a user who is a member of the local administrators group on the target remote computer establishes a remote administrative connection by using the `net use * \\remotecomputer\Share$` command, for example, they will not connect as a full administrator. The user has no elevation potential on the remote computer, and the user cannot perform administrative tasks. If the user wants to administer the workstation with a Security Account Manager (SAM) account, the user must interactively log on to the computer that is to be administered with Remote Assistance or Remote Desktop, if these services are available.
 
-To disable UAC remote restrictions, follow these steps: 
+To disable UAC remote restrictions, : 
 
 - Click Start, click Run, type **regedit**, and then press **ENTER**.
 - Locate and then click the following registry subkey:
@@ -416,9 +418,9 @@ To disable UAC remote restrictions, follow these steps:
 
 - If the `LocalAccountTokenFilterPolicy` registry entry does not exist, follow these steps: 
 	- On the Edit menu, point to **New**, and then click **DWORD Value**.
-	- Type **LocalAccountTokenFilterPolicy**, and then press **ENTER**.
+	- Type `LocalAccountTokenFilterPolicy`, and then press **ENTER**.
 
-- Right-click **LocalAccountTokenFilterPolicy**, and then click **Modify**.
+- Right-click `LocalAccountTokenFilterPolicy`, and then click **Modify**.
 - In the Value data box, type **1**, and then click **OK**.
 - Exit Registry Editor.
 
