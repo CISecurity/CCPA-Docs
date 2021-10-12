@@ -350,7 +350,8 @@ CIS Microsoft Windows Benchmarks are designed for systems that are joined to a d
 In domain environments, policies are maintained on the Domain Controller's Group Policy Management Console (GPMC). Create a new Group Policy Object to set the WinRM services. 
 An example is below.
 
-	Computer Configuration\Policies\Administrative Templates\Windows Components\Windows Remote Management (WinRM)\WinRM Service
+	Computer Configuration\Policies\Administrative Templates\Windows 
+	Components\Windows Remote Management (WinRM)\WinRM Service
 
 In standalone (non-domain) environments, Local Group Policy Objects can be set. However, keep in mind, that Group Policy may take precedence and assessments will not have optimal results for systems that are not domain joined. Consult the official Microsoft site for your distribution of Microsoft Windows on how to set Local Group Policy (Example: [Windows 10](https://docs.microsoft.com/en-us/windows/security/threat-protection/security-policy-settings/how-to-configure-security-policy-settings)).
 
