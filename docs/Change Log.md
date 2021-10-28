@@ -8,6 +8,28 @@ CIS-CAT Pro Assessor v4
 ---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
+## CIS-CAT Pro Assessor, v4.11.0 ##
+#### Release Date: Oct. 28, 2021 ####
+
+
+### Benchmark Coverage ###
+
+- AlmaLinux OS 8 v1.0.0
+- MongoDB 5 v1.0.0
+- SCE scripts, required for accurate assessment results, supporting Linux/Unix Benchmarks updated.
+    
+### Application ###
+- Non-English characters are handled and no longer result in an exception when encountered during some assessments (primarily Microsoft Windows).
+- Linux assessment processes improved to now handle file path spaces, when encountered.
+
+### Security ###
+- Improved security measures applied to validate the CIS-CAT Assessor code integrity.
+
+
+### Documentation ###
+- Configuration guide updated in Microsoft Windows section that addresses setting up WinRM with Group Policy. Setting up WinRM via local policy is possible, but CIS Microsoft Windows Benchmarks are designed for domain-joined machines.
+
+
 ## CIS-CAT Pro Assessor, v4.10.0 ##
 #### Release Date: Sep. 29, 2021 ####
 
