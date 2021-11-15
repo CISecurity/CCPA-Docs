@@ -874,6 +874,76 @@ Execute an assessment on the command line:
 	> ./Assessor-CLI.sh -b benchmarks/CIS_Amazon_Elastic_Kubernetes_Service_(EKS)_Benchmark_v1.0.1-xccdf.xml`
 
 
+Google Kubernetes Engine (GKE) Assessment
+----------------------------------
+Assessing with the Google Kubernetes Engine (GKE) benchmark in CIS-CAT Pro Assessor v4 requires the use of the gcloud CLI to authenticate and connect to the GKE cluster. This CIS Benchmark only runs on a Linux operating system. The Google GKE benchmark will authenticate and target a specific cluster with gcloud CLI, and then submit kubelet and kubectl commands to the cluster to perform the assessment. The commands are present within the Benchmark content. This benchmark is only run as a local assessment, as local gcloud CLI and Kubernetes commands are used to perform the assessment.
+
+**Summary Requirements**
+
+- Authentication method selected
+	- GCP CLI authentication
+	- Kubernetes GCP IAM Authenticator
+- gcloud CLI installed, if this authentication method selected
+	- Latest version of gcloud CLI recommended
+- Kubeconfig file pointed to desired GKE cluster
+- Port 8080 (and any other needed ports) opened
+- [kubectl installed](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+- CIS-CAT Pro Assessor v4 bundle extracted locally on a Linux environment 
+ 
+This documentation provides instructions for use of gcloud CLI in a "least privileged access" manner. 
+
+**Configure gcloud CLI Authentication**
+
+GCP IAM defines what actions you are allowed to take on GCP (ie: create Cloud Storage Buckets, deploy an App Engine app). Kubernetes Roles define permissions you have within a single cluster. Some GCP IAM roles actually propagate down to the GKE clusters running in that project. For example, the GCP IAM role Kubernetes Engine Developer will give edit access to every cluster in the project this IAM role is granted on. That’s of course way too broad.
+Because Kubernetes itself does not have the concept of users, GKE will rely on GCP IAM permissions to Authenticate users (who are you?). However, you should rely as much as possible on a Kubernetes Role for Authorization (what are you allowed to do?). Therefore, we will grant minimal roles on the GCP IAM side that can be used to identify yourself to a cluster. Then the GKE cluster itself will decide whatever you are allowed to do, based on a Kubernetes Role.
+
+
+**About GKE Authentication**
+
+GKE manages authentication with gcloud with OAuth2/OpenID connect method. More information about the specifics of this method is available on the [official Kubernetes site](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#openid-connect-tokens).
+
+
+The minimal set of permissions you need on the GCP IAM side are the following:
+
+- container.apiServices.get
+- container.apiServices.list
+- container.clusters.get
+- container.clusters.getCredentials
+	
+**Configure Kubernetes Role Based Access Control (RBAC) System**
+
+The gcloud CLI permissions are only used for authentication. All permissions for interacting with your Google GKE cluster’s Kubernetes API is managed through the native Kubernetes Role Based Access Control (RBAC) system. We have this site on [GKE Cluster access](https://gcloud.devoteam.com/blog/security-guide-rbac-on-google-kubernetes-engine) useful.
+
+The following roles are required to allow CIS-CAT Pro Assessor v4 to submit `kubelet` and `kubectl` commands to the cluster for automated assessments.
+
+|Default Cluster Role          |	Default Cluster Role Binding|	   Description|
+|------------------------------|--------------------------------|-----------------|
+|**system:kube-controller-manager**|**system:kube-controller-manager** user|Allows access to the resources required by the controller manager component. The permissions required by individual controllers are detailed in the controller roles.
+|**system:kubelet-api-admin**|	None|	Allows full access to the kubelet API.|
+
+
+**Prepare the Environment and gcloud CLI**
+
+CIS-CAT Pro Assessor v4 must be extracted locally on a server or workstation that has access to the GKE cluster servers. 
+
+Ensure security groups provide access to port 8080 from the server where CIS-CAT Pro Assessor v4 locally resides. Other ports may also need to be opened depending on each organization’s specific configuration.
+
+1. Verify that kubectl can access the cluster node you wish to assess
+		
+		kubectl get nodes
+
+2. Execute an assessment on the command line:
+
+		./Assessor-CLI.sh -b benchmark/CIS_Google_Elastic_Kubernetes_Service_(GKE)_Benchmark_V1.2.0-xccdf.xml
+
+
+**Example method for executing an Google Kubernetes Engine (GKE) assessment**
+
+See requirements above to ensure they are met. Review official [Kubernetes documentation](https://kubernetes.io/docs/tasks/tools/install-kubectl/) to assist in configuration.
+
+An automated assessment using the CIS Google GKE Benchmark must be performed as a local assessment or “local” session type. CIS-CAT Pro Assessor will run various `kubectl` and `kubelet` commands to perform the assessment. When utilizing CIS-CAT Pro Assessor v4’s supporting session or configuration files for this Benchmark, ensure configuration and session files utilize a “local” session type. Assessments can also be initiated using commands or the v4 GUI as a local assessment.
+
+
 Apache Tomcat 9 Assessment
 ----------------------------------
 Assessing with the Apache Tomcat 9 benchmark in CIS-CAT Pro Assessor v4 requires input on two environment variables. Entry of the two variables can be done on the command line, at the GUI prompt or setting of the values in advance in the `assessor-cli.properties` file or configuration XML file. 
