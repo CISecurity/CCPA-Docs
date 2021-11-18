@@ -8,6 +8,44 @@ CIS-CAT Pro Assessor v4
 ---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
+## CIS-CAT Pro Assessor, v4.12.0 ##
+#### Release Date: Nov. 18, 2021 ####
+
+
+### Benchmark Coverage ###
+
+- Amazon Linux 2 STIG v2.0.0
+- Apple macOS 10.14 v2.0.0 - Final release *
+- Apple macOS 10.15 Catalina v2.0.0
+- Apple macOS 11.0 Big Sur v2.0.0
+- Google Kubernetes Engine (GKE) v1.2.0
+- MongoDB 3.6 v1.1.0 **
+- PostgreSQL 14 v1.0.0 **
+- Red Hat Enterprise Linux 7 STIG v2.0.0
+- Red Hat Enterprise Linux 8 STIG v1.0.0
+
+The following CIS Benchmarks have moved to end of life and are no longer officially supported. See the [Coverage Guide](https://ccpa-docs.readthedocs.io/en/latest/Coverage%20Guide/#cis-benchmark-coverage) for more information on CIS Benchmarks that have reached end of life.
+
+- Apple OSX 10.12
+- Mac OS 10.13
+    
+*CIS Benchmarks marked with a "Final release" above will be moved to End of Life in the following CIS-CAT release.
+
+** Not applicable to CIS-CAT Pro Assessor v4 Service
+
+### Application ###
+- None
+
+### Security ###
+- Resolved security vulnerabilities present in embedded, third party dependency of bcprov-jdk15on. This library was moved to version 1.69.
+
+
+### Documentation ###
+- Configuration guide updated to include information on Google Kubernetes Engine (GKE)
+- Updated configuration guide to expand on the use of the interactive value for Mongo DB.
+- Updated User Guide Assessor in the Benchmark/Data-Stream Collection Options specifically for the -b option to mention when utilizing a Benchmark with a parenthesis character in the name that it must be enclosed in quotes.
+
+
 ## CIS-CAT Pro Assessor, v4.11.0 ##
 #### Release Date: Oct. 28, 2021 ####
 

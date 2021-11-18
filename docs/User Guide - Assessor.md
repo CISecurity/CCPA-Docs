@@ -169,7 +169,7 @@ The benchmark and data-stream collection options provide users the ability to se
 
 | Short Option  |  Long Option  |   Argument   | Description                      |
 | ------------- | ------------- | -------------|--------------------------------- |
-| `-b`          | `--benchmark` | `<BMK-OR-DSC>` | Specify either an absolute path to the assessment content or a path relative to the Assessor's "base" directory.  The Assessor's "base" directory is determined by the application, choosing the folder in which the `Assessor-CLI.jar` file resides.  The `<BMK-OR-DSC>` argument represents either a Benchmark XCCDF file, or the SCAP 1.2-formatted Data-stream Collection file.|
+| `-b`          | `--benchmark` | `<BMK-OR-DSC>` | Specify either an absolute path to the assessment content or a path relative to the Assessor's "base" directory.  The Assessor's "base" directory is determined by the application, choosing the folder in which the `Assessor-CLI.jar` file resides.  The `<BMK-OR-DSC>` argument represents either a Benchmark XCCDF file, or the SCAP 1.2-formatted Data-stream Collection file. If a Benchmark name contains a parenthesis and this command is utilized, then the Benchmark name must be enclosed in double quotes. See example below.|
 | `-dm`         | `--data-stream` | `<DATA-STREAM>` | Used only when the `-b` option selects a data-stream-collection document, the `-dm` option specifies, within the collection, the ID of the data-stream to be assessed. |
 | `-cl` | `--checklist` | `<CHECKLIST>` | Used only in conjunction with the `-dm` option, the `-cl` option specifies, within the data-stream, the ID of the checklist (benchmark) to be assessed.|
 | `-p` | `--profile` | `<PROFILE>` | Specify either a profile name, such as `Level-1`, or the profile ID, such as `xccdf_org.cisecurity.benchmarks_profile_Level_1`.  Note that when using the profile name, if any spaces occur, the entire profile name must be wrapped in double-quotes, such as `"Level 2"`|
@@ -179,7 +179,9 @@ The benchmark and data-stream collection options provide users the ability to se
 
 Execute an assessment against the CIS Microsoft Windows 10 benchmark, using the relative path to the benchmark file, automatically selecting the first profile:
 
-	> Assessor-CLI.bat -b benchmarks\CIS_Microsoft_Windows_10_Enterprise_Release_1703_Benchmark_v1.3.0-xccdf.xml
+	> Assessor-CLI.bat -b "benchmarks\CIS_Microsoft_Windows_Server_2016_RTM_(Release_1607)_Benchmark_v1.3.0-xccdf.xml"
+
+NOTE: Note that the CIS Benchmark name contains parenthesis. In this case, the entire path must be enclosed with double quotes or the assessment will not execute.
 
 Execute an assessment against the CIS Microsoft Windows 10 benchmark, using the relative path to the benchmark file, selecting a specific profile by name:
 

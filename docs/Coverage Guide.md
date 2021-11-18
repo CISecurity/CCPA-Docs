@@ -25,12 +25,11 @@ CIS Benchmarks that have reached end of life are no longer officially supported 
 - **CIS Amazon Elastic Kubernetes Service (EKS) Benchmark, v1.0.1**
 - **CIS Amazon Linux Benchmark, v2.0.0**
 - **CIS Amazon Linux 2 Benchmark, v2.0.0**
+- **CIS Amazon Linux 2 STIG Benchmark, v2.0.0**
 - **CIS Apache Tomcat 9 Benchmark, v1.1.0**
-- **CIS Apple macOS 10.13 Benchmark, v1.1.0**
-- **CIS Apple macOS 10.14 Benchmark, v1.4.0**
-- **CIS Apple macOS 10.15 Benchmark, v1.4.0**
-- **CIS Apple macOS 11.0 Benchmark, v1.2.0**
-- **CIS Apple OSX 10.12 Benchmark, v1.0.0**
+- **CIS Apple macOS 10.14 Benchmark, v2.0.0**
+- **CIS Apple macOS 10.15 Benchmark, v2.0.0**
+- **CIS Apple macOS 11.0 Benchmark, v2.0.0**
 - **CIS CentOS Linux 6 Benchmark, v3.0.0**
 - **CIS CentOS Linux 7 Benchmark, v3.1.2**
 - **CIS CentOS Linux 8 Benchmark, v1.0.1**
@@ -45,7 +44,7 @@ CIS Benchmarks that have reached end of life are no longer officially supported 
 - **CIS Fedora 28 Family Linux, v1.0.0**
 		- NOTE:  Requires the "ignore.platform.mismatch" property be set to "true" in the Assessor's properties file.
 - **CIS Google Chrome Benchmark, v2.0.0**
-- **CIS Google Kubernetes Engine, v1.1.0**
+- **CIS Google Kubernetes Engine (GKE) Benchmark, v1.2.0**
 - **CIS Kubernetes Benchmark, v 1.6.1**
 - **CIS_Kubernetes V1.20 Benchmark, v1.0.0**
 - **CIS MIT Kerberos 1.10 Benchmark, v1.0.0**
@@ -85,7 +84,7 @@ CIS Benchmarks that have reached end of life are no longer officially supported 
 - **CIS Microsoft Windows Server 2019 STIG Benchmark, v1.0.1**
 - **CIS Microsoft Windows 8 Benchmark, v1.0.0**
 - **CIS Microsoft Windows 8.1 Workstation Benchmark, v2.4.0**
-- **CIS MongoDB 3.6, v1.0.0**
+- **CIS MongoDB 3.6, v1.1.0**
     - `xccdf_org.cisecurity_value_runnin_config_file.url`: MongoDB running configuration file (mongod.conf) location.
 - **CIS MongoDB 4, v1.0.0**
     - `xccdf_org.cisecurity_value_runnin_config_file.url`: MongoDB running configuration file (mongod.conf) location.
@@ -132,10 +131,13 @@ CIS Benchmarks that have reached end of life are no longer officially supported 
 	- `xccdf_org.cisecurity_value_jdbc.url`: PostgreSQL Database connection string.
 - **CIS PostgreSQL 13 Benchmark, v1.0.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: PostgreSQL Database connection string.
+- - **CIS PostgreSQL 14 Benchmark, v1.0.0**
+	- `xccdf_org.cisecurity_value_jdbc.url`: PostgreSQL Database connection string.
 - **CIS Red Hat Enterprise Linux 6 Benchmark, v3.0.0**
 - **CIS Red Hat Enterprise Linux 7 Benchmark, v3.1.1**
-- **CIS Red Hat Enterprise Linux 7 STIG Benchmark, v1.0.1**
+- **CIS Red Hat Enterprise Linux 7 STIG Benchmark, v2.0.0**
 - **CIS Red Hat Enterprise Linux 8 Benchmark, v1.0.1**
+- **CIS Red Hat Enterprise Linux 7 STIG Benchmark, v1.0.0**
 - **CIS Red Hat OpenShift Container Platform v4 Benchmark, v1.1.0**
 - **CIS SUSE Linux Enterprise 11 Benchmark, v2.0.0**
 - **CIS SUSE Linux Enterprise 12 Benchmark, v3.0.0**

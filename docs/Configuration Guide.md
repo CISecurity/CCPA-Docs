@@ -471,7 +471,7 @@ Assessing database benchmarks in CIS-CAT Pro Assessor v4 uses a JDBC connection 
 | Database Type | Interactive Value Name | Expected Format|
 |---------------|----------------------|----------------|
 | [Microsoft SQL Server](#MSSQLDatabase)          | `xccdf_org.cisecurity_value_jdbc.url`|`jdbc:sqlserver://[serverName[\instanceName][:portNumber]][;property=value[;property=value]]` |
-| [Mongo](#MongoDatabase)          | `xccdf_org.cisecurity_value_runnin_config_file.url`| `fileLocation` (default value is `/etc/mongod.conf`) |
+| [Mongo 3.6 only](#MongoDatabase)          | `xccdf_org.cisecurity_value_jdbc.url`| `fileLocation` value of `/etc/mongod.conf` - this default value must be used |
 | [Oracle MySQL](#OracleMySQLDatabase)     | `xccdf_org.cisecurity_value_jdbc.url` | `jdbc:mysql://<host>:<port>/<database>?<key1>=<value1>&<key2>=<value2>...` |
 |     | `xccdf_org.cisecurity_value_repl.user` | `userName` (default value is `repl`) |
 | [Oracle](#OracleDatabase)      | `xccdf_org.cisecurity_value_jdbc.url`| `jdbc:oracle:thin:[username]/[password]@[hostname]:[port]:[SID]` OR `jdbc:oracle:thin:[username]/[password]@//[hostname]:[port]/[service_name]` |
@@ -559,7 +559,7 @@ An additional interactive value is `xccdf_org.cisecurity_value_repl.user`. This 
 <a name="MongoDatabase"></a>
 **Mongo Database**
 
-The MongoDB benchmark requires one interactive property for the location of the MongoDB configuration file. This value allows for a user-supplied running configuration file for assessment.
+The MongoDB 3.6 benchmark requires one interactive property for the location of the MongoDB configuration file. This value allows for a user-supplied running configuration file for assessment. The default value specified below must not change. MongoDB 4 and 5 Benchmark versions will not prompt users for this value, but is hardcoded to look for the configuration file in the default location.
 
 	default value is:/etc/mongod.conf
 
@@ -912,7 +912,7 @@ The minimal set of permissions you need on the GCP IAM side are the following:
 	
 **Configure Kubernetes Role Based Access Control (RBAC) System**
 
-The gcloud CLI permissions are only used for authentication. All permissions for interacting with your Google GKE cluster’s Kubernetes API is managed through the native Kubernetes Role Based Access Control (RBAC) system. We have this site on [GKE Cluster access](https://gcloud.devoteam.com/blog/security-guide-rbac-on-google-kubernetes-engine) useful.
+The gcloud CLI permissions are only used for authentication. All permissions for interacting with your Google GKE cluster’s Kubernetes API is managed through the native Kubernetes Role Based Access Control (RBAC) system. We have found this site on [GKE Cluster access](https://gcloud.devoteam.com/blog/security-guide-rbac-on-google-kubernetes-engine) useful.
 
 The following roles are required to allow CIS-CAT Pro Assessor v4 to submit `kubelet` and `kubectl` commands to the cluster for automated assessments.
 
