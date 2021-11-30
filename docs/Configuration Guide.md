@@ -1003,7 +1003,7 @@ Example configuration file with specified profile and HTML report generation:
 
 VMware ESXi Assessment
 ----------------------------------
-Assessing with the VMWare ESXi benchmark in CIS-CAT Pro Assessor v4 requires use of a connection string to connect to the ESXi/vSphere host. The VMWare benchmark will require entry of the connection string on the command line or setting of the string in advance in the `assessor-cli.properties` file or configuration XML file. Additional requirements necessary for the host of CIS-CAT Pro when assessing with the VMWare benchmark are listed below.
+Assessing with the VMWare ESXi benchmark in CIS-CAT Pro Assessor v4 requires use of a connection string to connect to the ESXi/vSphere host. The VMWare benchmark will require entry of the connection string on the command line or setting of the string in advance in the `assessor-cli.properties` file or configuration XML file. Additional requirements necessary for the host of CIS-CAT Pro when assessing with the VMWare benchmark are listed below. This CIS Benchmark has been tested only on a Microsoft Windows operating system. Other operating systems are not guaranteed to provide optimal results.
 
 **Requirements**
 
@@ -1011,6 +1011,7 @@ Assessing with the VMWare ESXi benchmark in CIS-CAT Pro Assessor v4 requires use
 	- VMware.VimAutomation.Core module required as cmdlets for managing vSphere are needed
 	- LanguageMode not configured to ConstrainedLanguage
 - PowerCLI 6.5.1+ installed
+- Assessed machine is a Microsoft Windows OS
 
 
 Older versions of powerCLI will receive a warning printed in the assessor-cli.log when older, deprecated versions are encountered. 
