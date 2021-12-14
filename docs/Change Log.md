@@ -8,6 +8,38 @@ CIS-CAT Pro Assessor v4
 ---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
+## CIS-CAT Pro Assessor, v4.13.0 ##
+#### Release Date: Dec. 14, 2021 ####
+
+
+### Benchmark Coverage ###
+
+- Apple macOS 12.0 Monterey v1.0.0
+- Google Chrome v2.1.0
+
+The following CIS Benchmarks have moved to end of life and are no longer officially supported. See the [Coverage Guide](https://ccpa-docs.readthedocs.io/en/latest/Coverage%20Guide/#cis-benchmark-coverage) for more information on CIS Benchmarks that have reached end of life.
+
+- Mac OS 10.14
+    
+*CIS Benchmarks marked with a "Final release" above will be moved to End of Life in the following CIS-CAT release.
+
+
+### Security ###
+- Resolved security vulnerability present in embedded, third party dependency of log4j-core. This library was updated to version 2.15.0. See our **[knowledge base article](https://cisecurity.atlassian.net/l/c/P1VQ0bYo)** for more information.
+
+### Application ###
+- Update to Powershell library to increase connectivity success as well as performance for VMWare ESXi
+- Update to WinRM library to allow secure HTTP connection, which provides an option to reduce complexity of WinRM preparation on target endpoint
+-  VMWare ESXi connections more successful when encountering passwords with special characters.
+-  The "Basic" workflow in the GUI application will no longer encounter an error when the local machine names begins with a number. The schema has not changed, but the Basic GUI workflow will now always generate a compliant ID.
+-  Improved accuracy, performance and error handling for VMWare ESXi when USB device settings were present
+
+
+### Documentation ###
+- Configuration Guide updated in VMWare ESXi section to specify assessments are supported on a Microsoft Windows operating system only.
+- Updated configuration guide for Windows remote endpoint configuration to reflect the benefits of the updated WinRM library 
+
+
 ## CIS-CAT Pro Assessor, v4.12.0 ##
 #### Release Date: Nov. 18, 2021 ####
 

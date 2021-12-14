@@ -238,69 +238,77 @@ Configure a remote Linux session using a username/private key:
 
 Remote Setup - Microsoft Windows
 ----------------------------------------
-CIS-CAT Pro Assessor v4 utilizes the SMB protocol for file manipulation and uses WinRM for process execution during a remote assessment.  Once connected to a remote Windows endpoint, CIS-CAT Pro Assessor establishes an "ephemeral" directory to host scripts required for the collection of system characteristics from the endpoint.  Once the collection/assessment has completed and the session disconnected, the "ephemeral" directory is removed from the endpoint.
+To remotely assess a Microsoft Windows machine, the endpoint must be prepared to accept a remote request. Remote assessment utilizes the SMB protocol for file manipulation and WinRM for process execution during a remote assessment. CIS-CAT Pro Assessor also uses PowerShell to execute assessment steps for Microsoft Windows technologies. When a connection is established to the endpoint, an "ephemeral", temporary directory is created to host scripts required for the collection of system characteristics. On assessment completion, the temporary directory is deleted.
 
-CIS-CAT Pro Assessor v4 supports authentication to remote Windows endpoints using either local or domain accounts.  When authenticating with domain accounts, the new-style domain syntax, e.g. **`ciscatuser@example.org`** must be used, and **NOT** the old-style domain syntax, such as `DOMAIN\User`.
+Requirements for a Microsoft Windows Remote Assessment:
 
-The Assessor accesses the administrative shares on the remote host, which are only accessible for users that are part of the **Administrators** group on that host, or are configured as domain administrators.
-
-When configuring WinRM for an environment, members must consider the following:
-
-- **Will the configuration be done manually or through group policy?**
-- **Will the Assessor access endpoints using WinRM over HTTP or HTTPS?** (see [Security Considerations](#security-considerations))
-- **Will the Assessor authenticate to remote endpoints using a local administrator account or domain account?** (see [Security Considerations](#security-considerations))
-
-### <a name="security-considerations"></a>Security Considerations ###
-The answers to two of the above questions have security implications:
-
-- If the Assessor will access remote endpoints using **WinRM over HTTP**, each endpoint must be configured to "Allow Unencrypted Traffic";
-- If the Assessor will authenticate to remote endpoints using a **local administrator account**, each endpoint must disable the "Apply UAC restrictions to local accounts on network logons" configuration.
-	- This setting controls whether local accounts can be used for remote administration via network logon (e.g., NET USE, connecting to C$, etc.). 
-	- Configuring this setting to `Disabled` allows local accounts to have full administrative rights when authenticating via network logon, by configuring the `LocalAccountTokenFilterPolicy` registry value to 1.
-	- Local accounts are at high risk for credential theft when the same account and password is configured on multiple systems.
-
-The majority of CIS benchmarks for Microsoft Windows operating systems contain recommendations that affect enabling remote assessment in CIS-CAT Pro.  If users plan to utilize remote assessment in their environment for Microsoft Windows operating systems, we recommend considering the risks of making deviations from the recommended CIS Benchmark setting.  Each notation below applies to the Level 1 Profile.
-
-Please note the actual text of each benchmark recommendation may vary from the text noted in the table. 
-
-| Usage | Recommendation | CIS Benchmark Value | Relaxed Value |
-|-------|----------------|---------------------|---------------|
-| WinRM over HTTP | Ensure 'Allow unencrypted traffic' is set to 'Disabled' | Disabled | Enabled |
-| Authenticating with local administrator account | Ensure 'Apply UAC restrictions to local accounts on network logons' is set to 'Enabled'| Enabled | Disabled|
-
-Each of these configurations represents a deviation from the CIS benchmark recommendations.
-
-If a member organization has accepted the risk of remote configuration assessment and system values have been set to enable a remote connection, the assessment report will show a failure for the deviated settings. The failed recommendations may be handled in the CIS-CAT Pro Dashboard as exceptions with organization-provided rationale.
-
-Because of these recommendations and potential for deviation, CIS recommends configuring WinRM over HTTPS and utilizing domain accounts when performing remote assessments.
-
-CIS Benchmark Level 2 profiles are designed toward host-based assessments.  If selecting to remotely assess endpoints, an organization may choose to adopt Level 1 policies or tailor Level 2 policies as needed to enable remote scanning.
-
-Finally, note that the CIS Microsoft Windows Benchmarks are written assuming Active Directory domain-joined systems using Group Policy, and not necessarily standalone/workgroup systems.  Adjustments/tailoring to some recommendations will be needed to maintain functionality when implementing CIS Benchmark recommendations on standalone systems.
-
-### PowerShell ###
-
-CIS-CAT Pro Assessor utilizes PowerShell to perform assessment activities for Microsoft Windows technologies. It is required that LanguageMode is not configured to ConstrainedLanguage. When configured with ConstrainedLanguage, assessor functions will be blocked as CIS-CAT PowerShell scripts will be unable to be dot-sourced. 
-
-Verify LanguageMode using this command:
-
-	PS> $ExecutionContext.SessionState.LanguageMode
+- PowerShell installed
+- PowerShell `LanguageMode` is not configured to `ConstrainedLanguage`
+	- `ConstrainedLanguage` mode blocks assessor actions as CIS-CAT PowerShell scripts cannot be dot-sourced
+	- Verify LanguageMode using this command: `PS> $ExecutionContext.SessionState.LanguageMode`
 
 
-### An Example Flowchart ###
-The following flowchart outlines the decision-making process when configuring and environment for remote assessment using CIS-CAT Pro Assessor v4:
+### Microsoft Windows and CIS Benchmarks ###
 
-![](https://i.imgur.com/qJScDnp.png)
+CIS Microsoft Windows Benchmarks are designed for systems in an Active Directory domain-joined environment using Group Policy. The CIS Benchmark will verify registry settings set by Group Policy. Local policy settings are stored in different registry settings than Group Policy settings and the assessment results will produce many `Fail` results for standalone systems even where values match the CIS Benchmark recommended value.
+
+### Risk and Remote Assessment with Microsoft Windows ###
+
+CIS recommends utilizing domain accounts when performing remote assessments. See the section below for security considerations when connecting to the endpoint.
+
+CIS Benchmark Level 1 profiles permit remote assessment while CIS Benchmark Level 2 profiles are designed for more restrictive environments and are conducive to host-based (local) assessments. If selecting to remotely assess endpoints on either profile, the risk must be accepted as part the organizational security policies. Level 1 policies or tailor Level 2 policies as needed to perform remote scanning.
+
+In versions of the CIS-CAT Pro Assessor v4.13.0+, CIS recommends connecting via WinRM with communication protocols of HTTP or HTTPS. Connecting via HTTPS requires additional steps as certificate setup is needed. Connecting over HTTP, while it does come with some risk as any remote connections do, can now happen securely with a change to Assessor v4.13.0+. The latest Assessor allows for encryption over HTTP. Using this protocol, steps to prepare the endpoint are streamlined. Read about WinRM security in this [official Microsoft document](https://docs.microsoft.com/en-us/powershell/scripting/learn/remoting/winrmsecurity?view=powershell-7.1) to help your organization decide the best protocol.
+
+### Authentication to the Remote Endpoint ###
+
+Authentication (username for the Session information) to remote Windows endpoints can be established with either local or domain accounts. Domain authentication must be in the following format:
+
+	ciscatuser@example.org
+
+The Assessor accesses the administrative shares on the remote host, which are only accessible for users that are part of the Administrators group (or similar group with administrator privileges) on that host, or are configured as domain administrators.
+
+Authentication can also be done using the local administrator account. This is not recommended and the following security risks should be considered:
+
+- Endpoint must disable the `Apply UAC restrictions to local accounts on network logons` configuration
+	- Controls whether local accounts can be used for remote administration via network logon (e.g., NET USE, connecting to C$, etc.). 
+- Configuring this setting to Disabled allows local accounts to have full administrative rights when authenticating via network logon, by configuring the `LocalAccountTokenFilterPolicy` registry value to 1.
+	- Setting `Apply UAC restrictions to local accounts on network logons` to `disabled` deviates from a CIS Benchmark Level 1 recommendation
+- Local accounts are at high risk for credential theft when the same account and password is configured on multiple systems
+
+### Basic Endpoint Configuration Steps for Windows Remote Assessment ###
+
+Preparing an endpoint for a remote configuration assessment is NOT needed when planning to complete a local assessment (CIS-CAT resides on the machine that is assessed) or a network / centralized assessment (CIS-CAT resides on a network share and assessed machines access it from the share). A Microsoft Windows endpoint requires primarily WinRM and SMB enabled. Depending on how the connection is made, a few more requirements are also necessary.
+
+Assumptions for below for basic setup steps:
+
+- Assessor v4.13.0+ is utilized
+- Connection established using HTTP protocol
+- Authentication utilizes domain account credentials that has administrator privileges 
+
+\* Perform the manual steps on the target endpoint:
+
+- Enable WinRM using quickconfig
+	- Open command prompt using “Run as Administrator”
+	- At command prompt enter: `winrm quickconfig`
+	- At confirmation prompt, type `Y` and hit Enter
+	- At second confirmation prompt, type `Y` and hit Enter
+- 
+
+\* See [Group Policy section](#gpo) below to learn about how to configure Group policy to prepare the endpoint.
 
 
+#### Advanced Endpoint Configuration Steps for Windows Remote Assessment ####
 
-### Windows Firewall Configuration ###
-CIS-CAT Pro Assessor v4 uses both the SMB and WinRM protocols in order to enable file manipulation and process execution, respectively.  As such, to connect to the remote host using SMB, ensure the host is reachable on port `445`.  To enable connection to the remote host using WinRM, ensure the host is reachable on either port `5985` (for WinRM over HTTP) or port `5986` (for WinRM over HTTPS).
+If required by organizational policy, remote connections for Microsoft Windows endpoints using WinRM over HTTPS protocol is also possible.
 
-Users can enable these firewall rules simply using PowerShell and the script provided with the CIS-CAT Pro Assessor v4 application bundle.  The bundle will contain a `setup` folder, in which will be locate the **`CISCAT_Pro_Assessor_v4_Firewall_SMB_WinRM.ps1`** script.  Execute this script in PowerShell to configure the Windows Firewall.
+Follow the steps below:
 
-#### Configure WinRM over HTTPS ####
-In order for CIS-CAT Pro Assessor to access the remote Windows host using WinRM over HTTPS, an HTTPS WinRM Listener must be configured using the thumbprint of a certificate for that host.
+- Open port 445 (SMB) and 5986 (HTTPS) and configure firewall exceptions
+	- Run included PowerShell script from the Assessor bundle in \Assessor-CLI\setup\CISCAT_Pro_Assessor_v4_Firewall_SMB_WinRM.ps1. The script completes the following
+		- Opens port 445 (SMB) and configures firewall
+		- Opens port 5986 for HTTPS
+- HTTPS Listener established using thumbprint of a certificate for the remote system (see below)
 
 Users can attempt to find an existing certificate thumbprint for the remote host using PowerShell.  In the following commands, assume `HOSTNAME` is the DNS name of the remote Windows host:
 
@@ -345,8 +353,6 @@ In order for CIS-CAT Pro Assessor to connect to a remote Windows host, a number 
 
 The WinRM service can be configured using Group Policy. 
 
-CIS Microsoft Windows Benchmarks are designed for systems that are joined to a domain. When using CIS-CAT to assess stand-alone systems, where local policy may have been modified, configuration assessment results will produce failures for many CIS Benchmark recommendations as local registry settings are stored differently than those set by Group Policy. CIS Microsoft Windows Benchmarks are designed to check for those settings set by Group Policy.
-
 In domain environments, policies are maintained on the Domain Controller's Group Policy Management Console (GPMC). Create a new Group Policy Object to set the WinRM services. 
 An example is below.
 
@@ -363,11 +369,7 @@ To enable WinRM, configure the following settings in Group Policy:
 	- **Enter an asterisk  in either the IPv4 or IPv6 Filter**: If the filter is left blank, the service does not listen on any addresses. The service listens on the addresses specified by the IPv4 and IPv6 filters. The IPv4 filter specifies one or more ranges of IPv4 addresses, and the IPv6 filter specifies one or more ranges of IPv6addresses. If specified, the service enumerates the available IP addresses on the computer and uses only addresses that fall within one of the filter ranges.
 Use an asterisk ( * ) to indicate that the service listens on all available IP addresses on the computer. When * is used, other ranges in the filter are ignored. 
 
-Configure the following **ONLY** when (See [Security Considerations](#security-considerations) to understand risk of below settings):
-
-- Connecting over *HTTP* 
-	- Set `Allow unencrypted traffic` to `Enabled`
-- Authenticating with local administrator account
+- Authenticating with local administrator account (not recommended)
 	- Navigate to `Computer Configuration\Policies\Administrative Templates\SCM: Pass the Hash Mitigations`*
 	- Set `Apply UAC restrictions to local accounts on network logons` to `Disabled`
 	
@@ -384,14 +386,6 @@ On the remote Windows host, open a Command Prompt using the "Run as Administrato
 	winrm quickconfig
 
 A confirmation prompt may be presented to the user.  If so, type `Y` and hit `Enter`.  Performing the `quickconfig` will start the Windows Remote Management service, configure an HTTP listener and create exceptions in the Windows Firewall for the WinRM service.
-
-
-Configure the following **ONLY** when (See [Security Considerations](#security-considerations) to understand risk of below settings):
-
-- Connecting over *HTTP* 
-	- Set `Allow unencrypted traffic` to `Enabled` by setting the following
-
-			winrm set winrm/config/service @{AllowUnencrypted="true"}
 
 
 ##### Review WinRM Configuration Settings #####
