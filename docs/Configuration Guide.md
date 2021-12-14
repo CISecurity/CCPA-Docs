@@ -280,20 +280,22 @@ Authentication can also be done using the local administrator account. This is n
 
 Preparing an endpoint for a remote configuration assessment is NOT needed when planning to complete a local assessment (CIS-CAT resides on the machine that is assessed) or a network / centralized assessment (CIS-CAT resides on a network share and assessed machines access it from the share). A Microsoft Windows endpoint requires primarily WinRM and SMB enabled. Depending on how the connection is made, a few more requirements are also necessary.
 
-Assumptions for below for basic setup steps:
+The basic setup is great for testing and trying a remote assessment. However, since CIS Benchmarks are intended for a domain-joined environment, organizations will have Group Policy that overrides local policy. To enable WinRM  and SMB more efficiently and persistently on many endpoints, utilize Group Policy to establish the endpoint configuration.
+
+**Assumptions for basic setup steps:**
 
 - Assessor v4.13.0+ is utilized
-- Connection established using HTTP protocol
+- Connection established using HTTP protocol (over port 5985)
 - Authentication utilizes domain account credentials that has administrator privileges 
 
-\* Perform the manual steps on the target endpoint:
+\* **Perform the manual steps on the target endpoint:**
+*Steps below will enable WinRM on port 5985 and open SMB on port 445*
 
 - Enable WinRM using quickconfig
 	- Open command prompt using “Run as Administrator”
 	- At command prompt enter: `winrm quickconfig`
 	- At confirmation prompt, type `Y` and hit Enter
 	- At second confirmation prompt, type `Y` and hit Enter
-- 
 
 \* See [Group Policy section](#gpo) below to learn about how to configure Group policy to prepare the endpoint.
 
