@@ -8,6 +8,26 @@ CIS-CAT Pro Assessor v4
 ---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
+## CIS-CAT Pro Assessor, v4.13.1 ##
+#### Release Date: Dec. 20, 2021 ####
+
+
+### Benchmark Coverage ###
+
+- None
+
+
+### Security ###
+- Resolved security vulnerability present in embedded, third party dependency of log4j-core. This library was updated to version 2.17.0. See our **[knowledge base article](https://cisecurity.atlassian.net/l/c/P1VQ0bYo)** for more information.
+
+### Application ###
+- None
+
+
+### Documentation ###
+- None 
+
+
 ## CIS-CAT Pro Assessor, v4.13.0 ##
 #### Release Date: Dec. 14, 2021 ####
 

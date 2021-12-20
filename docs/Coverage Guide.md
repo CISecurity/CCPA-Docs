@@ -20,6 +20,8 @@ CIS-CAT Pro Assessor v4 strives to be a standards-based application focused on v
 
 CIS Benchmarks that have reached end of life are no longer officially supported for use with CIS-CAT. As Members are working to upgrade systems within their organization to more current technology, CIS offers end of life CIS Benchmark automated assessment content on the CIS WorkBench. Navigate to [CIS WorkBench](https://workbench.cisecurity.org/files/2724) for more information.
 
+CIS Benchmarks are tested with the prior, official CIS-CAT version at the time automated Benchmark content is announced as supported in CIS-CAT. The CIS-CAT tool, on each release performs some regression testing, where possible, for most Benchmark versions released with the CIS-CAT bundle. Future and past CIS Benchmark versions for the technologies supported may work with the current or past CIS-CAT tool versions, but are not guaranteed and should be used at each organization's discretion.
+
 - **CIS Alibaba Cloud Aliyun Linux 2, v1.0.0**
 - **CIS AlmaLinux OS 8 Benchmark, v1.0.0**
 - **CIS Amazon Elastic Kubernetes Service (EKS) Benchmark, v1.0.1**
@@ -30,6 +32,7 @@ CIS Benchmarks that have reached end of life are no longer officially supported 
 - **CIS Apple macOS 10.14 Benchmark, v2.0.0**
 - **CIS Apple macOS 10.15 Benchmark, v2.0.0**
 - **CIS Apple macOS 11.0 Benchmark, v2.0.0**
+- **CIS Apple macOS 12.0 Benchmark, v1.0.0**
 - **CIS CentOS Linux 6 Benchmark, v3.0.0**
 - **CIS CentOS Linux 7 Benchmark, v3.1.2**
 - **CIS CentOS Linux 8 Benchmark, v1.0.1**
@@ -43,7 +46,7 @@ CIS Benchmarks that have reached end of life are no longer officially supported 
 - **CIS Fedora 19 Family Linux, v1.0.0**
 - **CIS Fedora 28 Family Linux, v1.0.0**
 		- NOTE:  Requires the "ignore.platform.mismatch" property be set to "true" in the Assessor's properties file.
-- **CIS Google Chrome Benchmark, v2.0.0**
+- **CIS Google Chrome Benchmark, v2.1.0**
 - **CIS Google Kubernetes Engine (GKE) Benchmark, v1.2.0**
 - **CIS Kubernetes Benchmark, v 1.6.1**
 - **CIS_Kubernetes V1.20 Benchmark, v1.0.0**
