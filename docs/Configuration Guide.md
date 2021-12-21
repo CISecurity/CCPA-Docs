@@ -1047,16 +1047,7 @@ It is required to utilize a local "session" type for the configuration assessmen
 
 If CIS-CAT Pro Assessor is unable to connect to the ESXi host, this information will be available in the CIS-CAT Pro log (assessor-cli.log), if generated. The log may indicate that an error has occurred with a certificate. If this error is present, run the following command to verify the status of a certificate.
 
-    Get-PowerCLIConfiguration
-
-If a certificate validation is set to ignore, the result of the above command would be `InvalidCertificateAction = Ignore` for the scope of the `Session`.
-
-The certificate must be ignored for an assessment to execute. Setting this option to `Ignore` should be reviewed against organizational policies. 
-
-To modify the setting, run the following command:
-
-    Set-PowerCLIConfiguration -InvalidCertificateAction Ignore -Confirm:$false
-
+The assessor will be setting the `InvalidCertificateAction` to `Ignore` for the duration of the assessment session.
 
 **Example methods for executing a VMWare assessment**
 
