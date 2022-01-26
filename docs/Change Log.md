@@ -20,8 +20,9 @@ See the CIS-CAT Pro Assessor Coverage Guide for information about supported benc
 Lite now includes Ubuntu 20.04
 
 ### Security ###
-- Resolved security vulnerabilities present in embedded, third party dependency of logback-core and logback-classic. These libraries have been moved to version 1.2.10.
-- Resolved security vulnerabilities present in embedded, third party dependency of OpenDXL Java Client, which includes log4j. This library is now a derivative work of version 0.2.6 which includes log4j 2.17.1.
+- Resolved security vulnerability present in embedded, third party dependencies:
+	- OpenDXL Java Client, which includes log4j. This library is now a derivative work of version 0.2.6 which includes log4j 2.17.1. to resolve CVE-2021-44832 (medium CVSS)
+	- For logback-core and logback-classic.These libraries have been moved to version 1.2.10.
 
 ### Application ###
 - Automated assessment content where no profile exists now successfully executes.
