@@ -458,6 +458,12 @@ This example shows how to redirect the technical support information to a file:
 
 Once the exported configuration file is available to CIS-CAT Pro Assessor, the assessment can be performed against it.  See the example above entitled "Configure a Cisco IOS session pointing to an exported configuration file" to configure the appropriate Assessor "session".
 
+Palo Alto Network Device Assessment
+-------------------------------
+
+Coming soon.....February 2022
+
+
 Database Assessment
 -------------------------------
 Assessing database benchmarks in CIS-CAT Pro Assessor v4 uses a JDBC connection mechanism.  Database benchmarks require a user to enter the JDBC connection string as an interactive value on the command line, within the `assessor-cli.properties` file to set a single value for a single assessment, in a popup box on the GUI or by utilizing a configuration XML file to assess multiple databases. The connection string utilized should always reflect the host system's name/IP. See below for a summary table of the interactive values expected for database benchmarks. Follow the links for more information about each database.

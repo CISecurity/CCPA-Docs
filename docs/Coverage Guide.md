@@ -143,8 +143,8 @@ CIS Benchmarks are tested with the prior, official CIS-CAT version at the time a
 - **CIS Red Hat Enterprise Linux 7 STIG Benchmark, v1.0.0**
 - **CIS Red Hat OpenShift Container Platform v4 Benchmark, v1.1.0**
 - **CIS SUSE Linux Enterprise 11 Benchmark, v2.0.0**
-- **CIS SUSE Linux Enterprise 12 Benchmark, v3.0.0**
-- **CIS SUSE Linux Enterprise 15 Benchmark, v1.1.0**
+- **CIS SUSE Linux Enterprise 12 Benchmark, v3.1.0**
+- **CIS SUSE Linux Enterprise 15 Benchmark, v1.1.1**
 - **CIS Ubuntu Linux 14.04 LTS Benchmark, v2.0.0**
 - **CIS Ubuntu Linux 16.04 LTS Benchmark, v2.0.0**
 - **CIS Ubuntu Linux 18.04 LTS Benchmark, v2.1.0**

@@ -3,6 +3,38 @@ Change Log
 
 ![](http://i.imgur.com/5yZfZi5.jpg)
 
+CIS-CAT Pro Assessor v4
+---------------------------
+See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
+
+## CIS-CAT Pro Assessor, v4.14.0 ##
+#### Release Date: Jan. 25, 2022 ####
+
+
+### Benchmark Coverage ###
+
+- SUSE Linux Enterprise 12 v3.1.0
+- SUSE Linux Enterprise 15 v1.1.1
+
+
+Lite now includes Ubuntu 20.04
+
+### Security ###
+- Resolved security vulnerabilities present in embedded, third party dependency of logback-core and logback-classic. These libraries have been moved to version 1.2.10.
+- Resolved security vulnerabilities present in embedded, third party dependency of OpenDXL Java Client, which includes log4j. This library is now a derivative work of version 0.2.6 which includes log4j 2.17.1.
+
+### Application ###
+- Automated assessment content where no profile exists now successfully executes.
+- When performing a configuration assessment with some datastream content containing external links will no longer receive an error.
+- The GUI now supports use of special characters (<,>, &,", ') within interactive values such as passwords for Database / ESXi connection strings.
+- Linux remote assessments will now support additional machines where the installed SSH components utilize stronger encryption algorithms.
+- GUI warning and removal of non-existent Benchmark from loaded configuration file when referenced BM does not exist in the Benchmark folder.
+-  GUI warning and option to replace a prior version Benchmark from loaded configuration file when referenced BM version does not match the version in the Benchmark folder.
+
+
+### Documentation ###
+- None 
+
 
 CIS-CAT Pro Assessor v4
 ---------------------------
