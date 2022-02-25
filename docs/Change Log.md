@@ -7,6 +7,40 @@ CIS-CAT Pro Assessor v4
 ---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
+## CIS-CAT Pro Assessor, v4.15.0 ##
+#### Release Date: Feb. 25, 2022 ####
+
+
+### Benchmark Coverage ###
+
+- Azure Kubernetes Service (AKS) v1.1.0
+- CentOS Linux 8 - Final Release*
+- Kubernetes V1.23 v1.0.0
+- Microsoft Windows 10 EMS Gateway v1.0.0
+- Microsoft Windows 10 v1.12.0
+- Microsoft Windows 11 v1.0.0
+- Microsoft Windows Server 2022 v1.0.0
+- Red Hat Enterprise Linux 8 v2.0.0
+- SUSE Linux Enterprise 11 v2.1.1 - Final release*
+
+*CIS Benchmarks marked with a "Final release" above will be moved to End of Life in the following CIS-CAT release.
+
+### Security ###
+- None
+
+### Application ###
+- None
+
+
+### Documentation ###
+- None 
+
+
+
+CIS-CAT Pro Assessor v4
+---------------------------
+See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
+
 ## CIS-CAT Pro Assessor, v4.14.0 ##
 #### Release Date: Jan. 26, 2022 ####
 
@@ -74,8 +108,6 @@ The following CIS Benchmarks have moved to end of life and are no longer officia
 
 - Mac OS 10.14
     
-*CIS Benchmarks marked with a "Final release" above will be moved to End of Life in the following CIS-CAT release.
-
 
 ### Security ###
 - Resolved security vulnerability present in embedded, third party dependency of log4j-core. This library was updated to version 2.15.0. See our **[knowledge base article](https://cisecurity.atlassian.net/l/c/P1VQ0bYo)** for more information.

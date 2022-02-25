@@ -22,20 +22,20 @@ CIS Benchmarks that have reached end of life are no longer officially supported 
 
 CIS Benchmarks are tested with the prior, official CIS-CAT version at the time automated Benchmark content is announced as supported in CIS-CAT. The CIS-CAT tool, on each release performs some regression testing, where possible, for most Benchmark versions released with the CIS-CAT bundle. Future and past CIS Benchmark versions for the technologies supported may work with the current or past CIS-CAT tool versions, but are not guaranteed and should be used at each organization's discretion.
 
-- **CIS Alibaba Cloud Aliyun Linux 2, v1.0.0**
+- **CIS Aliyun Linux 2, v1.0.0**
 - **CIS AlmaLinux OS 8 Benchmark, v1.0.0**
 - **CIS Amazon Elastic Kubernetes Service (EKS) Benchmark, v1.0.1**
 - **CIS Amazon Linux Benchmark, v2.0.0**
 - **CIS Amazon Linux 2 Benchmark, v2.0.0**
 - **CIS Amazon Linux 2 STIG Benchmark, v2.0.0**
 - **CIS Apache Tomcat 9 Benchmark, v1.1.0**
-- **CIS Apple macOS 10.14 Benchmark, v2.0.0**
 - **CIS Apple macOS 10.15 Benchmark, v2.0.0**
 - **CIS Apple macOS 11.0 Benchmark, v2.0.0**
 - **CIS Apple macOS 12.0 Benchmark, v1.0.0**
+- **CIS Azure Kubernetes Service (AKS) v1.1.0**
 - **CIS CentOS Linux 6 Benchmark, v3.0.0**
 - **CIS CentOS Linux 7 Benchmark, v3.1.2**
-- **CIS CentOS Linux 8 Benchmark, v1.0.1**
+- **CIS CentOS Linux 8 Benchmark, v2.0.0**
 - **CIS Cisco IOS 12 Benchmark, v4.0.0**
 - **CIS Cisco IOS 15 Benchmark, v4.1.0**
 - **CIS Cisco IOS 16 Benchmark, v1.1.1**
@@ -75,7 +75,9 @@ CIS Benchmarks are tested with the prior, official CIS-CAT version at the time a
 	- `xccdf_org.cisecurity_value_jdbc.url`: SQL Server connection string.
 - **CIS Microsoft SQL Server 2019 Benchmark, v1.2.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: SQL Server connection string.
-- **CIS Microsoft Windows 10 Enterprise Release 21H1 Benchmark, v1.11.0**
+- **CIS Microsoft Windows 10 Enterprise, v1.12.0**
+- **CIS Microsoft Windows 10 EMS Gateway, v1.0.0**
+- **CIS Microsoft Windows 11 Enterprise, v1.0.0**
 - **CIS Microsoft Windows Server 2003 Benchmark, v3.1.0**
 - **CIS Microsoft Windows Server 2008 (non-R2) Benchmark, v3.1.0**
 - **CIS Microsoft Windows Server 2008 R2 Benchmark, v3.2.0**
@@ -85,6 +87,7 @@ CIS Benchmarks are tested with the prior, official CIS-CAT version at the time a
 - **CIS Microsoft Windows Server 2016 STIG Benchmark, v1.1.0**
 - **CIS Microsoft Windows Server 2019 Benchmark, v1.2.1**
 - **CIS Microsoft Windows Server 2019 STIG Benchmark, v1.0.1**
+- **CIS Microsoft Windows Server 2022 Benchmark, v1.0.0**
 - **CIS Microsoft Windows 8 Benchmark, v1.0.0**
 - **CIS Microsoft Windows 8.1 Workstation Benchmark, v2.4.0**
 - **CIS MongoDB 3.6, v1.1.0**
@@ -139,10 +142,10 @@ CIS Benchmarks are tested with the prior, official CIS-CAT version at the time a
 - **CIS Red Hat Enterprise Linux 6 Benchmark, v3.0.0**
 - **CIS Red Hat Enterprise Linux 7 Benchmark, v3.1.1**
 - **CIS Red Hat Enterprise Linux 7 STIG Benchmark, v2.0.0**
-- **CIS Red Hat Enterprise Linux 8 Benchmark, v1.0.1**
+- **CIS Red Hat Enterprise Linux 8 Benchmark, v2.0.0**
 - **CIS Red Hat Enterprise Linux 7 STIG Benchmark, v1.0.0**
 - **CIS Red Hat OpenShift Container Platform v4 Benchmark, v1.1.0**
-- **CIS SUSE Linux Enterprise 11 Benchmark, v2.0.0**
+- **CIS SUSE Linux Enterprise 11 Benchmark, v2.1.1**
 - **CIS SUSE Linux Enterprise 12 Benchmark, v3.1.0**
 - **CIS SUSE Linux Enterprise 15 Benchmark, v1.1.1**
 - **CIS Ubuntu Linux 14.04 LTS Benchmark, v2.0.0**
