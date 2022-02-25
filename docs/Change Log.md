@@ -36,11 +36,6 @@ See the CIS-CAT Pro Assessor Coverage Guide for information about supported benc
 - None 
 
 
-
-CIS-CAT Pro Assessor v4
----------------------------
-See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
-
 ## CIS-CAT Pro Assessor, v4.14.0 ##
 #### Release Date: Jan. 26, 2022 ####
 
@@ -70,10 +65,6 @@ Lite now includes Ubuntu 20.04
 ### Documentation ###
 - None 
 
-
-CIS-CAT Pro Assessor v4
----------------------------
-See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
 ## CIS-CAT Pro Assessor, v4.13.1 ##
 #### Release Date: Dec. 20, 2021 ####
