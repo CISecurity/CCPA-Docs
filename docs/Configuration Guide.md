@@ -875,6 +875,67 @@ Execute an assessment on the command line:
 
 	> ./Assessor-CLI.sh -b benchmarks/CIS_Amazon_Elastic_Kubernetes_Service_(EKS)_Benchmark_v1.0.1-xccdf.xml`
 
+Azure Kubernetes Service (AKS) Assessment
+----------------------------------
+Assessing with the Azure Kubernetes Service (AKS) benchmark in CIS-CAT Pro Assessor v4 requires the use of the Azure CLI to authenticate and connect to the AKS cluster.  This CIS Benchmark only runs on a Linux operating system.
+The Azure Kubernetes Service (AKS) benchmark will authenticate and target a specific cluster with Azure CLI, and then submit kubelet and kubectl commands to the cluster to perform the assessment. The commands are present within the Benchmark content. This benchmark is only run as a local assessment, as local Azure CLI and Kubernetes commands are used to perform the assessment.
+
+
+**Summary**
+
+- Authentication method selected
+	- Azure CLI authentication
+	- Azure role-based access control for Kubernetes
+- Azure CLI installed, if this authentication method selected
+	- Latest version of Azure CLI, version 2.24.0 or later
+- az role assignment create --role `Azure Kubernetes Service Cluster User Role`
+- Kubeconfig file pointed to desired AKS cluster
+- Port 8080 (and any other needed ports) opened
+- [kubectl installed](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+- CIS-CAT Pro Assessor v4 bundle extracted locally on a Linux environment 
+ 
+This documentation provides instructions for use of Azure CLI. See below for information on the steps.
+
+**Configure Azure CLI Authentication**
+
+To authenticate, Azure CLI must have the `Cluster user` role assigned. The cluster user role must be granted, at minimum, to the –assignee.
+
+For example: 
+
+Assign the 'Cluster User' role to the user
+
+	az role assignment create \
+    --assignee $ACCOUNT_ID \
+    --scope $AKS_CLUSTER \
+    --role "Azure Kubernetes Service Cluster User Role"
+
+
+
+**Prepare the Environment and Azure CLI**
+
+CIS-CAT Pro Assessor v4 must be extracted locally on a server or workstation that has access to the AKS cluster servers. An automated assessment using the CIS Benchmark must be performed as a local assessment or “local” session type. CIS-CAT Pro Assessor will run various kubectl and kubelet commands to perform the assessment. When utilizing CIS-CAT Pro Assessor v4’s supporting  files for this Benchmark, ensure configuration and session files contain a “local” session. Assessments can also be initiated using commands or the v4 GUI as a local assessment.
+
+Ensure security groups provide access to port 8080 from the server where CIS-CAT Pro Assessor v4 locally resides. Other ports may also need to be opened depending on each organization’s specific configuration.
+
+It is also required that kubectl is installed. See [Kubernetes documentation](https://kubernetes.io/docs/tasks/tools/install-kubectl/) for more information.
+
+Point Azure CLI to the desired AKS cluster for assessment using the following command: where name value of the cluster being assessed is the variable:
+
+`az aks get-credentials -g MyResourceGroup -n MyManagedCluster`
+
+
+**Example method for executing an Azure Kubernetes Service (AKS) assessment****
+
+As mentioned above, the Azure Kubernetes Service (AKS) benchmark must always be executed as a “local” session type. The session type specifies the method assessor needs to use to execute the assessment and not the physical position of the cluster. 
+
+If using a sessions.properties file or assessor-config.xml file, ensure that the session type is “local”. 
+
+
+Execute an assessment on the command line:
+
+	> ./Assessor-CLI.sh -b benchmarks/CIS_Azure_Kubernetes_Service_(AKS)_Benchmark_v1.1.0-xccdf.xml`
+
+
 
 Google Kubernetes Engine (GKE) Assessment
 ----------------------------------
