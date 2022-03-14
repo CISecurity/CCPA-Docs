@@ -463,7 +463,7 @@ Once the exported configuration file is available to CIS-CAT Pro Assessor, the a
 Palo Alto Network Device Assessment
 -------------------------------
 
-Coming soon.....February 2022
+Coming soon.....March 2022
 
 
 Database Assessment
