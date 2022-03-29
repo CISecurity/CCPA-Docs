@@ -14,13 +14,13 @@ CIS currently distributes CIS-CAT with production support for the following benc
 
 Note that any benchmark listed below which displays a bulleted list of "`id`:description" information are those benchmarks which contain "interactive values".  Please see the [CIS-CAT Pro Assessor CLI User's Guide](./User's%20Guide) for more information regarding configuration of these values.
 
-For some older Windows platforms such as Microsoft Windows 7 and Microsoft Windows Server 2008 R2, it is required to be current with service pack updates in order for the assessment to process without error.
+For some older Windows platforms such as Microsoft Windows Server 2008 R2, it is required to be current with service pack updates in order for the assessment to process without error.
 
-CIS-CAT Pro Assessor v4 strives to be a standards-based application focused on vendor-supported technology platforms and applications where OVAL coverage is available. Some benchmarks released in CIS-CAT Pro Assessor v3 were developed using CIS' proprietary Embedded Check Language (ECL). These can be identified by the absence of "oval" or "xccdf" in the filename. These are not supported in v4 and will eventually be archived due to their age and diminishing relevance. CIS-CAT Pro Assessor v4 will offer coverage only for CIS Benchmark content where OVAL content exists. The below technologies are supported in CIS-CAT Pro Assessor v4. CIS-CAT Pro Assessor v4 supported CIS Benchmarks will be present in the benchmark directory of your downloaded CIS-CAT bundle and contain "oval" or "xccdf" in the filename. Please contact [CIS Support](https://www.cisecurity.org/support/) for additional coverage requests.
+CIS-CAT Pro Assessor v4 strives to be a standards-based application focused on vendor-supported technology platforms and applications where OVAL coverage is available. The below technologies are supported. CIS-CAT Pro Assessor v4 supported CIS Benchmarks will be present in the benchmark directory of your downloaded CIS-CAT bundle and contain "oval" and "xccdf" in the filename. Please contact [CIS Support](https://www.cisecurity.org/support/) for additional coverage requests.
 
 CIS Benchmarks that have reached end of life are no longer officially supported for use with CIS-CAT. As Members are working to upgrade systems within their organization to more current technology, CIS offers end of life CIS Benchmark automated assessment content on the CIS WorkBench. Navigate to [CIS WorkBench](https://workbench.cisecurity.org/files/2724) for more information.
 
-CIS Benchmarks are tested with the prior, official CIS-CAT version at the time automated Benchmark content is announced as supported in CIS-CAT. The CIS-CAT tool, on each release performs some regression testing, where possible, for most Benchmark versions released with the CIS-CAT bundle. Future and past CIS Benchmark versions for the technologies supported may work with the current or past CIS-CAT tool versions, but are not guaranteed and should be used at each organization's discretion.
+The CIS Benchmarks are tested with the prior, official CIS-CAT version at the time automated Benchmark content is announced as supported in CIS-CAT. The CIS-CAT tool, on each release performs some regression testing, where possible, for most Benchmark versions released with the CIS-CAT bundle. Future and past CIS Benchmark versions for the technologies supported may work with the current or past CIS-CAT tool versions, but are not guaranteed and should be used at each organization's discretion.
 
 - **CIS Aliyun Linux 2, v1.0.0**
 - **CIS AlmaLinux OS 8 Benchmark, v1.0.0**
@@ -35,16 +35,15 @@ CIS Benchmarks are tested with the prior, official CIS-CAT version at the time a
 - **CIS Azure Kubernetes Service (AKS) v1.1.0**
 - **CIS CentOS Linux 6 Benchmark, v3.0.0**
 - **CIS CentOS Linux 7 Benchmark, v3.1.2**
-- **CIS CentOS Linux 8 Benchmark, v2.0.0**
 - **CIS Cisco IOS 12 Benchmark, v4.0.0**
 - **CIS Cisco IOS 15 Benchmark, v4.1.0**
-- **CIS Cisco IOS 16 Benchmark, v1.1.1**
+- **CIS Cisco IOS 16 Benchmark, v1.1.2**
 - **CIS Debian Family Linux, v1.0.0**
 - **CIS Debian Linux 8 Benchmark, v2.0.2**
 - **CIS Debian Linux 9 Benchmark, v1.0.1**
 - **CIS Debian Linux 10 Benchmark, v1.0.0**
 - **CIS Fedora 19 Family Linux, v1.0.0**
-- **CIS Fedora 28 Family Linux, v1.0.0**
+- **CIS Fedora 28 Family Linux, v2.0.0**
 		- NOTE:  Requires the "ignore.platform.mismatch" property be set to "true" in the Assessor's properties file.
 - **CIS Google Chrome Benchmark, v2.1.0**
 - **CIS Google Kubernetes Engine (GKE) Benchmark, v1.2.0**
@@ -85,8 +84,8 @@ CIS Benchmarks are tested with the prior, official CIS-CAT version at the time a
 - **CIS Microsoft Windows Server 2012 R2 Benchmark, v2.5.0**
 - **CIS Microsoft Windows Server 2016 RTM (Release 1607) Benchmark, v1.3.0**
 - **CIS Microsoft Windows Server 2016 STIG Benchmark, v1.1.0**
-- **CIS Microsoft Windows Server 2019 Benchmark, v1.2.1**
-- **CIS Microsoft Windows Server 2019 STIG Benchmark, v1.0.1**
+- **CIS Microsoft Windows Server 2019 Benchmark, v1.3.0**
+- **CIS Microsoft Windows Server 2019 STIG Benchmark, v1.1.0**
 - **CIS Microsoft Windows Server 2022 Benchmark, v1.0.0**
 - **CIS Microsoft Windows 8 Benchmark, v1.0.0**
 - **CIS Microsoft Windows 8.1 Workstation Benchmark, v2.4.0**
@@ -94,7 +93,7 @@ CIS Benchmarks are tested with the prior, official CIS-CAT version at the time a
     - `xccdf_org.cisecurity_value_runnin_config_file.url`: MongoDB running configuration file (mongod.conf) location.
 - **CIS MongoDB 4, v1.0.0**
     - `xccdf_org.cisecurity_value_runnin_config_file.url`: MongoDB running configuration file (mongod.conf) location.
-- **CIS MongoDB 5, v1.0.0**
+- **CIS MongoDB 5, v1.1.0**
     - `xccdf_org.cisecurity_value_runnin_config_file.url`: MongoDB running configuration
 - **CIS Mozilla Firefox 38 ESR Benchmark, v1.0.0**
 - **CIS NGINX Benchmark, v1.1.0**
@@ -124,7 +123,9 @@ CIS Benchmarks are tested with the prior, official CIS-CAT version at the time a
 	- `xccdf_org.cisecurity_value_listener.ora`: Path to the listener.ora file
 - **CIS Oracle Linux 6 Benchmark, v2.0.0**
 - **CIS Oracle Linux 7 Benchmark, v3.1.1**
-- **CIS Oracle Linux 8 Benchmark, v1.0.1**
+- **CIS Oracle Linux 8 Benchmark, v2.0.0**
+- **Palo Alto Firewall 9 Benchmark v1.0.1 (offline only)**
+- **Palo Alto Firewall 10 Benchmark v1.0.0 (offline only)**
 - **CIS PostgreSQL 9.5 Benchmark, v1.1.0.1**
 	- `xccdf_org.cisecurity_value_jdbc.url`: PostgreSQL Database connection string.
 - **CIS PostgreSQL 9.6 Benchmark, v1.0.0**
@@ -145,7 +146,7 @@ CIS Benchmarks are tested with the prior, official CIS-CAT version at the time a
 - **CIS Red Hat Enterprise Linux 8 Benchmark, v2.0.0**
 - **CIS Red Hat Enterprise Linux 7 STIG Benchmark, v1.0.0**
 - **CIS Red Hat OpenShift Container Platform v4 Benchmark, v1.1.0**
-- **CIS SUSE Linux Enterprise 11 Benchmark, v2.1.1**
+- **CIS Rocky Linux 8 Benchmark, v1.0.0**
 - **CIS SUSE Linux Enterprise 12 Benchmark, v3.1.0**
 - **CIS SUSE Linux Enterprise 15 Benchmark, v1.1.1**
 - **CIS Ubuntu Linux 14.04 LTS Benchmark, v2.0.0**

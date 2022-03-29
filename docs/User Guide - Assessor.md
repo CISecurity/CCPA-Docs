@@ -376,7 +376,7 @@ Use an encrypted configuration XML file in the assessment process:
 
 
 ## Configuring Interactive Values for Select Benchmarks ##
-A number of benchmarks supported by/bundled with CIS-CAT Pro Assessor require manual interaction by the user in order to configure specific values used during the assessment.  These "interactive values" will be required to complete some assessments. If the values are not available, the assessor will prompt the user to enter the values on the command line or in the GUI.
+Database and VMWare ESXi benchmarks supported by/bundled with CIS-CAT Pro Assessor require additional values that can be provided in a configuration XML file or provided at run-time via interaction by the user.  These "interactive values" will be required to complete some assessments. If the values are not available in a supporting configuration file, the assessor will prompt the user to enter the values on the command line or in the GUI.
 
 Absence of these values will block the completion of the assessment if it is being executed off-hours, or as part of an automated script.  
 
@@ -429,13 +429,13 @@ The `vulnerability_definitions` element contains a single attribute, `download`.
 #### Sessions ####
 The `sessions` element configures each individual connection to either the local host or a remote endpoint.  An attribute of the `sessions` element, `test` indicates whether this configuration file is meant to test the connectivity of each session only.  When the `test` attribute is `true`, connectivity tests will take place, and CIS-CAT Pro Assessor will then exit.  No other assessment processing will take place.
 
+
 	<!-- Session configurations referenced by the assessments -->
 	<sessions test="(true|false)">
 		
 		<!-- A "connection" to the local host -->
 		<session id="local">
 			<type>local</type>
-			<tmp_path>C:\Temp</tmp_path>
 		</session>
 		
 		<!-- A connection to a remote Ubuntu instance using a private key file -->
@@ -445,7 +445,6 @@ The `sessions` element configures each individual connection to either the local
 			<port>22</port>
 			<user>ubuntu</user>
 			<identity>C:\Path\To\aws-ubuntu.ppk</identity>
-			<tmp_path>/path/to/temp/folder</tmp_path>
 		</session>
 		
 		<!-- A connection to a remote CentOS instance using a private key file secured with a passphrase -->
@@ -456,7 +455,6 @@ The `sessions` element configures each individual connection to either the local
 			<user>centos</user>
 			<identity>C:\Path\To\aws-centos.ppk</identity>
 			<identity_passphrase>P@55phr@s3!</identity_passphrase>
-			<tmp_path>/path/to/temp/folder</tmp_path>
 		</session>
 		
 		<!-- A connection to a remote Windows instance using credentials -->
@@ -477,16 +475,24 @@ The `sessions` element configures each individual connection to either the local
 			<identity>C:\Path\To\cisco-ios-private-key.ppk</identity>
 			<enable_password>3n@bl3mePlz</enable_password>
 		</session>
+		
+		<!-- A connection to a Palo Alto configuration file  -->
+		<session id="palo-1">
+			<type>panos</type>
+			<path_to_config_file>C:\Path\To\palo-config.xml</identity>
+		</session>
 	</sessions>
 
-Each `session` consists of a number of elements configuring the connection to the target endpoint:
+
+Each `session` consists of elements configuring the connection to the target endpoint:
 
 - `id`: Each session must have a unique id.
-- `type`:  The session `type` indicates a "flavor" of the connection to the endpoint being assessed.  A number of options exist for the `type` value, as noted in the [CIS-CAT Pro Assessor Configuration Guide](./Configuration%20Guide).
+- `type`:  The session `type` indicates a type of connection to the endpoint being assessed. The [CIS-CAT Pro Assessor Configuration Guide](./Configuration%20Guide) specify these options.
 	- **`local`**:  The "local" session type indicates that the assessment(s) will be performed in a host-based manner.  No further session information is required when using a "local" session.
 	- **`ssh`**:  The "ssh" session type indicates the connection is to a remote Unix/Linux/Mac endpoint.  This session type allows CIS-CAT Pro Assessor to utilize the `host`, `port`, `user`, and either `credentials` and/or `identity` (and optionally an `identity_passphrase`) to create a SSH connection to the endpoint and use that SSH connection to execute the assessment.
 	- **`windows`**:  The "windows" session type indicates (obviously) a connection to a remote Microsoft Windows endpoint.  This session type allows CIS-CAT Pro Assessor to utilize the `host`, `port`, `user`, `credentials` to initiate a WinRM connection to the remote endpoint.
-	- **`ios`**:  The "ios" session type indicates a connection to a remote Cisco IOS device, such as a router or switch.  This session type allows CIS-CAT Pro Assessor to utilize the `host`, `port`, `user`, and either `credentials` and/or `identity` (and optionally an `identity_passphrase`) to create a SSH connection to the endpoint and use that SSH connection to execute the assessment.
+	- **`ios`**:  The "ios" session type indicates a connection to a remote Cisco IOS device, such as a router or switch.  This session type allows CIS-CAT Pro Assessor to utilize the `host`, `port`, `user`, and either `credentials` and/or `identity` (and optionally an `identity_passphrase`) to create a SSH connection to the endpoint and use that SSH connection to execute the assessment. This session type should also be used for a local assessment of a Cisco IOS exported tech file.
+	- **`panos`**: The "panos" session type indicates a local, host-based manner on an exported Palo Alto configuration file. Since Palo Alto automated assessments will occur offline only and based on this configuration file, the only other valid element to accompany the `panos` type is `path_to_config_file`. 
 - `host`:  The "host" element value is either the hostname or IP address of the endpoint to which this session will connect/assess.
 - `port`:  The "port" element value is the port number on which communication takes place.  For `ssh` or `ios` connections, the default value for `port` is 22.  For `windows` sessions, the default value is 5986.
 - `user`:  The "user" element value specifies the username used to log on to the remote endpoint.  For `ssh` sessions, this user should be either `root` or a username with the ability to `sudo`, in order to elevate privileges to execute the required commands.  For `windows` sessions, the user must be either an Administrator or a member of the Administrators group.  For `ios` sessions, the user must be privileged and able to enter into "enable" mode on that device, using the `enable_password` value below.
@@ -494,12 +500,9 @@ Each `session` consists of a number of elements configuring the connection to th
 - `identity`:  The `identity` element specifies the full filepath to a private key file to be used for authenticating the `user` to the remote endpoint.  When configuring a `session`, the `identity` may require the specification of the `identity_passphrase` in order for authentication to complete successfully.  Note that for `windows` sessions, private key authentication is not currently supported.
 - `identity_passphrase`: The `identity_passphrase` element contains credentials required to complete authentication using the private key specified in the `identity` element. If this element exists for a session, but its value is left blank in the file, the user will be prompted to enter the passphrase for that session on the command line as part of initializing all of the sessions at the beginning of an assessment.
 - `enable_password`:  When authenticating a privileged user for `ios` sessions, the `enable_password` is mandatory.  This element specifies the credentials which allow the privileged user to enter "enable" mode on the Cisco IOS device.
-- `tmp_path`: Configure a custom "temp" directory location for use in creating the "ephemeral" directory on the target endpoint.  The "ephemeral" directory is named `ccpa-temp-TIMESTAMP` and is created as a sub-folder of the directory specified in this setting.  For example, if `tmp_path` is specified as `C:\Temp`, the "ephemeral" directory will be created at `C:\Temp\ccpa-temp-TIMESTAMP`.  **NOTE**: When specifying a value for `tmp_path`, this directory MUST ALREADY EXIST on the target endpoint.  In the above example, if the `C:\Temp` folder does not exist, the connection from CIS-CAT Pro Assessor v4 will not succeed.  If this property is left blank or not included, the Assessor will use the default "temp" folder as defined for the operating system, such as `/tmp` or `C:\Windows\Temp`.  Further information regarding the `tmp_path` and considerations for Unix/Linux environments can be found in the [CIS-CAT Pro Assessor Configuration Guide](./Configuration%20Guide).
-- `path_to_tech_support` property is REQUIRED when assessing the exported configuration of a network device. This property specifies the full path to the exported configuration file.
-
-When assessing non-network device endpoints, or assessing a network devices' current running configuration via SSH, the path_to_tech_support property is unnecessary.
-
-The path_to_tech_support property is not needed when the session type is local.
+- `tmp_path`: **OPTIONALLY** specify a custom "temp" directory location for use in creating the "ephemeral" directory on the target endpoint. It is highly recommended to exclude the `tmp_path` from the Session section. The "ephemeral" directory is named `ccpa-temp-TIMESTAMP` and is created as a sub-folder of the directory specified in this setting.  For example, if `tmp_path` is specified as `C:\Temp`, the "ephemeral" directory will be created at `C:\Temp\ccpa-temp-TIMESTAMP`.  <br></br>**NOTE**: If this property is left blank or not included, the Assessor will use the default "temp" folder as defined for the operating system, such as `/tmp` or `C:\Windows\Temp`.  Further information regarding the `tmp_path` and considerations for Unix/Linux environments can be found in the [CIS-CAT Pro Assessor Configuration Guide](./Configuration%20Guide). If a value exists for `tmp_path`, this directory MUST ALREADY EXIST on the target endpoint and be granted write priveleges else the assessment will exit. <br></br>Examples: **Linux:** <tmp_path>/path/to/temp/folder</tmp_path> OR **Windows:** <tmp_path>C:\Temp</tmp_path>   
+- `path_to_tech_support` property is REQUIRED when assessing the exported configuration of a Cisco IOS network device. This property specifies the full path to the exported configuration file for an `ios` connection type only. This element is unnecessary for an online assessment using `ssh`.
+- `path_to_config_file` property is REQUIRED for the assessment of a Palo Alto network device.  This property specifies the path to an exported configuration file for a `panos` connection type only.  
 
 
 #### Assessments ####
@@ -787,6 +790,7 @@ A number of scenarios exist which could cause CIS-CAT Pro Assessor to terminate 
 |122        | An attempt was made to assess an unsupported benchmark using CIS-CAT Lite. |
 |123        | CIS-CAT Pro Assessor could not establish a session enabled with elevated privileges. |
 |500        | An XML file was parsed, but contained XML Schema validation errors.                 |
+|600        | The OVAL definitions were parsed but failed the Schematron validation.               |
 
 
 ## Troubleshooting and Support ###
