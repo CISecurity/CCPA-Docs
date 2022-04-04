@@ -97,6 +97,8 @@ A number of different system properties exist to provide additional functionalit
 | ciscat.license.filepath | `string` | Sets the filepath to the "license.xml" file used for license verification.  The filepath should include the filename and extension. |
 | **Define Behavior When Benchmark Content Fails Validation** |  |  |
 | validate.xml.schema                  | `true/false`    | Configuration of `true` results in schema validation of benchmark/datastream files. On validation failure, assessment process halts with exit with a code of 500. Configuration of `false` will not result in formal validation, but errors in the structure will result in an exception. |
+| **Set Schematrom Validation Behaviour** |  |  |
+| validate.xml.schematron | `true/false` | Controls whether assessor will utilize schematron to validate that the OVAL definitions are correctly formed prior to assessment. |
 | **Define Assessor Behavior When Signed Benchmark Content Has Been Altered** |  |  |
 | exit.on.invalid.signature | `true/false`      | Detects alteration in signed benchmark/datastream files prior to assessment. When set to `true`, and signature is found to be invalid, the assessment process will stop. When set to `false`, a notification appears if signature is found invalid and assessment continues without intervention.|
 | **Define Behavior When Benchmark Does Not Match Operating System** |  |  |
@@ -128,20 +130,21 @@ A number of different system properties exist to provide additional functionalit
 | custom.html.css | `string` | The name of the CSS file, saved to the "custom" folder, which overrides the HTML report's styling. |
 
 
-#Remote Assessment - Sessions#
+#Remote / Local Assessment - Sessions#
 --------
-CIS-CAT Pro Assessor v4's remote assessment capability depends on the configuration of "sessions"; connection parameters used to create a secure connection to the remote endpoint.  A session configuration requires a number of entries, which will vary depending on the connection type. This connection is not necessary when selecting the centralized (in-network) method of assessment.
+A local assessment uses the default `sessions.properties` file. CIS-CAT Pro Assessor v4's remote assessment capability can also utilize the Sessions file and requires configuration of each `session` type; connection parameters used to create a secure connection to the remote endpoint.  A session configuration requires a number of entries, which will vary depending on the connection type. This connection is not necessary when selecting the centralized (in-network) method of assessment.
 
-**Connection Types**
+**Connection (Session) Types**
 
-A number of different connection types exist to allow for maximum flexibility and coverage for the assessment of various endpoints, ranging from the local host to remote Windows, Unix, Linux, and Apple OSX endpoints, as well as Cisco network devices.
+The below connection types support the assessment of various endpoint types. The connection type depends on the technology as well as the connection, local or remote. 
 
 | Type                   | Value      |   Description |
 | -----------------------| ---------- | ------------- |
 | Local                  | `local`    | Usage of a "local" session is for a host-based assessment, mimicing the functionality of CIS-CAT Pro v3.  Standalone or command-line applications (such as CIS-CAT Pro Assessor CLI) may use the local session to continue host-based assessments of benchmarks and/or OVAL definitions. |
 | SSH (Unix, Linux, Apple OSX) | `ssh`      | The "ssh" session type represents a connection to a remote Unix, Linux, or Apple OSX endpoint, via SSH (obviously).  SSH connections can be established a number of different ways, including `username/password`, `username/path to a private key file`, `username/private key file protected with a passphrase`, `username/private key file + credentials to use for sudo`.|
-| Windows                | `windows`  | The "windows" session type represents a WinRM connection to a remote Microsoft Windows environment.  Both workstations and servers are supported with this connection type and can currently be established using `username/password` authentication.|
-| Cisco IOS              | `ios`      | The "ios" session type handles the specific case for the assessment of Cisco IOS network devices.  Depending on the specific configuration when the "ios" session type is used, CIS-CAT Pro Assessor will either establish a SSH connection using `username/password` or `username/path to a private key` authentication, or will create a modified local session, collecting information from an exported configuration file.|
+| Windows                | `windows`  | The `windows` session type represents a WinRM connection to a remote Microsoft Windows environment.  Both workstations and servers are supported with this connection type and can currently be established using `username/password` authentication.|
+| Cisco IOS              | `ios`      | The `ios` applies to the assessment of Cisco IOS network devices.  Depending on the specific configuration when the "ios" session type is used, CIS-CAT Pro Assessor will either establish a SSH connection using `username/password` or `username/path to a private key` authentication, or will create a modified local session, collecting information from an exported configuration file.|
+| Palo Alto              | `panos`      | The `panos` session type applies to the assessment of Palo Alto network devices.  CIS-CAT Pro Assessor will create a local session, collecting information from an exported configuration file via `configFilePath` element.|
 
 
 
@@ -150,7 +153,7 @@ A number of configuration properties exist, and will vary based on the session t
 
 | Property   | Description |
 | ---------- | ----------- |
-| `type`     | The `type` property MUST be configured to one of the connection types specified above (`local`, `ssh`, `windows`, or `ios`).|
+| `type`     | The `type` property MUST be configured to one of the connection types specified above (`local`, `ssh`, `windows`, `ios`, `panos`).|
 | `host`     | The `host` property is required for any remote connection, and can be either the hostname or IP address (v4 or v6) of the endpoint to be assessed.  Examples include `1.2.3.4` or `CIS-CAT-TEST`. <br/><br/> The `host` property is not needed when assessing against exported network device configuration files.<br/><br/> The `host` property is not needed when the session type is `local`.|
 | `port`     | The `port` property is required for any remote connection.  When using the `ssh` connection type, the default value for the `port` property would be `22`.  When using the `windows` connection type, the defaut WinRM ports are `5985` for HTTP and `5986` for HTTPS. <br/><br/> The `port` property is not needed when assessing against exported network device configuration files.<br/><br/> The `port` property is not needed when the session type is `local`.|
 | `user`     | The `user` property represents an administrator-level username, used to log on to the remote endpoint.  This can be a domain user or a local administrator on the remote endpoint, or a privileged user when logging on to Cisco network devices.<br/><br/> The `user` property is not needed when assessing against exported network device configuration files.<br/><br/> The `user` property is not needed when the session type is `local`.|
@@ -158,8 +161,9 @@ A number of configuration properties exist, and will vary based on the session t
 | `identity` | The `identity` property represents the full path to a private key file used for authentication to a remote endpoint.<br/><br/>**NOTE**: When executing CIS-CAT Pro Assessor CLI, if a given session's configuration specifies neither the `cred` nor the `identity` property, the user will be prompted to enter credentials manually.  This **will block** assessment against other configured sessions until credentials are entered. <br/><br/> The `identity` property is not needed when assessing against exported network device configuration files.<br/><br/> The `identity` property is not needed when the session type is `local`.|
 | `identityPassphrase` | The `identityPassphrase` property is optional and should be used in conjunction with the `identity` property, when that key is protected with a passphrase.|
 | `enable`   | The `enable` property is used only in network device sessions (`ios`) and represents the credentials needed to enter "privileged EXEC" mode; required for obtaining the full output of the `show tech-support` command. <br/><br/> The `enable` property is not needed when assessing against exported network device configuration files.<br/><br/> The `enable` property is not needed when the session type is `local`.|
-| `tech`     | The `tech` property is REQUIRED when assessing the exported configuration of a network device.  This property specifies the full path to the exported configuration file. <br/><br/> When assessing non-network device endpoints, or assessing a network devices' current running configuration via SSH, the `tech` property is unnecessary.<br/><br/> The `tech` property is not needed when the session type is `local`.|
-| `tmp`| The `tmp` property allows users to configure the location of the temporary "ephemeral" directory on the target host.  The "ephemeral" directory is named `ccpa-temp-TIMESTAMP` and is created as a sub-folder of the directory specified in this setting.  For example, if `tmp` is specified as `C:\Temp`, the "ephemeral" directory will be created at `C:\Temp\ccpa-temp-TIMESTAMP`.  **NOTE**: When specifying a value for `tmp`, this directory MUST ALREADY EXIST on the target endpoint.  In the above example, if the `C:\Temp` folder does not exist, the connection from CIS-CAT Pro Assessor v4 will not succeed.  If this property is left blank or not included, the Assessor will use the default "temp" folder as defined for the operating system, such as `/tmp` or `C:\Windows\Temp`.|
+| `tech`     | The `tech` property is REQUIRED when assessing the exported configuration of a Cisco IOS network device.  This property specifies the full path to the exported configuration file. <br/><br/> This property is only valid for Cisco IOS assessments. When assessing a Cisco IOS device online via SSH, the `tech` property is unnecessary.<br/><br/> The `tech` property is not needed when the session type is `local`.|
+| `configFilePath`     | The `configFilePath` property is REQUIRED when assessing the exported configuration of a Palo Alto network device.  This property specifies the full path to the exported configuration file. <br/><br/> This property is only valid for Palo Alto assessments (panos).|
+| `tmp`| CIS-CAT recommends excluding this property in the session. CIS-CAT will automatically select a temporary location when this property is not set. The `tmp` property allows users to configure the location of the temporary "ephemeral" directory on the target host.  The "ephemeral" directory is named `ccpa-temp-TIMESTAMP` and is created as a sub-folder of the directory specified in this setting.  For example, if `tmp` is specified as `C:\Temp`, the "ephemeral" directory will be created at `C:\Temp\ccpa-temp-TIMESTAMP`.  <br/><br/> **NOTE**: A specified value for `tmp` MUST EXIST on the target endpoint with "write" privileges.  In the above example, if the `C:\Temp` folder does not exist, the connection from CIS-CAT Pro Assessor v4 will not succeed.  If this property is left blank or not included, the Assessor will use the default "temp" folder as defined for the operating system, such as `/tmp` or `C:\Windows\Temp`.|
 
 **Examples**
 The examples below provide insight into the creation of a `sessions.properties` file, which can then be consumed by CIS-CAT Pro Assessor CLI to provide connection configurations when assessing a particular benchmark.  By default, CIS-CAT Pro Assessor CLI will ALWAYS attempt to load a default configuration file located in the application's `config` folder, named `sessions.properties`.
@@ -190,6 +194,9 @@ Configure a remote Windows session using a username, but requiring manual passwo
     session.3.port=5986
     session.3.user=Administrator1
 
+#### Cisco IOS Sessions ####
+------------------------
+
 Configure a remote Cisco IOS session using a username/password:
 
     session.4.type=ios
@@ -213,6 +220,15 @@ Configure a Cisco IOS session pointing to an exported configuration file:
 
     session.6.type=ios
 	session.6.tech=C:\\CiscoFiles\\configuration.cfg
+
+#### Palo Alto Sessions ####
+------------------------
+
+Configure a Palo Alto session pointing to an exported configuration file:
+
+    session.7.type=panos
+	session.7.configFilePath=C:\\PaloFiles\\palo_config.xml
+
 
 #### Linux Sessions ####
 ------------------------
@@ -441,6 +457,8 @@ Remote/Local Setup - Cisco Network Device
 -------------------------------------------
 CIS-CAT Pro Assessor v4 can assess either the current running configuration of a Cisco network device, or an exported configuration file.
 
+Automated assessment content as of March 21, 2022 has been modified to more closely align with our consensus process. Please see the change log for the selected Cisco IOS Benchmark. CIS would like to add more automation to the Cisco IOS Benchmark recommendations. Please join our Cisco[Community on CIS WorkBench](https://workbench.cisecurity.org/communities/public) and ask how you can help. Example configuration files from organizational implementation can support CIS Benchmark Developers when creating additional automation.
+
 **Connecting to a Device**
 
 CIS-CAT Pro Assessor assesses Cisco network device targets via SSH connections.  Ensure the target system can be accessed via SSH and that the user connecting to the remote target is a privileged user.  When connecting to Cisco devices, CIS-CAT Pro Assessor will be configured to enter "privileged EXEC" mode, so any user connecting to the Cisco device via SSH must be granted appropriate permission to do so.
@@ -463,7 +481,29 @@ Once the exported configuration file is available to CIS-CAT Pro Assessor, the a
 Palo Alto Network Device Assessment
 -------------------------------
 
-Coming soon.....March 2022
+CIS-CAT Pro supports automated configuration assessments for a Palo Alto Network Device. The assessment method is offline and utilizes a Palo Alto exported configuration file.
+
+CIS would like to add more automation to the Palo Alto Benchmark recommendations. Please join our Palo Alto [Community on CIS WorkBench](https://workbench.cisecurity.org/communities/public) and ask how you can help. Example configuration files from organizational implementation can support CIS Benchmark Developers when creating additional automation.
+
+**Export Configuration File**
+
+Read official [Palo Alto Network device](https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA10g000000ClaOCAS) documentation on how to generate a configuration file.
+
+**Assess with Assessor v4 GUI** 
+
+A Palo Alto exported configuration file can be assessed using the Assessor V4 GUI using only the Advanced workflow by either loading a configuration.xml file or by adding a target system. 
+
+If entering the Palo target information for the first time, select `Add remote or local target system`. Enter any information in the `Target System Name`. This field is only used in the created configuration.xml for reference purposes. Select `Palo Alto` for Target System Type. Select the location of the Palo Alto configuration file. Select the Benchmark and profile and select `Save`. Continue with the remaining assessment selections.
+
+![](img/GUI_Advanced.png)
+
+
+![](img/GUI_Palo_Add_Target.png)
+
+**Assess with Assessor v4 CLI** 
+
+See sample sessions.properties and assessor-config-sample.xml files in the `config` directory of the assessor bundle for use on the command line.
+
 
 
 Database Assessment
@@ -548,7 +588,7 @@ Notable optional parameters involve ensuring JDBC connections are made via SSL:
 | Property Name          | Property Description |
 |------------------------|----------------------|
 | user                   | The database username. |
-| password               | The credentials for the specified `user` to connect to the database instance. |
+| password               | The credentials for the specified `user` to connect to the database instance. CIS-CAT does not support the use of "&" (ampersand) for this database type. |
 | useSSL                 | Force the usage of SSL on the connection. |
 | trustServerCertificate | When using SSL, do *not* verify the server's certificate.|
 | serverSslCert          | Server's certificate in DER form, or server's CA certificate. Can be used in one of 3 forms:<br/><br/> `serverSslCert=/path/to/cert.pem`:  full path to certificate <br/><br/> `serverSslCert =classpath:relative/cert.pem`:  relative to current classpath <br/><br/> or as verbatim DER-encoded certificate string, starting with<br/> `------BEGIN CERTIFICATE-----`|
@@ -612,7 +652,7 @@ Notable optional parameters involve ensuring JDBC connections are made via SSL:
 | Property Name          | Property Description |
 |------------------------|----------------------|
 | user                   | The database username. |
-| password               | The credentials for the specified `user` to connect to the database instance. |
+| password               | The credentials for the specified `user` to connect to the database instance. CIS-CAT does not support the use of "&" (ampersand) for this database type. |
 | ssl                 | A boolean value (`true` or `false`), to force the usage of SSL on the connection. |
 
 For example, in order to force the database connection to require SSL, the connection string would look like:
@@ -1091,16 +1131,6 @@ It is required that LanguageMode is not configured to ConstrainedLanguage. When 
 
 
 **Connection Strings**
-
-The connection string is validated as an `anyURI`. When invalid values are used in the connection string, an error message will indicate that the value is not valid and the connection will exit. 
-
-We have found this [article](http://www.datypic.com/sc/xsd/t-xsd_anyURI.html) helpful when determining valid values.
-
-Examples of invalid values are:
-
-- http://datypic.com#frag1#frag2  : too many # characters
-- http://datypic.com#f% rag  : % character followed by something other than two hexadecimal digits
-
 
 If no connection strings are set in the configuration file or `assessor-cli.properties` file, the user will be prompted to enter connection information for the ESXi host. The format of this connection string is user/password@host. See the example below:
 

@@ -7,6 +7,66 @@ CIS-CAT Pro Assessor v4
 ---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
+## CIS-CAT Pro Assessor, v4.16.1 ##
+#### Release Date: Apr. 4, 2022 ####
+
+
+### Benchmark Coverage ###
+
+- None
+
+### Security ###
+- Resolved security vulnerability present in embedded, third party dependency of postgresql. This library was updated to version 42.2.25. See our **[knowledge base article](https://cisecurity.atlassian.net/l/c/w3C5QBPi)** for more information.
+
+### Application ###
+- None
+
+### Documentation ###
+- None
+
+## CIS-CAT Pro Assessor, v4.16.0 ##
+#### Release Date: Mar. 29, 2022 ####
+
+
+### Benchmark Coverage ###
+
+- Cisco IOS 16*
+- Fedora Family Linux 28
+- Microsoft Windows Server 2019 v1.3.0
+- Microsoft Windows Server 2019 STIG v1.1.0
+- MongoDB 5 v1.1.0
+- Oracle Linux 8
+- Palo Alto Firewall 9 v1.0.1 (offline only)** 
+- Palo Alto Firewall 10 v1.0.0 (offline only)**
+- Rocky Linux 8
+
+\* Automated assessment content has been modified to more closely align with our consensus process. Please view the change log for the selected Cisco IOS Benchmark. CIS would like to add more automation to the Cisco IOS Benchmark recommendations. Please join our [Cisco Community on CIS WorkBench](https://workbench.cisecurity.org/communities/public) and ask how you can help. 
+
+\** CIS would like to add more automation to the Palo Alto Benchmark recommendations. Please join our Palo Alto [Community on CIS WorkBench](https://workbench.cisecurity.org/communities/public) and ask how you can help.
+
+The following CIS Benchmarks have moved to end of life and are no longer officially supported. See the [Coverage Guide](https://ccpa-docs.readthedocs.io/en/latest/Coverage%20Guide/#cis-benchmark-coverage) for more information on CIS Benchmarks that have reached end of life.
+
+- CentOS Linux 8
+- SUSE 11
+
+### Security ###
+- README.txt file contains information regarding third-party dependency vulnerabilities suppressed by CIS-CAT for various reasons
+
+### Application ###
+- Non fatal errors for ERROR com.opendxl.client.DxlClient will no longer be displayed on the console
+- The Microsoft Windows centralized scripts (cis-cat-centralized.bat and cis-cat-centralized-ccpd.bat) updated to include Microsoft Windows 11 CIS Benchmark
+- The Assessor can now properly process datastreams that have had their namespace awareness turned off
+- The connection string interactive value for databases and VMWare ESXi now supports use of special characters as a value. CIS-CAT does not support "&" for use in interactive strings for PostgreSQL and Oracle MySQL.
+- A new property added to assessor-cli.properties file, validate.xml.schematron, that can be utilized to validate that OVAL definitions for benchmark automated assessment files are formed properly. By default, the property is set to "false". The property, when set to true, will automatically check the benchmark content. This can be useful for validating tailored content.
+
+
+### Documentation ###
+- Configuration guide updated to include:
+	- Information on automated assessments of Azure Kubernetes Service (AKS)
+	- Information on automated assessments of a Palo Alto network device
+	- Screen shots of where to place license files
+	- Modified information on VMWare ESXi connection string values and now handling of special characters
+
 ## CIS-CAT Pro Assessor, v4.15.0 ##
 #### Release Date: Feb. 25, 2022 ####
 
