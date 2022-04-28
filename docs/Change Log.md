@@ -7,6 +7,43 @@ CIS-CAT Pro Assessor v4
 ---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
+## CIS-CAT Pro Assessor, v4.17.0 ##
+#### Release Date: Apr. 28, 2022 ####
+
+
+### Benchmark Coverage ###
+
+- Amazon Elastic Kubernetes Service (EKS) v1.1.0
+- Cisco IOS 15 v4.1.1 - *Final release
+- Cisco IOS 17 v1.0.0
+- Fedora 28 Family Linux v2.0.1
+- Microsoft Windows Server 2016 v1.4.0
+- Microsoft Windows Server 2016 STIG v1.2.0
+- Oracle MySQL Community Server 5.6 v2.0.0 - *Final Release
+- Oracle MySQL Community Server 5.7 v2.0.0
+- Oracle MySQL Enterprise Edition 5.6 v2.0.0 - *Final Release
+- Oracle MySQL Enterprise Edition 5.7 v2.0.0
+
+*CIS Benchmarks marked with a "Final release" above will be moved to End of Life in the following CIS-CAT release.
+
+The following CIS Benchmarks have moved to end of life and are no longer officially supported. See the [Coverage Guide](https://ccpa-docs.readthedocs.io/en/latest/Coverage%20Guide/#cis-benchmark-coverage) for more information on CIS Benchmarks that have reached end of life.
+
+- Cisco IOS 12
+- Debian 8
+
+### Security ###
+- None
+
+### Application ###
+- The GUI now supports configuration assessments with the integrated security property for Microsoft SQL Server.
+- Remote and local assessments will now execute successfully on a MacOS version 12.3 target
+- CIS Critical Security Controls 8 Implementation Groups shown on HTML report where mappings exist
+- Corrected an issue with configuration assessment XML (ARF format) output. It is required to update to the latest assessor version if using CIS-CAT Pro Dashboard and utilizing the HTML export function. Results created on assessor version 4.16.x series cannot be exported via HTML from the Dashboard.
+
+### Documentation ###
+- None
+
+
 ## CIS-CAT Pro Assessor, v4.16.1 ##
 #### Release Date: Apr. 4, 2022 ####
 

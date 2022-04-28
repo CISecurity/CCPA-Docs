@@ -24,7 +24,7 @@ The CIS Benchmarks are tested with the prior, official CIS-CAT version at the ti
 
 - **CIS Aliyun Linux 2, v1.0.0**
 - **CIS AlmaLinux OS 8 Benchmark, v1.0.0**
-- **CIS Amazon Elastic Kubernetes Service (EKS) Benchmark, v1.0.1**
+- **CIS Amazon Elastic Kubernetes Service (EKS) Benchmark, v1.1.0**
 - **CIS Amazon Linux Benchmark, v2.0.0**
 - **CIS Amazon Linux 2 Benchmark, v2.0.0**
 - **CIS Amazon Linux 2 STIG Benchmark, v2.0.0**
@@ -35,15 +35,14 @@ The CIS Benchmarks are tested with the prior, official CIS-CAT version at the ti
 - **CIS Azure Kubernetes Service (AKS) v1.1.0**
 - **CIS CentOS Linux 6 Benchmark, v3.0.0**
 - **CIS CentOS Linux 7 Benchmark, v3.1.2**
-- **CIS Cisco IOS 12 Benchmark, v4.0.0**
-- **CIS Cisco IOS 15 Benchmark, v4.1.0**
+- **CIS Cisco IOS 15 Benchmark, v4.1.1**
 - **CIS Cisco IOS 16 Benchmark, v1.1.2**
+- **CIS Cisco IOS 17 Benchmark, v1.0.0**
 - **CIS Debian Family Linux, v1.0.0**
-- **CIS Debian Linux 8 Benchmark, v2.0.2**
 - **CIS Debian Linux 9 Benchmark, v1.0.1**
 - **CIS Debian Linux 10 Benchmark, v1.0.0**
 - **CIS Fedora 19 Family Linux, v1.0.0**
-- **CIS Fedora 28 Family Linux, v2.0.0**
+- **CIS Fedora 28 Family Linux, v2.0.1**
 		- NOTE:  Requires the "ignore.platform.mismatch" property be set to "true" in the Assessor's properties file.
 - **CIS Google Chrome Benchmark, v2.1.0**
 - **CIS Google Kubernetes Engine (GKE) Benchmark, v1.2.0**
@@ -82,8 +81,8 @@ The CIS Benchmarks are tested with the prior, official CIS-CAT version at the ti
 - **CIS Microsoft Windows Server 2008 R2 Benchmark, v3.2.0**
 - **CIS Microsoft Windows Server 2012 (non-R2) Benchmark, v2.3.0**
 - **CIS Microsoft Windows Server 2012 R2 Benchmark, v2.5.0**
-- **CIS Microsoft Windows Server 2016 RTM (Release 1607) Benchmark, v1.3.0**
-- **CIS Microsoft Windows Server 2016 STIG Benchmark, v1.1.0**
+- **CIS Microsoft Windows Server 2016 RTM (Release 1607) Benchmark, v1.4.0**
+- **CIS Microsoft Windows Server 2016 STIG Benchmark, v1.2.0**
 - **CIS Microsoft Windows Server 2019 Benchmark, v1.3.0**
 - **CIS Microsoft Windows Server 2019 STIG Benchmark, v1.1.0**
 - **CIS Microsoft Windows Server 2022 Benchmark, v1.0.0**
@@ -97,16 +96,16 @@ The CIS Benchmarks are tested with the prior, official CIS-CAT version at the ti
     - `xccdf_org.cisecurity_value_runnin_config_file.url`: MongoDB running configuration
 - **CIS Mozilla Firefox 38 ESR Benchmark, v1.0.0**
 - **CIS NGINX Benchmark, v1.1.0**
-- **CIS Oracle MySQL Community Server 5.6 Benchmark, v1.0.0**
+- **CIS Oracle MySQL Community Server 5.6 Benchmark, v2.0.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: MySQL Server connection string.
 	- `xccdf_org.cisecurity_value_repl.user`: MySQL replication user name.
-- **CIS Oracle MySQL Enterprise Edition 5.6 Benchmark, v1.0.0**
+- **CIS Oracle MySQL Enterprise Edition 5.6 Benchmark, v2.0.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: MySQL Server connection string.
 	- `xccdf_org.cisecurity_value_repl.user`: MySQL replication user name.
-- **CIS Oracle MySQL Community Server 5.7 Benchmark, v1.0.0**
+- **CIS Oracle MySQL Community Server 5.7 Benchmark, v2.0.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: MySQL Server connection string.
 	- `xccdf_org.cisecurity_value_repl.user`: MySQL replication user name.
-- **CIS Oracle MySQL Enterprise Edition 5.7 Benchmark, v1.0.0**
+- **CIS Oracle MySQL Enterprise Edition 5.7 Benchmark, v2.0.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: MySQL Server connection string.
 	- `xccdf_org.cisecurity_value_repl.user`: MySQL replication user name.
 - **CIS Oracle MySQL Enterprise Edition 8.0 Benchmark, v1.1.0**
