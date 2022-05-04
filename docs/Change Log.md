@@ -36,9 +36,10 @@ The following CIS Benchmarks have moved to end of life and are no longer officia
 
 ### Application ###
 - The GUI now supports configuration assessments with the integrated security property for Microsoft SQL Server.
-- Remote and local assessments will now execute successfully on a MacOS version 12.3 target
 - CIS Critical Security Controls 8 Implementation Groups shown on HTML report where mappings exist
 - Corrected an issue with configuration assessment XML (ARF format) output. It is required to update to the latest assessor version if using CIS-CAT Pro Dashboard and utilizing the HTML export function. Results created on assessor version 4.16.x series cannot be exported via HTML from the Dashboard.
+
+**NOTE:** Release note removed for MacOS v12.3 support. This will be officially delivered in version 4.18.0. Please contact **[support](https://www.cisecurity.org/support/)** if you need an interim development build.
 
 ### Documentation ###
 - None
