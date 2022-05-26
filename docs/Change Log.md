@@ -7,6 +7,42 @@ CIS-CAT Pro Assessor v4
 ---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
+## CIS-CAT Pro Assessor, v4.18.0 ##
+#### Release Date: May 26, 2022 ####
+
+
+### Benchmark Coverage ###
+
+- Alma Linux 8 v2.0.0
+- Kubernetes v1.20 v1.0.1
+- Kubernetes v1.23 v1.0.1
+- Microsoft Edge v1.0.1
+- Microsoft Windows Server 2012 v2.4.0
+- Microsoft Windows Server 2012 R2 v2.6.0
+- Oracle MySQL Enterprise Edition 8 v1.2.0
+
+The following CIS Benchmarks have moved to end of life and are no longer officially supported. See the [Coverage Guide](https://ccpa-docs.readthedocs.io/en/latest/Coverage%20Guide/#cis-benchmark-coverage) for more information on CIS Benchmarks that have reached end of life.
+
+- Microsoft Windows Server 2003
+- Oracle MySQL Community Server 5.6
+- Oracle MySQL Enterprise Edition 5.6
+
+### Security ###
+- The embedded Java in the GUI has been updated to a more recent version.
+- Resolved security vulnerabilities present in embedded, third party dependencies. See our **[knowledge base article](https://cisecurity.atlassian.net/l/c/EdN2CSNb)** for more information.
+
+### Application ###
+- The Advanced Workflow in the GUI when executing a remote Microsoft Windows assessment has been enhanced to assist in selecting the correct port based on selected HTTP or HTTPS communication protocol for WinRM.
+- Remote and local assessments will now execute successfully on a MacOS version 12.3 target.
+- The HTML report is now consistent with CIS Critical Security Controls V8 nomenclature. Subcontrols are now referred to as Safeguards. Implementation Group abbreviations are capitalized.
+- The name of the bundle has been modified to be prefaced with "CIS-CAT". The root directory name has also been modified to "Assessor".
+
+	**NOTE:** If utilizing previous version centralized/batch/shell scripts and configuration files, please note that the names in the file path will now be different.
+
+### Documentation ###
+- Updated Configuration Guide for Oracle MySQL 8 remote assessment requirements
+- Updated Configuration and User Guide for all references and examples to file paths for Assessor to accommodate name change in application and root directory.
+
 ## CIS-CAT Pro Assessor, v4.17.0 ##
 #### Release Date: Apr. 28, 2022 ####
 

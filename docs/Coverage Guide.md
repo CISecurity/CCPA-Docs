@@ -23,7 +23,7 @@ CIS Benchmarks that have reached end of life are no longer officially supported 
 The CIS Benchmarks are tested with the prior, official CIS-CAT version at the time automated Benchmark content is announced as supported in CIS-CAT. The CIS-CAT tool, on each release performs some regression testing, where possible, for most Benchmark versions released with the CIS-CAT bundle. Future and past CIS Benchmark versions for the technologies supported may work with the current or past CIS-CAT tool versions, but are not guaranteed and should be used at each organization's discretion.
 
 - **CIS Aliyun Linux 2, v1.0.0**
-- **CIS AlmaLinux OS 8 Benchmark, v1.0.0**
+- **CIS AlmaLinux OS 8 Benchmark, v2.0.0**
 - **CIS Amazon Elastic Kubernetes Service (EKS) Benchmark, v1.1.0**
 - **CIS Amazon Linux Benchmark, v2.0.0**
 - **CIS Amazon Linux 2 Benchmark, v2.0.0**
@@ -47,9 +47,10 @@ The CIS Benchmarks are tested with the prior, official CIS-CAT version at the ti
 - **CIS Google Chrome Benchmark, v2.1.0**
 - **CIS Google Kubernetes Engine (GKE) Benchmark, v1.2.0**
 - **CIS Kubernetes Benchmark, v 1.6.1**
-- **CIS_Kubernetes V1.20 Benchmark, v1.0.0**
+- **CIS_Kubernetes V1.20 Benchmark, v1.0.1**
+- **CIS_Kubernetes V1.23 Benchmark, v1.0.1**
 - **CIS MIT Kerberos 1.10 Benchmark, v1.0.0**
-- **CIS Microsoft Edge Benchmark, v1.0.0**
+- **CIS Microsoft Edge Benchmark, v1.0.1**
 - **CIS Microsoft IIS 7 Benchmark, v1.8.0**
 - **CIS Microsoft IIS 8 Benchmark, v1.5.0**
 - **CIS Microsoft IIS 10 Benchmark, v1.1.1**
@@ -76,11 +77,10 @@ The CIS Benchmarks are tested with the prior, official CIS-CAT version at the ti
 - **CIS Microsoft Windows 10 Enterprise, v1.12.0**
 - **CIS Microsoft Windows 10 EMS Gateway, v1.0.0**
 - **CIS Microsoft Windows 11 Enterprise, v1.0.0**
-- **CIS Microsoft Windows Server 2003 Benchmark, v3.1.0**
 - **CIS Microsoft Windows Server 2008 (non-R2) Benchmark, v3.1.0**
 - **CIS Microsoft Windows Server 2008 R2 Benchmark, v3.2.0**
-- **CIS Microsoft Windows Server 2012 (non-R2) Benchmark, v2.3.0**
-- **CIS Microsoft Windows Server 2012 R2 Benchmark, v2.5.0**
+- **CIS Microsoft Windows Server 2012 (non-R2) Benchmark, v2.4.0**
+- **CIS Microsoft Windows Server 2012 R2 Benchmark, v2.6.0**
 - **CIS Microsoft Windows Server 2016 RTM (Release 1607) Benchmark, v1.4.0**
 - **CIS Microsoft Windows Server 2016 STIG Benchmark, v1.2.0**
 - **CIS Microsoft Windows Server 2019 Benchmark, v1.3.0**
@@ -96,19 +96,13 @@ The CIS Benchmarks are tested with the prior, official CIS-CAT version at the ti
     - `xccdf_org.cisecurity_value_runnin_config_file.url`: MongoDB running configuration
 - **CIS Mozilla Firefox 38 ESR Benchmark, v1.0.0**
 - **CIS NGINX Benchmark, v1.1.0**
-- **CIS Oracle MySQL Community Server 5.6 Benchmark, v2.0.0**
-	- `xccdf_org.cisecurity_value_jdbc.url`: MySQL Server connection string.
-	- `xccdf_org.cisecurity_value_repl.user`: MySQL replication user name.
-- **CIS Oracle MySQL Enterprise Edition 5.6 Benchmark, v2.0.0**
-	- `xccdf_org.cisecurity_value_jdbc.url`: MySQL Server connection string.
-	- `xccdf_org.cisecurity_value_repl.user`: MySQL replication user name.
 - **CIS Oracle MySQL Community Server 5.7 Benchmark, v2.0.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: MySQL Server connection string.
 	- `xccdf_org.cisecurity_value_repl.user`: MySQL replication user name.
 - **CIS Oracle MySQL Enterprise Edition 5.7 Benchmark, v2.0.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: MySQL Server connection string.
 	- `xccdf_org.cisecurity_value_repl.user`: MySQL replication user name.
-- **CIS Oracle MySQL Enterprise Edition 8.0 Benchmark, v1.1.0**
+- **CIS Oracle MySQL Enterprise Edition 8.0 Benchmark, v1.2.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: MySQL Server connection string.
 	- `xccdf_org.cisecurity_value_repl.user`: MySQL replication user name.
 - **CIS Oracle Database 12c Benchmark, v3.0.0**

@@ -6,21 +6,21 @@ CIS-CAT Pro Assessor Configuration Guide
 
 Introduction
 ------------
-Utilizing the CIS-CAT Pro Assessor CLI, users are capable of performing both host-based (local) assessments, as well as remote-based assessments.  In order to perform assessments of remote endpoints, certain configurations must be made.  The intent of this document is to serve as a guide for enabling systems for remote-based assessments using CIS-CAT Pro Assessor.
+CIS-CAT Pro Assessor supports host-based (local) assessments and remote-based assessments.  In order to perform assessments of remote endpoints, the target system must be configured to accept a remote connection.  The Configuration Guide will provide important information for special configurations when assessing certain target systems.
 
 System Recommendations
 ------------
 
 The host system is the machine where CIS-CAT Pro Assessor v4 resides. Most operating system can support CIS-CAT Pro Assessor v4 provided the system can run Java Runtime Environment (JRE). See below for an example server specifications.
 
-CIS-CAT Pro Assessor v4 is a Java application and requires an available Java Runtime Environment (JRE) to execute on the host system. To allow the greatest flexibility for configuring server performance, CIS recommends installing CIS-CAT Pro Assessor v4 on a host separate from hosts supporting CIS-CAT Pro Dashboard or CIS-CAT Pro Assessor v4 Service. It is possible to have multiple installations of CIS-CAT Pro Assessor on separate host systems, but each CIS-CAT Pro Assessor host system must have access to a JRE. 
+CIS-CAT Pro Assessor v4 is a Java application and requires an available Java Runtime Environment (JRE) to execute on the host system. The GUI portion of CIS-CAT does contain an embedded Java so no Java installation is needed. However, the command line options do require an installation of Java. To allow the greatest flexibility for configuring server performance, CIS recommends installing CIS-CAT Pro Assessor v4 on a host separate from hosts supporting CIS-CAT Pro Dashboard or CIS-CAT Pro Assessor v4 Service. It is possible to have multiple installations of CIS-CAT Pro Assessor on separate host systems, but each CIS-CAT Pro Assessor host system must have access to a JRE. 
 
 
 **Required**:
 
 - JRE or JDK for command line/centralized assessments
-	- If using just GUI, JRE is embedded so no additional Java needed
-	- Stable version 8 or 11 of JRE or JDK (free openJDK also supported) present on host or accessed via network share
+	- **If using just GUI, JRE is embedded so no additional Java needed**
+	- Stable version 8 or 11 (**Java 17 is NOT** supported) of JRE or JDK (free openJDK also supported) present on host or accessed via network share
 	- Newer Java builds may work in certain environments, however Technical Support will not be able to help with troubleshooting as CIS focuses on implementation of stable, non-proprietary versions
 	- Some users have experienced issues with proprietary Java versions and headless Java versions
 	- 64-bit Java recommended for faster performance
@@ -82,7 +82,7 @@ The method utilized to validate the license will be present in the assessor-cli.
 
 ### License Renewal ###
 
-The license file will expire when your SecureSuite Membership expires. Once your SecureSuite Membership renewal has been processed, your new license file bundle will be available in WorkBench. Download an updated license by following the initial license installation instructions, replacing the existing license files.
+The license file will expire when your SecureSuite Membership expires. Once your SecureSuite Membership renewal has been processed, a new license file bundle will be available in WorkBench. Download an updated license by following the initial license installation instructions, replacing the existing license files.
 
 
 Properties
@@ -171,7 +171,7 @@ The examples below provide insight into the creation of a `sessions.properties` 
 #### Microsoft Windows Sessions ####
 -----------------------------------------
 
-For example, if CCPA is installed at `C:\CIS\Assessor-CLI`, a file named `C:\CIS\Assessor-CLI\config\sessions.properties` will be searched for and loaded (if found).  If no `sessions.properties` files are found or specified, a default `local` session will be used.
+For example, if CCPA is installed at `C:\CIS\Assessor`, a file named `C:\CIS\Assessor\config\sessions.properties` will be searched for and loaded (if found).  If no `sessions.properties` files are found or specified, a default `local` session will be used.
 
 Configure a session for the local Microsoft Windows host, defining a custom "temp" folder:
 
@@ -325,7 +325,7 @@ If required by organizational policy, remote connections for Microsoft Windows e
 Follow the steps below:
 
 - Open port 445 (SMB) and 5986 (HTTPS) and configure firewall exceptions
-	- Run included PowerShell script from the Assessor bundle in \Assessor-CLI\setup\CISCAT_Pro_Assessor_v4_Firewall_SMB_WinRM.ps1. The script completes the following
+	- Run included PowerShell script from the Assessor bundle in \Assessor\setup\CISCAT_Pro_Assessor_v4_Firewall_SMB_WinRM.ps1. The script completes the following
 		- Opens port 445 (SMB) and configures firewall
 		- Opens port 5986 for HTTPS
 - HTTPS Listener established using thumbprint of a certificate for the remote system (see below)
@@ -595,10 +595,31 @@ Notable optional parameters involve ensuring JDBC connections are made via SSL:
 
 An additional interactive value is `xccdf_org.cisecurity_value_repl.user`. This is the replication user, if utilized.
 
+**MySQL 8 - Remote Assessment Requirements**
+
+As with any database assessment, CIS-CAT must either connect to the host of the database or reside on the same machine as the database.
+When connecting to a remote host where the database to be assessed resides, grant the permissions below in addition to what a root admin user (utilized in the connection string) may have.
+
+
+Grant to the `db_user` (username) used in the connection string:
+
+- Grant PROCESS
+
+		GRANT PROCESS ON *.* TO '<db_user>'@'<hostname or IP>';
+
+- Grant SELECT on mysql database
+
+		Grant SELECT on mysql.* TO '<db_user>'@'<hostname or IP>';
+
+- Grant SELECT on tables: `audit_log_filter`, `slave_master_info`, `component`, `user`
+
+		GRANT SELECT ON mysql.<table> TO '<db_user>'@'<hostname or IP>';
+
+
 **NOTES**
 
 - The default port number for MySQL is 3306
-- The full set of connection properties/optional URL parameters supported by MariaDB can be found at [https://mariadb.com/kb/en/mariadb/about-the-mariadb-java-client/](https://mariadb.com/kb/en/mariadb/about-the-mariadb-java-client/)
+- Review the full set of [connection properties/optional URL parameters](https://mariadb.com/kb/en/mariadb/about-the-mariadb-java-client/) supported by MariaDB 
 
 <a name="MongoDatabase"></a>
 **Mongo Database**
@@ -817,10 +838,10 @@ Sample configuration file for a local assessment with HTML report generation::
         </session>
     </sessions>
     <assessments quiet="false">
-        <benchmark profile="Level 1" session-ref="Kube1" xccdf="/CIS/CIS-CAT_Software/Assessor-v4.7.0/Assessor-CLI/benchmarks/CIS_Kubernetes_V1.20_Benchmark_v1.0.0-xccdf.xml"/>
+        <benchmark profile="Level 1" session-ref="Kube1" xccdf="/CIS/CIS-CAT_Software/CIS-CAT-Assessor-v4.18.0/Assessor/benchmarks/CIS_Kubernetes_V1.20_Benchmark_v1.0.0-xccdf.xml"/>
     </assessments>
     <reports html="true">
-        <reports_dir>/CIS/CIS-CAT_Software/Assessor-v4.7.0/Assessor-CLI/reports</reports_dir>
+        <reports_dir>/CIS/CIS-CAT_Software/CIS-CAT-Assessor-v4.18.0/Assessor/reports</reports_dir>
     </reports>
 	</configuration>
 
@@ -1084,7 +1105,7 @@ Example configuration file with specified profile and HTML report generation:
 
 	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 	<configuration xmlns="http://cisecurity.org/ccpa/config">
-    	<starting_dir>C:\CIS\CIS-CAT_Software\Releases\Assessor-CLI-v4.1.0\Assessor-CLI</starting_dir>
+    	<starting_dir>C:\CIS\CIS-CAT_Software\Releases\CIS-CAT-Assessor-v4.18.0\Assessor</starting_dir>
     	<vulnerability_definitions download="false"/>
     	<sessions test="false">
         	<session id="1523-MKUN">
@@ -1101,7 +1122,7 @@ Example configuration file with specified profile and HTML report generation:
         	</benchmark>
     	</assessments>
     	<reports csv="false" html="true" no-arf="true" npr="false" txt="false">
-    	    <reports_dir>C:\CIS\CIS-CAT_Software\Releases\Assessor-CLI-v4.1.0\Assessor-CLI\reports</reports_dir>
+    	    <reports_dir>C:\CIS\CIS-CAT_Software\Releases\CIS-CAT-Assessor-v4.18.0\Assessor\reports</reports_dir>
     	</reports>
 	</configuration>
 
@@ -1167,7 +1188,7 @@ Below is an example of multiple VMWare assessments. It is important to note that
 
 	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 	<configuration xmlns="http://cisecurity.org/ccpa/config">
-    <starting_dir>C:\CIS\CIS-CAT_Software\Assessor-v4.0.22\Assessor-CLI</starting_dir>
+    <starting_dir>C:\CIS\CIS-CAT_Software\CIS-CAT-Assessor-v4.18.0\Assessor</starting_dir>
     <vulnerability_definitions download="false"/>
     <sessions test="false">
         <session id="vmware1">
@@ -1180,19 +1201,19 @@ Below is an example of multiple VMWare assessments. It is important to note that
         </session>
     </sessions>
     <assessments quiet="false">
-        <benchmark profile="Level 1 (L1) - Corporate/Enterprise Environment (general use)" session-ref="vmware1" xccdf="C:\CIS\CIS-CAT_Software\Assessor-v4.0.22\Assessor-CLI\benchmarks\CIS_VMware_ESXi_6.7_Benchmark_v1.1.0-xccdf.xml">
+        <benchmark profile="Level 1 (L1) - Corporate/Enterprise Environment (general use)" session-ref="vmware1" xccdf="C:\CIS\CIS-CAT_Software\Assessor-v4.0.22\Assessor\benchmarks\CIS_VMware_ESXi_6.7_Benchmark_v1.1.0-xccdf.xml">
             <interactive_values>
                 <value id="xccdf_org.cisecurity.benchmarks_value_esxi.connection">root/password@192.168.41.60</value>
             </interactive_values>
         </benchmark>
-        <benchmark profile="Level 1 (L1) - Corporate/Enterprise Environment (general use)" session-ref="vmware2" xccdf="C:\CIS\CIS-CAT_Software\Assessor-v4.0.22\Assessor-CLI\benchmarks\CIS_VMware_ESXi_6.7_Benchmark_v1.1.0-xccdf.xml">
+        <benchmark profile="Level 1 (L1) - Corporate/Enterprise Environment (general use)" session-ref="vmware2" xccdf="C:\CIS\CIS-CAT_Software\Assessor-v4.0.22\Assessor\benchmarks\CIS_VMware_ESXi_6.7_Benchmark_v1.1.0-xccdf.xml">
             <interactive_values>
                 <value id="xccdf_org.cisecurity.benchmarks_value_esxi.connection">root/password@192.168.41.50</value>
             </interactive_values>
         </benchmark>
     </assessments>
     <reports html="true">
-        <reports_dir>C:\CIS\CIS-CAT_Software\Assessor-v4.0.22\Assessor-CLI\reports</reports_dir>
+        <reports_dir>C:\CIS\CIS-CAT_Software\Assessor-v4.0.22\Assessor\reports</reports_dir>
     </reports>
 	</configuration>
 
@@ -1269,7 +1290,7 @@ On the “Permissions” popup, grant **Change** and **Read** to the Authenticat
 
 ![](https://i.imgur.com/KiAmbP0.png)
 
-2. Unzip the CIS-CAT bundle within the **CIS** folder on the *CIS Host Server* and move the Assessor-CLI folder to the root of the **CIS** folder.
+2. Unzip the CIS-CAT bundle within the **CIS** folder on the *CIS Host Server* and move the Assessor folder to the root of the **CIS** folder.
 3. Create the following directories beneath the CIS folder on the *CIS Host Server*:
 	- Java
 	- Java64
@@ -1278,23 +1299,23 @@ On the “Permissions” popup, grant **Change** and **Read** to the Authenticat
 	- Browse to the location where Java is installed, by default Java is located at “%ProgramFiles%\Java”.
 	- Copy the 32-bit JRE that applies to the targets you will be evaluating, such as jre1.8.0_201, to the Java folder created above
 	- Copy the 64-bit JRE that applies to the targets you will be evaluating, such as jre1.8.0_201, to the Java64 folder created above
-5. Move the Assessor-CLI\misc\Windows\cis-cat-centralized.bat file or the Assessor-CLI\misc\Windows\cis-cat-centralized-ccpd.bat file to the root of the CIS folder, depending on whether you want to write the assessment reports to the *CIS Host Server* or configure the centralized script to send the assessment reports directly to a CIS-CAT Pro Dashboard (CCPD).
+5. Move the Assessor\misc\Windows\cis-cat-centralized.bat file or the Assessor\misc\Windows\cis-cat-centralized-ccpd.bat file to the root of the CIS folder, depending on whether you want to write the assessment reports to the *CIS Host Server* or configure the centralized script to send the assessment reports directly to a CIS-CAT Pro Dashboard (CCPD).
 6. Share the **CIS** folder as CIS.
 
 The resulting directory structure should be as follows:
 
-	- CIS\Assessor-CLI
-	- CIS\Assessor-CLI\benchmarks
-	- CIS\Assessor-CLI\config
-	- CIS\Assessor-CLI\lib
-	- CIS\Assessor-CLI\
-	- s
-	- CIS\Assessor-CLI\misc
-	- CIS\Assessor-CLI\reports
-	- CIS\Assessor-CLI\sce
-	- CIS\Assessor-CLI\scripts
-	- CIS\Assessor-CLI\setup
-	- CIS\Assessor-CLI\Assessor-CLI.jar
+	- CIS\Assessor
+	- CIS\Assessor\benchmarks
+	- CIS\Assessor\config
+	- CIS\Assessor\lib
+	- CIS\Assessor\license
+	- CIS\Assessor\logs
+	- CIS\Assessor\misc
+	- CIS\Assessor\reports
+	- CIS\Assessor\sce
+	- CIS\Assessor\scripts
+	- CIS\Assessor\setup
+	- CIS\Assessor\Assessor-CLI.jar
 	- CIS\cis-cat-centralized.bat or CIS\cis-cat-centralized-ccpd.bat
 	- CIS\Java
 	- CIS\Java64
@@ -1312,7 +1333,7 @@ Permissions which should be applied within the **CIS** folder on the *CIS Host S
 |---------------------------------|---------------------------------------------------|
 |CIS                              |Permissions on the shared folder                   |
 |CIS\cis-cat-centralized.bat **or** CIS\cis-cat-centralized-ccpd.bat |**Execute** to “Authenticated Users” |
-|CIS\Assessor-CLI (folder) |**List Folder Contents**, **Read**, and **Read & Execute** to "Authenticated Users" |
+|CIS\Assessor (folder) |**List Folder Contents**, **Read**, and **Read & Execute** to "Authenticated Users" |
 |CIS\Java (folder) |**Read** and **Read & Execute** to “Authenticated Users” |
 |CIS\Java64 (folder) |**Read** and **Read & Execute** to “Authenticated Users” |
 |CIS\Reports (folder) |**List Folder Contents** and **Write** to “Authenticated Users” |
@@ -1333,8 +1354,8 @@ Note that the 32-bit and 64-bit JRE paths are those installed in step 4 under th
 	SET JavaMaxMemoryMB=2048
 Indicate the maximum amount of memory CIS-CAT will allocate for execution.  The default is 2048 MB.  When executing with 32-bit versions of the JRE, this value should be set to a maximum of 1024 MB. This value may need to be lower depending on other processes running on the machine.  64-bit JRE’s may allocate as much memory as is required, limited by the available memory of machines invoking CIS-CAT.
 
-	SET CisCatPath=Assessor-CLI
-Set the CisCatPath value to the location, relative to the network share, of the installed version of CIS-CAT.  For example, the value above indicates the path to CIS-CAT is `\\NETWORK_SHARE\CIS\Assessor-CLI`.
+	SET CisCatPath=Assessor
+Set the CisCatPath value to the location, relative to the network share, of the installed version of CIS-CAT.  For example, the value above indicates the path to CIS-CAT is `\\NETWORK_SHARE\CIS\Assessor`.
 
 	SET ReportsPath=Reports
 Set the ReportsPath value to the location, relative to the network share, of the folder to which CIS-CAT reports are written.  For example, the value above indicates `\\NETWORK_SHARE\CIS\Reports` as the location to which reports are written.
@@ -1400,8 +1421,8 @@ Note that the 32-bit and 64-bit JRE paths are those installed in step 4 under th
 	SET JavaMaxMemoryMB=2048
 Indicate the maximum amount of memory CIS-CAT will allocate for execution.  The default is 2048 MB.  When executing with 32-bit versions of the JRE, this value should be set to a maximum of 1024 MB.  This value may need to be lower depending on other processes running on the machine. 64-bit JRE’s may allocate as much memory as is required, limited by the available memory of machines invoking CIS-CAT.
 
-	SET CisCatPath=Assessor-CLI
-Set the CisCatPath value to the location, relative to the network share, of the installed version of CIS-CAT.  For example, the value above indicates the path to CIS-CAT is `\\NETWORK_SHARE\CIS\Assessor-CLI`.
+	SET CisCatPath=Assessor
+Set the CisCatPath value to the location, relative to the network share, of the installed version of CIS-CAT.  For example, the value above indicates the path to CIS-CAT is `\\NETWORK_SHARE\CIS\Assessor`.
 
 	SET CCPDUrl=http://[YOUR-SERVER]/CCPD/api/reports/upload
 Set the URL for the CIS-CAT Pro Dashboard API to which CIS-CAT assessment reports will be uploaded.  The resource for CIS-CAT Pro Dashboard upload is **ALWAYS** mapped to the `/api/reports/upload` location, so the path to the application is all that should be modified here.  For example: http://applications.example.org/CCPD/api/reports/upload.
@@ -1481,15 +1502,15 @@ The setup for centralized scanning begins with creating a folder on the network 
 1. Create a `/cis` root folder on the network file share location
 2. Copy the latest CIS-CAT Pro Assessor v4 bundle to `/cis` and extract. The structure should look like:
 
-	`/cis/Assessor-CLI`
+	`/cis/Assessor`
 
 2. Decide where assessment reports should output to and select the correct supporting centralized script.
-3. Locate the required scripts in the `/cis/Assessor-CLI/misc/Unix-Linux` folder of the CIS-CAT Pro Assessor v4 bundle.
+3. Locate the required scripts in the `/cis/Assessor/misc/Unix-Linux` folder of the CIS-CAT Pro Assessor v4 bundle.
     * cis-cat-centralized.sh **OR** cis-cat-centralized-ccpd.sh
     * detect-os-variant.sh
     * make-jre-directories.sh
     * map-to-benchmark.sh
-3. Copy the scripts from `/cis/Assessor-CLI/misc/Unix-Linux` to the root folder, `/cis`.
+3. Copy the scripts from `/cis/Assessor/misc/Unix-Linux` to the root folder, `/cis`.
 4. Create JRE sub-folders by executing one of the following commands in `/cis` for the selected script
 	
 	
@@ -1504,7 +1525,7 @@ The setup for centralized scanning begins with creating a folder on the network 
 	/cis
  
 	/cis
-	/cis/Assessor-CLI
+	/cis/Assessor
 	/cis/cis-cat-centralized.sh                                       <-- Copied from misc/Unix-Linux
 	/cis/detect-os-variant.sh                                         <-- Copied from misc/Unix-Linux
 	/cis/make-jre-directories.sh                                      <-- Copied from misc/Unix-Linux
@@ -1586,12 +1607,12 @@ You can change PROFILE1="Level 1 - Server" to PROFILE1="Level 1 - Workstation"
  
 Update the below values to align with the *CIS Host Server* folder structure created as it will be accessed from each server.
  
-	CISCAT_DIR=/cis/Assessor-CLI
+	CISCAT_DIR=/cis/Assessor
 	JRE_BASE=/network/cis/jres
  
 For example, if the network location is mounted to `/network` on each server, the values should be:
  
-	CISCAT_DIR=/network/cis/Assessor-CLI
+	CISCAT_DIR=/network/cis/Assessor
 	JRE_BASE=/network/cis/jres
 
 <a name="defineReportOutput"></a> 
@@ -1622,13 +1643,13 @@ To generate the token, please follow the instructions in [Establish authenticati
  
 Define the network location where the configuration assessment report output should be written to.
  
-	REPORTS_DIR=/cis/Assessor-CLI/reports
+	REPORTS_DIR=/cis/Assessor/reports
 	
  
  For example, if the network location is mounted to `/network` on each server, the values should be:
  
 	
-	REPORTS_DIR=/network/cis/Assessor-CLI/reports
+	REPORTS_DIR=/network/cis/Assessor/reports
 	
 
 
