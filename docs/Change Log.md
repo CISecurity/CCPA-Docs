@@ -7,6 +7,31 @@ CIS-CAT Pro Assessor v4
 ---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
+## CIS-CAT Pro Assessor, v4.19.0 ##
+#### Release Date: Jun 28, 2022 ####
+
+
+### Benchmark Coverage ###
+
+- Microsoft Windows 10 EMS Gateway v1.1.0
+- Microsoft Windows Server 2008 R2 v3.3.0
+- Oracle Cloud Infrastructure Container Engine for Kubernetes(OKE) Benchmark v1.1.0
+- RedHat OpenShift Container Platform Benchmark v1.2.0
+
+
+### Security ###
+- None
+
+### Application ###
+- Assessment errors causing an exit to the assessment process will now show the exit code as well as the description on the console and logs.
+- Centralized assessment errors resolved by removing End of life (EOL) CIS Benchmarks from the Centralized Windows and Linux scripts. 
+- The Linux centralized scripts now correctly identify SUSE 15.
+- The Linux centralized scripts have been updated to resolve an incorrect reference issue for Oracle Linux.
+- To assist in setting remediation priority, HTML reports have been enhanced with a filter for configuration assessment results for recommendations mapped to CIS Critical Security Controls V8 Implementation Group 1 (IG-1). See our upcoming blog to read about how the latest report feature.
+
+### Documentation ###
+- None
+
 ## CIS-CAT Pro Assessor, v4.18.0 ##
 #### Release Date: May 26, 2022 ####
 

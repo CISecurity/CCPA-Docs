@@ -75,10 +75,10 @@ The CIS Benchmarks are tested with the prior, official CIS-CAT version at the ti
 - **CIS Microsoft SQL Server 2019 Benchmark, v1.2.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: SQL Server connection string.
 - **CIS Microsoft Windows 10 Enterprise, v1.12.0**
-- **CIS Microsoft Windows 10 EMS Gateway, v1.0.0**
+- **CIS Microsoft Windows 10 EMS Gateway, v1.1.0**
 - **CIS Microsoft Windows 11 Enterprise, v1.0.0**
 - **CIS Microsoft Windows Server 2008 (non-R2) Benchmark, v3.1.0**
-- **CIS Microsoft Windows Server 2008 R2 Benchmark, v3.2.0**
+- **CIS Microsoft Windows Server 2008 R2 Benchmark, v3.3.0**
 - **CIS Microsoft Windows Server 2012 (non-R2) Benchmark, v2.4.0**
 - **CIS Microsoft Windows Server 2012 R2 Benchmark, v2.6.0**
 - **CIS Microsoft Windows Server 2016 RTM (Release 1607) Benchmark, v1.4.0**
@@ -96,6 +96,7 @@ The CIS Benchmarks are tested with the prior, official CIS-CAT version at the ti
     - `xccdf_org.cisecurity_value_runnin_config_file.url`: MongoDB running configuration
 - **CIS Mozilla Firefox 38 ESR Benchmark, v1.0.0**
 - **CIS NGINX Benchmark, v1.1.0**
+- **Oracle Cloud Infrastructure Container Engine for Kubernetes(OKE) Benchmark v1.1.0**
 - **CIS Oracle MySQL Community Server 5.7 Benchmark, v2.0.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: MySQL Server connection string.
 	- `xccdf_org.cisecurity_value_repl.user`: MySQL replication user name.
@@ -138,7 +139,7 @@ The CIS Benchmarks are tested with the prior, official CIS-CAT version at the ti
 - **CIS Red Hat Enterprise Linux 7 STIG Benchmark, v2.0.0**
 - **CIS Red Hat Enterprise Linux 8 Benchmark, v2.0.0**
 - **CIS Red Hat Enterprise Linux 7 STIG Benchmark, v1.0.0**
-- **CIS Red Hat OpenShift Container Platform v4 Benchmark, v1.1.0**
+- **CIS Red Hat OpenShift Container Platform Benchmark, v1.2.0**
 - **CIS Rocky Linux 8 Benchmark, v1.0.0**
 - **CIS SUSE Linux Enterprise 12 Benchmark, v3.1.0**
 - **CIS SUSE Linux Enterprise 15 Benchmark, v1.1.1**
