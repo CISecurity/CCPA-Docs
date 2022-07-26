@@ -7,6 +7,28 @@ CIS-CAT Pro Assessor v4
 ---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
+## CIS-CAT Pro Assessor, v4.20.0 ##
+#### Release Date: July 26, 2022 ####
+
+
+### Benchmark Coverage ###
+- Apple macOS 10.15 Catalina v2.1.0
+- Apple macOS 11.0 Big Sur v2.1.0
+- Apple macOS 12.0 Monterey v1.1.0
+- Microsoft Windows 10 Stand-alone Benchmark v1.0.0
+
+The following CIS Benchmarks have moved to end of life and are no longer officially supported. See the **[Coverage Guide](https://ccpa-docs.readthedocs.io/en/latest/Coverage%20Guide/)** for more information on CIS Benchmarks that have reached end of life.
+- Oracle Database 12c
+
+### Security ###
+- Resolved security vulnerabilities present in embedded, third party dependencies. See our **[knowledge base article](https://cisecurity.atlassian.net/servicedesk/customer/portal/15/article/2658959368)** for more information.
+
+### Application ###
+- None
+
+### Documentation ###
+- None
+
 ## CIS-CAT Pro Assessor, v4.19.0 ##
 #### Release Date: Jun 28, 2022 ####
 

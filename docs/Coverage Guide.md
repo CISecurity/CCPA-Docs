@@ -29,9 +29,9 @@ The CIS Benchmarks are tested with the prior, official CIS-CAT version at the ti
 - **CIS Amazon Linux 2 Benchmark, v2.0.0**
 - **CIS Amazon Linux 2 STIG Benchmark, v2.0.0**
 - **CIS Apache Tomcat 9 Benchmark, v1.1.0**
-- **CIS Apple macOS 10.15 Benchmark, v2.0.0**
-- **CIS Apple macOS 11.0 Benchmark, v2.0.0**
-- **CIS Apple macOS 12.0 Benchmark, v1.0.0**
+- **CIS Apple macOS 10.15 Benchmark, v2.1.0**
+- **CIS Apple macOS 11.0 Benchmark, v2.1.0**
+- **CIS Apple macOS 12.0 Benchmark, v1.1.0**
 - **CIS Azure Kubernetes Service (AKS) v1.1.0**
 - **CIS CentOS Linux 6 Benchmark, v3.0.0**
 - **CIS CentOS Linux 7 Benchmark, v3.1.2**
@@ -76,6 +76,7 @@ The CIS Benchmarks are tested with the prior, official CIS-CAT version at the ti
 	- `xccdf_org.cisecurity_value_jdbc.url`: SQL Server connection string.
 - **CIS Microsoft Windows 10 Enterprise, v1.12.0**
 - **CIS Microsoft Windows 10 EMS Gateway, v1.1.0**
+- **CIS Microsoft Windows 10 Stand-alone Benchmark, v1.0.0**
 - **CIS Microsoft Windows 11 Enterprise, v1.0.0**
 - **CIS Microsoft Windows Server 2008 (non-R2) Benchmark, v3.1.0**
 - **CIS Microsoft Windows Server 2008 R2 Benchmark, v3.3.0**
@@ -106,9 +107,6 @@ The CIS Benchmarks are tested with the prior, official CIS-CAT version at the ti
 - **CIS Oracle MySQL Enterprise Edition 8.0 Benchmark, v1.2.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: MySQL Server connection string.
 	- `xccdf_org.cisecurity_value_repl.user`: MySQL replication user name.
-- **CIS Oracle Database 12c Benchmark, v3.0.0**
-	- `xccdf_org.cisecurity_value_jdbc.url`: Oracle Database connection string.
-	- `xccdf_org.cisecurity_value_listener.ora`: Path to the listener.ora file
 - **CIS Oracle Database 18c Benchmark, v1.0.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: Oracle Database connection string.
 	- `xccdf_org.cisecurity_value_listener.ora`: Path to the listener.ora file
