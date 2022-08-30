@@ -76,7 +76,7 @@ The CIS Benchmarks are tested with the prior, official CIS-CAT version at the ti
 	- `xccdf_org.cisecurity_value_jdbc.url`: SQL Server connection string.
 - **CIS Microsoft Windows 10 Enterprise, v1.12.0**
 - **CIS Microsoft Windows 10 EMS Gateway, v1.1.0**
-- **CIS Microsoft Windows 10 Stand-alone Benchmark, v1.0.0**
+- **CIS Microsoft Windows 10 Stand-alone Benchmark, v1.0.1**
 - **CIS Microsoft Windows 11 Enterprise, v1.0.0**
 - **CIS Microsoft Windows Server 2008 (non-R2) Benchmark, v3.1.0**
 - **CIS Microsoft Windows Server 2008 R2 Benchmark, v3.3.0**
@@ -146,6 +146,7 @@ The CIS Benchmarks are tested with the prior, official CIS-CAT version at the ti
 - **CIS Ubuntu Linux 18.04 LTS Benchmark, v2.1.0**
 - **CIS Ubuntu Linux 20.04 LTS Benchmark, v1.1.0**
 - **CIS Ubuntu Linux 20.04 LTS STIG Benchmark, v1.0.0**
+- **CIS Ubuntu Linux 22.04 LTS Benchmark, v1.0.0**
 - **CIS VMware ESXi 6.7 v1.2.0**
 	- `xccdf_org.cisecurity.benchmarks_value_esxi.connection`: ESXi host connection string
 - **CIS VMware ESXi 7.0 v1.1.0**

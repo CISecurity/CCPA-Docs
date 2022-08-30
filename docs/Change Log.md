@@ -7,6 +7,26 @@ CIS-CAT Pro Assessor v4
 ---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
+## CIS-CAT Pro Assessor, v4.21.0 ##
+#### Release Date: Aug. 30, 2022 ####
+
+
+### Benchmark Coverage ###
+- Microsoft Windows 10 Stand-alone v1.0.1
+- Ubuntu Linux 22.04 LTS v1.0.0
+
+
+### Security ###
+- Resolved security vulnerability present in embedded, third party dependency for postgresql.jar. This library has moved from 42.3.5 to 42.4.1.
+
+### Application ###
+- Resolved an issue where Cisco IOS reports showed a null prefix.
+- Updated automated configuration assessment functions to support additional automation for Microsoft Windows 10 Stand-alone Benchmark (non-domain joined).
+
+### Documentation ###
+- None
+
+
 ## CIS-CAT Pro Assessor, v4.20.0 ##
 #### Release Date: July 26, 2022 ####
 
