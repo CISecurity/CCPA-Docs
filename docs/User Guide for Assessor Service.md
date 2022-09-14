@@ -3,6 +3,15 @@ CIS-CAT Pro Assessor Service User Guide
 
 ![](http://i.imgur.com/5yZfZi5.jpg)
 
+End of Life and Final Release
+------------------
+
+The final release of the standalone application of CIS-CAT Pro Assessor v4 Service will be version 1.22.0 and will release in September 2022. This version will be available for download from the CIS WorkBench until December 31, 2022. Previous versions of this tool will no longer be distributed. Please read our [knowledge base article](https://cisecurity.atlassian.net/l/cp/UfvH2cpK) to learn more. Effective immediately, The Center for Internet Security’s Support Team will assist Members with questions regarding the availability of CIS-CAT Pro Assessor v4 Service, but will no longer offer support on the function of the tool. The tool will no longer be produced as a separate application as functionality will be embedded in CIS-CAT Pro Dashboard v3.x.
+
+User experience and fast onboarding is a priority for CIS and CIS-CAT; therefore, CIS made the decision to integrate the CIS-CAT Pro Assessor v4 service functions as a standard feature within CIS-CAT Pro Dashboard, effective with the release of CIS-CAT Pro Dashboard version 3.0.0 planned for Q4 2022. There will be no changes in how the assessment function works when it becomes available in Dashboard v3.0.0, only the implementation and maintenance will be easier.
+
+While some organizations found CIS-CAT Pro Assessor v4 Service easy to integrate as a separate application in their environment, the majority of Members were often confused with its purpose. It was often confused with our CIS-CAT Pro Assessor v4, our full command line and GUI configuration assessment tool. Additionally, many Members experienced challenges with installation.
+
 
 Introduction
 ------------
