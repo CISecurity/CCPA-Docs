@@ -7,6 +7,29 @@ CIS-CAT Pro Assessor v4
 ---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
+## CIS-CAT Pro Assessor, v4.22.0 ##
+#### Release Date: Sep. 29, 2022 ####
+
+
+### Benchmark Coverage ###
+- Apache Tomcat 9 v1.2.0
+- Apache Tomcat 10 v1.0.0
+- Azure Compute Microsoft Windows Server 2019 v1.0.0
+- Debian Linux 11 v1.0.0
+- Kubernetes 1.24 v1.0.0
+- Microsoft Edge v1.1.0
+
+### Security ###
+- Resolved security vulnerabilities present in embedded, third party dependencies. Please see the related [knowledge base article](https://cisecurity.atlassian.net/l/cp/tuwKj3XB) for more information.
+
+### Application ###
+- Corrected an issue where the assessed Linux system’s IP did not show correctly on CIS-CAT output reports.
+- Configuration assessment logging information has been enhanced for Oracle Databases.
+- Resolved ‘unknown’ results for Debian 11 configuration assessment results.
+
+### Documentation ###
+- The instructions for Assessor V4 Service have been removed and included in the final release of the standalone application of CIS-CAT Pro Assessor v4 Service version 1.22.0. CIS will no longer offer support for this standalone application. Please read our [knowledge base article](https://cisecurity.atlassian.net/l/cp/UfvH2cpK) to learn more. This remote assessment functionality will be embedded as a standard function within CIS-CAT Pro Dashboard v3.0.0, available in Q4 2022.
+
 ## CIS-CAT Pro Assessor, v4.21.0 ##
 #### Release Date: Aug. 30, 2022 ####
 

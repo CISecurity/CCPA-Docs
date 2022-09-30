@@ -28,10 +28,12 @@ The CIS Benchmarks are tested with the prior, official CIS-CAT version at the ti
 - **CIS Amazon Linux Benchmark, v2.0.0**
 - **CIS Amazon Linux 2 Benchmark, v2.0.0**
 - **CIS Amazon Linux 2 STIG Benchmark, v2.0.0**
-- **CIS Apache Tomcat 9 Benchmark, v1.1.0**
+- **CIS Apache Tomcat 9 Benchmark, v1.2.0**
+- **CIS Apache Tomcat 9 Benchmark, v1.0.0**
 - **CIS Apple macOS 10.15 Benchmark, v2.1.0**
 - **CIS Apple macOS 11.0 Benchmark, v2.1.0**
 - **CIS Apple macOS 12.0 Benchmark, v1.1.0**
+- **CIS Azure Compute Microsoft Windows Server 2019 v1.0.0**
 - **CIS Azure Kubernetes Service (AKS) v1.1.0**
 - **CIS CentOS Linux 6 Benchmark, v3.0.0**
 - **CIS CentOS Linux 7 Benchmark, v3.1.2**
@@ -41,16 +43,17 @@ The CIS Benchmarks are tested with the prior, official CIS-CAT version at the ti
 - **CIS Debian Family Linux, v1.0.0**
 - **CIS Debian Linux 9 Benchmark, v1.0.1**
 - **CIS Debian Linux 10 Benchmark, v1.0.0**
+- **CIS Debian Linux 11 v1.0.0**
 - **CIS Fedora 19 Family Linux, v1.0.0**
 - **CIS Fedora 28 Family Linux, v2.0.1**
 		- NOTE:  Requires the "ignore.platform.mismatch" property be set to "true" in the Assessor's properties file.
 - **CIS Google Chrome Benchmark, v2.1.0**
 - **CIS Google Kubernetes Engine (GKE) Benchmark, v1.2.0**
-- **CIS Kubernetes Benchmark, v 1.6.1**
 - **CIS_Kubernetes V1.20 Benchmark, v1.0.1**
 - **CIS_Kubernetes V1.23 Benchmark, v1.0.1**
+- **CIS Kubernetes 1.24 v1.0.0**
 - **CIS MIT Kerberos 1.10 Benchmark, v1.0.0**
-- **CIS Microsoft Edge Benchmark, v1.0.1**
+- **CIS Microsoft Edge Benchmark, v1.1.0**
 - **CIS Microsoft IIS 7 Benchmark, v1.8.0**
 - **CIS Microsoft IIS 8 Benchmark, v1.5.0**
 - **CIS Microsoft IIS 10 Benchmark, v1.1.1**
