@@ -7,6 +7,38 @@ CIS-CAT Pro Assessor v4
 ---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
+## CIS-CAT Pro Assessor, v4.23.0 ##
+#### Release Date: Oct. 28, 2022 ####
+
+
+### Benchmark Coverage ###
+- Azure Kubernetes Service (AKS) Benchmark v1.2.0
+- Google Kubernetes Engine (GKE) Benchmark  V1.3.0
+
+
+### Security ###
+- Resolved security vulnerability present in embedded, third party dependency for jackson-databind. This library has moved to jackson-databind-2.13.4.jar.
+
+### Application ###
+- GUI: Set default selections in the GUI via the assessor-cli.properties file for:
+	- Report output formats (HTML, csv, txt, json,xml)
+	- Report output locations (share drives)
+	- Report posting location for CIS-CAT Pro Dashboard result importing
+- GUI: Automatic operating system detection and CIS Benchmark selection for Microsoft Windows
+	- Supports local assessments only from the GUI
+	- Supports Microsoft Windows:
+		- 10 Enterprise
+		- Server 2012r2
+		- Server 2012 
+		- Server 2019
+		- Server 2022
+
+### Documentation ###
+- Quick Start Guide now available for frequent support topics
+- [Configuration Guide](https://ccpa-docs.readthedocs.io/en/latest/Configuration%20Guide/#properties) updated for Properties section for setting default GUI report and report output options.
+- [User Guide](https://ccpa-docs.readthedocs.io/en/latest/User%20Guide%20-%20Assessor/#graphical-user-interface-gui) updated on setting default report options in the GUI.
+
+
 ## CIS-CAT Pro Assessor, v4.22.0 ##
 #### Release Date: Sep. 30, 2022 ####
 

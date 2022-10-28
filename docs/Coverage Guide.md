@@ -34,7 +34,7 @@ The CIS Benchmarks are tested with the prior, official CIS-CAT version at the ti
 - **CIS Apple macOS 11.0 Benchmark, v2.1.0**
 - **CIS Apple macOS 12.0 Benchmark, v1.1.0**
 - **CIS Azure Compute Microsoft Windows Server 2019 v1.0.0**
-- **CIS Azure Kubernetes Service (AKS) v1.1.0**
+- **CIS Azure Kubernetes Service (AKS) v1.2.0**
 - **CIS CentOS Linux 6 Benchmark, v3.0.0**
 - **CIS CentOS Linux 7 Benchmark, v3.1.2**
 - **CIS Cisco IOS 15 Benchmark, v4.1.1**
@@ -48,7 +48,7 @@ The CIS Benchmarks are tested with the prior, official CIS-CAT version at the ti
 - **CIS Fedora 28 Family Linux, v2.0.1**
 		- NOTE:  Requires the "ignore.platform.mismatch" property be set to "true" in the Assessor's properties file.
 - **CIS Google Chrome Benchmark, v2.1.0**
-- **CIS Google Kubernetes Engine (GKE) Benchmark, v1.2.0**
+- **CIS Google Kubernetes Engine (GKE) Benchmark, v1.3.0**
 - **CIS_Kubernetes V1.20 Benchmark, v1.0.1**
 - **CIS_Kubernetes V1.23 Benchmark, v1.0.1**
 - **CIS Kubernetes 1.24 v1.0.0**
@@ -450,14 +450,4 @@ CIS-CAT Pro Assessor determines the execution environment based on the file exte
 | .vbs             | VBScript                  ||
 
 
-CIS Embedded Check Language (ECL)
----------------------------------
-CIS-CAT Pro Assessor contains minimal implementation of CIS' proprietary Embedded Check Language (ECL).  A subset of the total available functionality has been developed, in order to support both local and remote assessment of Apple OSX benchmarks.
 
-The following ECL constructs have been implemented:
-
-- File Content
-- Shell Command
-- Platform
-
-Note that further ECL implementation is tentative and may not be included in future releases.

@@ -18,9 +18,9 @@ Endpoints to be assessed must be configured appropriately to allow for remote ac
 See the [CIS-CAT Pro Assessor Coverage Guide](./Coverage%20Guide) for the most up-to-date information regarding platform and application coverage.
 
 ## Graphical User Interface (GUI) #
-CIS-CAT Assessor Pro and Lite versions 4.1.0+ includes a graphical user interface (GUI) as part of the downloaded bundle. The GUI is compatible with a Microsoft Windows operating system. Open the application by running the Assessor-GUI.exe. The GUI provides a method to execute a configuration assessment in an easy, quick, and simple setup process. The interface offers a simple workflow for the basic, local system configuration scan as well as advanced workflows where multiple combinations of remote and local scanning can be performed.
+CIS-CAT Assessor Pro and Lite versions include a graphical user interface (GUI) as part of the downloaded bundle. The GUI is compatible with a Microsoft Windows operating system. Open the application by running the Assessor-GUI.exe. The GUI provides a method to execute a configuration assessment in an easy, quick, and simple setup process. The interface offers a simple workflow for the basic, local system configuration scan as well as advanced workflows where multiple combinations of remote and local scanning can be performed.
 
-The size of the downloaded application has increased from approximately 100MB to 175MB. If an organization's assessment workflows do not require use of a GUI and the additional space is a concern, it is safe to delete the executable file after downloading.
+The size of the downloaded application is approximately 175MB. If an organization's assessment workflows do not require use of a GUI and the additional space is a concern, it is safe to delete the executable file after downloading.
 
 When using the GUI, there's no need to setup additional software components (no Java Runtime Environment (JRE) is needed. Command line and centralized assessment processes continue to require a suitable JRE.
 
@@ -35,6 +35,15 @@ The Assessor v4 GUI is primarily designed to work with official CIS Benchmarks. 
 The basic workflow option accommodates a local system scan only. 
 
 ![](img/GUI_Workflow.png)
+
+#### Automatic CIS Benchmark Selection 
+
+Version v4.23.0 offers an option for a local assessment to detect the operating system and automatically select the compatible CIS Benchmark for the detected operating system. By default, the automatic CIS Benchmark selection will execute when running the GUI. See the [properties section in the Configuration Guide](https://ccpa-docs.readthedocs.io/en/latest/Configuration%20Guide/#properties) for how to modify this property. The automatic CIS Benchmark selection works with the following Microsoft Windows operating systems:
+	- 10 Enterprise
+	- Server 2012r2
+	- Server 2012
+	- Server 2019
+	- Server 2022
 
 #### Add a benchmark 
 
@@ -77,7 +86,9 @@ When utilizing the Advanced workflow and selecting to remotely scan a target for
 
 #### Assessment Options 
 
-Select reporting options in this screen. CIS-CAT Lite is restricted to producing only HTML.
+Select reporting options in this screen. CIS-CAT Lite is restricted to rendering only HTML.
+
+Reporting output option defaults can be set in the [properties file.](https://ccpa-docs.readthedocs.io/en/latest/Configuration%20Guide/#properties) The assessor-cli.properties file is located in the Assessor-CLI\config folder. Pre-set the GUI outputs to the available formats of HTML, csv, txt or json. Set default share file locations or CIS-CAT Pro Dashboard URL for where the results should be sent to. When the auto operating system detection is set to true (on), it is also possible to pre-set specific share file locations based on the detected operating system where report results can be sent to.
 
 
 ![](img/GUI_AssessmentOptions.png)
