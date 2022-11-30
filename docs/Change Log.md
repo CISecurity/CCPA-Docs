@@ -7,6 +7,39 @@ CIS-CAT Pro Assessor v4
 ---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
+## CIS-CAT Pro Assessor, v4.24.0 ##
+#### Release Date: Nov. 30, 2022 ####
+
+
+### Benchmark Coverage ###
+
+- Amazon Elastic Kubernetes Service (EKS) v1.2.0
+- Apple macOS 10.15 Catalina v3.0.0
+- Apple macOS 11 Big Sur v3.0.0
+- Apple macOS 12 Monterey v2.0.0
+- Apple macOS 13 Ventura v1.0.0
+- Microsoft Intune for Windows 10 v1.1.0
+- Microsoft Windows 11 Standalone v1.0.0
+- Red Hat Enterprise Linux 9 v1.0.0
+
+### Security ###
+- An issue has been resolved where some security information for Linux assessments was exposed in assessment evidence text within the HTML and the *ARF.XML formatted configuration assessment output.
+- Resolved security vulnerability present in embedded, third party dependency for postgresql-42.4.1.jar . This library has moved to postgresql-42.5.1.jar.
+
+### Application ###
+- Assessor functions ( -vdd, -od, -cfg) to support vulnerability assessment have been removed. CIS-CAT Pro Assessor now exclusively performs configuration assessments primarily for CIS Benchmarks with automated assessment content. Please see our [knowledge base article](https://cisecurity.atlassian.net/l/cp/CLRHc4H4) for more information.
+- CIS-CAT releases designed for Microsoft Windows deployment that also include GUI deploy with an embedded Java Runtime Environment (JRE) to support GUI and command line (CLI) activities. A host-installed JRE is no longer required in this instance. Linux host installation still require a JRE.
+- The GUI software version has been upgraded to the latest available version.
+- GUI: Automatic operating system detection and CIS Benchmark selection for Microsoft Windows Server 2016 local assessments
+- An issue has been corrected for some Linux configuration assessments improving assessment results for RHEL 8 and 9, Debian 11, Ubuntu 22.04, CentOS 8, Oracle 8, Rocky 8, and Alma 8.
+- New options and interface for download of CIS-CAT from [CIS WorkBench](https://workbench.cisecurity.org/files). See [Configuration Guide](https://ccpa-docs.readthedocs.io/en/latest/Configuration%20Guide/) with new section titled Obtain CIS-CAT Pro Assessor.
+
+### Documentation ###
+- Updated [Coverage Guide](https://ccpa-docs.readthedocs.io/en/latest/Coverage%20Guide/) to remove “Platform Coverage for Vulnerability Assessments”.  Updated [User Guide Assessor](https://ccpa-docs.readthedocs.io/en/latest/User%20Guide%20-%20Assessor/) to remove instructions for performing vulnerability assessments. CIS-CAT Pro Assessor now exclusively performs configuration assessments primarily for CIS Benchmarks with automated assessment content.
+- Configuration Guide updated for [Properties](https://ccpa-docs.readthedocs.io/en/latest/Configuration%20Guide/#properties) section for setting default GUI report and report output options, adding support Windows 2016
+- [User Guide](https://ccpa-docs.readthedocs.io/en/latest/User%20Guide%20-%20Assessor/#graphical-user-interface-gui) updated to include Microsoft Windows Server 2016 in Benchmark auto detection.
+- Updated [Configuration Guide](https://ccpa-docs.readthedocs.io/en/latest/Configuration%20Guide/) with new section titled `Obtain CIS-CAT Pro Assessor` on options to download CIS-CAT from CIS WorkBench. CIS now offers “build your own” options based on operating system and interface type.
+
 ## CIS-CAT Pro Assessor, v4.23.0 ##
 #### Release Date: Oct. 28, 2022 ####
 

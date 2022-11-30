@@ -1,28 +1,44 @@
-CIS-CAT Pro Assessor Configuration Guide
-========================================
+**CIS-CAT Pro Assessor Configuration Guide**
+
 
 ![](http://i.imgur.com/5yZfZi5.jpg)
 
+CIS-CAT Pro is a configuration assessment tool. It supports host-based (local) assessments and remote-based assessments.  In order to perform assessments of remote endpoints, the target system must be configured to accept a remote connection.  The Configuration Guide will provide important information for special configurations when assessing certain target systems.
 
-Introduction
-------------
-CIS-CAT Pro Assessor supports host-based (local) assessments and remote-based assessments.  In order to perform assessments of remote endpoints, the target system must be configured to accept a remote connection.  The Configuration Guide will provide important information for special configurations when assessing certain target systems.
+## Obtain CIS-CAT Pro Assessor ##
+CIS-CAT Pro Assessor is available to CIS SecureSuite Members. To learn more about becoming a CIS SecureSuite Member, visit our [website](https://www.cisecurity.org/). As a Member, organizations may navigate to [CIS WorkBench](https://workbench.cisecurity.org/dashboard) to obtain the CIS-CAT tools. 
+
+Once logged into to CIS WorkBench, navigate to `Downloads` and select the button `Download CIS-CAT Pro` at the top of the page. 
+
+![](img/DownloadPage.png)
+
+Select the operating system that will host CIS-CAT Pro Assessor and the preferred interface.
+
+![](img/DownloadOptions.png)
+
+There are 3 possible download bundles:
+
+| Operating System         | Interface Type   |   Requires Host Installed JRE|   Description |   Downloaded File Name Example|
+| -----------------------| ---------- | ------------- | ------------- | ------------- |
+| Microsoft Windows | with GUI | Yes | Includes a graphical interface and supports command line (CLI) activities. Embedded java 8 runtime environment (JRE) included and utilized for all Microsoft Windows assessments. Currently contains Linux shell scripts as well as Windows batch files. CIS plans to modify contents in future builds to be entirely OS specific. | CIS-CAT-Assessor-windows-GUI-jre-v4.24.0.zip |
+| Microsoft Windows | without GUI | No | Supports command line (CLI) activities, no graphical interface. Currently contains Linux shell scripts as well as Windows batch files. CIS plans to modify contents in future builds to be entirely OS specific. Requires an installed JRE on the CIS-CAT host. | CIS-CAT-Assessor-windows-v4.24.0 |
+| Linux / Mac | without GUI | No | Designed for Linux and includes only shell scripts for tool operation on Linux only. Requires an installed JRE on the CIS-CAT host. | CIS-CAT-Assessor-linux-v4.24.0 |
 
 System Recommendations
 ------------
 
-The host system is the machine where CIS-CAT Pro Assessor v4 resides. Most operating system can support CIS-CAT Pro Assessor v4 provided the system can run Java Runtime Environment (JRE). See below for an example server specifications.
+The host system is the machine where CIS-CAT Pro Assessor v4 resides. Most operating system can support operations of CIS-CAT Pro Assessor. The application requires a Java Runtime Environment (JRE) to run. Some builds of CIS-CAT now include an embedded JRE. The OS and tool components selected on download will determine whether an installed JRE is necessary for the host machine of CIS-CAT. See the detailed chart above in `Obtain CIS-CAT Pro`.
 
-CIS-CAT Pro Assessor v4 is a Java application and requires an available Java Runtime Environment (JRE) to execute on the host system. The GUI portion of CIS-CAT does contain an embedded Java so no Java installation is needed. However, the command line options do require an installation of Java. To allow the greatest flexibility for configuring server performance, CIS recommends installing CIS-CAT Pro Assessor v4 on a host separate from hosts supporting CIS-CAT Pro Dashboard or CIS-CAT Pro Assessor v4 Service. It is possible to have multiple installations of CIS-CAT Pro Assessor on separate host systems, but each CIS-CAT Pro Assessor host system must have access to a JRE. 
+To allow the greatest flexibility for configuring server performance, CIS recommends installing CIS-CAT Pro Assessor v4 on a host separate from hosts supporting CIS-CAT Pro Dashboard. It is possible to have multiple installations of CIS-CAT Pro Assessor on separate host systems, but each CIS-CAT Pro Assessor host system must have access to a JRE. 
 
 
 **Required**:
 
-- JRE or JDK for command line/centralized assessments
-	- **If using just GUI, JRE is embedded so no additional Java needed**
+- JRE or JDK installed on CIS-CAT host machine or CIS-CAT bundle includes embedded Java
+	- **If using GUI, JRE is embedded. Host installed Java NOT needed**
 	- Stable version 8 or 11 (**Java 17 is NOT** supported) of JRE or JDK (free openJDK also supported) present on host or accessed via network share
-	- Newer Java builds may work in certain environments, however Technical Support will not be able to help with troubleshooting as CIS focuses on implementation of stable, non-proprietary versions
-	- Some users have experienced issues with proprietary Java versions and headless Java versions
+	- Non-stable or proprietary Java builds may work in certain environments, however CIS Technical Support cannot assist troubleshooting issues
+	- Some Members have experienced issues with proprietary Java versions and headless Java versions
 	- 64-bit Java recommended for faster performance
 	- Java versions 9+ will receive “WARNING: An illegal reflective access operation has occurred”. This can be ignored and will not halt the assessment.
 	- OpenJDK (free and open-source) implementations are supported. We have found this [website](https://adoptopenjdk.net/) easy to navigate. The official source is [OpenJDK](https://openjdk.java.net).
@@ -38,25 +54,10 @@ Depending on your organization's use of CIS-CAT Pro Assessor, the actual server 
 - 4 GB of RAM
 
 
-## Deployment ##
-CIS-CAT Pro Assessor v4 requires only a Java Runtime Environment (JRE) at or above version 1.8, in order to execute.  Navigate to CIS WorkBench to [download the latest version.](https://workbench.cisecurity.org/files) Extract the bundle to a location where use of admin or elevated privileges can be utilized to execute command line options or scripts.
-
-There are many ways to implement routine scanning with CIS-CAT Pro. The selected method of scanning will determine where Java needs to be installed.
-
-JRE is required to be installed on the CIS-CAT Pro host system when scanning via:
-
-- [Remote scanning](https://ccpa-docs.readthedocs.io/en/latest/Configuration%20Guide/#sessions) (a system outside of a domain and not physically present on the CIS-CAT Pro system)
-- Local scanning (the system where CIS-CAT Pro is physically present)
-
-JRE is required to be installed on a shared network location when scanning via:
-
-- [Centralized scanning for Windows](https://ccpa-docs.readthedocs.io/en/latest/Configuration%20Guide/#centralized-windows) (systems within the same network)
-- [Centralized scanning for Linux](#assessCentalizedLinux) (systems within the same network)
-
 ## License ##
-To unlock full feature and content access for CIS-CAT Pro Assessor v4 v4.1.0+, Members are required to download and apply their organization’s SecureSuite license from [https://workbench.cisecurity.org](https://workbench.cisecurity.org "CIS WorkBench").
+To unlock full feature and content access for CIS-CAT Pro Assessor, Members are required to download and apply their organization’s SecureSuite license from [https://workbench.cisecurity.org](https://workbench.cisecurity.org "CIS WorkBench").
 
-If a valid license is not present in the defined location, CIS-CAT Pro Assessor will be limited to Lite functionality where only HTML output can be produced for a limited set of CIS content.
+If a valid license is not present in the defined location, CIS-CAT Pro Assessor will be limited to [Lite](https://learn.cisecurity.org/cis-cat-lite) functionality where only HTML output can be produced for a limited set of CIS Benchmark automated assessment content.
 
 ### Obtain License Files ###
 
@@ -76,7 +77,7 @@ If a valid license is not present in the defined location, CIS-CAT Pro Assessor 
 
 ### Verification Method ###
 
-CIS-CAT Assessor v4 and Assessor v4 Service validate a Member’s license at the beginning of each command execution performed from the GUI, the command line, or a web request from the Dashboard (v4 Service only). The license will attempt to validate against a CIS-hosted location via SSL port 8883 first. If the host machine is unable to validate online, CIS-CAT will validate the license from the key that is present in the specified location. By default, the location is in the “License” folder. To modify this location, specify a different location using the ciscat.license.filepath property in the assessor-cli.properties (v4 Assessor) or  assessor-service.properties (v4 Service) file.
+CIS-CAT Assessor v4 validate a Member’s license at the beginning of each command execution performed from the GUI or the command line. The license will attempt to validate against a CIS-hosted location via SSL port 8883 first. If the host machine is unable to validate online, CIS-CAT will validate the license from the key that is present in the specified location. By default, the location is in the “License” folder. To modify this location, specify a different location using the ciscat.license.filepath property in the assessor-cli.properties (v4 Assessor).
 
 The method utilized to validate the license will be present in the assessor-cli.log when producing an INFO level log. CIS utilizes a Data Exchange Layer (DXL) communication fabric to enable the online validation.
 
@@ -103,6 +104,7 @@ A number of different system properties exist to provide additional functionalit
 | gui.default.report.output.windows10 | `string` | Sets the default selected report output destination path for a Microsoft Windows 10 operating system assessment, e.g. C:\\Users\\testuser\\Desktop. The `gui.auto.detect.benchmark` property must be set to `true` and this operating system must be detected for this path to be set. A Microsoft Windows 11 operating system is not supported and must have the `gui.auto.detect.benchmark` property must be set to `false`. Due to current Microsoft Windows 11 limitations, CIS-CAT will detect a Microsoft Windows 11 system as a Microsoft Windows 10 system. If this line is uncommented, ensure it contains a valid value else the field will be set to null. |
 | gui.default.report.output.windows2012 | `string` | Sets the default selected report output destination path for a Microsoft Windows Server 2012 operating system assessment, e.g. C:\\Users\\testuser\\Desktop. The `gui.auto.detect.benchmark` property must be set to `true` and this operating system must be detected for this path to be set. If this line is uncommented, ensure it contains a valid value else the field will be set to null. |
 | gui.default.report.output.windows2012r2 | `string` | Sets the default selected report output destination path for a Microsoft Windows Server 2012 r2 operating system assessment, e.g. C:\\Users\\testuser\\Desktop. The `gui.auto.detect.benchmark` property must be set to `true` and this operating system must be detected for this path to be set. If this line is uncommented, ensure it contains a valid value else the field will be set to null. |
+| gui.default.report.output.windows2016 | `string` | Sets the default selected report output destination path for a Microsoft Windows Server 2016 operating system assessment, e.g. C:\\Users\\testuser\\Desktop. The `gui.auto.detect.benchmark` property must be set to `true` and this operating system must be detected for this path to be set. If this line is uncommented, ensure it contains a valid value else the field will be set to null. |
 | gui.default.report.output.windows2019 | `string` | Sets the default selected report output destination path for a Microsoft Windows Server 2019 operating system assessment, e.g. C:\\Users\\testuser\\Desktop. The `gui.auto.detect.benchmark` property must be set to `true` and this operating system must be detected for this path to be set. If this line is uncommented, ensure it contains a valid value else the field will be set to null. |
 | gui.default.report.output.windows2022 | `string` | Sets the default selected report output destination path for a Microsoft Windows Server 2022 operating system assessment, e.g. C:\\Users\\testuser\\Desktop. The `gui.auto.detect.benchmark` property must be set to `true` and this operating system must be detected for this path to be set. If this line is uncommented, ensure it contains a valid value else the field will be set to null. |
 | **Define Behavior When Benchmark Content Fails Validation** |  |  |
@@ -126,9 +128,6 @@ A number of different system properties exist to provide additional functionalit
 | include.csv.target_ip | `true/false` | Controls whether the target IP address is generated in the CSV-formatted assessment report. |
 | include.csv.scoring | `true/false` | Controls whether the overall scoring information is generated in the CSV-formatted assessment report. |
 | include.csv.rule.scoring | `true/false` | Controls whether individual rule scoring information is generated in the CSV-formatted assessment report. |
-| **Set Proxy Information - Facilitates Vulnerability Definition Update** |  |  |
-| vulnerability.proxy.host | `string` | Manual configuration of a proxy host when downloading vulnerability definitions. |
-| vulnerability.proxy.port | `string` | Manual configuration of a proxy port when downloading vulnerability definitions |
 | **Exclude Mounted File Systems from Assessment** |  |  |
 | excluded.filesystems | `string` | **As Needed**. A comma-delimited list of filesystem names/mount points to exclude from any full-filesystem searches on Linux.  Linux assessments where user home directories exist on an auto-mounted, large storage drive, will experience longer assessment duration as some benchmarks check will take longer to complete. |
 | **Customize HTML Output Graphics** |  |  |
@@ -140,7 +139,7 @@ A number of different system properties exist to provide additional functionalit
 | custom.html.css | `string` | The name of the CSS file, saved to the "custom" folder, which overrides the HTML report's styling. |
 
 
-#Remote / Local Assessment - Sessions#
+Remote / Local Assessment - Sessions
 --------
 A local assessment uses the default `sessions.properties` file. CIS-CAT Pro Assessor v4's remote assessment capability can also utilize the Sessions file and requires configuration of each `session` type; connection parameters used to create a secure connection to the remote endpoint.  A session configuration requires a number of entries, which will vary depending on the connection type. This connection is not necessary when selecting the centralized (in-network) method of assessment.
 
@@ -150,8 +149,8 @@ The below connection types support the assessment of various endpoint types. The
 
 | Type                   | Value      |   Description |
 | -----------------------| ---------- | ------------- |
-| Local                  | `local`    | Usage of a "local" session is for a host-based assessment, mimicing the functionality of CIS-CAT Pro v3.  Standalone or command-line applications (such as CIS-CAT Pro Assessor CLI) may use the local session to continue host-based assessments of benchmarks and/or OVAL definitions. |
-| SSH (Unix, Linux, Apple OSX) | `ssh`      | The "ssh" session type represents a connection to a remote Unix, Linux, or Apple OSX endpoint, via SSH (obviously).  SSH connections can be established a number of different ways, including `username/password`, `username/path to a private key file`, `username/private key file protected with a passphrase`, `username/private key file + credentials to use for sudo`.|
+| Local                  | `local`    | Usage of a "local" session is for a host-based assessment.  Standalone or command-line applications (such as CIS-CAT Pro Assessor CLI) may use the local session to continue host-based assessments of benchmarks and/or OVAL definitions. |
+| SSH (Unix, Linux, Apple OSX) | `ssh`      | The "ssh" session type represents a connection to a remote Unix, Linux, or Apple OSX endpoint, via SSH.  SSH connections can be established a number of different ways, including `username/password`, `username/path to a private key file`, `username/private key file protected with a passphrase`, `username/private key file + credentials to use for sudo`.|
 | Windows                | `windows`  | The `windows` session type represents a WinRM connection to a remote Microsoft Windows environment.  Both workstations and servers are supported with this connection type and can currently be established using `username/password` authentication.|
 | Cisco IOS              | `ios`      | The `ios` applies to the assessment of Cisco IOS network devices.  Depending on the specific configuration when the "ios" session type is used, CIS-CAT Pro Assessor will either establish a SSH connection using `username/password` or `username/path to a private key` authentication, or will create a modified local session, collecting information from an exported configuration file.|
 | Palo Alto              | `panos`      | The `panos` session type applies to the assessment of Palo Alto network devices.  CIS-CAT Pro Assessor will create a local session, collecting information from an exported configuration file via `configFilePath` element.|
@@ -840,7 +839,6 @@ Sample configuration file for a local assessment with HTML report generation::
 
 	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 	<configuration xmlns="http://cisecurity.org/ccpa/config">
-    <vulnerability_definitions download="false"/>
     <sessions test="false">
         <session id="Kube1">
             <type>ssh</type>
@@ -1116,7 +1114,6 @@ Example configuration file with specified profile and HTML report generation:
 	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 	<configuration xmlns="http://cisecurity.org/ccpa/config">
     	<starting_dir>C:\CIS\CIS-CAT_Software\Releases\CIS-CAT-Assessor-v4.18.0\Assessor</starting_dir>
-    	<vulnerability_definitions download="false"/>
     	<sessions test="false">
         	<session id="1523-MKUN">
         	    <type>local</type>
@@ -1199,7 +1196,6 @@ Below is an example of multiple VMWare assessments. It is important to note that
 	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 	<configuration xmlns="http://cisecurity.org/ccpa/config">
     <starting_dir>C:\CIS\CIS-CAT_Software\CIS-CAT-Assessor-v4.18.0\Assessor</starting_dir>
-    <vulnerability_definitions download="false"/>
     <sessions test="false">
         <session id="vmware1">
             <type>local</type>
@@ -1686,11 +1682,10 @@ CIS-CAT users can now integrate the invocation of the **“cis-cat-centralized.s
 
 ### Introduction ###
 
-The CIS-CAT Pro Dashboard has the ability to automatically import assessment results from CIS-CAT Pro Assessor. There are a few possible methods to configure the integration of CIS-CAT Pro Assessor and CIS-CAT Pro Dashboard to enable the upload of assessment results to the CIS-CAT Pro Dashboard database. From CIS-CAT Pro Assessor v3 and v4, results reports can be uploaded from a single CIS-CAT assessment (using either the graphical user interface in v3 or command-line user interface in v3 or v4). Additionally, users scanning with the “centralized” method to assess multiple Windows or Unix/Linux targets in v3 or v4 can modify the supporting files to automatically upload the results to CIS-CAT Pro Dashboard.
+The CIS-CAT Pro Dashboard has the ability to automatically import configuration assessment results from CIS-CAT Pro Assessor via a REST API. From CIS-CAT Pro Assessor, result reports can be uploaded from a single CIS-CAT assessment using the graphical user interface or command-line user interface. Additionally, users scanning with the “centralized” method to assess multiple Windows or Unix/Linux targets can modify the supporting files to automatically upload the results to CIS-CAT Pro Dashboard.
  
 In order for the CIS-CAT Pro Dashboard and CIS-CAT Pro Assessor to communicate and share assessment results, authentication/authorization must be configured. Once the CIS-CAT Pro Dashboard has been installed, follow the instructions to generate an Authentication Token that will be used to validate the authentication in supporting CIS-CAT Pro Assessor files.
 
-In support of SCAP 1.2, CIS-CAT Pro Dashboard can generate assessment results in Asset Reporting Format (ARF). The ARF report supports assessed content created as SCAP 1.2 data-stream collection or XCCDF 1.2-based data streams. CIS Benchmark content is created as XCCDF 1.2-based data streams. 
 
 ### Direct command line usage ###
 To upload a report to CIS-CAT Pro Dashboard with the command line, a connection between CIS-CAT Pro Assessor and Dashboard needs to be established first. <br/>Please follow the instructions in [Establish authentication with Assessor](https://cis-cat-pro-dashboard.readthedocs.io/en/stable/source/Dashboard%20Deployment%20Guide%20for%20Windows/#establishAuthWithAssessor) section from the Dashboard Deployment guide.

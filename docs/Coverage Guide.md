@@ -1,6 +1,3 @@
-CIS-CAT Pro Assessor Coverage Guide
-===================================
-
 ![](http://i.imgur.com/5yZfZi5.jpg)
 
 
@@ -16,7 +13,7 @@ Note that any benchmark listed below which displays a bulleted list of "`id`:des
 
 For some older Windows platforms such as Microsoft Windows Server 2008 R2, it is required to be current with service pack updates in order for the assessment to process without error.
 
-CIS-CAT Pro Assessor v4 strives to be a standards-based application focused on vendor-supported technology platforms and applications where OVAL coverage is available. The below technologies are supported. CIS-CAT Pro Assessor v4 supported CIS Benchmarks will be present in the benchmark directory of your downloaded CIS-CAT bundle and contain "oval" and "xccdf" in the filename. Please contact [CIS Support](https://www.cisecurity.org/support/) for additional coverage requests.
+CIS-CAT Pro Assessor v4 is currently a standards-based application focused on vendor-supported technology platforms and applications where OVAL coverage is available. The below technologies are supported. CIS-CAT Pro Assessor v4 supported CIS Benchmarks will be present in the benchmark directory of your downloaded CIS-CAT bundle and contain "oval" and "xccdf" in the filename. Please contact [CIS Support](https://www.cisecurity.org/support/) for additional coverage requests.
 
 CIS Benchmarks that have reached end of life are no longer officially supported for use with CIS-CAT. As Members are working to upgrade systems within their organization to more current technology, CIS offers end of life CIS Benchmark automated assessment content on the CIS WorkBench. Navigate to [CIS WorkBench](https://workbench.cisecurity.org/files/2724) for more information.
 
@@ -30,9 +27,10 @@ The CIS Benchmarks are tested with the prior, official CIS-CAT version at the ti
 - **CIS Amazon Linux 2 STIG Benchmark, v2.0.0**
 - **CIS Apache Tomcat 9 Benchmark, v1.2.0**
 - **CIS Apache Tomcat 9 Benchmark, v1.0.0**
-- **CIS Apple macOS 10.15 Benchmark, v2.1.0**
-- **CIS Apple macOS 11.0 Benchmark, v2.1.0**
-- **CIS Apple macOS 12.0 Benchmark, v1.1.0**
+- **CIS Apple macOS 10.15 Catalina Benchmark, v3.0.0**
+- **CIS Apple macOS 11.0 Big Sur Benchmark, v3.0.0**
+- **CIS Apple macOS 12.0 Monterey Benchmark, v2.0.0**
+- **CIS Apple macOS 13.0 Ventura Benchmark, v1.0.0**
 - **CIS Azure Compute Microsoft Windows Server 2019 v1.0.0**
 - **CIS Azure Kubernetes Service (AKS) v1.2.0**
 - **CIS CentOS Linux 6 Benchmark, v3.0.0**
@@ -56,9 +54,9 @@ The CIS Benchmarks are tested with the prior, official CIS-CAT version at the ti
 - **CIS Microsoft Edge Benchmark, v1.1.0**
 - **CIS Microsoft IIS 7 Benchmark, v1.8.0**
 - **CIS Microsoft IIS 8 Benchmark, v1.5.0**
-- **CIS Microsoft IIS 10 Benchmark, v1.1.1**
+- **CIS Microsoft IIS 10 Benchmark, v1.2.0**
 - **CIS Microsoft Internet Explorer 11 Benchmark, v1.0.0**
-- **CIS Microsoft Intune for Windows 10 Release 2004 Benchmark, v1.0.1**
+- **CIS Microsoft Intune for Windows 10, v1.1.0**
 - **CIS Microsoft Office Access 2013 Benchmark, v1.0.1**
 - **CIS Microsoft Office Access 2016 Benchmark, v1.0.1**
 - **CIS Microsoft Office Excel 2013 Benchmark, v1.0.1**
@@ -81,6 +79,7 @@ The CIS Benchmarks are tested with the prior, official CIS-CAT version at the ti
 - **CIS Microsoft Windows 10 EMS Gateway, v1.1.0**
 - **CIS Microsoft Windows 10 Stand-alone Benchmark, v1.0.1**
 - **CIS Microsoft Windows 11 Enterprise, v1.0.0**
+- **CIS Microsoft Windows 11 Stand-alone Benchmark, v1.0.0**
 - **CIS Microsoft Windows Server 2008 (non-R2) Benchmark, v3.1.0**
 - **CIS Microsoft Windows Server 2008 R2 Benchmark, v3.3.0**
 - **CIS Microsoft Windows Server 2012 (non-R2) Benchmark, v2.4.0**
@@ -137,7 +136,8 @@ The CIS Benchmarks are tested with the prior, official CIS-CAT version at the ti
 - **CIS Red Hat Enterprise Linux 7 Benchmark, v3.1.1**
 - **CIS Red Hat Enterprise Linux 7 STIG Benchmark, v2.0.0**
 - **CIS Red Hat Enterprise Linux 8 Benchmark, v2.0.0**
-- **CIS Red Hat Enterprise Linux 7 STIG Benchmark, v1.0.0**
+- **CIS Red Hat Enterprise Linux 8 STIG Benchmark, v1.0.0**
+- **CIS Red Hat Enterprise Linux 9 Benchmark, v1.0.0**
 - **CIS Red Hat OpenShift Container Platform Benchmark, v1.2.0**
 - **CIS Rocky Linux 8 Benchmark, v1.0.0**
 - **CIS SUSE Linux Enterprise 12 Benchmark, v3.1.0**
@@ -154,35 +154,12 @@ The CIS Benchmarks are tested with the prior, official CIS-CAT version at the ti
 	- `xccdf_org.cisecurity.benchmarks_value_esxi.connection`: ESXi host connection string
 
 
-Platform Coverage for Vulnerability Assessments
+Vulnerability Assessments
 -----------------------------------------------
-Using the `-vdd` command-line option, CIS-CAT Pro Assessor v4 is able to download the latest vulnerability definitions from various repositories.  These files can also be manually downloaded from the repositories and copied into a folder name "vulnerabilities" located within the same parent folder location as the "benchmarks" folder. If you manually download vulnerability definition files, you will need to create the "vulnerabilities" folder if it does not already exist.  A number of different platforms are officially supported by CIS-CAT Pro Assessor v4, including:
+Version 4.23 in November 2022 was the final release containing vulnerability assessment capabilities. 
+Read our [knowledge base article](https://cisecurity.atlassian.net/l/cp/2A6pRPs8) to learn more.
 
-
-| Platform                         | Downloaded From                                                    |
-|----------------------------------|--------------------------------------------------------------------|
-| Microsoft Windows XP             | https://oval.cisecurity.org/repository/download/5.10/vulnerability |
-| Microsoft Windows 7              | https://oval.cisecurity.org/repository/download/5.10/vulnerability |
-| Microsoft Windows 8              | https://oval.cisecurity.org/repository/download/5.10/vulnerability |
-| Microsoft Windows 8.1            | https://oval.cisecurity.org/repository/download/5.10/vulnerability |
-| Microsoft Windows 10             | https://oval.cisecurity.org/repository/download/5.10/vulnerability |
-| Microsoft Windows Server 2003    | https://oval.cisecurity.org/repository/download/5.10/vulnerability |
-| Microsoft Windows Server 2008    | https://oval.cisecurity.org/repository/download/5.10/vulnerability |
-| Microsoft Windows Server 2008 R2 | https://oval.cisecurity.org/repository/download/5.10/vulnerability |
-| Microsoft Windows Server 2012    | https://oval.cisecurity.org/repository/download/5.10/vulnerability |
-| Microsoft Windows Server 2012 R2 | https://oval.cisecurity.org/repository/download/5.10/vulnerability |
-| Microsoft Windows Server 2016    | https://oval.cisecurity.org/repository/download/5.10/vulnerability |
-| Microsoft Windows Server 2019    | https://oval.cisecurity.org/repository/download/5.10/vulnerability |
-| Red Hat Enterprise Linux         | https://www.redhat.com/security/data/oval                          |
-| SuSE Linux Enterprise Server 9   | https://support.novell.com/security/oval                           |
-| SuSE Linux Enterprise Server 10  | https://support.novell.com/security/oval                           |
-| SuSE Linux Enterprise Server 11  | https://support.novell.com/security/oval                           |
-| SuSE Linux Enterprise Server 12  | https://support.novell.com/security/oval
-| SuSE Linux Enterprise Server 15  | https://support.novell.com/security/oval                           |
-| Ubuntu Linux 14.04               | https://people.canonical.com/~ubuntu-security/oval                 |
-| Ubuntu Linux 16.04               | https://people.canonical.com/~ubuntu-security/oval                 |
-| Ubuntu Linux 18.04               | https://people.canonical.com/~ubuntu-security/oval
-| Ubuntu Linux 20.04               | https://people.canonical.com/~ubuntu-security/oval                 |
+CIS-CAT's goal is to focus on what our Members find most valuable. Members have told us that CIS-CAT's automated configuration assessment capabilities with CIS Benchmark content is the most important aspect of CIS SecureSuite. CIS-CAT aims to streamline and continue to support the fundamental configuration best practice needs for the single enterprise. 
 
 OVAL Capabilities
 -----------------
@@ -194,7 +171,7 @@ Tools and services that use OVAL for the three steps of system assessment — re
 | Test Name | Implemented? | Notes |
 |------------------------------------|---|-------|
 | Environment Variable (<5.8)        | Y ||
-| Environment Variable (5.8+)        | N | In development|
+| Environment Variable (5.8+)        | N | |
 | Family                             | Y ||
 | File Hash (<5.8)                   | Y ||
 | File Hash (5.8+)                   | Y ||
@@ -212,12 +189,12 @@ Tools and services that use OVAL for the three steps of system assessment — re
 | Test Name | Implemented? | Notes |
 |------------------------------------|---|-------|
 | Access Token | Y ||
-| Active Directory (<5.7) | N | On roadmap |
-| Active Directory (5.7+)| N | In Development |
+| Active Directory (<5.7) | N |  |
+| Active Directory (5.7+)| N |  |
 | Audit Event Policy | Y ||
 | Audit Event Policy Subcategories | Y ||
 | Cmdlet | Y ||
-| DNSCache | N | On roadmap |
+| DNSCache | N |  |
 | File | Y ||
 | File Audited Permissions (<5.3) | Y ||
 | File Audited Permissions (5.3+) | Y ||
@@ -230,7 +207,7 @@ Tools and services that use OVAL for the three steps of system assessment — re
 | License | Y ||
 | Lockout Policy | Y ||
 | Metabase | N | |
-| NTUser | N | On roadmap |
+| NTUser | N |  |
 | Password Policy | Y ||
 | PEHeader | Y ||
 | Port | Y ||
@@ -307,8 +284,8 @@ Tools and services that use OVAL for the three steps of system assessment — re
 | CoreStorage                    | Y ||
 | Disabled Service               | N | |
 | DiskUtil                       | N | |
-| File Vault                     | N | In development |
-| Firmware Password              | N | In development |
+| File Vault                     | N |  |
+| Firmware Password              | N |  |
 | Gatekeeper                     | Y ||
 | Inet Listening Servers (<5.10) | N | |
 | Inet Listening Servers (5.10+) | N | |
@@ -329,20 +306,6 @@ Tools and services that use OVAL for the three steps of system assessment — re
 | System Profiler                | N | |
 | System Setup                   | N | |
 
-### Cisco ASA ###
-| Test Name                | Implemented? | Notes |
-|--------------------------|--------------|-------|
-| ACL            | N | In backlog|
-| Class Map      | N | In backlog|
-| Interface      | N | In backlog|
-| Line           | N | In backlog|
-| Policy Map     | N | In backlog|
-| Service Policy | N | In backlog|
-| SNMP Host      | N | In backlog|
-| SNMP Group     | N | In backlog|
-| SNMP User      | N | In backlog|
-| TCP Map        | N | In backlog|
-| Version        | N | In backlog|
 
 ### Cisco IOS ###
 | Test Name                | Implemented? | Notes |
@@ -373,8 +336,8 @@ Tools and services that use OVAL for the three steps of system assessment — re
 | Site Bindings            | Y ||
 | System Web               | Y ||
 | Web Config               | Y ||
-| Appcmd                   | N | In development |
-| Appcmd List Config       | N | In development |
+| Appcmd                   | Y ||
+| Appcmd List Config       | Y ||
 
 ### VMware ESXi (Extension) ###
 | Test Name                 | Implemented? | Notes |

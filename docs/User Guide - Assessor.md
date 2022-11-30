@@ -20,9 +20,9 @@ See the [CIS-CAT Pro Assessor Coverage Guide](./Coverage%20Guide) for the most u
 ## Graphical User Interface (GUI) #
 CIS-CAT Assessor Pro and Lite versions include a graphical user interface (GUI) as part of the downloaded bundle. The GUI is compatible with a Microsoft Windows operating system. Open the application by running the Assessor-GUI.exe. The GUI provides a method to execute a configuration assessment in an easy, quick, and simple setup process. The interface offers a simple workflow for the basic, local system configuration scan as well as advanced workflows where multiple combinations of remote and local scanning can be performed.
 
-The size of the downloaded application is approximately 175MB. If an organization's assessment workflows do not require use of a GUI and the additional space is a concern, it is safe to delete the executable file after downloading.
+The size of the downloaded application is approximately 175MB. If an organization's assessment workflows do not require use of a GUI and the additional space is a concern, CIS recommends downloading a version that does not contain GUI.
 
-When using the GUI, there's no need to setup additional software components (no Java Runtime Environment (JRE) is needed. Command line and centralized assessment processes continue to require a suitable JRE.
+When using the GUI, there's no need to setup additional software components (no Java Runtime Environment (JRE) is needed. 
 
 The GUI does not currently support initialization from a network location. The Assessor v4 must reside on a machine's local drive in order for the GUI functions and content to operate successfully.
 
@@ -38,10 +38,12 @@ The basic workflow option accommodates a local system scan only.
 
 #### Automatic CIS Benchmark Selection 
 
-Version v4.23.0 offers an option for a local assessment to detect the operating system and automatically select the compatible CIS Benchmark for the detected operating system. By default, the automatic CIS Benchmark selection will execute when running the GUI. See the [properties section in the Configuration Guide](https://ccpa-docs.readthedocs.io/en/latest/Configuration%20Guide/#properties) for how to modify this property. The automatic CIS Benchmark selection works with the following Microsoft Windows operating systems:
+Version v4.23.0+ offers an option for a local assessment to detect the operating system and automatically select the compatible CIS Benchmark for the detected operating system. By default, the automatic CIS Benchmark selection will execute when running the GUI. See the [properties section in the Configuration Guide](https://ccpa-docs.readthedocs.io/en/latest/Configuration%20Guide/#properties) for how to modify this property. The automatic CIS Benchmark selection works with the following Microsoft Windows operating systems:
+
 	- 10 Enterprise
 	- Server 2012r2
 	- Server 2012
+	- Server 2016
 	- Server 2019
 	- Server 2022
 
@@ -226,34 +228,6 @@ Create a text file listing all available Benchmarks and their profiles:
 
 	> Assessor-CLI.bat -bi
 
-#### OVAL Definitions Assessment Options ###
-CIS-CAT Pro Assessor also has the ability to assess OVAL definitions files, such as vulnerability definitions downloaded from the OVAL repository.  Using an OVAL Variables file also allows for the injection of "external" variable values into the assessment of OVAL definitions content.
-
-| Short Option  |  Long Option  |   Argument   | Description                      |
-| ------------- | ------------- | -------------|--------------------------------- |
-| `-od     ` | `--oval-definitions` | `<OVAL_DEFINITIONS>` | Specify either an absolute path to the OVAL Definitions XML content or a path relative to the Assessor's "base" directory.  The Assessor's "base" directory is determined by the application, choosing the folder in which the `Assessor-CLI.jar` file resides.|
-| `-ov` | `--oval-variables` | `<OVAL_VARIABLES>` | Only used in conjunction with the `-od` option, the `-ov` option specifies either an absolute path to an OVAL Variables XML file, or a path relative to the Assessor's "base" directory.|
-
-#### Examples ####
-
-Execute an assessment against the Microsoft Windows 10 vulnerability definitions:
-
-	> Assessor-CLI.bat -od vulnerabilities\microsoft_windows_10.xml
-
-Execute an assessment against the Microsoft Windows 10 vulnerability definitions, producing both an OVAL Result XML file, and an HTML report:
-
-	> Assessor-CLI.bat -od vulnerabilities\microsoft_windows_10.xml -html
-
-Execute an assessment against an OVAL Definitions file containing "external" variables, using an OVAL Variables file to provide those variable values, with both files specified using absolute paths.  With no specific reporting options specified, :
-
-	> Assessor-CLI.bat -od C:\CIS\oval_definitions.xml -ov C:\CIS\oval_variables.xml
-
-Execute an assessment against an OVAL Definitions file containing "external" variables, using an OVAL Variables file to provide those variable values, producing both an OVAL Results XML file, and an HTML report:
-
-	> Assessor-CLI.bat -od C:\CIS\oval_definitions.xml -ov C:\CIS\oval_variables.xml -html
-
-
-
 
 #### Reporting Options ###
 A number of options exist for generating assessment results.  When a benchmark or data-stream collection is assessed, the Asset Reporting Format (ARF) results are generated.  The ARF report is an XML document containing Asset Information for the endpoint under assessment, the benchmark/data-stream that was assessed, system characteristics, and assessment results.  When OVAL Definitions are assessed, an "OVAL results with system characteristics" XML document is produced by default.  These reports are automatically generated and cannot be disabled.  These XML documents are designed to be either uploaded directly to CIS-CAT Pro Dashboard, or transformed into more human-readable HTML, CSV or plain-text documents.
@@ -323,29 +297,13 @@ Execute an assessment against the CIS Microsoft Windows 10 benchmark, using the 
 
 | Short Option  |   Long Option   |    Argument   | Description                       |
 | ------------- | --------------- | --------------|---------------------------------- |
-| `-vdd` | `--vulnerability-definitions` | N/A | Download the latest supported vulnerability definitions.  See the [CIS-CAT Pro Assessor Coverage Guide](./Coverage%20Guide) for the most up-to-date information regarding vulnerability definitions platform coverage.  Vulnerability definitions files are saved into the application's `vulnerabilities` folder, i.e. `C:\CIS\Assessor\vulnerabilities`.|
-| `-sessions`| `--sessions`| `<SESSIONS.PROPERTIES>`| The `-sessions` option allows users to configure multiple endpoints for assessment of a benchmark.  The `sessions.properties` file configures CIS-CAT Pro Assessor for the assessment of remote endpoints by specifying remote hosts, ports, and credentials which the application will use for connection, collection and evaluation of benchmark recommendations and/or vulnerabilities.  See "Remote Assessment Capability" below for more information.  <br/><br/>If no `sessions.properties` file exists or no connections are configured in the file, CIS-CAT Pro Assessor CLI will assess the local machine.  Sessions.properties files can be encrypted in order to help protect sensitive data (see the "File Encryption Options" section for details).|
+| `-sessions`| `--sessions`| `<SESSIONS.PROPERTIES>`| The `-sessions` option allows users to configure multiple endpoints for assessment of a benchmark.  The `sessions.properties` file configures CIS-CAT Pro Assessor for the assessment of remote endpoints by specifying remote hosts, ports, and credentials which the application will use for connection, collection and evaluation of benchmark recommendations.  See "Remote Assessment Capability" below for more information.  <br/><br/>If no `sessions.properties` file exists or no connections are configured in the file, CIS-CAT Pro Assessor CLI will assess the local machine.  Sessions.properties files can be encrypted in order to help protect sensitive data (see the "File Encryption Options" section for details).|
 | `-props`| `--properties`| `<PROPERTIES-FILE>`| The CIS-CAT Pro Assessor CLI user properties file defaults many runtime properties used during the assessment process.  These properties may be customized per assessment or per endpoint, by creating individual properties files, and specifying either the full filepath or a path relative to the working directory.  If this option is not specified, CIS-CAT Pro Assessor CLI will load a default properties file named `assessor-cli.properties` located in the `config` folder of the application installation.|
 | `-D`| N/A| `<Property=Value>`| Instead of creating a new properties file for unique assessments, individual user properties may be specified using the `-D` option together with a `property=value` pair.  This allows an assessment to only override specific user properties when only a small number differ from the defaults.|
 | `-test` | `--test`| N/A | The `-test` option allows the user to perform connection tests on any sessions configured to execute during the assessments.  These sessions may be loaded from a configuration XML file (`-cfg`) or from a sessions.properties file (`-sessions`).  When specified, connectivity tests are performed and reported to the user on the CIS-CAT Pro Assessor console.  Once completed, CIS-CAT Pro Assessor exits.  When the `-test` option is supplied, no assessments take place; only the connectivity tests.|
 | `-q`| `--quiet`| N/A | Enable the Assessor to execute in "quiet mode", causing the suppression of any assessment status information from being written to the console.|
 
 #### Examples ####
-Download the latest vulnerability definitions:
-
-	> Assessor-CLI.bat -vdd
-
-Download the latest vulnerability definitions when using an HTTPS Proxy:
-
-	> Assessor-CLI.bat -vdd -D https.proxyHost=PROXY_HOSTNAME_OR_IP -D https.proxyPort=PROXY_PORT
-
-Download the latest vulnerability definitions when using an HTTP Proxy:
-
-	> Assessor-CLI.bat -vdd -D http.proxyHost=PROXY_HOSTNAME_OR_IP -D http.proxyPort=PROXY_PORT
-
-Execute a vulnerability assessment for the Microsoft Windows Server 2012 R2 platform, producing both an OVAL Result XML file, and an HTML report:
-
-	> Assessor-CLI.bat -od vulnerabilities\microsoft_windows_server_2012_r2.xml -html
 
 Execute an assessment against the CIS Microsoft Windows 10 benchmark, using the relative path to the benchmark file, automatically selecting the first profile, assessing a number of remote machines, configured in a specific session configuration file:
 
@@ -432,10 +390,6 @@ The root element of the configuration XML file is `<configuration>`, and utilize
 All other elements must be contained within the `<configuration>` element.
 
 The following sections describe the elements that are available for configuration through the XML file:
-
-#### Vulnerability Definitions Download ####
-	<vulnerability_definitions download="(true|false)"/>
-The `vulnerability_definitions` element contains a single attribute, `download`.  If this attribute's value is `true`, CIS-CAT Pro Assessor will download the latest vulnerability definitions.  This element/attribute is equivalent to the `-vdd` command-line option.  If this element is not present in the configuration file, or the `download` attribute is set to `false`, vulnerability definitions will not be downloaded.
 
 #### Sessions ####
 The `sessions` element configures each individual connection to either the local host or a remote endpoint.  An attribute of the `sessions` element, `test` indicates whether this configuration file is meant to test the connectivity of each session only.  When the `test` attribute is `true`, connectivity tests will take place, and CIS-CAT Pro Assessor will then exit.  No other assessment processing will take place.
