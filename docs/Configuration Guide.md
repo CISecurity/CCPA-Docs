@@ -18,11 +18,11 @@ Select the operating system that will host CIS-CAT Pro Assessor and the preferre
 
 There are 3 possible download bundles:
 
-| Operating System         | Interface Type   |   Requires Host Installed JRE|   Description |   Downloaded File Name Example|
-| -----------------------| ---------- | ------------- | ------------- | ------------- |
-| Microsoft Windows | with GUI | Yes | Includes a graphical interface and supports command line (CLI) activities. Embedded java 8 runtime environment (JRE) included and utilized for all Microsoft Windows assessments. Currently contains Linux shell scripts as well as Windows batch files. CIS plans to modify contents in future builds to be entirely OS specific. | CIS-CAT-Assessor-windows-GUI-jre-v4.24.0.zip |
-| Microsoft Windows | without GUI | No | Supports command line (CLI) activities, no graphical interface. Currently contains Linux shell scripts as well as Windows batch files. CIS plans to modify contents in future builds to be entirely OS specific. Requires an installed JRE on the CIS-CAT host. | CIS-CAT-Assessor-windows-v4.24.0 |
-| Linux / Mac | without GUI | No | Designed for Linux and includes only shell scripts for tool operation on Linux only. Requires an installed JRE on the CIS-CAT host. | CIS-CAT-Assessor-linux-v4.24.0 |
+| Operating System | Interface Type| Requires Host Installed JRE| Description |   Downloaded File Name Example|
+| ----------| --------- | ----- | ------------------------- | --------------------------- |
+| Microsoft Windows | with GUI | No | Includes a graphical interface and supports command line (CLI) activities. Embedded java 8 runtime environment (JRE) included and utilized for all Microsoft Windows assessments. Currently contains Linux shell scripts as well as Windows batch files. CIS plans to modify contents in future builds to be entirely OS specific. | CIS-CAT-Assessor-windows-GUI-jre-v4.24.0.zip |
+| Microsoft Windows | without GUI | Yes | Supports command line (CLI) activities, no graphical interface. Currently contains Linux shell scripts as well as Windows batch files. CIS plans to modify contents in future builds to be entirely OS specific. Requires an installed JRE on the CIS-CAT host. | CIS-CAT-Assessor-windows-v4.24.0 |
+| Linux / Mac | without GUI | Yes | Designed for Linux and includes only shell scripts for tool operation on Linux only. Requires an installed JRE on the CIS-CAT host. | CIS-CAT-Assessor-linux-v4.24.0 |
 
 System Recommendations
 ------------
