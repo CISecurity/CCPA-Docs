@@ -92,7 +92,6 @@ The CIS Benchmarks are tested with the prior, official CIS-CAT version at the ti
 - **CIS Microsoft Windows 8 Benchmark, v1.0.0**
 - **CIS Microsoft Windows 8.1 Workstation Benchmark, v2.4.0**
 - **CIS MongoDB 3.6, v1.1.0**
-    - `xccdf_org.cisecurity_value_runnin_config_file.url`: MongoDB running configuration file (mongod.conf) location.
 - **CIS MongoDB 4, v1.0.0**
 - **CIS MongoDB 5, v1.1.0**
 - **CIS Mozilla Firefox 38 ESR Benchmark, v1.0.0**
