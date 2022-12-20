@@ -3,9 +3,50 @@ Change Log
 
 ![](http://i.imgur.com/5yZfZi5.jpg)
 
-CIS-CAT Pro Assessor v4
+CIS-CAT Pro Assessor v4 - [Download from CIS WorkBench](https://workbench.cisecurity.org/download/cis-cat/pro)
 ---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
+
+## CIS-CAT Pro Assessor, v4.25.0 ##
+#### Release Date: Dec. 20, 2022 ####
+
+
+### Benchmark Coverage ###
+
+- Alma Linux 9 v1.0.0
+- Microsoft IIS 10 v1.2.0
+- Microsoft Office Enterprise v1.0.0
+- NGINX v2.0.0
+- Oracle Cloud Infrastructure Container Engine for Kubernetes(OKE) Benchmark v1.2.0
+- Oracle Linux 9 v1.0.0
+- PostgreSQL 15 Benchmark v1.0.0
+- Red Hat OpenShift Container Platform Benchmark v1.3.0
+- Rocky Linux 9 v1.0.0
+
+The following CIS Benchmarks have moved to end of life and are no longer officially supported. See the Coverage Guide for more information on CIS Benchmarks that have reached end of life.* The following CIS Benchmarks have moved to end of life and are no longer officially supported. See the Coverage Guide for more information on CIS Benchmarks that have reached end of life.
+
+- Amazon Linux v2.0.0
+- Microsoft Internet Explorer 11 v1.0.0
+- Microsoft IIS 7 v1.8.0
+- Microsoft Office Access 2016 Benchmark, v1.0.1
+- Microsoft Office Excel 2016 Benchmark, v1.0.1
+- Microsoft Office Outlook 2016 Benchmark, v1.1.0
+- Microsoft Office PowerPoint 2016 Benchmark, v1.0.1
+- Microsoft Office Word 2016 Benchmark, v1.1.0
+- Microsoft Office 2016 Benchmark, v1.1.0
+
+### Security ###
+- Updated README.txt document for the list of suppressed third party security vulnerabilities from dependent libraries determined as “false positives” for multiple “commons…”, jcl-over-slf4j, and xmlschema-core jar files.
+- Additional changes have further obscured security information for Linux assessments in assessment evidence text within the HTML and the *ARF.XML formatted configuration assessment output.
+- Cisco IOS security information has been obscured in assessment evidence text within the HTML and the *ARF.XML formatted configuration assessment output. 
+- Resolved security vulnerabilities present in embedded, third party dependencies. Please see the related [knowledge base article](https://cisecurity.atlassian.net/l/cp/GwThzTEn) for more information.
+
+### Application ###
+- None
+
+### Documentation ###
+- None
+
 
 ## CIS-CAT Pro Assessor, v4.24.0 ##
 #### Release Date: Nov. 30, 2022 ####

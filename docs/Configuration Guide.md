@@ -1538,14 +1538,11 @@ The setup for centralized scanning begins with creating a folder on the network 
 	/cis/map-to-benchmark.sh                                          <-- Copied from misc/Unix-Linux
  
 	/cis/jres
-	/cis/jres/AIX
 	/cis/jres/CentOS
 	/cis/jres/Debian
-	/cis/jres/HPUX
 	/cis/jres/Linux
 	/cis/jres/OSX
 	/cis/jres/RedHat
-	/cis/jres/Solaris
 	/cis/jres/SUSE
 	/cis/jres/Ubuntu
 

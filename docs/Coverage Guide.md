@@ -21,8 +21,8 @@ The CIS Benchmarks are tested with the prior, official CIS-CAT version at the ti
 
 - **CIS Aliyun Linux 2, v1.0.0**
 - **CIS AlmaLinux OS 8 Benchmark, v2.0.0**
+- **CIS AlmaLinux OS 9 Benchmark, v1.0.0**
 - **CIS Amazon Elastic Kubernetes Service (EKS) Benchmark, v1.1.0**
-- **CIS Amazon Linux Benchmark, v2.0.0**
 - **CIS Amazon Linux 2 Benchmark, v2.0.0**
 - **CIS Amazon Linux 2 STIG Benchmark, v2.0.0**
 - **CIS Apache Tomcat 9 Benchmark, v1.2.0**
@@ -52,23 +52,16 @@ The CIS Benchmarks are tested with the prior, official CIS-CAT version at the ti
 - **CIS Kubernetes 1.24 v1.0.0**
 - **CIS MIT Kerberos 1.10 Benchmark, v1.0.0**
 - **CIS Microsoft Edge Benchmark, v1.1.0**
-- **CIS Microsoft IIS 7 Benchmark, v1.8.0**
 - **CIS Microsoft IIS 8 Benchmark, v1.5.0**
 - **CIS Microsoft IIS 10 Benchmark, v1.2.0**
-- **CIS Microsoft Internet Explorer 11 Benchmark, v1.0.0**
 - **CIS Microsoft Intune for Windows 10, v1.1.0**
+- **CIS Microsoft Office Enterprise, v1.0.0**
 - **CIS Microsoft Office Access 2013 Benchmark, v1.0.1**
-- **CIS Microsoft Office Access 2016 Benchmark, v1.0.1**
 - **CIS Microsoft Office Excel 2013 Benchmark, v1.0.1**
-- **CIS Microsoft Office Excel 2016 Benchmark, v1.0.1**
 - **CIS Microsoft Office Outlook 2013 Benchmark, v1.1.0**
-- **CIS Microsoft Office Outlook 2016 Benchmark, v1.1.0**
 - **CIS Microsoft Office PowerPoint 2013 Benchmark, v1.0.1**
-- **CIS Microsoft Office PowerPoint 2016 Benchmark, v1.0.1**
 - **CIS Microsoft Office Word 2013 Benchmark, v1.1.0**
-- **CIS Microsoft Office Word 2016 Benchmark, v1.1.0**
 - **CIS Microsoft Office 2013 Benchmark, v1.1.0**
-- **CIS Microsoft Office 2016 Benchmark, v1.1.0**
 - **CIS Microsoft SQL Server 2016 Benchmark, v1.3.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: SQL Server connection string.
 - **CIS Microsoft SQL Server 2017 Benchmark, v1.2.0**
@@ -96,8 +89,8 @@ The CIS Benchmarks are tested with the prior, official CIS-CAT version at the ti
 - **CIS MongoDB 4, v1.0.0**
 - **CIS MongoDB 5, v1.1.0**
 - **CIS Mozilla Firefox 38 ESR Benchmark, v1.0.0**
-- **CIS NGINX Benchmark, v1.1.0**
-- **Oracle Cloud Infrastructure Container Engine for Kubernetes(OKE) Benchmark v1.1.0**
+- **CIS NGINX Benchmark, v2.0.0**
+- **Oracle Cloud Infrastructure Container Engine for Kubernetes(OKE) Benchmark v1.2.0**
 - **CIS Oracle MySQL Community Server 5.7 Benchmark, v2.0.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: MySQL Server connection string.
 	- `xccdf_org.cisecurity_value_repl.user`: MySQL replication user name.
@@ -116,6 +109,7 @@ The CIS Benchmarks are tested with the prior, official CIS-CAT version at the ti
 - **CIS Oracle Linux 6 Benchmark, v2.0.0**
 - **CIS Oracle Linux 7 Benchmark, v3.1.1**
 - **CIS Oracle Linux 8 Benchmark, v2.0.0**
+- **CIS Oracle Linux 9 Benchmark, v1.0.0**
 - **Palo Alto Firewall 9 Benchmark v1.0.1 (offline only)**
 - **Palo Alto Firewall 10 Benchmark v1.0.0 (offline only)**
 - **CIS PostgreSQL 9.5 Benchmark, v1.1.0.1**
@@ -130,7 +124,9 @@ The CIS Benchmarks are tested with the prior, official CIS-CAT version at the ti
 	- `xccdf_org.cisecurity_value_jdbc.url`: PostgreSQL Database connection string.
 - **CIS PostgreSQL 13 Benchmark, v1.0.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: PostgreSQL Database connection string.
-- - **CIS PostgreSQL 14 Benchmark, v1.0.0**
+- **CIS PostgreSQL 14 Benchmark, v1.0.0**
+	- `xccdf_org.cisecurity_value_jdbc.url`: PostgreSQL Database connection string.
+- **CIS PostgreSQL 15 Benchmark, v1.0.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: PostgreSQL Database connection string.
 - **CIS Red Hat Enterprise Linux 6 Benchmark, v3.0.0**
 - **CIS Red Hat Enterprise Linux 7 Benchmark, v3.1.1**
@@ -138,8 +134,9 @@ The CIS Benchmarks are tested with the prior, official CIS-CAT version at the ti
 - **CIS Red Hat Enterprise Linux 8 Benchmark, v2.0.0**
 - **CIS Red Hat Enterprise Linux 8 STIG Benchmark, v1.0.0**
 - **CIS Red Hat Enterprise Linux 9 Benchmark, v1.0.0**
-- **CIS Red Hat OpenShift Container Platform Benchmark, v1.2.0**
+- **CIS Red Hat OpenShift Container Platform Benchmark, v1.3.0**
 - **CIS Rocky Linux 8 Benchmark, v1.0.0**
+- **CIS Rocky Linux 9 Benchmark, v1.0.0**
 - **CIS SUSE Linux Enterprise 12 Benchmark, v3.1.0**
 - **CIS SUSE Linux Enterprise 15 Benchmark, v1.1.1**
 - **CIS Ubuntu Linux 14.04 LTS Benchmark, v2.0.0**
