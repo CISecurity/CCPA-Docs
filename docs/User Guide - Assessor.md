@@ -135,7 +135,7 @@ Bundled with the application are two script files; a Microsoft Windows batch scr
 2. **The CIS-CAT application may be executed from a command prompt/terminal navigated to any directory on the executing host.  As such, any file references made in command-line options may utilize either absolute or relative paths.  Relative paths will be parsed from the application's "base" directory, which is set on application start-up to be the directory containing the `Assessor-CLI.jar` file.**
 
 ## Command Line Options 
-CIS-CAT Pro Assessor CLI can perform a variety of functions related to both benchmark and vulnerability assessments.  The myriad command-line options allow for combined usage to initiate these functions.
+CIS-CAT Pro Assessor CLI performs functions associated with benchmark configuration assessments.  See below for more description on the available options.
 
 #### Basic Options 
 
@@ -147,7 +147,6 @@ Basic operation of CIS-CAT Pro Assessor CLI allows a user to get help, list avai
 | `-l`          | `--list`         | N/A | List the benchmarks available for assessment.|
 | `-lv`         | `--list-verbose` | N/A |Enable more verbose output when combined with the `-l` option, specifically displaying the full filepath to the benchmark, for later assessment using the `-b` option.|
 | `-i`          | `--interactive`  | N/A | Execute the Assessor in "interactive" mode specifically for benchmark assessments, allowing the user to manually select a benchmark and profile for assessment.  Based on the selected benchmark, the user may be required to enter "interactive values" which are then used by the assessment engine. |
-| `-o`          | `--definitions`  | N/A | Execute the Assessor in "interactive" mode specifically for the manual selection and evaluation of OVAL Definitions files, and (optionally) selecting and associating an OVAL Variables file as well. Must be used in conjunction with the `-i` option.|
 | `-cfg`        |`--config-xml`    | `<CONFIGURATION XML FILE>` | Execute CIS-CAT Pro Assessor using configuration information found in the `<CONFIGURATION XML FILE>`.  This file allows users to override user properties, configure interactive values, setup sessions and outline the various assessments to be performed.  See the "Using a Configuration XML File" section below for more information and examples regarding the structure and options for the XML configuration file.  Configuration files can be encrypted in order to help protect sensitive data (see the "File Encryption Options" section for details).|
 
 #### Examples ####
@@ -494,9 +493,6 @@ The `assessments` element configures which assessment content will be evaluated,
 		<!-- DATA-STREAM COLLECTIONS -->
 		<data-stream-collection collection="dsc-id" data-stream="ds-id" checklist="benchmark-id" profile="profile-id-or-name" session-ref="local"/>
 		
-		<!-- OVAL DEFINITIONS COLLECTIONS -->
-		<oval_definitions definitions="vulnerabilities\microsoft_windows_10.xml" session-ref="local"/>
-		<oval_definitions definitions="definitions\defs.xml" variables="definitions\vars.xml" session-ref="local"/>
 	</assessments>
 
 A number of elements may be configured, allowing various assessments against a number of different sessions:
@@ -571,16 +567,6 @@ A number of elements may be configured, allowing various assessments against a n
 - `profile`: The "profile" attribute defines the configuration Profile, within the checklist, selected for assessment.  The value of this attribute may be either the Profile `<title>` or `id` specified in the Benchmark XCCDF.
 - `session-ref`: The "session-ref" attribute specifies the `id` of a `session` configured in the `sessions` configuration, described above.
 
-**Assess an `<oval_definitions>` file that does not include an `<oval_variables>` file**:
-
-	<oval_definitions definitions="vulnerabilities\microsoft_windows_10.xml" session-ref="local"/>
-- `definitions`: The "definitions" attribute defines the path (relative to the `starting_dir` or absolute) to the OVAL Definitions file being assessed.
-
-**Assess an `<oval_definitions>` file that includes an `<oval_variables>` file**:
-
-	<oval_definitions definitions="definitions\defs.xml" variables="definitions\vars.xml" session-ref="local"/>
-- `definitions`: The "definitions" attribute defines the path (relative to the `starting_dir` or absolute) to the OVAL Definitions file being assessed.
-- `variables`: The "variables" attribute defines the path (relative to the `starting_dir` or absolute) to the OVAL Variables file used in the assessment.
 
 #### Report Output Options ####
 The `reports` element contains a number of attributes controlling the output report formats, and sub-elements controlling report output directory, POST URL, and report naming.  The `html` attribute value controls the generation of HTML reports, the `csv` attribute controls the generation of CSV reports, and the `txt` attribute controls the generation of plain-text reports.  The `no-arf` attribute, when `true`, disables the generation of the Asset Reporting Format XML results.  The `no-report-file` attribute, when `true`, overrides the other 3 attributes and disables the generation of any report files.  Setting this attribute to `true` is intended to be used in conjunction with the `reports_url` element, which identifies a URL to which report output should be POST'ed.  If the reports are POST'ed to the URL, they may not need to be generated and saved in file format.
