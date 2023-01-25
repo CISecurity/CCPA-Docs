@@ -20,18 +20,19 @@ CIS Benchmarks that have reached end of life are no longer officially supported 
 The CIS Benchmarks are tested with the prior, official CIS-CAT version at the time automated Benchmark content is announced as supported in CIS-CAT. The CIS-CAT tool, on each release performs some regression testing, where possible, for most Benchmark versions released with the CIS-CAT bundle. Future and past CIS Benchmark versions for the technologies supported may work with the current or past CIS-CAT tool versions, but are not guaranteed and should be used at each organization's discretion.
 
 - **CIS Aliyun Linux 2, v1.0.0**
-- **CIS AlmaLinux OS 8 Benchmark, v2.0.0**
-- **CIS AlmaLinux OS 9 Benchmark, v1.0.0**
-- **CIS Amazon Elastic Kubernetes Service (EKS) Benchmark, v1.1.0**
-- **CIS Amazon Linux 2 Benchmark, v2.0.0**
-- **CIS Amazon Linux 2 STIG Benchmark, v2.0.0**
-- **CIS Apache Tomcat 9 Benchmark, v1.2.0**
-- **CIS Apache Tomcat 9 Benchmark, v1.0.0**
-- **CIS Apple macOS 10.15 Catalina Benchmark, v3.0.0**
-- **CIS Apple macOS 11.0 Big Sur Benchmark, v3.0.0**
-- **CIS Apple macOS 12.0 Monterey Benchmark, v2.0.0**
-- **CIS Apple macOS 13.0 Ventura Benchmark, v1.0.0**
+- **CIS AlmaLinux OS 8 v2.0.0**
+- **CIS AlmaLinux OS 9 v1.0.0**
+- **CIS Amazon Elastic Kubernetes Service (EKS) v1.1.0**
+- **CIS Amazon Linux 2 v2.0.0**
+- **CIS Amazon Linux 2 STIG v2.0.0**
+- **CIS Apache Tomcat 9 v1.2.0**
+- **CIS Apache Tomcat 9 v1.0.0**
+- **CIS Apple macOS 10.15 Catalina v3.0.0**
+- **CIS Apple macOS 11.0 Big Sur v3.0.0**
+- **CIS Apple macOS 12.0 Monterey v2.0.0**
+- **CIS Apple macOS 13.0 Ventura v1.0.0**
 - **CIS Azure Compute Microsoft Windows Server 2019 v1.0.0**
+- **CIS Azure Compute Microsoft Windows Server 2022 v1.0.0**
 - **CIS Azure Kubernetes Service (AKS) v1.2.0**
 - **CIS CentOS Linux 6 Benchmark, v3.0.0**
 - **CIS CentOS Linux 7 Benchmark, v3.1.2**
@@ -55,6 +56,7 @@ The CIS Benchmarks are tested with the prior, official CIS-CAT version at the ti
 - **CIS Microsoft IIS 8 Benchmark, v1.5.0**
 - **CIS Microsoft IIS 10 Benchmark, v1.2.0**
 - **CIS Microsoft Intune for Windows 10, v1.1.0**
+- **CIS Microsoft Intune for Windows 11, v1.0.0**
 - **CIS Microsoft Office Enterprise, v1.0.0**
 - **CIS Microsoft Office Access 2013 Benchmark, v1.0.1**
 - **CIS Microsoft Office Excel 2013 Benchmark, v1.0.1**
@@ -103,7 +105,7 @@ The CIS Benchmarks are tested with the prior, official CIS-CAT version at the ti
 - **CIS Oracle Database 18c Benchmark, v1.0.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: Oracle Database connection string.
 	- `xccdf_org.cisecurity_value_listener.ora`: Path to the listener.ora file
-- **CIS Oracle Database 19c Benchmark, v1.0.0**
+- **CIS Oracle Database 19c Benchmark, v1.1.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: Oracle Database connection string.
 	- `xccdf_org.cisecurity_value_listener.ora`: Path to the listener.ora file
 - **CIS Oracle Linux 6 Benchmark, v2.0.0**

@@ -7,6 +7,30 @@ CIS-CAT Pro Assessor v4 - [Download from CIS WorkBench](https://workbench.cisecu
 ---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
+## CIS-CAT Pro Assessor, v4.26.0 ##
+#### Release Date: Jan. 25, 2023 ####
+
+
+### Benchmark Coverage ###
+
+- Azure Server 2022 Compute Benchmark v1.0.0
+- Microsoft Windows Intune for Windows 11 v1.0.0
+- Oracle Database 19c v1.1.0
+
+### Security ###
+
+- Updated README.txt document for the list of suppressed third party security vulnerabilities from dependent libraries.
+- Resolved security vulnerabilities present in embedded, third party dependency, jackson-databind. This library has moved to version 2.14.0.
+
+### Application ###
+
+- GUI: The assessment progress bar has been corrected to coordinate with the actual progress of the assessment.
+
+### Documentation ###
+
+- None
+
+
 ## CIS-CAT Pro Assessor, v4.25.0 ##
 #### Release Date: Dec. 20, 2022 ####
 
