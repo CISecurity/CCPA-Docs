@@ -9,7 +9,7 @@
 The CIS-CAT Pro Assessor v4 is a command-line and graphical user interface, allowing users to assess target systems against various forms of machine-readable content.  CIS-CAT Pro Assessor is designed primarily to assess CIS Benchmark configuration recommendations but can also assess content written in conformance with the Security Content Automation Protocol (SCAP), as well as plain OVAL definition content.
 
 ## Remote Assessment Capability 
-CIS-CAT Pro Assessor v4 adds the ability to assess remote endpoints.  Providing appropriate connection information allows CIS-CAT Pro Assessor to establish a "session", execute commands, run scripts, and perform collection and evaluation for the remote endpoint.  For Microsoft Windows endpoints, this "session" is established through the use of WinRM.  For Unix/Linux and Cisco network device endpoints, CIS-CAT Pro Assessor establishes the "session" via SSH.
+CIS-CAT Pro Assessor v4 can perform assessments for remote endpoints.  Providing appropriate connection information allows CIS-CAT Pro Assessor to establish a "session", execute commands, run scripts, and perform collection and evaluation for the remote endpoint.  For Microsoft Windows endpoints, this "session" is established through the use of WinRM.  For Unix/Linux and Cisco network device endpoints, CIS-CAT Pro Assessor establishes the "session" via SSH.
 
 Endpoints to be assessed must be configured appropriately to allow for remote access.  Please see the [CIS-CAT Pro Assessor Configuration Guide](./Configuration%20Guide) for more information.
 
@@ -18,11 +18,11 @@ Endpoints to be assessed must be configured appropriately to allow for remote ac
 See the [CIS-CAT Pro Assessor Coverage Guide](./Coverage%20Guide) for the most up-to-date information regarding platform and application coverage.
 
 ## Graphical User Interface (GUI) #
-CIS-CAT Assessor Pro and Lite versions include a graphical user interface (GUI) as part of the downloaded bundle. The GUI is compatible with a Microsoft Windows operating system. Open the application by running the Assessor-GUI.exe. The GUI provides a method to execute a configuration assessment in an easy, quick, and simple setup process. The interface offers a simple workflow for the basic, local system configuration scan as well as advanced workflows where multiple combinations of remote and local scanning can be performed.
+CIS-CAT Assessor Pro and Lite versions can include a graphical user interface (GUI) as part of the downloaded bundle, depending on which bundle was selected for download. See [options to obtain CIS-CAT Pro Assessor](https://ccpa-docs.readthedocs.io/en/latest/Configuration%20Guide/#obtain-cis-cat-pro-assessor). The GUI is compatible with a Microsoft Windows operating system. Open the application by running the Assessor-GUI.exe. The GUI provides a method to execute a configuration assessment in an easy, quick, and simple setup process. The interface offers a simple workflow for the basic, local system configuration scan as well as advanced workflows where multiple combinations of remote and local scanning can be performed.
 
-The size of the downloaded application is approximately 175MB. If an organization's assessment workflows do not require use of a GUI and the additional space is a concern, CIS recommends downloading a version that does not contain GUI.
+If an organization's assessment workflows do not require use of a GUI and the additional space is a concern, CIS recommends downloading a version that does not contain GUI.
 
-When using the GUI, there's no need to setup additional software components (no Java Runtime Environment (JRE) is needed. 
+When using the GUI, there's no need to setup additional software components (no Java Runtime Environment (JRE)) is needed as it is embedded by default. 
 
 The GUI does not currently support initialization from a network location. The Assessor v4 must reside on a machine's local drive in order for the GUI functions and content to operate successfully.
 
@@ -128,7 +128,7 @@ The "reports" area shows the only the generated HTML. The HTML output must be se
 ![](img/GUI_Reports.png)
 
 ## Command Line Interface (CLI) 
-Bundled with the application are two script files; a Microsoft Windows batch script, `Assessor-CLI.bat` and a Unix/Linux shell script, `Assessor-CLI.sh`.  These scripts serve as the entry point to the application.  Any examples included in this user's guide will utilize the Microsoft Windows batch script, but usage of the Unix/Linux shell script can be substituted.
+The application will contain operating system appropriate script files. For Microsoft Windows, the batch script is `Assessor-CLI.bat`. For MacOS and Linux, the application contains a shell script, `Assessor-CLI.sh`.  These scripts execute an assessment.  The majority of the example commands in this guide will utilize the Microsoft Windows batch script, but usage of the Unix/Linux shell script can be substituted.
 
 **Notes**
 1. **The CIS-CAT application scripts (`Assessor-CLI.bat|.sh)` must be executed from the command line using root, Administrator, or an equivalently privileged principal.**
@@ -151,7 +151,7 @@ Basic operation of CIS-CAT Pro Assessor CLI allows a user to get help, list avai
 
 #### Examples ####
 
-Simply display the CIS-CAT Pro Assessor help information:
+Display the CIS-CAT Pro Assessor help information:
 
 	> Assessor-CLI.bat -h
 
@@ -229,7 +229,7 @@ Create a text file listing all available Benchmarks and their profiles:
 
 
 #### Reporting Options ###
-A number of options exist for generating assessment results.  When a benchmark or data-stream collection is assessed, the Asset Reporting Format (ARF) results are generated.  The ARF report is an XML document containing Asset Information for the endpoint under assessment, the benchmark/data-stream that was assessed, system characteristics, and assessment results.  When OVAL Definitions are assessed, an "OVAL results with system characteristics" XML document is produced by default.  These reports are automatically generated and cannot be disabled.  These XML documents are designed to be either uploaded directly to CIS-CAT Pro Dashboard, or transformed into more human-readable HTML, CSV or plain-text documents.
+Assessor can generate assessment results in multiple formats.  By default, the Asset Reporting Format (ARF) results are generated.  The ARF report is an XML document containing Asset Information for the endpoint under assessment, the benchmark/data-stream that was assessed, system characteristics, and assessment results.  When OVAL Definitions are assessed, an "OVAL results with system characteristics" XML document is produced by default.  These reports are automatically generated and cannot be disabled.  These XML documents are designed to be either uploaded directly to CIS-CAT Pro Dashboard, or transformed into more human-readable HTML, CSV or plain-text documents.
 
 The following table summarizes a number of options controlling which reports to generate, naming of reports, and functionality allowing users to upload reports to a URL, such as CIS-CAT Pro Dashboard.
 
@@ -745,7 +745,6 @@ A number of scenarios exist which could cause CIS-CAT Pro Assessor to terminate 
 
 
 ## Troubleshooting and Support ###
-CIS-CAT Pro Assessor v4 is generally available, and member support is available through the normal CIS SecureSuite channels:
 
 - For CIS support, enter a support request at our [online support portal](https://www.cisecurity.org/support/).
 - Start a discussion on the [CIS-CAT Discussion Group](https://workbench.cisecurity.org/communities/30) (login required).  These discussions are a great way for members to use their experience to support each other.

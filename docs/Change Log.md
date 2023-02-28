@@ -7,6 +7,36 @@ CIS-CAT Pro Assessor v4 - [Download from CIS WorkBench](https://workbench.cisecu
 ---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
+## CIS-CAT Pro Assessor, v4.27.0 ##
+#### Release Date: Feb. 28, 2023 ####
+
+
+### Benchmark Coverage ###
+
+- None
+
+### Security ###
+
+- None
+
+### Application ###
+
+- The Linux centralized scripts have been updated to correctly map to the Ubuntu 22.04 CIS Benchmark
+- The Microsoft Windows builds now contain only relevant Windows operational files.
+- The Linux builds now contain only relevant Linux operational files.
+- Linux bundles now have the option to be downloaded with an embedded Java. Centralized scripts will utilize the embedded java when this optional bundle has been downloaded. Correct permissions MUST be recursively applied to the jre folder in order for the assessment process to function. MacOS users should use the Linux version without Java. Find more information about available builds that can be [downloaded](https://ccpa-docs.readthedocs.io/en/latest/Configuration%20Guide/#obtain-cis-cat-pro-assessor) for CIS-CAT Pro Assessor.
+- The centralized scripts in the Linux with Java CIS-CAT bundle have been modified to utilize the embedded Java.
+- Command line console messaging for importing results to CIS-CAT Pro Dashboard have been improved
+
+### Documentation ###
+
+- Updated README.txt document for the list of suppressed third party security vulnerabilities from dependent libraries.
+- CIS-CAT now delivers with a Software Bill of Materials (SBOM) located in the documentation directory
+- The documentation directory now contains the licenses for third party libraries utilized by CIS-CAT
+- The documentation on [obtaining CIS-CAT Pro Assessor](https://ccpa-docs.readthedocs.io/en/latest/Configuration%20Guide/#obtain-cis-cat-pro-assessor) has been updated with the new options for downloading CIS-CAT Pro Assessor with embedded Java.
+
+
+
 ## CIS-CAT Pro Assessor, v4.26.0 ##
 #### Release Date: Jan. 25, 2023 ####
 

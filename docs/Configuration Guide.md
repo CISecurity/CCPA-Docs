@@ -16,23 +16,36 @@ Select the operating system that will host CIS-CAT Pro Assessor and the preferre
 
 ![](img/DownloadOptions.png)
 
-There are 3 possible download bundles:
+Below are the possible download bundles:
 
-| Operating System | Interface Type| Requires Host Installed JRE| Description |   Downloaded File Name Example|
-| ----------| --------- | ----- | ------------------------- | --------------------------- |
-| Microsoft Windows | with GUI | No | Includes a graphical interface and supports command line (CLI) activities. Embedded java 8 runtime environment (JRE) included and utilized for all Microsoft Windows assessments. Currently contains Linux shell scripts as well as Windows batch files. CIS plans to modify contents in future builds to be entirely OS specific. | CIS-CAT-Assessor-windows-GUI-jre-v4.24.0.zip |
-| Microsoft Windows | without GUI | Yes | Supports command line (CLI) activities, no graphical interface. Currently contains Linux shell scripts as well as Windows batch files. CIS plans to modify contents in future builds to be entirely OS specific. Requires an installed JRE on the CIS-CAT host. | CIS-CAT-Assessor-windows-v4.24.0 |
-| Linux / Mac | without GUI | Yes | Designed for Linux and includes only shell scripts for tool operation on Linux only. Requires an installed JRE on the CIS-CAT host. | CIS-CAT-Assessor-linux-v4.24.0 |
+| Operating<br/>System | Interface<br/>Type| Java | Requires<br/>Host<br/>Installed<br/>JRE| Description |   Downloaded File<br/>Name Example|
+| -----------------| -------------| ------| -------------------------- | ----------- | ------------------------------|
+| Microsoft Windows | with GUI | with | No | Includes a graphical interface and supports command line (CLI) activities. Embedded java 8 runtime environment (JRE) included and utilized for all Microsoft Windows assessments. Centralized scripts utilize the embedded Java | CIS-CAT-Assessor-windows-GUI-jre-v4.24.0.zip |
+| Microsoft Windows | without GUI | with | No | No graphical interface. Supports command line (CLI) activities. Embedded java 8 runtime environment (JRE) included and utilized for all Microsoft Windows assessments. Centralized scripts utilize the embedded Java | CIS-CAT-Assessor-windows-jre-v4.24.0.zip |
+| Microsoft Windows | without GUI | without | Yes | Supports command line (CLI) activities, no graphical interface. Requires an installed JRE on the CIS-CAT host. | CIS-CAT-Assessor-windows-v4.24.0 |
+| Linux  | without GUI | with | No | Designed for Linux **ONLY** operating systems. Includes only shell scripts for tool operation on Linux. Centralized scripts utilize the embedded Java. **MUST ensure that the jre folder of the build has appropriate read and execute permissions in order for the assessment process to function.** The embedded Java is only suitable for Linux OS, not MacOS. | CIS-CAT-Assessor-linux-jre-v4.24.0 |
+| Linux  | without GUI | without | Yes | Designed for Linux and MacOS operating systems. Includes only shell scripts for tool operation on Linux or MacOS. Requires an installed JRE on the CIS-CAT host. **MacOS** users must utilize this version. | CIS-CAT-Assessor-linux-v4.24.0 |
 
 System Recommendations
 ------------
 
 The host system is the machine where CIS-CAT Pro Assessor v4 resides. Most operating system can support operations of CIS-CAT Pro Assessor. The application requires a Java Runtime Environment (JRE) to run. Some builds of CIS-CAT now include an embedded JRE. The OS and tool components selected on download will determine whether an installed JRE is necessary for the host machine of CIS-CAT. See the detailed chart above in `Obtain CIS-CAT Pro`.
 
-To allow the greatest flexibility for configuring server performance, CIS recommends installing CIS-CAT Pro Assessor v4 on a host separate from hosts supporting CIS-CAT Pro Dashboard. It is possible to have multiple installations of CIS-CAT Pro Assessor on separate host systems, but each CIS-CAT Pro Assessor host system must have access to a JRE. 
+CIS recommends installing CIS-CAT Pro Assessor v4 on a host separate from hosts supporting CIS-CAT Pro Dashboard. Multiple installations of CIS-CAT Pro Assessor on separate host systems are allowed as there is no limit to installation. Each CIS-CAT Pro Assessor requires a JRE. You may utilize versions of CIS-CAT with embedded JRE per the appropriate operating system. If you wish to maintain your own JRE, please review the Java requirements below. 
 
 
 **Required**:
+
+
+- Remote scanning requires unrestricted access from the CIS-CAT host system to the assessed target system
+- Windows remote and local assessments require a 64 bit operating system 
+- Linux builds **with** embedded Java MUST ensure that the jre folder of the build has appropriate read and execute permissions in order for the assessment process to function.
+
+**Java Requirements**
+
+Java is required for operation of CIS-CAT. However, versions of CIS-CAT can now be downloaded with embedded Java from CIS WorkBench. See available builds on [CIS WorkBench](https://ccpa-docs.readthedocs.io/en/latest/Configuration%20Guide/#obtain-cis-cat-pro-assessor) for CIS-CAT Pro Assessor.
+
+If a version of CIS-CAT is selected that does **NOT** contain embedded Java, the following Java requirements apply:
 
 - JRE or JDK installed on CIS-CAT host machine or CIS-CAT bundle includes embedded Java
 	- **If using GUI, JRE is embedded. Host installed Java NOT needed**
@@ -42,9 +55,6 @@ To allow the greatest flexibility for configuring server performance, CIS recomm
 	- 64-bit Java recommended for faster performance
 	- Java versions 9+ will receive “WARNING: An illegal reflective access operation has occurred”. This can be ignored and will not halt the assessment.
 	- OpenJDK (free and open-source) implementations are supported. We have found this [website](https://adoptopenjdk.net/) easy to navigate. The official source is [OpenJDK](https://openjdk.java.net).
-- Remote scanning requires unrestricted access from the CIS-CAT host system to the assessed target system
-- Windows remote and local assessments require a 64 bit operating system 
-
 
 **Recommended Minimum**:
 
@@ -57,25 +67,37 @@ Depending on your organization's use of CIS-CAT Pro Assessor, the actual server 
 ## License ##
 To unlock full feature and content access for CIS-CAT Pro Assessor, Members are required to download and apply their organization’s SecureSuite license from [https://workbench.cisecurity.org](https://workbench.cisecurity.org "CIS WorkBench").
 
-If a valid license is not present in the defined location, CIS-CAT Pro Assessor will be limited to [Lite](https://learn.cisecurity.org/cis-cat-lite) functionality where only HTML output can be produced for a limited set of CIS Benchmark automated assessment content.
+If a valid license is not present in the defined location, CIS-CAT Pro Assessor will be limited to [Lite](https://learn.cisecurity.org/cis-cat-lite) functionality where the following restrictions apply:
 
-### Obtain License Files ###
+- Outputs only HTML format. Other formats such as csv, post to Dashboard, json, and txt are blocked. Commands utilized requesting this output will be ignored.
+- Assessment allowed only for limited set of CIS Benchmark automated assessment content, even if additional content is present. Allowed assessments:
+	- Google Chrome
+	- Microsoft Windows 10, domain joined
+	- Microsoft Windows 10, standalone
+	- Ubuntu
 
-1. Login to CIS WorkBench
-2. In the top right, click on your login name
-3. Click on your Organization Name
-4. Select the “Licenses” tab beneath your organization name on the left side of the screen
-5. Click on Download
+**Steps to Download Your SecureSuite License**
+
+1. Login to [CIS WorkBench](https://workbench.cisecurity.org/dashboard)
+2. Navigate to the [Downloads](https://workbench.cisecurity.org/files) menu item
+3. Select `Download License` button
+
+![](img/DownloadLicense.png)
+
+4. From the “Licenses” tab, select the `Download` button next to your key
 	- NOTE: Ensue that JavaScript is unblocked on your browser if you do not see that the file has downloaded.
-6. Navigate to the downloaded files and extract/unzip the contents
-7. Store all of the extracted files in the "license" folder of CIS-CAT Pro Assessor v4 v4.1.0+.  This file location can be overridden by the "ciscat.license.filepath" property in the [assessor-cli.properties](https://ccpa-docs.readthedocs.io/en/latest/Configuration%20Guide/#properties) file. See example of where the files should be placed within the CIS-CAT folder structure.
+5. Navigate to the downloaded files and extract/unzip the contents
+6. Open the folder where the extracted files were stored, and copy 
+all of the extracted files in the "license" folder of CIS-CAT Pro Assessor v4.  This file location can be overridden by the "ciscat.license.filepath" property in the [assessor-cli.properties](https://ccpa-docs.readthedocs.io/en/latest/Configuration%20Guide/#properties) file. 
+
+See example of where the files should be placed within the CIS-CAT folder structure.
 
 ![](img/license-download.png)
 
 
 ![](img/LicenseFolder.png)
 
-### Verification Method ###
+### License Verification Method ###
 
 CIS-CAT Assessor v4 validate a Member’s license at the beginning of each command execution performed from the GUI or the command line. The license will attempt to validate against a CIS-hosted location via SSL port 8883 first. If the host machine is unable to validate online, CIS-CAT will validate the license from the key that is present in the specified location. By default, the location is in the “License” folder. To modify this location, specify a different location using the ciscat.license.filepath property in the assessor-cli.properties (v4 Assessor).
 
