@@ -639,6 +639,8 @@ The totals in each highlighted major section in the Tests area are composed of t
 |Scoring       |Percent        | Percent of recommendations passed in a given section ((Score/Max)*100)   |
 
 
+Please note some CIS Benchmark recommendations may not be supported for automation in CIS-CAT. This can result in differences occurring between the CIS Benchmark PDF recommendations identified as “Automated” and the CIS-CAT report. An “Automated” recommendation means that the CIS Benchmark Community has determined that this recommendation can potentially be fully assessed to a pass/fail state by a configuration assessment tool. In cases where CIS-CAT does not support a given “Automated” Recommendation it will be reported as “Manual” in the CIS-CAT report.
+
 ![ubuntusummary](img/HTMLSummary.png)
 
 ![googlesummary](img/HTMLSummaryScore.png)

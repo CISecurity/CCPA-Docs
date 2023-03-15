@@ -12,7 +12,7 @@ Once logged into to CIS WorkBench, navigate to `Downloads` and select the button
 
 ![](img/DownloadPage.png)
 
-Select the operating system that will host CIS-CAT Pro Assessor and the preferred interface.
+Select the operating system that will host CIS-CAT Pro Assessor and the preferred interface. **MacOS** users must utilize the Linux version without embedded Java as the embedded Java is not suitable for MacOS.
 
 ![](img/DownloadOptions.png)
 
@@ -275,13 +275,13 @@ Configure a remote Linux session using a username/private key:
 #### MacOS Sessions ####
 --------------------------
 
-Configure a remote Linux session using a username/private key:
+Configure a remote MacOS session using a username/private key:
 
     session.8.type=ssh
-    session.8.host=ubuntu-test.example.org
+    session.8.host=macOS-test.example.org
     session.8.port=22
     session.8.user=ec2-user
-    session.8.identity=/Users/myuser/cis/pkey.pem
+    session.8.identity=/Users/ciscatuser/cis/pkey.pem
 
 
 
