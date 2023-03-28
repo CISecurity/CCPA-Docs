@@ -7,6 +7,37 @@ CIS-CAT Pro Assessor v4 - [Download from CIS WorkBench](https://workbench.cisecu
 ---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
+## CIS-CAT Pro Assessor, v4.28.0 ##
+#### Release Date: Mar. 28, 2023 ####
+
+
+### Benchmark Coverage ###
+
+- Cisco iOS 16 v2.0.0
+- Cisco iOS 17 v2.0.0
+- Kubernetes v1.7.0
+- Microsoft SQL Server 2022 v1.0.0
+- Microsoft Windows 10 Enterprise v2.0.0
+- Microsoft Windows 11 Enterprise v2.0.0
+- PostgreSQL 14 v1.1.0
+- VMware ESXi 7.0 v1.2.0
+- VMware ESXi 6.7 v1.3.0
+
+### Security ###
+
+- Resolved security vulnerabilities present in embedded, third party dependency, snakeyaml. This library has moved to version 2.0.0.
+
+### Application ###
+
+- Assessor’s base application has been updated from Groovy 2 to Groovy 3.
+- The application’s base framework has been upgraded to from Gradle 6 to 7.
+- The CIS SecureSuite license process has been modified to remove the dependency on Data Exchange Layer (DXL) communication fabric.
+
+### Documentation ###
+
+- Updated README.txt document for the list of suppressed third party security vulnerabilities from dependent libraries.
+
+
 ## CIS-CAT Pro Assessor, v4.27.0 ##
 #### Release Date: Feb. 28, 2023 ####
 

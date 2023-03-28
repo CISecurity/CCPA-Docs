@@ -39,8 +39,8 @@ Some CIS Benchmark recommendations may not be supported for automation in CIS-CA
 - **CIS CentOS Linux 6 Benchmark, v3.0.0**
 - **CIS CentOS Linux 7 Benchmark, v3.1.2**
 - **CIS Cisco IOS 15 Benchmark, v4.1.1**
-- **CIS Cisco IOS 16 Benchmark, v1.1.2**
-- **CIS Cisco IOS 17 Benchmark, v1.0.0**
+- **CIS Cisco IOS 16 Benchmark, v2.0.0**
+- **CIS Cisco IOS 17 Benchmark, v2.0.0**
 - **CIS Debian Family Linux, v1.0.0**
 - **CIS Debian Linux 9 Benchmark, v1.0.1**
 - **CIS Debian Linux 10 Benchmark, v1.0.0**
@@ -52,7 +52,7 @@ Some CIS Benchmark recommendations may not be supported for automation in CIS-CA
 - **CIS Google Kubernetes Engine (GKE) Benchmark, v1.3.0**
 - **CIS_Kubernetes V1.20 Benchmark, v1.0.1**
 - **CIS_Kubernetes V1.23 Benchmark, v1.0.1**
-- **CIS Kubernetes 1.24 v1.0.0**
+- **CIS Kubernetes v1.7.0**
 - **CIS MIT Kerberos 1.10 Benchmark, v1.0.0**
 - **CIS Microsoft Edge Benchmark, v1.1.0**
 - **CIS Microsoft IIS 8 Benchmark, v1.5.0**
@@ -72,10 +72,12 @@ Some CIS Benchmark recommendations may not be supported for automation in CIS-CA
 	- `xccdf_org.cisecurity_value_jdbc.url`: SQL Server connection string.
 - **CIS Microsoft SQL Server 2019 Benchmark, v1.2.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: SQL Server connection string.
-- **CIS Microsoft Windows 10 Enterprise, v1.12.0**
+- **CIS Microsoft SQL Server 2022 Benchmark, v1.0.0**
+	- `xccdf_org.cisecurity_value_jdbc.url`: SQL Server connection string.
+- **CIS Microsoft Windows 10 Enterprise, v2.0.0**
 - **CIS Microsoft Windows 10 EMS Gateway, v1.1.0**
 - **CIS Microsoft Windows 10 Stand-alone Benchmark, v1.0.1**
-- **CIS Microsoft Windows 11 Enterprise, v1.0.0**
+- **CIS Microsoft Windows 11 Enterprise, v2.0.0**
 - **CIS Microsoft Windows 11 Stand-alone Benchmark, v1.0.0**
 - **CIS Microsoft Windows Server 2008 (non-R2) Benchmark, v3.1.0**
 - **CIS Microsoft Windows Server 2008 R2 Benchmark, v3.3.0**
@@ -128,7 +130,7 @@ Some CIS Benchmark recommendations may not be supported for automation in CIS-CA
 	- `xccdf_org.cisecurity_value_jdbc.url`: PostgreSQL Database connection string.
 - **CIS PostgreSQL 13 Benchmark, v1.0.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: PostgreSQL Database connection string.
-- **CIS PostgreSQL 14 Benchmark, v1.0.0**
+- **CIS PostgreSQL 14 Benchmark, v1.1.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: PostgreSQL Database connection string.
 - **CIS PostgreSQL 15 Benchmark, v1.0.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: PostgreSQL Database connection string.
@@ -149,9 +151,9 @@ Some CIS Benchmark recommendations may not be supported for automation in CIS-CA
 - **CIS Ubuntu Linux 20.04 LTS Benchmark, v1.1.0**
 - **CIS Ubuntu Linux 20.04 LTS STIG Benchmark, v1.0.0**
 - **CIS Ubuntu Linux 22.04 LTS Benchmark, v1.0.0**
-- **CIS VMware ESXi 6.7 v1.2.0**
+- **CIS VMware ESXi 6.7 v1.3.0**
 	- `xccdf_org.cisecurity.benchmarks_value_esxi.connection`: ESXi host connection string
-- **CIS VMware ESXi 7.0 v1.1.0**
+- **CIS VMware ESXi 7.0 v1.2.0**
 	- `xccdf_org.cisecurity.benchmarks_value_esxi.connection`: ESXi host connection string
 
 

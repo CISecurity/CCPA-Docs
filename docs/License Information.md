@@ -1,13 +1,3 @@
-CIS-CAT Pro Assessor License Information
-========================================
-
-![](http://i.imgur.com/5yZfZi5.jpg)
-
-
-Introduction
-------------
-This document provides information regarding terms of use for CIS-CAT Pro Assessor, along with identification and documentation of license information for any 3rd-party libraries used in the tool.
-
 CIS Terms of Use
 ----------------
 See our [website](https://www.cisecurity.org/cis-securesuite/cis-securesuite-membership-terms-of-use/).
@@ -15,7 +5,7 @@ See our [website](https://www.cisecurity.org/cis-securesuite/cis-securesuite-mem
 Third-Party Licenses
 --------------------
 
-CIS-CAT Pro Assessor v4 utilizes various 3rd-party libraries to assist in activities performed by the tool. Information on versions used for each utilized library can be found in each downloaded bundle of CIS-CAT Pro in the Assessor-CLI directory in a file called LICENSE.file. Open this file in the text editor of your choice to review each version of each library.
+CIS-CAT Pro Assessor v4 utilizes various 3rd-party libraries to assist in activities performed by the tool. Information on versions used for each utilized library can be found in each downloaded bundle of CIS-CAT Pro in the `Documentation` folder called LICENSE.file. 
 
 The following 3rd-party libraries are bundled with CIS-CAT Pro Assessor v4.  Information regarding the license and links to further information can be found in the table below.
 

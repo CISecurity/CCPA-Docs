@@ -6,10 +6,9 @@ Please choose the guide you would like to view on the menu to the left.
 Acknowledgements
 ================
 
-The development team at CIS would like to thank the community of security and subject matter experts who participated in the beta testing of CIS-CAT Pro Assessor v4.  All feedback, discussions, issues, and frustrations were taken into account.  The community of CIS participants truly enhances our mission to provide confidence in the connected world.
+The CIS-CAT Team is thankful to all security and subject matter experts who participate on a regular basis on CIS-CAT discussions. The community  participants truly enhance the mission of CIS to provide confidence in the connected world.
 
-Cheers, 
+As always, CIS-CAT is dedicated to our community. 
 
--Team CIS-CAT
-
+Join the [CIS-CAT Discussion](https://workbench.cisecurity.org/communities/30) group today. Navigate to [CIS WorkBench](https://workbench.cisecurity.org/communities/public) and join the CIS-CAT Discussion.
  
