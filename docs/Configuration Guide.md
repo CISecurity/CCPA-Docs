@@ -381,7 +381,7 @@ Use an asterisk ( * ) to indicate that the service listens on all available IP a
 	- Set `Apply UAC restrictions to local accounts on network logons` to `Disabled`
 	
 
-*If this group policy setting is not available, it may need to be downloaded and imported into the GPMC.  The administrative template (ADMX) files can be downloaded from either [here](http://blogs.technet.com/b/secguide/archive/2014/08/13/security-baselines-for-windows-8-1-windows-server-2012-r2-and-internet-explorer-11-final.aspx) or [here](https://blogs.technet.microsoft.com/secguide/2017/08/30/security-baseline-for-windows-10-creators-update-v1703-final/).
+*If this group policy setting is not available, it may need to be downloaded and imported into the GPMC.  The administrative template (ADMX) files can be downloaded from either [here](https://www.microsoft.com/en-us/download/details.aspx?id=103034) or [here](https://learn.microsoft.com/en-us/troubleshoot/windows-client/group-policy/create-and-manage-central-store).
 
 
 #### Manual Configuration ####
