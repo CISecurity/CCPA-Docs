@@ -369,6 +369,7 @@ An example is below.
 In standalone (non-domain) environments, Local Group Policy Objects can be set. However, keep in mind, that Group Policy may take precedence and assessments will not have optimal results for systems that are not domain joined. Consult the official Microsoft site for your distribution of Microsoft Windows on how to set Local Group Policy (Example: [Windows 10](https://docs.microsoft.com/en-us/windows/security/threat-protection/security-policy-settings/how-to-configure-security-policy-settings)).
 
 
+
 To enable WinRM, configure the following settings in Group Policy:
 
 - **Allow remote server management through WinRM**:  
