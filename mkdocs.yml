@@ -2,7 +2,7 @@ site_name: CIS-CAT Pro Assessor v4
 nav:
    - Home: index.md
    - Source: 
-        - a_ SecureSuite License: SecureSuite License.md
+        - a_SecureSuite License: SecureSuite License.md
         - Configuration Guide: Configuration Guide.md
         - User Guide: User Guide for CLI.md
         - CIS Benchmark Support: Coverage Guide.md 
