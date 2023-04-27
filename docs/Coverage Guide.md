@@ -33,9 +33,9 @@ Some CIS Benchmark recommendations may not be supported for automation in CIS-CA
 - **CIS Apple macOS 11.0 Big Sur v3.0.0**
 - **CIS Apple macOS 12.0 Monterey v2.0.0**
 - **CIS Apple macOS 13.0 Ventura v1.0.0**
-- **CIS Azure Compute Microsoft Windows Server 2019 v1.0.0**
+- **CIS Azure Compute Microsoft Windows Server 2019 v1.0.1**
 - **CIS Azure Compute Microsoft Windows Server 2022 v1.0.0**
-- **CIS Azure Kubernetes Service (AKS) v1.2.0**
+- **CIS Azure Kubernetes Service (AKS) v1.3.0**
 - **CIS CentOS Linux 6 Benchmark, v3.0.0**
 - **CIS CentOS Linux 7 Benchmark, v3.1.2**
 - **CIS Cisco IOS 15 Benchmark, v4.1.1**
@@ -49,7 +49,7 @@ Some CIS Benchmark recommendations may not be supported for automation in CIS-CA
 - **CIS Fedora 28 Family Linux, v2.0.1**
 		- NOTE:  Requires the "ignore.platform.mismatch" property be set to "true" in the Assessor's properties file.
 - **CIS Google Chrome Benchmark, v2.1.0**
-- **CIS Google Kubernetes Engine (GKE) Benchmark, v1.3.0**
+- **CIS Google Kubernetes Engine (GKE) Benchmark, v1.4.0**
 - **CIS_Kubernetes V1.20 Benchmark, v1.0.1**
 - **CIS_Kubernetes V1.23 Benchmark, v1.0.1**
 - **CIS Kubernetes v1.7.0**
@@ -83,17 +83,18 @@ Some CIS Benchmark recommendations may not be supported for automation in CIS-CA
 - **CIS Microsoft Windows Server 2008 R2 Benchmark, v3.3.0**
 - **CIS Microsoft Windows Server 2012 (non-R2) Benchmark, v2.4.0**
 - **CIS Microsoft Windows Server 2012 R2 Benchmark, v2.6.0**
-- **CIS Microsoft Windows Server 2016 RTM (Release 1607) Benchmark, v1.4.0**
+- **CIS Microsoft Windows Server 2016 Benchmark, v2.0.0**
 - **CIS Microsoft Windows Server 2016 STIG Benchmark, v1.2.0**
-- **CIS Microsoft Windows Server 2019 Benchmark, v1.3.0**
+- **CIS Microsoft Windows Server 2019 Benchmark, v2.0.0**
 - **CIS Microsoft Windows Server 2019 STIG Benchmark, v1.1.0**
-- **CIS Microsoft Windows Server 2022 Benchmark, v1.0.0**
+- **CIS Microsoft Windows Server 2022 Benchmark, v2.0.0**
 - **CIS Microsoft Windows 8 Benchmark, v1.0.0**
 - **CIS Microsoft Windows 8.1 Workstation Benchmark, v2.4.0**
 - **CIS MongoDB 3.6, v1.1.0**
     - `xccdf_org.cisecurity_value_runnin_config_file.url`: MongoDB running configuration file (mongod.conf) location.
 - **CIS MongoDB 4, v1.0.0**
 - **CIS MongoDB 5, v1.1.0**
+- **CIS MongoDB 6, v1.0.0**
 - **CIS Mozilla Firefox 38 ESR Benchmark, v1.0.0**
 - **CIS NGINX Benchmark, v2.0.0**
 - **Oracle Cloud Infrastructure Container Engine for Kubernetes(OKE) Benchmark v1.2.0**
@@ -103,7 +104,7 @@ Some CIS Benchmark recommendations may not be supported for automation in CIS-CA
 - **CIS Oracle MySQL Enterprise Edition 5.7 Benchmark, v2.0.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: MySQL Server connection string.
 	- `xccdf_org.cisecurity_value_repl.user`: MySQL replication user name.
-- **CIS Oracle MySQL Enterprise Edition 8.0 Benchmark, v1.2.0**
+- **CIS Oracle MySQL Enterprise Edition 8.0 Benchmark, v1.2.1**
 	- `xccdf_org.cisecurity_value_jdbc.url`: MySQL Server connection string.
 	- `xccdf_org.cisecurity_value_repl.user`: MySQL replication user name.
 - **CIS Oracle Database 18c Benchmark, v1.0.0**
@@ -126,9 +127,9 @@ Some CIS Benchmark recommendations may not be supported for automation in CIS-CA
 	- `xccdf_org.cisecurity_value_jdbc.url`: PostgreSQL Database connection string.
 - **CIS PostgreSQL 11 Benchmark, v1.0.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: PostgreSQL Database connection string.
-- **CIS PostgreSQL 12 Benchmark, v1.0.0**
+- **CIS PostgreSQL 12 Benchmark, v1.1.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: PostgreSQL Database connection string.
-- **CIS PostgreSQL 13 Benchmark, v1.0.0**
+- **CIS PostgreSQL 13 Benchmark, v1.1.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: PostgreSQL Database connection string.
 - **CIS PostgreSQL 14 Benchmark, v1.1.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: PostgreSQL Database connection string.

@@ -7,6 +7,38 @@ CIS-CAT Pro Assessor v4 - [Download from CIS WorkBench](https://workbench.cisecu
 ---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
+## CIS-CAT Pro Assessor, v4.29.0 ##
+#### Release Date: Apr. 27, 2023 ####
+
+### Benchmark Coverage ###
+
+- Azure Compute Microsoft Windows Server 2019 v1.0.1
+- Azure Kubernetes Service (AKS) v1.3.0
+- Google Kubernetes Engine (GKE) v1.4.0
+- Microsoft Windows Server 2016 v2.0.0
+- Microsoft Windows Server 2019 v2.0.0
+- Microsoft Windows Server 2022 v2.0.0
+- MongoDB 6 v1.0.0
+- MySQL 8.0 v1.2.1
+- PostgreSQL 12 v1.1.0
+- PostgreSQL 13 v1.1.0
+
+### Security ###
+
+- None
+
+### Application ###
+
+- An issue has been resolved for Linux centralized script. The correct Benchmarks are now selected when auto detect is turned on.
+- Permissions pre-set to read and execute Assessor-CLI.sh for all versions of the Linux build
+- Permissions pre-set to read and execute embedded java for versions including java
+- HTML report updated to represent CIS Benchmark recommendations intentionally not mapped to a CIS Critical Control as “Explicitly Not Mapped”
+
+### Documentation ###
+
+- Resolved incorrect link to external documentation in the configuration guide in the WinRM section
+- Corrected an error where the “Documentation” folder containing the Software Bill of Materials (SBOM) was excluded.
+
 ## CIS-CAT Pro Assessor, v4.28.0 ##
 #### Release Date: Mar. 28, 2023 ####
 
