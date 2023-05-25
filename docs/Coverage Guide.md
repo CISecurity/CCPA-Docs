@@ -24,7 +24,7 @@ Some CIS Benchmark recommendations may not be supported for automation in CIS-CA
 - **CIS Aliyun Linux 2, v1.0.0**
 - **CIS AlmaLinux OS 8 v2.0.0**
 - **CIS AlmaLinux OS 9 v1.0.0**
-- **CIS Amazon Elastic Kubernetes Service (EKS) v1.1.0**
+- **CIS Amazon Elastic Kubernetes Service (EKS) v1.3.0**
 - **CIS Amazon Linux 2 v2.0.0**
 - **CIS Amazon Linux 2 STIG v2.0.0**
 - **CIS Apache Tomcat 9 v1.2.0**
@@ -43,7 +43,7 @@ Some CIS Benchmark recommendations may not be supported for automation in CIS-CA
 - **CIS Cisco IOS 17 Benchmark, v2.0.0**
 - **CIS Debian Family Linux, v1.0.0**
 - **CIS Debian Linux 9 Benchmark, v1.0.1**
-- **CIS Debian Linux 10 Benchmark, v1.0.0**
+- **CIS Debian Linux 10 Benchmark, v2.0.0**
 - **CIS Debian Linux 11 v1.0.0**
 - **CIS Fedora 19 Family Linux, v1.0.0**
 - **CIS Fedora 28 Family Linux, v2.0.1**
@@ -52,7 +52,7 @@ Some CIS Benchmark recommendations may not be supported for automation in CIS-CA
 - **CIS Google Kubernetes Engine (GKE) Benchmark, v1.4.0**
 - **CIS_Kubernetes V1.20 Benchmark, v1.0.1**
 - **CIS_Kubernetes V1.23 Benchmark, v1.0.1**
-- **CIS Kubernetes v1.7.0**
+- **CIS Kubernetes v1.7.1**
 - **CIS MIT Kerberos 1.10 Benchmark, v1.0.0**
 - **CIS Microsoft Edge Benchmark, v1.1.0**
 - **CIS Microsoft IIS 8 Benchmark, v1.5.0**
@@ -76,9 +76,9 @@ Some CIS Benchmark recommendations may not be supported for automation in CIS-CA
 	- `xccdf_org.cisecurity_value_jdbc.url`: SQL Server connection string.
 - **CIS Microsoft Windows 10 Enterprise, v2.0.0**
 - **CIS Microsoft Windows 10 EMS Gateway, v1.1.0**
-- **CIS Microsoft Windows 10 Stand-alone Benchmark, v1.0.1**
+- **CIS Microsoft Windows 10 Stand-alone Benchmark, v2.0.0**
 - **CIS Microsoft Windows 11 Enterprise, v2.0.0**
-- **CIS Microsoft Windows 11 Stand-alone Benchmark, v1.0.0**
+- **CIS Microsoft Windows 11 Stand-alone Benchmark, v2.0.0**
 - **CIS Microsoft Windows Server 2008 (non-R2) Benchmark, v3.1.0**
 - **CIS Microsoft Windows Server 2008 R2 Benchmark, v3.3.0**
 - **CIS Microsoft Windows Server 2012 (non-R2) Benchmark, v2.4.0**
@@ -97,7 +97,7 @@ Some CIS Benchmark recommendations may not be supported for automation in CIS-CA
 - **CIS MongoDB 6, v1.0.0**
 - **CIS Mozilla Firefox 38 ESR Benchmark, v1.0.0**
 - **CIS NGINX Benchmark, v2.0.0**
-- **Oracle Cloud Infrastructure Container Engine for Kubernetes(OKE) Benchmark v1.2.0**
+- **Oracle Cloud Infrastructure Container Engine for Kubernetes(OKE) Benchmark v1.3.0**
 - **CIS Oracle MySQL Community Server 5.7 Benchmark, v2.0.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: MySQL Server connection string.
 	- `xccdf_org.cisecurity_value_repl.user`: MySQL replication user name.
@@ -117,8 +117,9 @@ Some CIS Benchmark recommendations may not be supported for automation in CIS-CA
 - **CIS Oracle Linux 7 Benchmark, v3.1.1**
 - **CIS Oracle Linux 8 Benchmark, v2.0.0**
 - **CIS Oracle Linux 9 Benchmark, v1.0.0**
-- **Palo Alto Firewall 9 Benchmark v1.0.1 (offline only)**
-- **Palo Alto Firewall 10 Benchmark v1.0.0 (offline only)**
+- **Palo Alto Firewall 9 Benchmark v1.1.0 (offline only)**
+- **Palo Alto Firewall 10 Benchmark v1.1.0 (offline only)**
+- **Palo Alto Firewall 11 Benchmark v1.0.0 (offline only)**
 - **CIS PostgreSQL 9.5 Benchmark, v1.1.0.1**
 	- `xccdf_org.cisecurity_value_jdbc.url`: PostgreSQL Database connection string.
 - **CIS PostgreSQL 9.6 Benchmark, v1.0.0**
@@ -149,7 +150,7 @@ Some CIS Benchmark recommendations may not be supported for automation in CIS-CA
 - **CIS Ubuntu Linux 14.04 LTS Benchmark, v2.0.0**
 - **CIS Ubuntu Linux 16.04 LTS Benchmark, v2.0.0**
 - **CIS Ubuntu Linux 18.04 LTS Benchmark, v2.1.0**
-- **CIS Ubuntu Linux 20.04 LTS Benchmark, v1.1.0**
+- **CIS Ubuntu Linux 20.04 LTS Benchmark, v2.0.0**
 - **CIS Ubuntu Linux 20.04 LTS STIG Benchmark, v1.0.0**
 - **CIS Ubuntu Linux 22.04 LTS Benchmark, v1.0.0**
 - **CIS VMware ESXi 6.7 v1.3.0**

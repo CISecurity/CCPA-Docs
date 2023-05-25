@@ -7,6 +7,35 @@ CIS-CAT Pro Assessor v4 - [Download from CIS WorkBench](https://workbench.cisecu
 ---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
+## CIS-CAT Pro Assessor, v4.30.0 ##
+#### Release Date: May. 25, 2023 ####
+
+### Benchmark Coverage ###
+
+- Amazon Elastic Kubernetes Service (EKS) v1.3.0
+- Debian Linux 10 v2.0.0
+- Kubernetes Benchmark v1.7.1
+- Microsoft Windows 10 Standalone v2.0.0
+- Microsoft Windows 11 Standalone v2.0.0
+- Oracle Cloud Infrastructure Container Engine for Kubernetes(OKE) v1.3.0
+- Palo Alto Firewall 9 v1.1.0
+- Palo Alto Firewall 10 v1.1.0
+- Palo Alto Firewall 11 v1.0.0
+- Ubuntu Linux 20.04 LTS v2.0.0
+
+### Security ###
+
+- None
+
+### Application ###
+
+- Permissions have been set for cis-cat-centralized.sh and cis-cat-centralized-ccpd.sh and will persist for all versions of the Linux build when build is extracted on a Linux machine.
+
+### Documentation ###
+
+- None
+
+
 ## CIS-CAT Pro Assessor, v4.29.0 ##
 #### Release Date: Apr. 27, 2023 ####
 
