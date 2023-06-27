@@ -21,10 +21,12 @@ The CIS Benchmarks are tested with the prior, official CIS-CAT version at the ti
 
 Some CIS Benchmark recommendations may not be supported for automation in CIS-CAT. This can result in differences occurring between the CIS Benchmark PDF recommendations identified as “Automated” and the CIS-CAT report. An “Automated” recommendation means that the CIS Benchmark Community has determined that this recommendation can potentially be fully assessed to a pass/fail state by a configuration assessment tool. In cases where CIS-CAT does not support a given “Automated” Recommendation it will be reported as “Manual” in the CIS-CAT report.
 
+- **CIS AKS-Optimized Azure Linux 2 v1.0.0**
 - **CIS Aliyun Linux 2, v1.0.0**
 - **CIS AlmaLinux OS 8 v2.0.0**
 - **CIS AlmaLinux OS 9 v1.0.0**
 - **CIS Amazon Elastic Kubernetes Service (EKS) v1.3.0**
+- **CIS Amazon Linux 2023 v1.0.0**
 - **CIS Amazon Linux 2 v2.0.0**
 - **CIS Amazon Linux 2 STIG v2.0.0**
 - **CIS Apache Tomcat 9 v1.2.0**
@@ -45,6 +47,7 @@ Some CIS Benchmark recommendations may not be supported for automation in CIS-CA
 - **CIS Debian Linux 9 Benchmark, v1.0.1**
 - **CIS Debian Linux 10 Benchmark, v2.0.0**
 - **CIS Debian Linux 11 v1.0.0**
+- **CIS Docker v1.6.0**
 - **CIS Fedora 19 Family Linux, v1.0.0**
 - **CIS Fedora 28 Family Linux, v2.0.1**
 		- NOTE:  Requires the "ignore.platform.mismatch" property be set to "true" in the Assessor's properties file.
@@ -70,7 +73,7 @@ Some CIS Benchmark recommendations may not be supported for automation in CIS-CA
 	- `xccdf_org.cisecurity_value_jdbc.url`: SQL Server connection string.
 - **CIS Microsoft SQL Server 2017 Benchmark, v1.2.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: SQL Server connection string.
-- **CIS Microsoft SQL Server 2019 Benchmark, v1.2.0**
+- **CIS Microsoft SQL Server 2019 Benchmark, v1.3.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: SQL Server connection string.
 - **CIS Microsoft SQL Server 2022 Benchmark, v1.0.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: SQL Server connection string.
@@ -79,47 +82,47 @@ Some CIS Benchmark recommendations may not be supported for automation in CIS-CA
 - **CIS Microsoft Windows 10 Stand-alone Benchmark, v2.0.0**
 - **CIS Microsoft Windows 11 Enterprise, v2.0.0**
 - **CIS Microsoft Windows 11 Stand-alone Benchmark, v2.0.0**
-- **CIS Microsoft Windows Server 2008 (non-R2) Benchmark, v3.1.0**
-- **CIS Microsoft Windows Server 2008 R2 Benchmark, v3.3.0**
-- **CIS Microsoft Windows Server 2012 (non-R2) Benchmark, v2.4.0**
-- **CIS Microsoft Windows Server 2012 R2 Benchmark, v2.6.0**
-- **CIS Microsoft Windows Server 2016 Benchmark, v2.0.0**
-- **CIS Microsoft Windows Server 2016 STIG Benchmark, v1.2.0**
-- **CIS Microsoft Windows Server 2019 Benchmark, v2.0.0**
-- **CIS Microsoft Windows Server 2019 STIG Benchmark, v1.1.0**
-- **CIS Microsoft Windows Server 2022 Benchmark, v2.0.0**
+- **CIS Microsoft Windows Server 2008 (non-R2) v3.1.0**
+- **CIS Microsoft Windows Server 2008 R2 v3.3.0**
+- **CIS Microsoft Windows Server 2012 (non-R2) v2.4.0**
+- **CIS Microsoft Windows Server 2012 R2 v2.6.0**
+- **CIS Microsoft Windows Server 2016 v2.0.0**
+- **CIS Microsoft Windows Server 2016 STIG v1.2.0**
+- **CIS Microsoft Windows Server 2019 v2.0.0**
+- **CIS Microsoft Windows Server 2019 STIG v1.1.0**
+- **CIS Microsoft Windows Server 2022 v2.0.0**
 - **CIS Microsoft Windows 8 Benchmark, v1.0.0**
-- **CIS Microsoft Windows 8.1 Workstation Benchmark, v2.4.0**
+- **CIS Microsoft Windows 8.1 Workstation v2.4.0**
 - **CIS MongoDB 3.6, v1.1.0**
     - `xccdf_org.cisecurity_value_runnin_config_file.url`: MongoDB running configuration file (mongod.conf) location.
 - **CIS MongoDB 4, v1.0.0**
 - **CIS MongoDB 5, v1.1.0**
 - **CIS MongoDB 6, v1.0.0**
-- **CIS Mozilla Firefox 38 ESR Benchmark, v1.0.0**
-- **CIS NGINX Benchmark, v2.0.0**
-- **Oracle Cloud Infrastructure Container Engine for Kubernetes(OKE) Benchmark v1.3.0**
-- **CIS Oracle MySQL Community Server 5.7 Benchmark, v2.0.0**
+- **CIS Mozilla Firefox 38 ESR v1.0.0**
+- **CIS NGINX v2.0.1**
+- **Oracle Cloud Infrastructure Container Engine for Kubernetes(OKE) v1.3.0**
+- **CIS Oracle MySQL Community Server 5.7 v2.0.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: MySQL Server connection string.
 	- `xccdf_org.cisecurity_value_repl.user`: MySQL replication user name.
-- **CIS Oracle MySQL Enterprise Edition 5.7 Benchmark, v2.0.0**
+- **CIS Oracle MySQL Enterprise Edition 5.7 v2.0.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: MySQL Server connection string.
 	- `xccdf_org.cisecurity_value_repl.user`: MySQL replication user name.
-- **CIS Oracle MySQL Enterprise Edition 8.0 Benchmark, v1.2.1**
+- **CIS Oracle MySQL Enterprise Edition 8.0 v1.2.1**
 	- `xccdf_org.cisecurity_value_jdbc.url`: MySQL Server connection string.
 	- `xccdf_org.cisecurity_value_repl.user`: MySQL replication user name.
-- **CIS Oracle Database 18c Benchmark, v1.0.0**
+- **CIS Oracle Database 18c v1.1.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: Oracle Database connection string.
 	- `xccdf_org.cisecurity_value_listener.ora`: Path to the listener.ora file
-- **CIS Oracle Database 19c Benchmark, v1.1.0**
+- **CIS Oracle Database 19c v1.1.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: Oracle Database connection string.
 	- `xccdf_org.cisecurity_value_listener.ora`: Path to the listener.ora file
 - **CIS Oracle Linux 6 Benchmark, v2.0.0**
 - **CIS Oracle Linux 7 Benchmark, v3.1.1**
 - **CIS Oracle Linux 8 Benchmark, v2.0.0**
 - **CIS Oracle Linux 9 Benchmark, v1.0.0**
-- **Palo Alto Firewall 9 Benchmark v1.1.0 (offline only)**
-- **Palo Alto Firewall 10 Benchmark v1.1.0 (offline only)**
-- **Palo Alto Firewall 11 Benchmark v1.0.0 (offline only)**
+- **CIS Palo Alto Firewall 9 v1.1.0 (offline only)**
+- **CIS Palo Alto Firewall 10 v1.1.0 (offline only)**
+- **CIS Palo Alto Firewall 11 v1.0.0 (offline only)**
 - **CIS PostgreSQL 9.5 Benchmark, v1.1.0.1**
 	- `xccdf_org.cisecurity_value_jdbc.url`: PostgreSQL Database connection string.
 - **CIS PostgreSQL 9.6 Benchmark, v1.0.0**
@@ -136,23 +139,23 @@ Some CIS Benchmark recommendations may not be supported for automation in CIS-CA
 	- `xccdf_org.cisecurity_value_jdbc.url`: PostgreSQL Database connection string.
 - **CIS PostgreSQL 15 Benchmark, v1.0.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: PostgreSQL Database connection string.
-- **CIS Red Hat Enterprise Linux 6 Benchmark, v3.0.0**
-- **CIS Red Hat Enterprise Linux 7 Benchmark, v3.1.1**
-- **CIS Red Hat Enterprise Linux 7 STIG Benchmark, v2.0.0**
-- **CIS Red Hat Enterprise Linux 8 Benchmark, v2.0.0**
-- **CIS Red Hat Enterprise Linux 8 STIG Benchmark, v1.0.0**
-- **CIS Red Hat Enterprise Linux 9 Benchmark, v1.0.0**
-- **CIS Red Hat OpenShift Container Platform Benchmark, v1.3.0**
-- **CIS Rocky Linux 8 Benchmark, v1.0.0**
-- **CIS Rocky Linux 9 Benchmark, v1.0.0**
-- **CIS SUSE Linux Enterprise 12 Benchmark, v3.1.0**
-- **CIS SUSE Linux Enterprise 15 Benchmark, v1.1.1**
-- **CIS Ubuntu Linux 14.04 LTS Benchmark, v2.0.0**
-- **CIS Ubuntu Linux 16.04 LTS Benchmark, v2.0.0**
-- **CIS Ubuntu Linux 18.04 LTS Benchmark, v2.1.0**
-- **CIS Ubuntu Linux 20.04 LTS Benchmark, v2.0.0**
-- **CIS Ubuntu Linux 20.04 LTS STIG Benchmark, v1.0.0**
-- **CIS Ubuntu Linux 22.04 LTS Benchmark, v1.0.0**
+- **CIS Red Hat Enterprise Linux 6 v3.0.0**
+- **CIS Red Hat Enterprise Linux 7 v3.1.1**
+- **CIS Red Hat Enterprise Linux 7 STIG v2.0.0**
+- **CIS Red Hat Enterprise Linux 8 2.0.0**
+- **CIS Red Hat Enterprise Linux 8 STIG v1.0.0**
+- **CIS Red Hat Enterprise Linux 9 v1.0.0**
+- **CIS Red Hat OpenShift Container Platform v4, v1.4.0**
+- **CIS Rocky Linux 8 v1.0.0**
+- **CIS Rocky Linux 9 v1.0.0**
+- **CIS SUSE Linux Enterprise 12 v3.1.0**
+- **CIS SUSE Linux Enterprise 15 v1.1.1**
+- **CIS Ubuntu Linux 14.04 LTS v2.0.0**
+- **CIS Ubuntu Linux 16.04 LTS v2.0.0**
+- **CIS Ubuntu Linux 18.04 LTS v2.1.0**
+- **CIS Ubuntu Linux 20.04 LTS v2.0.1**
+- **CIS Ubuntu Linux 20.04 LTS STIG v1.0.0**
+- **CIS Ubuntu Linux 22.04 LTS v1.0.0**
 - **CIS VMware ESXi 6.7 v1.3.0**
 	- `xccdf_org.cisecurity.benchmarks_value_esxi.connection`: ESXi host connection string
 - **CIS VMware ESXi 7.0 v1.2.0**

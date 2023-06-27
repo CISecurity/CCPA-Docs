@@ -7,6 +7,35 @@ CIS-CAT Pro Assessor v4 - [Download from CIS WorkBench](https://workbench.cisecu
 ---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
+## CIS-CAT Pro Assessor, v4.31.0 ##
+#### Release Date: Jun. 27, 2023 ####
+
+### Benchmark Coverage ###
+
+- AKS-Optimized Azure Linux 2 v1.0.0
+- Amazon Linux 2023 v1.0.0
+- Docker v1.6.0
+- Microsoft SQL Server 2019 v1.3.0
+- Oracle 18c v1.1.0
+- NGINX v2.0.1
+- RedHat OpenShift Container Platform v4 v1.4.0
+- Ubuntu Linux 20.04 LTS v2.0.1
+
+### Security ###
+
+- None
+
+### Application ###
+
+- A new property added in the Assessor-CLI.properties file offers an option, when utilized, that will allow Linux/macOS CIS Benchmark recommendation checks to execute up to the set duration for this property. The recommendation result will be marked unknown, scored as a fail result.  
+- The Assessor-CLI.jar file, the main executable for all assessor processes, is now signed and provides the benefit for Members to validate code integrity.
+
+### Documentation ###
+
+- Software Bill of Materials files have been renamed to SBOM_CIS_CAT_Pro_Assessor
+- Updated README.txt document for the list of suppressed third party security vulnerabilities from dependent libraries.
+
+
 ## CIS-CAT Pro Assessor, v4.30.0 ##
 #### Release Date: May. 25, 2023 ####
 

@@ -131,6 +131,7 @@ The "reports" area shows the only the generated HTML. The HTML output must be se
 The application will contain operating system appropriate script files. For Microsoft Windows, the batch script is `Assessor-CLI.bat`. For MacOS and Linux, the application contains a shell script, `Assessor-CLI.sh`.  These scripts execute an assessment.  The majority of the example commands in this guide will utilize the Microsoft Windows batch script, but usage of the Unix/Linux shell script can be substituted.
 
 **Notes**
+
 1. **The CIS-CAT application scripts (`Assessor-CLI.bat|.sh)` must be executed from the command line using root, Administrator, or an equivalently privileged principal.**
 2. **The CIS-CAT application may be executed from a command prompt/terminal navigated to any directory on the executing host.  As such, any file references made in command-line options may utilize either absolute or relative paths.  Relative paths will be parsed from the application's "base" directory, which is set on application start-up to be the directory containing the `Assessor-CLI.jar` file.**
 
