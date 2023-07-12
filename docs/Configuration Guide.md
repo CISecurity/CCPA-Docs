@@ -26,6 +26,15 @@ Below are the possible download bundles:
 | Linux  | without GUI | with | No | Designed for Linux **ONLY** operating systems. Includes only shell scripts for tool operation on Linux. Centralized scripts utilize the embedded Java. **MUST ensure that the jre folder of the build has appropriate read and execute permissions in order for the assessment process to function.** The embedded Java is only suitable for Linux OS, not MacOS. | CIS-CAT-Assessor-linux-jre-v4.24.0 |
 | Linux  | without GUI | without | Yes | Designed for Linux and MacOS operating systems. Includes only shell scripts for tool operation on Linux or MacOS. Requires an installed JRE on the CIS-CAT host. **MacOS** users must utilize this version. | CIS-CAT-Assessor-linux-v4.24.0 |
 
+Security
+
+CIS-CAT team utilizes best efforts to ensure that the CIS-CAT product are free from material vulnerabilities resulting from integrated third-party libraries with continuous use of monitoring tools as part of the software build process. The Center for Internet Security performs annual penetration testing on eligible software products, which includes CIS-CAT. CIS-CAT mitigates risks with recommended solutions associated with penetration test findings assessed at and above a Medium.
+
+The Center for Internet Security product engineering practices are SOC 2 certified. SOC 2 is a voluntary compliance standard for service organizations, developed by the American Institute of CPAs (AICPA), which specifies how organizations should manage customer data. The standard is based on the following Trust Services Criteria: security, availability, processing integrity, confidentiality, privacy.
+
+CIS-CAT's engineering team is populated with individuals educated and certified in cyber security best practices. The Center for Internet for Security develops cyber security best practices with our global community of cybersecurity experts. We implement these best practices within the organization.
+
+
 System Recommendations
 ------------
 
