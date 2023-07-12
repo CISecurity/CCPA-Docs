@@ -27,6 +27,7 @@ Below are the possible download bundles:
 | Linux  | without GUI | without | Yes | Designed for Linux and MacOS operating systems. Includes only shell scripts for tool operation on Linux or MacOS. Requires an installed JRE on the CIS-CAT host. **MacOS** users must utilize this version. | CIS-CAT-Assessor-linux-v4.24.0 |
 
 Security
+------------
 
 CIS-CAT team utilizes best efforts to ensure that the CIS-CAT product are free from material vulnerabilities resulting from integrated third-party libraries with continuous use of monitoring tools as part of the software build process. The Center for Internet Security performs annual penetration testing on eligible software products, which includes CIS-CAT. CIS-CAT mitigates risks with recommended solutions associated with penetration test findings assessed at and above a Medium.
 
