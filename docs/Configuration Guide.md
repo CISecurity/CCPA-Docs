@@ -547,12 +547,14 @@ When connecting to an Oracle database using the Service Name, the format of the 
 For example:
 
 	jdbc:oracle:thin:sys as sysdba/pa55w0rd!@//servername:1521/SERVICE_NAME
+	
+Please note, if your organization has followed guidance in Appendix 7 of the CIS Benchmark, then please make the appropriate modifications to the named user above. 
 
 The following table describes the components of the Oracle JDBC connection string.
 
 | Property Name | Property Description |
 |---------------|----------------------|
-| username      | A valid username who can connect to the database instance.  This user should have sufficient privileges to `SELECT` from the various tables and views indicated in the specific Oracle benchmark, or be granted `SYSDBA` privileges. |
+| username      | A valid username who can connect to the database instance. See the example and note above. This user should have sufficient privileges to `SELECT` from the various tables and views indicated in the specific Oracle benchmark, or be granted `SYSDBA` privileges. |
 | password      | The credentials for the specified `username` to connect to the database instance. |
 | hostname      | The name of the server (or it's IP address) hosting the database.|
 | port          | The port number on which the database is listening.  By default, Oracle databases are configured to listen on port 1521.|
