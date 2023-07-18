@@ -1275,9 +1275,18 @@ The *Workstations Group* represents a population of Microsoft Windows targets to
 
 Perform the following steps to cause the *Workstations Group* to execute the CIS-CAT instance on the *CIS Host Server*.
 
+- [Create CIS Share on host server](#createshare)
+- [Prepare CIS-CAT Pro Assessor for share folder](#preparefolder)
+- [Confirm the Directory](#confirm)
+- [Apply folder permissions](#perm)
+- [Update cis-cat-centralized.bat(not using Dashboard)](#updatebat) or [Update cis-cat-centralized-ccpd.bat(API to Dashboard) ](#updateccpdbat)
+- [Validate install](#validateinstall)
+- [Configure Scheduled Task via Group Policy](#task)
+
+<a name="createshare"></a>
 **Create CIS Share on the CIS Hosting Server**
 
-1.Create a shared folder on the *CIS Host Server* named **CIS**. Share permissions on the CIS folder should allow the Authenticated Users group the ability to both **Read** and **Change** information in the folder. To configure the permissions on the CIS share, right-click on the CIS folder and select “Properties”. Click on the “Sharing” tab, and select “Advanced Sharing”:
+Create a shared folder on the *CIS Host Server* named **CIS**. Share permissions on the CIS folder should allow the Authenticated Users group the ability to both **Read** and **Change** information in the folder. To configure the permissions on the CIS share, right-click on the CIS folder and select “Properties”. Click on the “Sharing” tab, and select “Advanced Sharing”:
 
 ![](https://i.imgur.com/XvCEvEJ.png)
 
@@ -1289,18 +1298,27 @@ On the “Permissions” popup, grant **Change** and **Read** to the Authenticat
 
 ![](https://i.imgur.com/KiAmbP0.png)
 
-2. Unzip the CIS-CAT bundle within the **CIS** folder on the *CIS Host Server* and move the Assessor folder to the root of the **CIS** folder.
-3. If using a version of CIS-CAT that has embedded Java (contains the 'jre' folder), then go to Step 6, else go to next step
-4. Create the following directories beneath the CIS folder on the *CIS Host Server*:
+<a name="preparefolder"></a>
+**Prepare CIS-CAT Pro Assessor For Share Folder**
+
+- Unzip the CIS-CAT bundle within the **CIS** folder on the *CIS Host Server* and move the Assessor folder to the root of the **CIS** folder.
+- Move the Assessor\misc\Windows\cis-cat-centralized.bat file or the Assessor\misc\Windows\cis-cat-centralized-ccpd.bat file to the root of the CIS folder, depending on whether you want to write the assessment reports to the *CIS Host Server* or configure the centralized script to send the assessment reports directly to a CIS-CAT Pro Dashboard (CCPD).
+- Share the **CIS** folder as CIS.
+
+If using a version of CIS-CAT that has embedded Java (contains the 'jre' folder), then CIS-CAT is ready to use.
+
+If you are utilizing your own Java, create the following directories beneath the CIS folder on the *CIS Host Server*:
 	- Java
 	- Java64
 	- Reports 
-5. To copy the java runtime (JRE) to the CIS folder do the following:
+
+If utilizing your own java runtime (JRE), then under the CIS-CAT folder do the following:
 	- Browse to the location where Java is installed, by default Java is located at “%ProgramFiles%\Java”.
 	- Copy the 32-bit JRE that applies to the targets you will be evaluating, such as jre1.8.0_201, to the Java folder created above
 	- Copy the 64-bit JRE that applies to the targets you will be evaluating, such as jre1.8.0_201, to the Java64 folder created above
-6. Move the Assessor\misc\Windows\cis-cat-centralized.bat file or the Assessor\misc\Windows\cis-cat-centralized-ccpd.bat file to the root of the CIS folder, depending on whether you want to write the assessment reports to the *CIS Host Server* or configure the centralized script to send the assessment reports directly to a CIS-CAT Pro Dashboard (CCPD).
-7. Share the **CIS** folder as CIS.
+
+<a name="confirm"></a>
+**Confirm the Directory**
 
 The resulting directory structure should be as follows:
 
@@ -1323,7 +1341,8 @@ If using the embedded Java, then CIS\Java and CIS\Java64 folders are not necessa
 	- CIS\Java64
 	- CIS\Reports
 
-**Security Considerations**
+<a name="perm"></a>
+**Apply Folder Permission**
 
 The CIS\Reports folder will contain reports that detail configuration assessment results for each system evaluated by CIS-CAT. As such, “Authenticated Users” should **only** be granted “Write” and “List Folder Contents” access to the contents of this folder, and read access to the CIS\Reports folder should be restricted to only those personnel who are necessary to the appropriate functioning of the *CIS Host Server*:
 
@@ -1342,6 +1361,7 @@ Permissions which should be applied within the **CIS** folder on the *CIS Host S
 
 Additionally, Write, Modify, Read and Execute permissions on the above resources should be limited to only those users necessary to the appropriate functioning of the *CIS Host Server*.
 
+<a name="updatebat"></a>
 **Update cis-cat-centralized.bat**
 
 Once the **CIS** folder is setup on the *CIS Hosting Server*, a few modifications must be made to either `cis-cat-centralized.bat` or `cis-cat-centralized-ccpd.bat`. If you want to write the assessment reports to the *CIS Host Server*, utilize the `cis-cat-centralized.bat` script and modify it as directed in this section.  If you want to send the assessment reports directly to a CIS-CAT Pro Dashboard (CCPD), skip this section and go to the **"Update cis-cat-centralized-ccpd.bat"** section, instead. 
@@ -1409,6 +1429,7 @@ When spaces are included in any path names for environment variables, they must 
 	SET FULL_CISCAT_CMD=”%mJavaPath%\bin\java.exe” -Xmx%JavaMaxMemoryMB%M -jar “%mCisCatPath%\CISCAT.jar” -a 
 	-s %CISCAT_OPTS% -b “%mCisCatPath%\benchmarks\%Benchmark%”
 
+<a name="updateccpdbat"></a>
 **Update cis-cat-centralized-ccpd.bat**
 
 If you want to send the assessment reports directly to a CIS-CAT Pro Dashboard (CCPD) you have already setup, you must use the `cis-cat-centralized-ccpd.bat` file instead of the `cis-cat-centralized.bat` file.  Modify the `cis-cat-centralized-ccpd.bat` file as follows: 
@@ -1437,7 +1458,7 @@ To generate the token, please follow the instructions at [Establish authenticati
 
 Replace **[Generate_An_Authentication_Token_In_CCPD]** with the Authentication Token generated by an "API" user in the CIS-CAT Pro Dashboard to which the CIS-CAT assessment reports will be uploaded to.
 
-
+<a name="validateinstall"></a>
 **Validate the Install**
 
 To test the setup, log into one of the target systems in the Workstation Group as a user capable of executing commands from an elevated command prompt, such as a domain admin.  Execute one of the following commands **from an elevated command prompt**, depending on which **.bat** file you intend to use (**cis-cat-centralized.bat** or **cis-cat-centralized-ccpd.bat**):
@@ -1452,6 +1473,7 @@ If successful, the above command will run an auto-assessment and result in outpu
 
 ![](https://i.imgur.com/7LV3Yce.png)
 
+<a name="task"></a>
 **Configuring the Scheduled Task via Group Policy**
 
 A task should be scheduled to have each target system invoke either the cis-cat-centralized.bat or cis-cat-centralized-ccpd.bat batch script on a regular basis to run assessments against those systems. The cis-cat-centralized-ccpd.bat script includes additional options to automatically POST assessment reports to the CIS-CAT Pro Dashboard (CCPD).
