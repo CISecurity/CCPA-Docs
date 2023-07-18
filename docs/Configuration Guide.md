@@ -1290,18 +1290,21 @@ On the “Permissions” popup, grant **Change** and **Read** to the Authenticat
 ![](https://i.imgur.com/KiAmbP0.png)
 
 2. Unzip the CIS-CAT bundle within the **CIS** folder on the *CIS Host Server* and move the Assessor folder to the root of the **CIS** folder.
-3. Create the following directories beneath the CIS folder on the *CIS Host Server*:
+3. If using a version of CIS-CAT that has embedded Java (contains the 'jre' folder), then go to Step 6, else go to next step
+4. Create the following directories beneath the CIS folder on the *CIS Host Server*:
 	- Java
 	- Java64
 	- Reports 
-4. To copy the java runtime (JRE) to the CIS folder do the following:
+5. To copy the java runtime (JRE) to the CIS folder do the following:
 	- Browse to the location where Java is installed, by default Java is located at “%ProgramFiles%\Java”.
 	- Copy the 32-bit JRE that applies to the targets you will be evaluating, such as jre1.8.0_201, to the Java folder created above
 	- Copy the 64-bit JRE that applies to the targets you will be evaluating, such as jre1.8.0_201, to the Java64 folder created above
-5. Move the Assessor\misc\Windows\cis-cat-centralized.bat file or the Assessor\misc\Windows\cis-cat-centralized-ccpd.bat file to the root of the CIS folder, depending on whether you want to write the assessment reports to the *CIS Host Server* or configure the centralized script to send the assessment reports directly to a CIS-CAT Pro Dashboard (CCPD).
-6. Share the **CIS** folder as CIS.
+6. Move the Assessor\misc\Windows\cis-cat-centralized.bat file or the Assessor\misc\Windows\cis-cat-centralized-ccpd.bat file to the root of the CIS folder, depending on whether you want to write the assessment reports to the *CIS Host Server* or configure the centralized script to send the assessment reports directly to a CIS-CAT Pro Dashboard (CCPD).
+7. Share the **CIS** folder as CIS.
 
 The resulting directory structure should be as follows:
+
+If using the embedded Java, then CIS\Java and CIS\Java64 folders are not necessary.
 
 	- CIS\Assessor
 	- CIS\Assessor\benchmarks
@@ -1348,7 +1351,7 @@ Replace `NETWORK_SHARE` with the fully qualified domain name or IP address of th
 
 	SET JavaPath=Java\jre
 	SET JavaPath64=Java64\jre
-Note that the 32-bit and 64-bit JRE paths are those installed in step 4 under the **Create CIS Share on the CIS Hosting Server** section above.
+Note that the 32-bit and 64-bit JRE paths are those installed in step 4 under the **Create CIS Share on the CIS Hosting Server** section above. **Updates to this setting is NOT NEEDED if using the version of CIS-CAT with embedded Java.** The script will automatically point to the 'jre' folder with the embedded java.
 
 	SET JavaMaxMemoryMB=2048
 Indicate the maximum amount of memory CIS-CAT will allocate for execution.  The default is 2048 MB.  When executing with 32-bit versions of the JRE, this value should be set to a maximum of 1024 MB. This value may need to be lower depending on other processes running on the machine.  64-bit JRE’s may allocate as much memory as is required, limited by the available memory of machines invoking CIS-CAT.
@@ -1415,7 +1418,7 @@ Replace `CisHostServer` with the fully qualified domain name or IP address of th
 
 	SET JavaPath=Java\jre
 	SET JavaPath64=Java64\jre
-Note that the 32-bit and 64-bit JRE paths are those installed in step 4 under the **Create CIS Share on the CIS Hosting Server** section above.
+Note that the 32-bit and 64-bit JRE paths are those installed in step 4 under the **Create CIS Share on the CIS Hosting Server** section above. **Updates to this setting is NOT NEEDED if using the version of CIS-CAT with embedded Java.** The script will automatically point to the 'jre' folder with the embedded java.
 
 	SET JavaMaxMemoryMB=2048
 Indicate the maximum amount of memory CIS-CAT will allocate for execution.  The default is 2048 MB.  When executing with 32-bit versions of the JRE, this value should be set to a maximum of 1024 MB.  This value may need to be lower depending on other processes running on the machine. 64-bit JRE’s may allocate as much memory as is required, limited by the available memory of machines invoking CIS-CAT.
@@ -1477,9 +1480,9 @@ The CIS-CAT Pro Assessor v4 bundle is set up at a centralized file share locatio
 
 **Key steps to begin setup:**
 
-1. Identify the host server where CIS-CAT and a JRE will reside
+1. Identify the host server where CIS-CAT and a JRE will reside (if using a version of CIS-CAT without embedded Java)
 2. Follow the [CIS Host Server Setup](#hostServerSetup)
-3. [Prepare the Java Runtime Environment(JRE)](#prepareJRE)
+3. Optionally [Prepare the Java Runtime Environment(JRE)](#prepareJRE) if using a version of CIS-CAT without embedded Java
 4. Decide if your organization desires reports to automatically upload to CIS-CAT Pro Dashboard
 5. [Select the appropriate script](#selectScript) to use (cis-cat-centralized.sh or cis-cat-centralized-ccpd.sh)
 6. Modify the selected script
@@ -1507,10 +1510,11 @@ The setup for centralized scanning begins with creating a folder on the network 
 3. Locate the required scripts in the `/cis/Assessor/misc/Unix-Linux` folder of the CIS-CAT Pro Assessor v4 bundle.
     * cis-cat-centralized.sh **OR** cis-cat-centralized-ccpd.sh
     * detect-os-variant.sh
-    * make-jre-directories.sh
+    * make-jre-directories.sh (not necessary if using the version of CIS-CAT with embedded Java)
     * map-to-benchmark.sh
 3. Copy the scripts from `/cis/Assessor/misc/Unix-Linux` to the root folder, `/cis`.
-4. Create JRE sub-folders by executing one of the following commands in `/cis` for the selected script
+4. If using a version of Assessor with embedded Java (contains 'jre' folder), then skip to step 5.
+5. Create JRE sub-folders by executing one of the following commands in `/cis` for the selected script
 	
 	
 	`> ./cis-cat-centralized.sh --make-jre-directories`
@@ -1520,6 +1524,8 @@ The setup for centralized scanning begins with creating a folder on the network 
 	`> ./cis-cat-centralized-ccpd.sh --make-jre-directories`
 
    **The default configuration of the *CIS Host Server* folder structure should now be as follows:**
+   
+   **If using a version of CIS-CAT with embedded JRE, the jre folders will not be present.**
 
 	/cis
  
@@ -1542,7 +1548,9 @@ The setup for centralized scanning begins with creating a folder on the network 
 <a name="prepareJRE"></a>
 **Prepare JRE Subfolders**
 
-The centralized scripts look for a specific JRE per operating system type. Some users find that some versions of JRE do not operate on some operating systems. Therefore, the script is designed to allow users to specify a JRE version per operating system. It is a requirement to place a JRE version in each of the operating system folders above that represent an operating system that will be scanned to avoid the error of "no Java version found".
+This step is unnecessary if using a version of Assessor with embedded Java. We've selected a version of Java that should universally work with all Linux versions supported by CIS-CAT.
+
+If your organization has chosen to manage your own Java version, then there is an option fro the centralized scripts to look for a specific JRE per operating system type. Some users find that some versions of JRE do not operate on some operating systems. Therefore, the script is designed to allow users to specify a JRE version per operating system. It is a requirement to place a JRE version in each of the operating system folders above that represent an operating system that will be scanned to avoid the error of "no Java version found".
 
 
 1. Download the desired version of Java for each of the operating systems that will be scanned
