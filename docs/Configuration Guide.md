@@ -1313,6 +1313,7 @@ If you are utilizing your own Java, create the following directories beneath the
 	- Reports 
 
 If utilizing your own java runtime (JRE), then under the CIS-CAT folder do the following:
+
 	- Browse to the location where Java is installed, by default Java is located at “%ProgramFiles%\Java”.
 	- Copy the 32-bit JRE that applies to the targets you will be evaluating, such as jre1.8.0_201, to the Java folder created above
 	- Copy the 64-bit JRE that applies to the targets you will be evaluating, such as jre1.8.0_201, to the Java64 folder created above
