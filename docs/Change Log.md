@@ -7,6 +7,34 @@ CIS-CAT Pro Assessor v4 - [Download from CIS WorkBench](https://workbench.cisecu
 ---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
+## CIS-CAT Pro Assessor, v4.32.0 ##
+#### Release Date: Jul. 27, 2023 ####
+
+### Benchmark Coverage ###
+
+- Apple macOS 11 v3.1.0
+- Apple macOS 12 v2.1.0
+- Apple macOS 13 v1.1.0
+- Microsoft Windows 10 EMS Gateway v2.0.0
+- Microsoft IIS 10 v1.2.1
+
+### Security ###
+
+- Resolved security vulnerabilities present in embedded, third party dependencies for kotlin-stdlib (now v1.8.22) and cxf-rt-bindings (now v3.5.5)
+- Additional obfuscation was applied to detailed assessment evidence in the HTML report for Linux CIS Benchmarks
+
+### Application ###
+
+- None
+
+### Documentation ###
+
+- Updated README.txt document for the list of suppressed third party security vulnerabilities from dependent libraries
+- Clarification added to the **[Oracle Database](https://ccpa-docs.readthedocs.io/en/latest/Configuration%20Guide/#OracleDatabase)** connection string section of the configuration guide in reference to the username utilized for connection strings
+- CIS-CAT Pro Assessor’s **[software bill of materials (SBOM)](https://workbench.cisecurity.org/files/4551)** is now available for download separately in addition to within the release bundle.
+
+
+
 ## CIS-CAT Pro Assessor, v4.31.0 ##
 #### Release Date: Jun. 27, 2023 ####
 

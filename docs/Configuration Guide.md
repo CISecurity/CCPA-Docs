@@ -264,6 +264,9 @@ Requirements for a Microsoft Windows Remote Assessment:
 	- `ConstrainedLanguage` mode blocks assessor actions as CIS-CAT PowerShell scripts cannot be dot-sourced
 	- Verify LanguageMode using this command: `PS> $ExecutionContext.SessionState.LanguageMode`
 
+Follow one of the following remote setup options:
+
+
 
 ### Microsoft Windows and CIS Benchmarks ###
 

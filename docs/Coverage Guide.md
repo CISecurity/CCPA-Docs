@@ -32,9 +32,9 @@ Some CIS Benchmark recommendations may not be supported for automation in CIS-CA
 - **CIS Apache Tomcat 9 v1.2.0**
 - **CIS Apache Tomcat 9 v1.0.0**
 - **CIS Apple macOS 10.15 Catalina v3.0.0**
-- **CIS Apple macOS 11.0 Big Sur v3.0.0**
-- **CIS Apple macOS 12.0 Monterey v2.0.0**
-- **CIS Apple macOS 13.0 Ventura v1.0.0**
+- **CIS Apple macOS 11.0 Big Sur v3.1.0**
+- **CIS Apple macOS 12.0 Monterey v2.1.0**
+- **CIS Apple macOS 13.0 Ventura v1.1.0**
 - **CIS Azure Compute Microsoft Windows Server 2019 v1.0.1**
 - **CIS Azure Compute Microsoft Windows Server 2022 v1.0.0**
 - **CIS Azure Kubernetes Service (AKS) v1.3.0**
@@ -59,7 +59,7 @@ Some CIS Benchmark recommendations may not be supported for automation in CIS-CA
 - **CIS MIT Kerberos 1.10 Benchmark, v1.0.0**
 - **CIS Microsoft Edge Benchmark, v1.1.0**
 - **CIS Microsoft IIS 8 Benchmark, v1.5.0**
-- **CIS Microsoft IIS 10 Benchmark, v1.2.0**
+- **CIS Microsoft IIS 10 Benchmark, v1.2.1**
 - **CIS Microsoft Intune for Windows 10, v1.1.0**
 - **CIS Microsoft Intune for Windows 11, v1.0.0**
 - **CIS Microsoft Office Enterprise, v1.0.0**
@@ -78,7 +78,7 @@ Some CIS Benchmark recommendations may not be supported for automation in CIS-CA
 - **CIS Microsoft SQL Server 2022 Benchmark, v1.0.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: SQL Server connection string.
 - **CIS Microsoft Windows 10 Enterprise, v2.0.0**
-- **CIS Microsoft Windows 10 EMS Gateway, v1.1.0**
+- **CIS Microsoft Windows 10 EMS Gateway, v2.0.0**
 - **CIS Microsoft Windows 10 Stand-alone Benchmark, v2.0.0**
 - **CIS Microsoft Windows 11 Enterprise, v2.0.0**
 - **CIS Microsoft Windows 11 Stand-alone Benchmark, v2.0.0**
