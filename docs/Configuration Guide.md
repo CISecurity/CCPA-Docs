@@ -35,6 +35,9 @@ The Center for Internet Security product engineering practices are SOC 2 certifi
 
 CIS-CAT's engineering team is populated with individuals educated and certified in cyber security best practices. The Center for Internet for Security develops cyber security best practices with our global community of cybersecurity experts. We implement these best practices within the organization.
 
+CIS-CAT Pro Assesspr delivers with a Software Bill of Materials (SBOM). The the bill of materials is delivered in file formats of JSON and XML and are updated with each release of the products and placed in the "Documentation" folder. The files may also be downloaded separately on [CIS WorkBench](https://workbench.cisecurity.org/files?q=&tags=39&visibility=all).
+
+The term “Software Bill of Materials” or “SBOM” means a formal record containing the details and supply chain relationships of various components used in building software. CIS SecureSuite products utilize and embed many open source and commercial software components. The SBOM enumerates these components in the product. It is analogous to a list of ingredients on food packaging. An SBOM is useful to those who develop or manufacture software, those who select or purchase software, and those who operate software. Buyers can use an SBOM to perform vulnerability or license analysis, both of which can be used to evaluate risk in a product. Those who operate software can use SBOMs to quickly and easily determine whether they are at potential risk of a newly discovered vulnerability. A widely used, machine-readable SBOM format allows for greater benefits through automation and tool integration. The SBOMs gain greater value when collectively stored in a repository that can be easily queried by other applications and systems. Understanding the supply chain of software, obtaining an SBOM, and using it to analyze known vulnerabilities are crucial in managing risk.
 
 System Recommendations
 ------------
