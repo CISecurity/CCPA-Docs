@@ -7,6 +7,31 @@ CIS-CAT Pro Assessor v4 - [Download from CIS WorkBench](https://workbench.cisecu
 ---------------------------
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
+## CIS-CAT Pro Assessor, v4.33.0 ##
+#### Release Date: Aug. 29, 2023 ####
+
+### Benchmark Coverage ###
+
+- Apache Tomcat 10 v1.1.0
+- Debian Linux 11 STIG v1.0.0
+- Microsoft Office Enterprise v1.1.0
+- Microsoft SQL Server 2016 v1.4.0
+- Microsoft SQL Server 2017 v1.3.0
+- Ubuntu Linux 20.04 LTS STIG v2.0.0
+
+### Security ###
+
+- None
+
+### Application ###
+
+- None
+
+### Documentation ###
+
+- CIS-CAT releases designed for MacOS host deployment now include an embedded Java Runtime Environment (JRE) to support command line (CLI) activities. A host-installed JRE is no longer required in this instance. MacOS host system owners wishing to continue to manage their own Java and prefer a release without an embedded Java should use the Linux without embedded Java. New options and interface for download of CIS-CAT from **[CIS WorkBench](https://workbench.cisecurity.org/files)**. See **[Configuration Guide](https://ccpa-docs.readthedocs.io/en/latest/Configuration%20Guide/)** with section titled Obtain CIS-CAT Pro Assessor.
+
+
 ## CIS-CAT Pro Assessor, v4.32.0 ##
 #### Release Date: Jul. 27, 2023 ####
 

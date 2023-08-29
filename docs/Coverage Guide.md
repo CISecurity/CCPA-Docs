@@ -30,7 +30,7 @@ Some CIS Benchmark recommendations may not be supported for automation in CIS-CA
 - **CIS Amazon Linux 2 v2.0.0**
 - **CIS Amazon Linux 2 STIG v2.0.0**
 - **CIS Apache Tomcat 9 v1.2.0**
-- **CIS Apache Tomcat 9 v1.0.0**
+- **CIS Apache Tomcat 10 v1.1.0**
 - **CIS Apple macOS 10.15 Catalina v3.0.0**
 - **CIS Apple macOS 11.0 Big Sur v3.1.0**
 - **CIS Apple macOS 12.0 Monterey v2.1.0**
@@ -38,15 +38,16 @@ Some CIS Benchmark recommendations may not be supported for automation in CIS-CA
 - **CIS Azure Compute Microsoft Windows Server 2019 v1.0.1**
 - **CIS Azure Compute Microsoft Windows Server 2022 v1.0.0**
 - **CIS Azure Kubernetes Service (AKS) v1.3.0**
-- **CIS CentOS Linux 6 Benchmark, v3.0.0**
-- **CIS CentOS Linux 7 Benchmark, v3.1.2**
-- **CIS Cisco IOS 15 Benchmark, v4.1.1**
-- **CIS Cisco IOS 16 Benchmark, v2.0.0**
-- **CIS Cisco IOS 17 Benchmark, v2.0.0**
+- **CIS CentOS Linux 6 v3.0.0**
+- **CIS CentOS Linux 7 v3.1.2**
+- **CIS Cisco IOS 15 v4.1.1**
+- **CIS Cisco IOS 16 v2.0.0**
+- **CIS Cisco IOS 17 v2.0.0**
 - **CIS Debian Family Linux, v1.0.0**
-- **CIS Debian Linux 9 Benchmark, v1.0.1**
-- **CIS Debian Linux 10 Benchmark, v2.0.0**
-- **CIS Debian Linux 11 v1.0.0**
+- **CIS Debian Linux 9 v1.0.1**
+- **CIS Debian Linux 10 v2.0.0**
+- **CIS Debian Linux 11 v2.0.0**
+- **CIS Debian Linux 11 STIG v1.0.0**
 - **CIS Docker v1.6.0**
 - **CIS Fedora 19 Family Linux, v1.0.0**
 - **CIS Fedora 28 Family Linux, v2.0.1**
@@ -62,16 +63,16 @@ Some CIS Benchmark recommendations may not be supported for automation in CIS-CA
 - **CIS Microsoft IIS 10 Benchmark, v1.2.1**
 - **CIS Microsoft Intune for Windows 10, v1.1.0**
 - **CIS Microsoft Intune for Windows 11, v1.0.0**
-- **CIS Microsoft Office Enterprise, v1.0.0**
+- **CIS Microsoft Office Enterprise, v1.1.0**
 - **CIS Microsoft Office Access 2013 Benchmark, v1.0.1**
 - **CIS Microsoft Office Excel 2013 Benchmark, v1.0.1**
 - **CIS Microsoft Office Outlook 2013 Benchmark, v1.1.0**
 - **CIS Microsoft Office PowerPoint 2013 Benchmark, v1.0.1**
 - **CIS Microsoft Office Word 2013 Benchmark, v1.1.0**
 - **CIS Microsoft Office 2013 Benchmark, v1.1.0**
-- **CIS Microsoft SQL Server 2016 Benchmark, v1.3.0**
+- **CIS Microsoft SQL Server 2016 Benchmark, v1.4.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: SQL Server connection string.
-- **CIS Microsoft SQL Server 2017 Benchmark, v1.2.0**
+- **CIS Microsoft SQL Server 2017 Benchmark, v1.3.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: SQL Server connection string.
 - **CIS Microsoft SQL Server 2019 Benchmark, v1.3.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: SQL Server connection string.
@@ -154,7 +155,7 @@ Some CIS Benchmark recommendations may not be supported for automation in CIS-CA
 - **CIS Ubuntu Linux 16.04 LTS v2.0.0**
 - **CIS Ubuntu Linux 18.04 LTS v2.1.0**
 - **CIS Ubuntu Linux 20.04 LTS v2.0.1**
-- **CIS Ubuntu Linux 20.04 LTS STIG v1.0.0**
+- **CIS Ubuntu Linux 20.04 LTS STIG v2.0.0**
 - **CIS Ubuntu Linux 22.04 LTS v1.0.0**
 - **CIS VMware ESXi 6.7 v1.3.0**
 	- `xccdf_org.cisecurity.benchmarks_value_esxi.connection`: ESXi host connection string

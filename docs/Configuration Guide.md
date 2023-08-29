@@ -24,7 +24,8 @@ Below are the possible download bundles:
 | Microsoft Windows | without GUI | with | No | No graphical interface. Supports command line (CLI) activities. Embedded java 8 runtime environment (JRE) included and utilized for all Microsoft Windows assessments. Centralized scripts utilize the embedded Java | CIS-CAT-Assessor-windows-jre-v4.24.0.zip |
 | Microsoft Windows | without GUI | without | Yes | Supports command line (CLI) activities, no graphical interface. Requires an installed JRE on the CIS-CAT host. | CIS-CAT-Assessor-windows-v4.24.0 |
 | Linux  | without GUI | with | No | Designed for Linux **ONLY** operating systems. Includes only shell scripts for tool operation on Linux. Centralized scripts utilize the embedded Java. **MUST ensure that the jre folder of the build has appropriate read and execute permissions in order for the assessment process to function.** The embedded Java is only suitable for Linux OS, not MacOS. | CIS-CAT-Assessor-linux-jre-v4.24.0 |
-| Linux  | without GUI | without | Yes | Designed for Linux and MacOS operating systems. Includes only shell scripts for tool operation on Linux or MacOS. Requires an installed JRE on the CIS-CAT host. **MacOS** users must utilize this version. | CIS-CAT-Assessor-linux-v4.24.0 |
+| Linux  | without GUI | without | Yes | Designed for Linux and MacOS operating systems. Includes only shell scripts for tool operation on Linux or MacOS. Requires an installed JRE on the CIS-CAT host. **MacOS** users must utilize this version if they wish to manage their own Java installation. | CIS-CAT-Assessor-linux-v4.24.0 |
+| MacOS  | without GUI | with | No | Designed for MacOS operating systems. Includes only shell scripts for tool operation MacOS. The embedded Java is only suitable for MacOS. **MacOS** users wishing for embedded Java must utilize this version. | CIS-CAT-Assessor-mac-jre-v4.24.0 |
 
 Security
 ------------
@@ -56,7 +57,7 @@ CIS recommends installing CIS-CAT Pro Assessor v4 on a host separate from hosts 
 
 **Java Requirements**
 
-Java is required for operation of CIS-CAT. However, versions of CIS-CAT can now be downloaded with embedded Java from CIS WorkBench. See available builds on [CIS WorkBench](https://ccpa-docs.readthedocs.io/en/latest/Configuration%20Guide/#obtain-cis-cat-pro-assessor) for CIS-CAT Pro Assessor.
+Java is required for operation of CIS-CAT. Versions of CIS-CAT are available with an embedded Java that is utilized at run time. See available builds on [CIS WorkBench](https://ccpa-docs.readthedocs.io/en/latest/Configuration%20Guide/#obtain-cis-cat-pro-assessor) for CIS-CAT Pro Assessor.
 
 If a version of CIS-CAT is selected that does **NOT** contain embedded Java, the following Java requirements apply:
 
