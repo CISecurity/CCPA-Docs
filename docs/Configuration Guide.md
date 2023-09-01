@@ -1,11 +1,15 @@
-**CIS-CAT Pro Assessor Configuration Guide**
-
-
 ![](http://i.imgur.com/5yZfZi5.jpg)
+
+#CIS-CAT Pro Assessor Configuration Guide
+
+------------
 
 CIS-CAT Pro is a configuration assessment tool. It supports host-based (local) assessments and remote-based assessments.  In order to perform assessments of remote endpoints, the target system must be configured to accept a remote connection.  The Configuration Guide will provide important information for special configurations when assessing certain target systems.
 
-## Obtain CIS-CAT Pro Assessor ##
+------------
+
+## Obtain CIS-CAT Pro Assessor 
+
 CIS-CAT Pro Assessor is available to CIS SecureSuite Members. To learn more about becoming a CIS SecureSuite Member, visit our [website](https://www.cisecurity.org/). As a Member, organizations may navigate to [CIS WorkBench](https://workbench.cisecurity.org/dashboard) to obtain the CIS-CAT tools. 
 
 Once logged into to CIS WorkBench, navigate to `Downloads` and select the button `Download CIS-CAT Pro` at the top of the page. 
@@ -27,8 +31,9 @@ Below are the possible download bundles:
 | Linux  | without GUI | without | Yes | Designed for Linux and MacOS operating systems. Includes only shell scripts for tool operation on Linux or MacOS. Requires an installed JRE on the CIS-CAT host. **MacOS** users must utilize this version if they wish to manage their own Java installation. | CIS-CAT-Assessor-linux-v4.24.0 |
 | MacOS  | without GUI | with | No | Designed for MacOS operating systems. Includes only shell scripts for tool operation MacOS. The embedded Java is only suitable for MacOS. **MacOS** users wishing for embedded Java must utilize this version. | CIS-CAT-Assessor-mac-jre-v4.24.0 |
 
-Security
 ------------
+
+## Security
 
 CIS-CAT team utilizes best efforts to ensure that the CIS-CAT product are free from material vulnerabilities resulting from integrated third-party libraries with continuous use of monitoring tools as part of the software build process. The Center for Internet Security performs annual penetration testing on eligible software products, which includes CIS-CAT. CIS-CAT mitigates risks with recommended solutions associated with penetration test findings assessed at and above a Medium.
 
@@ -40,22 +45,21 @@ CIS-CAT Pro Assesspr delivers with a Software Bill of Materials (SBOM). The the 
 
 The term “Software Bill of Materials” or “SBOM” means a formal record containing the details and supply chain relationships of various components used in building software. CIS SecureSuite products utilize and embed many open source and commercial software components. The SBOM enumerates these components in the product. It is analogous to a list of ingredients on food packaging. An SBOM is useful to those who develop or manufacture software, those who select or purchase software, and those who operate software. Buyers can use an SBOM to perform vulnerability or license analysis, both of which can be used to evaluate risk in a product. Those who operate software can use SBOMs to quickly and easily determine whether they are at potential risk of a newly discovered vulnerability. A widely used, machine-readable SBOM format allows for greater benefits through automation and tool integration. The SBOMs gain greater value when collectively stored in a repository that can be easily queried by other applications and systems. Understanding the supply chain of software, obtaining an SBOM, and using it to analyze known vulnerabilities are crucial in managing risk.
 
-System Recommendations
 ------------
+
+## System Recommendations
 
 The host system is the machine where CIS-CAT Pro Assessor v4 resides. Most operating system can support operations of CIS-CAT Pro Assessor. The application requires a Java Runtime Environment (JRE) to run. Some builds of CIS-CAT now include an embedded JRE. The OS and tool components selected on download will determine whether an installed JRE is necessary for the host machine of CIS-CAT. See the detailed chart above in `Obtain CIS-CAT Pro`.
 
 CIS recommends installing CIS-CAT Pro Assessor v4 on a host separate from hosts supporting CIS-CAT Pro Dashboard. Multiple installations of CIS-CAT Pro Assessor on separate host systems are allowed as there is no limit to installation. Each CIS-CAT Pro Assessor requires a JRE. You may utilize versions of CIS-CAT with embedded JRE per the appropriate operating system. If you wish to maintain your own JRE, please review the Java requirements below. 
 
-
-**Required**:
-
+### Required:
 
 - Remote scanning requires unrestricted access from the CIS-CAT host system to the assessed target system
 - Windows remote and local assessments require a 64 bit operating system 
 - Linux builds **with** embedded Java MUST ensure that the jre folder of the build has appropriate read and execute permissions in order for the assessment process to function.
 
-**Java Requirements**
+### Java Requirements
 
 Java is required for operation of CIS-CAT. Versions of CIS-CAT are available with an embedded Java that is utilized at run time. See available builds on [CIS WorkBench](https://ccpa-docs.readthedocs.io/en/latest/Configuration%20Guide/#obtain-cis-cat-pro-assessor) for CIS-CAT Pro Assessor.
 
@@ -70,18 +74,18 @@ If a version of CIS-CAT is selected that does **NOT** contain embedded Java, the
 	- Java versions 9+ will receive “WARNING: An illegal reflective access operation has occurred”. This can be ignored and will not halt the assessment.
 	- OpenJDK (free and open-source) implementations are supported. We have found this [website](https://adoptopenjdk.net/) easy to navigate. The official source is [OpenJDK](https://openjdk.java.net).
 
-**Recommended Minimum**:
+### Recommended Minimum:
 
 Depending on your organization's use of CIS-CAT Pro Assessor, the actual server specifications mentioned below could vary.
 
 - 2 GHz dual processor
 - 4 GB of RAM
 
-
-Properties
 --------
-Multiple system properties exist in the file `assessor-cli.properties` (located in `config` folder) to provide additional functionality. For any property value updates to take effect, the CIS-CAT Pro Assessor application must be re-started. 
 
+## Properties
+
+Multiple system properties exist in the file `assessor-cli.properties` (located in `config` folder) to provide additional functionality. For any property value updates to take effect, the CIS-CAT Pro Assessor application must be re-started. 
 
 | Property Name          | Data Type   |   Description |
 | -----------------------| ---------- | ------------- |
@@ -132,12 +136,13 @@ Multiple system properties exist in the file `assessor-cli.properties` (located 
 | custom.html.coverpage.footer | `string` | This property specifies the name of the graphics file, saved to the "custom" folder, to be generated as the footer of the HTML coverpage. Note that default coverpage footer covers an area of approximately 725x64 px. |
 | custom.html.css | `string` | The name of the CSS file, saved to the "custom" folder, which overrides the HTML report's styling. |
 
-
-Remote / Local Assessment - Sessions
 --------
+
+## Remote / Local Assessment - Sessions
+
 A local assessment uses the default `sessions.properties` file. CIS-CAT Pro Assessor v4's remote assessment capability can also utilize the Sessions file and requires configuration of each `session` type; connection parameters used to create a secure connection to the remote endpoint.  A session configuration requires a number of entries, which will vary depending on the connection type. This connection is not necessary when selecting the centralized (in-network) method of assessment.
 
-**Connection (Session) Types**
+### Connection (Session) Types
 
 The below connection types support the assessment of various endpoint types. The connection type depends on the technology as well as the connection, local or remote. 
 
@@ -149,9 +154,8 @@ The below connection types support the assessment of various endpoint types. The
 | Cisco IOS              | `ios`      | The `ios` applies to the assessment of Cisco IOS network devices.  Depending on the specific configuration when the "ios" session type is used, CIS-CAT Pro Assessor will either establish a SSH connection using `username/password` or `username/path to a private key` authentication, or will create a modified local session, collecting information from an exported configuration file.|
 | Palo Alto              | `panos`      | The `panos` session type applies to the assessment of Palo Alto network devices.  CIS-CAT Pro Assessor will create a local session, collecting information from an exported configuration file via `configFilePath` element.|
 
+### Sessions Configuration Properties
 
-
-**Sessions Configuration Properties**
 A number of configuration properties exist, and will vary based on the session type.
 
 | Property   | Description |
@@ -168,11 +172,11 @@ A number of configuration properties exist, and will vary based on the session t
 | `configFilePath`     | The `configFilePath` property is REQUIRED when assessing the exported configuration of a Palo Alto network device.  This property specifies the full path to the exported configuration file. <br/><br/> This property is only valid for Palo Alto assessments (panos).|
 | `tmp`| CIS-CAT recommends excluding this property in the session. CIS-CAT will automatically select a temporary location when this property is not set. The `tmp` property allows users to configure the location of the temporary "ephemeral" directory on the target host.  The "ephemeral" directory is named `ccpa-temp-TIMESTAMP` and is created as a sub-folder of the directory specified in this setting.  For example, if `tmp` is specified as `C:\Temp`, the "ephemeral" directory will be created at `C:\Temp\ccpa-temp-TIMESTAMP`.  <br/><br/> **NOTE**: A specified value for `tmp` MUST EXIST on the target endpoint with "write" privileges.  In the above example, if the `C:\Temp` folder does not exist, the connection from CIS-CAT Pro Assessor v4 will not succeed.  If this property is left blank or not included, the Assessor will use the default "temp" folder as defined for the operating system, such as `/tmp` or `C:\Windows\Temp`.|
 
-**Examples**
+### Examples
+
 The examples below provide insight into the creation of a `sessions.properties` file, which can then be consumed by CIS-CAT Pro Assessor CLI to provide connection configurations when assessing a particular benchmark.  By default, CIS-CAT Pro Assessor CLI will ALWAYS attempt to load a default configuration file located in the application's `config` folder, named `sessions.properties`.
 
-#### Microsoft Windows Sessions ####
------------------------------------------
+#### Microsoft Windows Sessions 
 
 For example, if CCPA is installed at `C:\CIS\Assessor`, a file named `C:\CIS\Assessor\config\sessions.properties` will be searched for and loaded (if found).  If no `sessions.properties` files are found or specified, a default `local` session will be used.
 
@@ -197,8 +201,7 @@ Configure a remote Windows session using a username, but requiring manual passwo
     session.3.port=5986
     session.3.user=Administrator1
 
-#### Cisco IOS Sessions ####
-------------------------
+#### Cisco IOS Sessions 
 
 Configure a remote Cisco IOS session using a username/password:
 
@@ -224,17 +227,14 @@ Configure a Cisco IOS session pointing to an exported configuration file:
     session.6.type=ios
 	session.6.tech=C:\\CiscoFiles\\configuration.cfg
 
-#### Palo Alto Sessions ####
-------------------------
+#### Palo Alto Sessions 
 
 Configure a Palo Alto session pointing to an exported configuration file:
 
     session.7.type=panos
 	session.7.configFilePath=C:\\PaloFiles\\palo_config.xml
 
-
-#### Linux Sessions ####
-------------------------
+#### Linux Sessions ##
 
 Configure a remote Linux session using a username/private key:
 
@@ -244,8 +244,7 @@ Configure a remote Linux session using a username/private key:
     session.7.user=ec2-user
     session.7.identity=/home/myuser/cis/pkey.pem
 
-#### MacOS Sessions ####
---------------------------
+#### MacOS Sessions 
 
 Configure a remote MacOS session using a username/private key:
 
@@ -255,10 +254,10 @@ Configure a remote MacOS session using a username/private key:
     session.8.user=ec2-user
     session.8.identity=/Users/ciscatuser/cis/pkey.pem
 
-
-
-Remote Setup - Microsoft Windows
 ----------------------------------------
+
+## Remote Setup - Microsoft Windows
+
 To remotely assess a Microsoft Windows machine, the endpoint must be prepared to accept a remote request. Remote assessment utilizes the SMB protocol for file manipulation and WinRM for process execution during a remote assessment. CIS-CAT Pro Assessor also uses PowerShell to execute assessment steps for Microsoft Windows technologies. When a connection is established to the endpoint, an "ephemeral", temporary directory is created to host scripts required for the collection of system characteristics. On assessment completion, the temporary directory is deleted.
 
 Requirements for a Microsoft Windows Remote Assessment:
@@ -270,13 +269,11 @@ Requirements for a Microsoft Windows Remote Assessment:
 
 Follow one of the following remote setup options:
 
-
-
-### Microsoft Windows and CIS Benchmarks ###
+### Microsoft Windows and CIS Benchmarks 
 
 CIS Microsoft Windows Benchmarks are designed for systems in an Active Directory domain-joined environment using Group Policy. The CIS Benchmark will verify registry settings set by Group Policy. Local policy settings are stored in different registry settings than Group Policy settings and the assessment results will produce many `Fail` results for standalone systems even where values match the CIS Benchmark recommended value.
 
-### Risk and Remote Assessment with Microsoft Windows ###
+### Risk and Remote Assessment with Microsoft Windows 
 
 CIS recommends utilizing domain accounts when performing remote assessments. See the section below for security considerations when connecting to the endpoint.
 
@@ -284,7 +281,7 @@ CIS Benchmark Level 1 profiles permit remote assessment while CIS Benchmark Leve
 
 In versions of the CIS-CAT Pro Assessor v4.13.0+, CIS recommends connecting via WinRM with communication protocols of HTTP or HTTPS. Connecting via HTTPS requires additional steps as certificate setup is needed. Connecting over HTTP, while it does come with some risk as any remote connections do, can now happen securely with a change to Assessor v4.13.0+. The latest Assessor allows for encryption over HTTP. Using this protocol, steps to prepare the endpoint are streamlined. Read about WinRM security in this [official Microsoft document](https://docs.microsoft.com/en-us/powershell/scripting/learn/remoting/winrmsecurity?view=powershell-7.1) to help your organization decide the best protocol.
 
-### Authentication to the Remote Endpoint ###
+### Authentication to the Remote Endpoint 
 
 Authentication (username for the Session information) to remote Windows endpoints can be established with either local or domain accounts. Domain authentication must be in the following format:
 
@@ -300,7 +297,7 @@ Authentication can also be done using the local administrator account. This is n
 	- Setting `Apply UAC restrictions to local accounts on network logons` to `disabled` deviates from a CIS Benchmark Level 1 recommendation
 - Local accounts are at high risk for credential theft when the same account and password is configured on multiple systems
 
-### Basic Endpoint Configuration Steps for Windows Remote Assessment ###
+### Basic Endpoint Configuration Steps for Windows Remote Assessment 
 
 Preparing an endpoint for a remote configuration assessment is NOT needed when planning to complete a local assessment (CIS-CAT resides on the machine that is assessed) or a network / centralized assessment (CIS-CAT resides on a network share and assessed machines access it from the share). A Microsoft Windows endpoint requires primarily WinRM and SMB enabled. Depending on how the connection is made, a few more requirements are also necessary.
 
@@ -324,7 +321,7 @@ The basic setup is great for testing and trying a remote assessment. However, si
 \* See [Group Policy section](#gpo) below to learn about how to configure Group policy to prepare the endpoint.
 
 
-#### Advanced Endpoint Configuration Steps for Windows Remote Assessment ####
+### Advanced Endpoint Configuration Steps for Windows Remote Assessment 
 
 If required by organizational policy, remote connections for Microsoft Windows endpoints using WinRM over HTTPS protocol is also possible.
 
@@ -372,10 +369,11 @@ Where `HOSTNAME` is either the DNS name or FQDN of the remote host, such as `WIN
 
 If no results are returned, members may create a self-signed certificate using PowerShell and a script provided with the CIS-CAT Pro Assessor v4 application bundle.  The bundle will contain a `setup` folder, in which will be located the **`CISCAT_Pro_Assessor_v4_SelfSignedCertificate.ps1`** script.  Execute this script in PowerShell to configure the self-signed certificate and create the WinRM HTTPS listener.
 
-### WinRM Configuration ###
+### WinRM Configuration 
+
 In order for CIS-CAT Pro Assessor to connect to a remote Windows host, a number of configurations must be applied to those hosts.  This configuration can be applied either manually or through Group Policy.
 
-#### <a name="gpo"></a>Group Policy Configuration ####
+#### <a name="gpo"></a>Group Policy Configuration 
 
 The WinRM service can be configured using Group Policy. 
 
@@ -386,8 +384,6 @@ An example is below.
 	Components\Windows Remote Management (WinRM)\WinRM Service
 
 In standalone (non-domain) environments, Local Group Policy Objects can be set. However, keep in mind, that Group Policy may take precedence and assessments will not have optimal results for systems that are not domain joined. Consult the official Microsoft site for your distribution of Microsoft Windows on how to set Local Group Policy (Example: [Windows 10](https://docs.microsoft.com/en-us/windows/security/threat-protection/security-policy-settings/how-to-configure-security-policy-settings)).
-
-
 
 To enable WinRM, configure the following settings in Group Policy:
 
@@ -404,18 +400,19 @@ Use an asterisk ( * ) to indicate that the service listens on all available IP a
 *If this group policy setting is not available, it may need to be downloaded and imported into the GPMC.  The administrative template (ADMX) files can be downloaded from either [here](https://www.microsoft.com/en-us/download/details.aspx?id=103034) or [here](https://learn.microsoft.com/en-us/troubleshoot/windows-client/group-policy/create-and-manage-central-store).
 
 
-#### Manual Configuration ####
+#### Manual Configuration 
+
 CIS recommends configuring endpoints via Group Policy in a domain environment, but manual configuration can be useful for testing environments.
 
-##### Enable WinRM #####
+##### Enable WinRM 
+
 On the remote Windows host, open a Command Prompt using the "Run as Administrator" option.  Enter the following command to enable the default configuration for WinRM:
 
 	winrm quickconfig
 
 A confirmation prompt may be presented to the user.  If so, type `Y` and hit `Enter`.  Performing the `quickconfig` will start the Windows Remote Management service, configure an HTTP listener and create exceptions in the Windows Firewall for the WinRM service.
 
-
-##### Review WinRM Configuration Settings #####
+##### Review WinRM Configuration Settings 
 Enter the following command to review the WinRM configuration settings:
 
 	winrm get winrm/config/winrs
@@ -424,8 +421,7 @@ If you experience errors running an assessment over WinRM (e.g., out-of-memory e
 
 	winrm set winrm/config/winrs @{MaxMemoryPerShellMB="1024"} 
 
-
-##### Disable UAC remote restrictions #####
+##### Disable UAC remote restrictions 
 
 To better protect those users who are members of the local Administrators group, Microsoft implemented UAC restrictions on the network. This mechanism helps prevent against "loopback" attacks. This mechanism also helps prevent local malicious software from running remotely with administrative rights.
 
@@ -450,18 +446,20 @@ In Windows domain environments, this setting can be configured through [Group Po
 
 Otherwise, the Group Policy Objects can be found either [here](https://www.microsoft.com/en-us/download/details.aspx?id=103034) or [here](https://learn.microsoft.com/en-us/troubleshoot/windows-client/group-policy/create-and-manage-central-store).
 
-
-Remote Setup - Unix/Linux/OSX
 -------------------------------------
+
+## Remote Setup - Unix/Linux/OSX
+
 CIS-CAT Pro Assessor assesses remote Unix/Linux/OSX targets via SSH connections.  Ensure the target system can be accessed via SSH and that the user connecting to the remote target is either the `root` user or a user granted privileges to execute commands using `sudo`.
 
 **A Note on the Ephemeral Directory**
 
 CIS-CAT Pro Assessor v4 will attempt to create an ephemeral directory underneath the user's home directory.  The user's home directory is collected by querying the `/etc/passwd` file for the logged in user.  If an error occurs querying `/etc/passwd`, the ephemeral directory may not be able to be determined.  If this is the case, an error will occur trying to create the directory.  In this case, users must configure a specific location for the ephemeral directory using either the `sessions.properties` file or configuration XML file.
 
-
-Remote/Local Setup - Cisco Network Device
 -------------------------------------------
+
+## Remote/Local Setup - Cisco Network Device
+
 CIS-CAT Pro Assessor v4 can assess either the current running configuration of a Cisco network device, or an exported configuration file.
 
 Automated assessment content as of March 21, 2022 has been modified to more closely align with our consensus process. Please see the change log for the selected Cisco IOS Benchmark. CIS would like to add more automation to the Cisco IOS Benchmark recommendations. Please join our Cisco[Community on CIS WorkBench](https://workbench.cisecurity.org/communities/public) and ask how you can help. Example configuration files from organizational implementation can support CIS Benchmark Developers when creating additional automation.
@@ -485,8 +483,9 @@ This example shows how to redirect the technical support information to a file:
 
 Once the exported configuration file is available to CIS-CAT Pro Assessor, the assessment can be performed against it.  See the example above entitled "Configure a Cisco IOS session pointing to an exported configuration file" to configure the appropriate Assessor "session".
 
-Palo Alto Network Device Assessment
 -------------------------------
+
+## Palo Alto Network Device Assessment
 
 CIS-CAT Pro supports automated configuration assessments for a Palo Alto Network Device. The assessment method is offline and utilizes a Palo Alto exported configuration file.
 
@@ -504,17 +503,16 @@ If entering the Palo target information for the first time, select `Add remote o
 
 ![](img/GUI_Advanced.png)
 
-
 ![](img/GUI_Palo_Add_Target.png)
 
 **Assess with Assessor v4 CLI** 
 
 See sample sessions.properties and assessor-config-sample.xml files in the `config` directory of the assessor bundle for use on the command line.
 
-
-
-Database Assessment
 -------------------------------
+
+## Database Assessment
+
 Assessing database benchmarks in CIS-CAT Pro Assessor v4 uses a JDBC connection mechanism.  Database benchmarks require a user to enter the JDBC connection string as an interactive value on the command line, within the `assessor-cli.properties` file to set a single value for a single assessment, in a popup box on the GUI or by utilizing a configuration XML file to assess multiple databases. The connection string utilized should always reflect the host system's name/IP. See below for a summary table of the interactive values expected for database benchmarks. Follow the links for more information about each database.
 
 **Interactive Value Summary**
