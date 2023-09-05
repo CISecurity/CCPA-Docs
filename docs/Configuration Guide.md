@@ -1,6 +1,6 @@
 ![](http://i.imgur.com/5yZfZi5.jpg)
 
-#CIS-CAT Pro Assessor Configuration Guide
+# CIS-CAT Pro Assessor Configuration Guide
 
 ------------
 

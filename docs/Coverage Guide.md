@@ -1,12 +1,17 @@
 ![](http://i.imgur.com/5yZfZi5.jpg)
 
+# CIS-CAT Pro Assessor Coverage Guide
 
-Introduction
 ------------
+
+## Introduction
+
 This document provides information about the assessment capabilities of CIS-CAT Pro Assessor v4, such as included benchmarks, OVAL test types, scripting capabilities, etc.
 
-CIS Benchmark Coverage
 ----------------------
+
+## CIS Benchmark Coverage
+
 CIS currently distributes CIS-CAT with production support for the following benchmarks. The benchmarks utilize standards included in the Security Content Automation Protocol, such as the eXtensible Configuration Checklist Description Format (XCCDF) and the Open Vulnerability and Assessment Language (OVAL).
 
 Note that any benchmark listed below which displays a bulleted list of "`id`:description" information are those benchmarks which contain "interactive values".  Please see the [CIS-CAT Pro Assessor CLI User's Guide](./User's%20Guide) for more information regarding configuration of these values.
@@ -162,21 +167,25 @@ Some CIS Benchmark recommendations may not be supported for automation in CIS-CA
 - **CIS VMware ESXi 7.0 v1.2.0**
 	- `xccdf_org.cisecurity.benchmarks_value_esxi.connection`: ESXi host connection string
 
-
-Vulnerability Assessments
 -----------------------------------------------
+
+## Vulnerability Assessments
+
 Version 4.23 in November 2022 was the final release containing vulnerability assessment capabilities. 
 Read our [knowledge base article](https://cisecurity.atlassian.net/l/cp/2A6pRPs8) to learn more.
 
 CIS-CAT's goal is to focus on what our Members find most valuable. Members have told us that CIS-CAT's automated configuration assessment capabilities with CIS Benchmark content is the most important aspect of CIS SecureSuite. CIS-CAT aims to streamline and continue to support the fundamental configuration best practice needs for the single enterprise. 
 
-OVAL Capabilities
 -----------------
+
+## OVAL Capabilities
+
 International in scope and free for public use, OVAL is an information security community effort to standardize how to assess and report upon the machine state of computer systems. OVAL includes a language to encode system details, and an assortment of content repositories held throughout the community.
 
 Tools and services that use OVAL for the three steps of system assessment — representing system information, expressing specific machine states, and reporting the results of an assessment — provide enterprises with accurate, consistent, and actionable information so they may improve their security. Use of OVAL also provides for reliable and reproducible information assurance metrics and enables interoperability and automation among security tools and services.
 
-### Platform Independent ###
+### Platform Independent 
+
 | Test Name | Implemented? | Notes |
 |------------------------------------|---|-------|
 | Environment Variable (<5.8)        | Y ||
@@ -194,7 +203,8 @@ Tools and services that use OVAL for the three steps of system assessment — re
 | Variable                           | Y ||
 | XML File Content                   | Y ||
 
-### Microsoft Windows ###
+### Microsoft Windows 
+
 | Test Name | Implemented? | Notes |
 |------------------------------------|---|-------|
 | Access Token | Y ||
@@ -246,7 +256,8 @@ Tools and services that use OVAL for the three steps of system assessment — re
 | WMI (5.7+) | Y ||
 | WUA Update Searcher | Y ||
 
-### Unix ###
+### Unix 
+
 | Test Name                | Implemented? | Notes |
 |--------------------------|--------------|-------|
 | DNSCache                 | N ||
@@ -267,7 +278,8 @@ Tools and services that use OVAL for the three steps of system assessment — re
 | Uname                    | Y ||
 | Xinetd                   | Y ||
 
-### Linux ###
+### Linux 
+
 | Test Name                | Implemented? | Notes |
 |--------------------------|--------------|-------|
 | AppArmor Status | Y ||
@@ -285,7 +297,8 @@ Tools and services that use OVAL for the three steps of system assessment — re
 | Systemd Unit Dependency | Y ||
 | Systemd Unit Property | Y ||
 
-### Mac OSX ###
+### Mac OSX 
+
 | Test Name                      | Implemented? | Notes |
 |--------------------------------|--------------|-------|
 | Account Info                   | Y ||
@@ -315,8 +328,8 @@ Tools and services that use OVAL for the three steps of system assessment — re
 | System Profiler                | N | |
 | System Setup                   | N | |
 
+### Cisco IOS 
 
-### Cisco IOS ###
 | Test Name                | Implemented? | Notes |
 |--------------------------|--------------|-------|
 | ACL                          | Y | Partial implementation |
@@ -337,7 +350,8 @@ Tools and services that use OVAL for the three steps of system assessment — re
 | Version (<5.5)               | Y ||
 | Version (5.5+)               | Y ||
 
-### Microsoft IIS (Extension) ###
+### Microsoft IIS (Extension) 
+
 | Test Name                | Implemented? | Notes |
 |--------------------------|--------------|-------|
 | Application Host Config  | Y ||
@@ -348,7 +362,8 @@ Tools and services that use OVAL for the three steps of system assessment — re
 | Appcmd                   | Y ||
 | Appcmd List Config       | Y ||
 
-### VMware ESXi (Extension) ###
+### VMware ESXi (Extension) 
+
 | Test Name                 | Implemented? | Notes |
 |---------------------------|--------------|-------|
 | VMHost Acceptance Level       | Y |  |
@@ -374,15 +389,17 @@ Tools and services that use OVAL for the three steps of system assessment — re
 | Virtual Distributed Switch    | Y |  |
 | Virtual Distributed Switch Port Group | Y |  |
 
-### Other ###
+### Other 
+
 | Test Name                | Implemented? | Notes |
 |--------------------------|--------------|-------|
 | Shell Command            | Y            | Extension, Platform Independent |
 | Invalid User Home Directory Ownership |Y| Extension, Linux|
 
-
-Scripting Capabilities
 ----------------------
+
+## Scripting Capabilities
+
 CIS-CAT Pro Assessor implements the Script Check Engine (SCE) check system, initially introduced as part of the [OpenSCAP](http://open-scap.org/page/SCE) project.  Using SCE in XCCDF documents allows administrators to use already-created scripts written in Bash, Windows Batch files, PowerShell, VBScript, etc. in benchmark recommendations.
 
 CIS-CAT Pro Assessor supports using SCE usage with the following scripting languages:
