@@ -806,8 +806,10 @@ Consider a Microsoft SQL Server database instance with the following information
 | SQL Server Database User/Password | db_user/db_pass |
 | Instance Name                     | InstanceName |
 
-Kubernetes Assessment
 ----------------------------------
+
+## Kubernetes Assessment
+
 
 Assessing with the Kubernetes benchmark in CIS-CAT Pro Assessor v4 works like any other assessment of a Linux benchmark. CIS Benchmark Consensus has determined that best practice should allow for only remote connection with the Linux host connecting via ssh for a configuration assessment.
 
@@ -851,9 +853,10 @@ Sample configuration file for a local assessment with HTML report generation::
     </reports>
 	</configuration>
 
-
-Amazon Elastic Kubernetes Service (EKS) Assessment
 ----------------------------------
+
+## Amazon Elastic Kubernetes Service (EKS) Assessment
+
 Assessing with the Amazon Elastic Kubernetes Service (EKS) benchmark in CIS-CAT Pro Assessor v4 requires the use of the AWS CLI to authenticate and connect to the EKS cluster.  This CIS Benchmark only runs on a Linux operating system.
 The Amazon EKS benchmark will authenticate and target a specific cluster with AWS CLI, and then submit kubelet and kubectl commands to the cluster to perform the assessment. The commands are present within the Benchmark content.
 This benchmark is only run as a local assessment, as local AWS CLI and Kubernetes commands are used to perform the assessment.
@@ -944,11 +947,12 @@ Execute an assessment on the command line:
 
 	> ./Assessor-CLI.sh -b benchmarks/CIS_Amazon_Elastic_Kubernetes_Service_(EKS)_Benchmark_v1.0.1-xccdf.xml`
 
-Azure Kubernetes Service (AKS) Assessment
 ----------------------------------
+
+## Azure Kubernetes Service (AKS) Assessment
+
 Assessing with the Azure Kubernetes Service (AKS) benchmark in CIS-CAT Pro Assessor v4 requires the use of the Azure CLI to authenticate and connect to the AKS cluster.  This CIS Benchmark only runs on a Linux operating system.
 The Azure Kubernetes Service (AKS) benchmark will authenticate and target a specific cluster with Azure CLI, and then submit kubelet and kubectl commands to the cluster to perform the assessment. The commands are present within the Benchmark content. This benchmark is only run as a local assessment, as local Azure CLI and Kubernetes commands are used to perform the assessment.
-
 
 **Summary**
 
@@ -978,8 +982,6 @@ Assign the 'Cluster User' role to the user
     --scope $AKS_CLUSTER \
     --role "Azure Kubernetes Service Cluster User Role"
 
-
-
 **Prepare the Environment and Azure CLI**
 
 CIS-CAT Pro Assessor v4 must be extracted locally on a server or workstation that has access to the AKS cluster servers. An automated assessment using the CIS Benchmark must be performed as a local assessment or “local” session type. CIS-CAT Pro Assessor will run various kubectl and kubelet commands to perform the assessment. When utilizing CIS-CAT Pro Assessor v4’s supporting  files for this Benchmark, ensure configuration and session files contain a “local” session. Assessments can also be initiated using commands or the v4 GUI as a local assessment.
@@ -992,22 +994,20 @@ Point Azure CLI to the desired AKS cluster for assessment using the following co
 
 `az aks get-credentials -g MyResourceGroup -n MyManagedCluster`
 
-
 **Example method for executing an Azure Kubernetes Service (AKS) assessment****
 
 As mentioned above, the Azure Kubernetes Service (AKS) benchmark must always be executed as a “local” session type. The session type specifies the method assessor needs to use to execute the assessment and not the physical position of the cluster. 
 
 If using a sessions.properties file or assessor-config.xml file, ensure that the session type is “local”. 
 
-
 Execute an assessment on the command line:
 
 	> ./Assessor-CLI.sh -b benchmarks/CIS_Azure_Kubernetes_Service_(AKS)_Benchmark_v1.1.0-xccdf.xml`
 
-
-
-Google Kubernetes Engine (GKE) Assessment
 ----------------------------------
+
+## Google Kubernetes Engine (GKE) Assessment
+
 Assessing with the Google Kubernetes Engine (GKE) benchmark in CIS-CAT Pro Assessor v4 requires the use of the gcloud CLI to authenticate and connect to the GKE cluster. This CIS Benchmark only runs on a Linux operating system. The Google GKE benchmark will authenticate and target a specific cluster with gcloud CLI, and then submit kubelet and kubectl commands to the cluster to perform the assessment. The commands are present within the Benchmark content. This benchmark is only run as a local assessment, as local gcloud CLI and Kubernetes commands are used to perform the assessment.
 
 **Summary Requirements**
@@ -1029,11 +1029,9 @@ This documentation provides instructions for use of gcloud CLI in a "least privi
 GCP IAM defines what actions you are allowed to take on GCP (ie: create Cloud Storage Buckets, deploy an App Engine app). Kubernetes Roles define permissions you have within a single cluster. Some GCP IAM roles actually propagate down to the GKE clusters running in that project. For example, the GCP IAM role Kubernetes Engine Developer will give edit access to every cluster in the project this IAM role is granted on. That’s of course way too broad.
 Because Kubernetes itself does not have the concept of users, GKE will rely on GCP IAM permissions to Authenticate users (who are you?). However, you should rely as much as possible on a Kubernetes Role for Authorization (what are you allowed to do?). Therefore, we will grant minimal roles on the GCP IAM side that can be used to identify yourself to a cluster. Then the GKE cluster itself will decide whatever you are allowed to do, based on a Kubernetes Role.
 
-
 **About GKE Authentication**
 
 GKE manages authentication with gcloud with OAuth2/OpenID connect method. More information about the specifics of this method is available on the [official Kubernetes site](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#openid-connect-tokens).
-
 
 The minimal set of permissions you need on the GCP IAM side are the following:
 
@@ -1075,9 +1073,10 @@ See requirements above to ensure they are met. Review official [Kubernetes docum
 
 An automated assessment using the CIS Google GKE Benchmark must be performed as a local assessment or “local” session type. CIS-CAT Pro Assessor will run various `kubectl` and `kubelet` commands to perform the assessment. When utilizing CIS-CAT Pro Assessor v4’s supporting session or configuration files for this Benchmark, ensure configuration and session files utilize a “local” session type. Assessments can also be initiated using commands or the v4 GUI as a local assessment.
 
-
-Apache Tomcat 9 Assessment
 ----------------------------------
+
+## Apache Tomcat 9 Assessment
+
 Assessing with the Apache Tomcat 9 benchmark in CIS-CAT Pro Assessor v4 requires input on two environment variables. Entry of the two variables can be done on the command line, at the GUI prompt or setting of the values in advance in the `assessor-cli.properties` file or configuration XML file. 
 
 **Requirements**
@@ -1103,7 +1102,6 @@ These values are specified in the xccdf files as:
 
 	xccdf_org.cisecurity_value_tomcat.home
 		Default value = /opt/tomcat/
-
 
 **Example configuration file for executing a Tomcat assessment**
 
@@ -1131,9 +1129,10 @@ Example configuration file with specified profile and HTML report generation:
     	</reports>
 	</configuration>
 
-
-VMware ESXi Assessment
 ----------------------------------
+
+## VMware ESXi Assessment
+
 Assessing with the VMWare ESXi benchmark in CIS-CAT Pro Assessor v4 requires use of a connection string to connect to the ESXi/vSphere host. The VMWare benchmark will require entry of the connection string on the command line or setting of the string in advance in the `assessor-cli.properties` file or configuration XML file. Additional requirements necessary for the host of CIS-CAT Pro when assessing with the VMWare benchmark are listed below. This CIS Benchmark has been tested only on a Microsoft Windows operating system. Other operating systems are not guaranteed to provide optimal results.
 
 **Requirements**
@@ -1144,7 +1143,6 @@ Assessing with the VMWare ESXi benchmark in CIS-CAT Pro Assessor v4 requires use
 - PowerCLI 6.5.1+ installed
 - Assessed machine is a Microsoft Windows OS
 
-
 Older versions of powerCLI will receive a warning printed in the assessor-cli.log when older, deprecated versions are encountered. 
 On failure, the first line of the above example will show a result of "2" and will indicate that the version check has failed. A failure to connect and execute commands will result in "unknown" assessment results indicating that CIS-CAT Pro Assessor was unable to collect the system's state information.
 
@@ -1154,7 +1152,6 @@ In order to complete an assessment, CIS-CAT Pro utilizes PowerCLI.
 It is required that LanguageMode is not configured to ConstrainedLanguage. When configured with ConstrainedLanguage, assessor functions will be blocked as CIS-CAT PowerShell scripts will be unable to be dot-sourced. Verify LanguageMode using this command:
 
 	PS> $ExecutionContext.SessionState.LanguageMode
-
 
 **Connection Strings**
 
@@ -1181,7 +1178,6 @@ Execute a single assessment on command line with connection string specified for
 	> Assessor-CLI.bat -b benchmarks\CIS_VMware_ESXi_6.7_Benchmark_v1.1.0-xccdf.xml -D xccdf_org.cisecurity.benchmarks_value_esxi.connection=root/password@192.168.41.60
 
 It is also possible to add the connection string, represented after the -D option above, to the assessor-cli.properties file. However, only one of these can be added. To complete multiple assessments, use a configuration.XML file or use multiple commands.
-
 
 Execute multiple assessments on command line on the local machine using information found in a saved configuration XML file. See sample configuration file below:
 
@@ -1225,10 +1221,11 @@ Below is an example of multiple VMWare assessments. It is important to note that
 
 Configuration assessment result files for VMWare ESXi will be prefaced with the ESXi host's hostname (or IP address) for easier identification. The preface will automatically be applied for every configuration assessment report generated.
 
-Red Hat OpenShift Container Platform Assessment
 ----------------------------------
-CIS-CAT will execute using OpenShift CLI (oc). Utilize official Red Hat documentation on [OpenShift CLI (oc)](https://docs.openshift.com/container-platform/4.2/cli_reference/openshift_cli/getting-started-cli.html) to get started. OpenShift CLI is the preferred and most secure method of running CIS-CAT Pro Assessor commands.
 
+## Red Hat OpenShift Container Platform Assessment
+
+CIS-CAT will execute using OpenShift CLI (oc). Utilize official Red Hat documentation on [OpenShift CLI (oc)](https://docs.openshift.com/container-platform/4.2/cli_reference/openshift_cli/getting-started-cli.html) to get started. OpenShift CLI is the preferred and most secure method of running CIS-CAT Pro Assessor commands.
 
 **Summary of Requirements**
 
@@ -1240,15 +1237,13 @@ CIS-CAT will execute using OpenShift CLI (oc). Utilize official Red Hat document
 
 If using a sessions.properties file or assessor-config.xml file, ensure that the session type is “local”. 
 
-
 Execute an assessment on the command line:
 
 	> ./Assessor-CLI.sh -b benchmarks/CIS_RedHat_OpenShift_Container_Platform_v4_Benchmark_v1.1.0-xccdf.xml`
 
-
-
-Extra configuration Options
 ---------------------------
+
+## Extra Configuration Options
 
 	-sessions, --sessions <SESSIONS.PROPERTIES>
 The `-sessions` option allows users to configure multiple endpoints for assessment of a benchmark.  The `sessions.properties` file configures CIS-CAT Pro Assessor for the assessment of remote endpoints by specifying remote hosts, ports, and credentials which the application will use for connection, collection and evaluation of benchmark recommendations.  See "Remote Assessment Capability" below for more information.
@@ -1256,8 +1251,10 @@ The `-sessions` option allows users to configure multiple endpoints for assessme
 If no `sessions.properties` file exists or no connections are configured in the file, CIS-CAT Pro Assessor CLI will assess the local machine.
 
 <a name="assessMultipleWindowsTargets"></a>
-# Centralized - Windows #
 
+---------------------------
+
+## Centralized - Windows 
 
 It is possible to assess a population of Microsoft Windows targets in an automated manner without installing CIS-CAT or the JRE on each target. The following diagram depicts this deployment method:
 
@@ -1406,7 +1403,6 @@ Setting AUTODETECT=1 will cause this script to detect the following:
 2.	Which Benchmark Profile to select
 3.	Which JRE to leverage (32- or 64-bit). Defaults to 32-bit
 
-
 **Configuration Note:**  The “cis-cat-centralized.bat” script sets local environment variables denoting file system paths and folder names.  The tool has been enhanced to now handle spaces in file paths.
 
 Near line 780 of the “cis-cat-centralized.bat” script, the following code section illustrates the configuration of the CIS-CAT command-line for execution.
@@ -1490,22 +1486,20 @@ Ensure that the user selected to run the task has the highest privilege. When sc
 
 `/c \\<CisHostServer>\CIS\cis-cat-centralized.bat`
 
-
 **Bandwidth Considerations**
 
 Through the deployment and testing of the CIS-CAT Centralized workflow, bandwidth utilization can reach approximately 300 MB of data for each machine invoking CIS-CAT.  This bandwidth utilization is the cost of invoking CIS-CAT over the network.
 
-
 <a name="assessCentalizedLinux"></a>
-# Centralized - Unix/Linux  #
 
+---------------------------
+
+## Centralized - Unix/Linux 
 
 The Centralized assessment method is an in-domain or in-network configuration assessment. In cases where organizational policy restricts use of remote assessments, the centralized method may be a possible solution for configuration assessments. This method also has the benefit of allowing installation of CIS-CAT Pro Assessor v4 and a suitable JRE on a network location vs. each target.
 
 The CIS-CAT Pro Assessor v4 bundle is set up at a centralized file share location (referred to as the *CIS Host Server* in this document) that is accessible by target computers to be assessed. Either the `cis-cat-centralized.sh` script or the `cis-cat-centralized-ccpd.sh` script is prepared on that centralized file share.  The target computers then access and run the prepared centralized script to perform a local assessment over the network connection.
  
-
-
 **Key steps to begin setup:**
 
 1. Identify the host server where CIS-CAT and a JRE will reside (if using a version of CIS-CAT without embedded Java)
@@ -1521,7 +1515,6 @@ The CIS-CAT Pro Assessor v4 bundle is set up at a centralized file share locatio
 1. [Define the report output](#defineReportOutput) for the selected script (cis-cat-centralized.sh or cis-cat-centralized-ccpd.sh)
 2. [Validate the install](#validateInstall)
  
-
 <a name="hostServerSetup"></a>
 **CIS Host Server Setup**
 
@@ -1704,16 +1697,18 @@ The CIS-CAT assessment reports will be stored in the reports location or Dashboa
 
 CIS-CAT users can now integrate the invocation of the **“cis-cat-centralized.sh”** or **“cis-cat-centralized-ccpd.sh”** script into a task scheduling system such as `cron`, to be executed on any schedule deemed prudent for organizational needs.  Configuration of a Unix/Linux-based scheduling tool is beyond the scope of this User’s Guide.
 
-## CIS-CAT Pro Dashboard Integration ##
+---------------------------
 
-### Introduction ###
+## CIS-CAT Pro Dashboard Integration 
+
+### Introduction 
 
 The CIS-CAT Pro Dashboard has the ability to automatically import configuration assessment results from CIS-CAT Pro Assessor via a REST API. From CIS-CAT Pro Assessor, result reports can be uploaded from a single CIS-CAT assessment using the graphical user interface or command-line user interface. Additionally, users scanning with the “centralized” method to assess multiple Windows or Unix/Linux targets can modify the supporting files to automatically upload the results to CIS-CAT Pro Dashboard.
  
 In order for the CIS-CAT Pro Dashboard and CIS-CAT Pro Assessor to communicate and share assessment results, authentication/authorization must be configured. Once the CIS-CAT Pro Dashboard has been installed, follow the instructions to generate an Authentication Token that will be used to validate the authentication in supporting CIS-CAT Pro Assessor files.
 
 
-### Direct command line usage ###
+### Direct command line usage 
 To upload a report to CIS-CAT Pro Dashboard with the command line, a connection between CIS-CAT Pro Assessor and Dashboard needs to be established first. <br/>Please follow the instructions in [Establish authentication with Assessor](https://cis-cat-pro-dashboard.readthedocs.io/en/stable/source/Configuration%20Options/#cis-cat-pro-assessor-integration) section from the Dashboard Deployment guide.
 
 Add the generated token to the assessor-cli.properties file:
@@ -1728,8 +1723,8 @@ Execute an assessment against the CIS Microsoft Windows 10 benchmark, using the 
 
 	> Assessor-CLI.bat -b benchmarks\CIS_Microsoft_Windows_10_Enterprise_Release_1703_Benchmark_v1.3.0-xccdf.xml -nrf -u https://ccpd.example.org/CCPD/api/reports/upload -ui
 
-### Windows centralized CIS-CAT Pro Dashboard usage ###
+### Windows centralized CIS-CAT Pro Dashboard usage 
 To use `cis-cat-centralized-ccpd.bat` script, please follow [Assessing Multiple Windows Targets](#assessMultipleWindowsTargets).
 
-### Unix/Linux centralized CIS-CAT Pro Dashboard usage ###
+### Unix/Linux centralized CIS-CAT Pro Dashboard usage 
 To use `cis-cat-centralized-ccpd.sh` script, please follow [Assessing Multiple Unix/Linux Targets](#assessMultipleUnixLinuxTargets).
