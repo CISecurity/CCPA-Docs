@@ -1,4 +1,10 @@
-## License ##
+![](http://i.imgur.com/5yZfZi5.jpg)
+
+# CIS-CAT Pro Assessor SecureSuite License
+
+------------
+
+## License 
 To unlock full feature and content access for CIS-CAT Pro Assessor, Members are required to download and apply their organization’s SecureSuite license from [https://workbench.cisecurity.org](https://workbench.cisecurity.org "CIS WorkBench").
 
 If a valid license is not present in the defined location, CIS-CAT Pro Assessor will be limited to [Lite](https://learn.cisecurity.org/cis-cat-lite) functionality where the following restrictions apply:
@@ -31,18 +37,12 @@ See example of where the files should be placed within the CIS-CAT folder struct
 
 ![](img/LicenseFolder.png)
 
-### License Verification Method ###
+### License Verification Method 
 
 CIS-CAT Assessor v4 validate a Member’s license at the beginning of each command execution performed from the GUI or the command line. The license will attempt to validate against a CIS-hosted location via SSL port 8883 first. If the host machine is unable to validate online, CIS-CAT will validate the license from the key that is present in the specified location. By default, the location is in the “License” folder. To modify this location, specify a different location using the ciscat.license.filepath property in the assessor-cli.properties (v4 Assessor).
 
 The method utilized to validate the license will be present in the assessor-cli.log when producing an INFO level log. 
 
-### License Renewal ###
+### License Renewal 
 
 The license file will expire when your SecureSuite Membership expires. Once your SecureSuite Membership renewal has been processed, a new license file bundle will be available in WorkBench. Download an updated license by following the initial license installation instructions, replacing the existing license files.
-
-
-
-
-
- 
