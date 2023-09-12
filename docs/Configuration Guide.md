@@ -1075,9 +1075,11 @@ An automated assessment using the CIS Google GKE Benchmark must be performed as 
 
 ----------------------------------
 
-## Apache Tomcat 9 Assessment
+## Apache Tomcat Assessment
 
-Assessing with the Apache Tomcat 9 benchmark in CIS-CAT Pro Assessor v4 requires input on two environment variables. Entry of the two variables can be done on the command line, at the GUI prompt or setting of the values in advance in the `assessor-cli.properties` file or configuration XML file. 
+Assessing with the Apache Tomcat benchmark in CIS-CAT Pro Assessor v4 requires input on two environment variables. Entry of the two variables can be done on the command line, at the GUI prompt or setting of the values in advance in the `assessor-cli.properties` file or configuration XML file. 
+
+The Apache Tomcat Security Configuration Benchmark for Apache Tomcat, provides prescriptive guidance and assessment capability for Apache Tomcat versions running on Linux.  
 
 **Requirements**
 
