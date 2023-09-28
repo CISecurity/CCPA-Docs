@@ -40,14 +40,17 @@ The basic workflow option accommodates a local system scan only.
 
 ### Automatic CIS Benchmark Selection 
 
-Version v4.23.0+ offers an option for a local assessment to detect the operating system and automatically select the compatible CIS Benchmark for the detected operating system. By default, the automatic CIS Benchmark selection will execute when running the GUI. See the [properties section in the Configuration Guide](https://ccpa-docs.readthedocs.io/en/latest/Configuration%20Guide/#properties) for how to modify this property. The automatic CIS Benchmark selection works with the following Microsoft Windows operating systems:
+Version v4.23.0+ offers an option for a local assessment to detect the operating system and automatically select the compatible CIS Benchmark for the detected operating system. By default, the automatic CIS Benchmark selection will execute when running the GUI. See the [properties section in the Configuration Guide](https://ccpa-docs.readthedocs.io/en/latest/Configuration%20Guide/#properties) for how to modify or disable this property/functionality. The automatic CIS Benchmark selection works with the following Microsoft Windows operating systems:
 
 	- 10 Enterprise
+	- 11 Enterprise
 	- Server 2012r2
 	- Server 2012
 	- Server 2016
 	- Server 2019
 	- Server 2022
+
+**NOTE:** Intune Windows 10 and 11 have the same operating system as Microsoft Windows 10 and 11 workstation. CIS-CAT will auto-select the Enterprise Benchmark, which may not be the desired Benchmark. On the Benchmark selection screen, it is an easy process to delete the benchamrk and select the intended benchmark.
 
 ### Add a benchmark 
 

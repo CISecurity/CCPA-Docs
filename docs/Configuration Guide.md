@@ -28,9 +28,10 @@ Below are the possible download bundles:
 | Microsoft Windows | without GUI | with | No | No graphical interface. Supports command line (CLI) activities. Embedded java 8 runtime environment (JRE) included and utilized for all Microsoft Windows assessments. Centralized scripts utilize the embedded Java | CIS-CAT-Assessor-windows-jre-v4.24.0.zip |
 | Microsoft Windows | without GUI | without | Yes | Supports command line (CLI) activities, no graphical interface. Requires an installed JRE on the CIS-CAT host. | CIS-CAT-Assessor-windows-v4.24.0 |
 | Linux  | without GUI | with | No | Designed for Linux **ONLY** operating systems. Includes only shell scripts for tool operation on Linux. Centralized scripts utilize the embedded Java. **MUST ensure that the jre folder of the build has appropriate read and execute permissions in order for the assessment process to function.** The embedded Java is only suitable for Linux OS, not MacOS. | CIS-CAT-Assessor-linux-jre-v4.24.0 |
-| Linux  | without GUI | without | Yes | Designed for Linux and MacOS operating systems. Includes only shell scripts for tool operation on Linux or MacOS. Requires an installed JRE on the CIS-CAT host. **MacOS** users must utilize this version if they wish to manage their own Java installation. | CIS-CAT-Assessor-linux-v4.24.0 |
+| Linux  | without GUI | without | Yes | Designed for Linux and MacOS operating systems. Includes only shell scripts for tool operation on Linux. Requires an installed JRE on the CIS-CAT host. | CIS-CAT-Assessor-linux-v4.24.0 |
 | MacOS  | without GUI | with | No | Designed for MacOS operating systems. Includes only shell scripts for tool operation MacOS. The embedded Java is only suitable for MacOS. **MacOS** users wishing for embedded Java must utilize this version. | CIS-CAT-Assessor-mac-jre-v4.24.0 |
-
+| MacOS  | with GUI | with | No | Designed for MacOS operating systems. Includes a graphical interface and supports command line (CLI) activities. Embedded java 8 runtime environment (JRE) included and utilized for all assessments. The embedded Java is only suitable for MacOS.  | CIS-CAT-Assessor-mac-GUI-jre-v4.24.0 |
+| MacOS  | without GUI | without | Yes | Designed for MacOS operating systems. Includes only shell scripts for tool operation on MacOS. Requires an installed JRE on the CIS-CAT host.  | CIS-CAT-Assessor-mac-v4.24.0 |
 ------------
 
 ## Security
@@ -93,7 +94,7 @@ Multiple system properties exist in the file `assessor-cli.properties` (located 
 | ciscat.integration.config | `string` | Sets the filepath to the "dxlclient.config" file used for online license verification. The filepath should include the filename and extension. |
 | ciscat.license.filepath | `string` | Sets the filepath to the "license.xml" file used for license verification.  The filepath should include the filename and extension. |
 | **Define Default GUI Selections** |  |  |
-| gui.auto.detect.benchmark | `true/false` | Determines if GUI should automatically detect the local operating system assessed and provide a suggested Level 1 Benchmark. Default setting is set to 'true'. Supports only local assessments for the following Microsoft Windows: 10 Enterprise, Server 2012r2, Server 2012, Server 2019, Server 2022 |
+| gui.auto.detect.benchmark | `true/false` | Determines if GUI should automatically detect the local operating system assessed and provide a suggested Level 1 Benchmark. Default setting is set to 'true'. Supports only local assessments for the following Microsoft Windows: 10 Enterprise, 11 Enterprise, Server 2012r2, Server 2012, Server 2019, Server 2022 |
 | gui.default.output.format | `string` | Sets the selected output format(s) for the generated reports, e.g. HTML,csv,txt,arf xml,json. |
 | gui.default.report.output.location | `string` | Sets the default selected report output destination path, e.g. C:\\Users\\testuser\\Desktop. The path will be set to this value when an operating system supported for auto detection is not defined and/or detected. If this line is uncommented, ensure it contains a valid value else the field will be set to null. |
 | gui.default.dashboardURL | `string` | Sets the URL of CIS-CAT Pro Dashboard for import of results via API. |
@@ -117,7 +118,7 @@ Multiple system properties exist in the file `assessor-cli.properties` (located 
 | ciscat.post.parameter.report.body | `string` | Allows for the customization of the CIS-CAT POST parameter for the Report Body.  To POST assessment reports to the CIS-CAT Pro Dashboard, the value of this property must be set to "ciscat-report". |
 | ciscat.zip.post.files | `true/false` | **Highly Recommended**. Allows for assessment reports to be zipped/compressed when they are sent to the Dashboard via a POST request.  This property is only supported with Dashboard version 1.1.9 or higher. |
 | **Set SCE Script Timeout** |  |  |
-| sce.max.wait | `numeric - milliseconds` | Sets the Maximum Wait time (time out) in milliseconds for each SCE script to execute. Used mostly when assessing with a Linux or macOS Benchmark. By default, the setting is not active. May reduce overall assessment time where organizations have mounted drives with millions/billions of files that may require collection/evaluation. Should an evaluation of the system state exceed the specified duration, the recommendation result will be 'Unknown' and score as a failure. |
+| sce.max.wait | `numeric - milliseconds` | Sets the Maximum Wait time (time out) in milliseconds for each SCE script to execute. Used mostly when assessing with a Linux or macOS Benchmark. By default, the setting is not active. May reduce overall assessment time where organizations have mounted drives with millions/billions of files that may require collection/evaluation. Should an evaluation of the system state exceed the specified duration, the recommendation result will be 'Unknown' and score as a failure. **This property requires timeout configuration to be installed and enabled for MacOS or Linux.**|
 | **Set VMWare Command Timeout** |  |  |
 | esxi.max.wait | `numeric - milliseconds` | Sets the Maximum Wait time (time out) in milliseconds for each PowerCLI command to execute. Used only when assessing with a VMWare Benchmark. Default value is 30 seconds. May reduce overall assessment time where organizations do not have settings configured on the VM. |
 | **Define CSV Output Header Information** |  |  |
@@ -805,6 +806,13 @@ Consider a Microsoft SQL Server database instance with the following information
 | Windows Domain User/Password      | jsmith/qw3rty |
 | SQL Server Database User/Password | db_user/db_pass |
 | Instance Name                     | InstanceName |
+
+----------------------------------
+
+## Docker Assessment
+
+The Docker Benchmark can be run locally on a system where the Docker engine is installed. It can also be run from a remote location as long as the system hosting the Docker engine will allow an ssh connection.  Follow the Linux or MacOS Session configuration guidance for specifics for assessing with this CIS Benchmark.
+
 
 ----------------------------------
 

@@ -10,6 +10,46 @@ See the CIS-CAT Pro Assessor Coverage Guide for information about supported benc
 
 ---------------------------
 
+## CIS-CAT Pro Assessor, v4.34.0 
+Release Date: Sep. 28, 2023 
+
+### Benchmark Coverage 
+
+- Kubernetes v1.8.0
+- Microsoft Edge Benchmark v2.0.0
+- VMware ESXI 7.0 v1.3.0
+
+The following CIS Benchmarks have been archived and are no longer officially supported. See the Coverage Guide for more information on CIS Benchmarks that have been archived. The “archive” terminology replaces the previous "end of life" terminology when referring to CIS Benchmarks removed from CIS-CAT.
+
+- Aliyun Linux 2
+- Centos Linux 6
+- Debian 9
+- Fedora 19
+- Oracle Linux 6
+- Red Hat Linux 6
+- Ubuntu 14.04
+- Ubuntu 16.04
+
+### Security 
+
+- Resolved security vulnerabilities present in embedded, third party dependencies for okhttp (now 4.11.0)  and okio-jvm (now at 3.5.0)
+
+### Application 
+
+- Resolved ‘unknown’ results for some Linux where the script execution by the default non-interactive shell did not execute from a full bash shell
+- CIS-CAT releases designed for MacOS host deployment now include an embedded Java Runtime Environment (JRE) to support GUI activities. New options and interface for download of CIS-CAT from [CIS WorkBench](https://workbench.cisecurity.org/files). See [Configuration Guide](https://ccpa-docs.readthedocs.io/en/latest/Configuration%20Guide/) with section titled Obtain CIS-CAT Pro Assessor.
+- The GUI application now properly auto detects Microsoft Windows 11 and appropriately suggests the Microsoft Windows 11 Benchmark within the release bundle instead of the Microsoft Windows 10 Benchmark.
+- MacOS host system owners wishing to continue to manage their own Java and prefer a release without an embedded Java may now select the Mac button and “No Java” and “No GUI” options on the download of CIS-CAT from [CIS WorkBench](https://workbench.cisecurity.org/files). See [Configuration Guide](https://ccpa-docs.readthedocs.io/en/latest/Configuration%20Guide/) with section titled Obtain CIS-CAT Pro Assessor.
+
+### Documentation 
+
+- The README.txt document for the list of suppressed third party security vulnerabilities from dependent libraries has been updated.
+- Configuration Guide updated to be specific that a Tomcat assessment is only applicable to Linux
+- Clarified Property table for sce.max.wait to indicate that timeout must be enabled on MacOS or Linux to utilize this property
+- Updated Configuration Guide to provide more information on Docker configuration assessments
+
+---------------------------
+
 ## CIS-CAT Pro Assessor, v4.33.0 
 Release Date: Aug. 29, 2023 
 

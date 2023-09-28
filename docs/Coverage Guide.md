@@ -20,14 +20,13 @@ For some older Windows platforms such as Microsoft Windows Server 2008 R2, it is
 
 CIS-CAT Pro Assessor v4 is currently a standards-based application focused on vendor-supported technology platforms and applications where OVAL coverage is available. The below technologies are supported. CIS-CAT Pro Assessor v4 supported CIS Benchmarks will be present in the benchmark directory of your downloaded CIS-CAT bundle and contain "oval" and "xccdf" in the filename. Please contact [CIS Support](https://www.cisecurity.org/support/) for additional coverage requests.
 
-CIS Benchmarks that have reached end of life are no longer officially supported for use with CIS-CAT. As Members are working to upgrade systems within their organization to more current technology, CIS offers end of life CIS Benchmark automated assessment content on the CIS WorkBench. Navigate to [CIS WorkBench](https://workbench.cisecurity.org/files/2724) for more information.
+CIS Benchmarks no longer officially supported for use with CIS-CAT have been archived. As Members are working to upgrade systems within their organization to more current technology, CIS offers archived CIS Benchmark automated assessment content on the CIS WorkBench. Navigate to [CIS WorkBench](https://workbench.cisecurity.org/files/2724) for more information.
 
 The CIS Benchmarks are tested with the prior, official CIS-CAT version at the time automated Benchmark content is announced as supported in CIS-CAT. The CIS-CAT tool, on each release performs some regression testing, where possible, for most Benchmark versions released with the CIS-CAT bundle. Future and past CIS Benchmark versions for the technologies supported may work with the current or past CIS-CAT tool versions, but are not guaranteed and should be used at each organization's discretion.
 
 Some CIS Benchmark recommendations may not be supported for automation in CIS-CAT. This can result in differences occurring between the CIS Benchmark PDF recommendations identified as “Automated” and the CIS-CAT report. An “Automated” recommendation means that the CIS Benchmark Community has determined that this recommendation can potentially be fully assessed to a pass/fail state by a configuration assessment tool. In cases where CIS-CAT does not support a given “Automated” Recommendation it will be reported as “Manual” in the CIS-CAT report.
 
 - **CIS AKS-Optimized Azure Linux 2 v1.0.0**
-- **CIS Aliyun Linux 2, v1.0.0**
 - **CIS AlmaLinux OS 8 v2.0.0**
 - **CIS AlmaLinux OS 9 v1.0.0**
 - **CIS Amazon Elastic Kubernetes Service (EKS) v1.3.0**
@@ -43,27 +42,24 @@ Some CIS Benchmark recommendations may not be supported for automation in CIS-CA
 - **CIS Azure Compute Microsoft Windows Server 2019 v1.0.1**
 - **CIS Azure Compute Microsoft Windows Server 2022 v1.0.0**
 - **CIS Azure Kubernetes Service (AKS) v1.3.0**
-- **CIS CentOS Linux 6 v3.0.0**
 - **CIS CentOS Linux 7 v3.1.2**
 - **CIS Cisco IOS 15 v4.1.1**
 - **CIS Cisco IOS 16 v2.0.0**
 - **CIS Cisco IOS 17 v2.0.0**
 - **CIS Debian Family Linux, v1.0.0**
-- **CIS Debian Linux 9 v1.0.1**
 - **CIS Debian Linux 10 v2.0.0**
 - **CIS Debian Linux 11 v2.0.0**
 - **CIS Debian Linux 11 STIG v1.0.0**
 - **CIS Docker v1.6.0**
-- **CIS Fedora 19 Family Linux, v1.0.0**
 - **CIS Fedora 28 Family Linux, v2.0.1**
 		- NOTE:  Requires the "ignore.platform.mismatch" property be set to "true" in the Assessor's properties file.
 - **CIS Google Chrome Benchmark, v2.1.0**
 - **CIS Google Kubernetes Engine (GKE) Benchmark, v1.4.0**
 - **CIS_Kubernetes V1.20 Benchmark, v1.0.1**
 - **CIS_Kubernetes V1.23 Benchmark, v1.0.1**
-- **CIS Kubernetes v1.7.1**
+- **CIS Kubernetes v1.8.0**
 - **CIS MIT Kerberos 1.10 Benchmark, v1.0.0**
-- **CIS Microsoft Edge Benchmark, v1.1.0**
+- **CIS Microsoft Edge Benchmark, v2.0.0**
 - **CIS Microsoft IIS 8 Benchmark, v1.5.0**
 - **CIS Microsoft IIS 10 Benchmark, v1.2.1**
 - **CIS Microsoft Intune for Windows 10, v1.1.0**
@@ -122,7 +118,6 @@ Some CIS Benchmark recommendations may not be supported for automation in CIS-CA
 - **CIS Oracle Database 19c v1.1.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: Oracle Database connection string.
 	- `xccdf_org.cisecurity_value_listener.ora`: Path to the listener.ora file
-- **CIS Oracle Linux 6 Benchmark, v2.0.0**
 - **CIS Oracle Linux 7 Benchmark, v3.1.1**
 - **CIS Oracle Linux 8 Benchmark, v2.0.0**
 - **CIS Oracle Linux 9 Benchmark, v1.0.0**
@@ -145,7 +140,6 @@ Some CIS Benchmark recommendations may not be supported for automation in CIS-CA
 	- `xccdf_org.cisecurity_value_jdbc.url`: PostgreSQL Database connection string.
 - **CIS PostgreSQL 15 Benchmark, v1.0.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: PostgreSQL Database connection string.
-- **CIS Red Hat Enterprise Linux 6 v3.0.0**
 - **CIS Red Hat Enterprise Linux 7 v3.1.1**
 - **CIS Red Hat Enterprise Linux 7 STIG v2.0.0**
 - **CIS Red Hat Enterprise Linux 8 2.0.0**
@@ -156,15 +150,13 @@ Some CIS Benchmark recommendations may not be supported for automation in CIS-CA
 - **CIS Rocky Linux 9 v1.0.0**
 - **CIS SUSE Linux Enterprise 12 v3.1.0**
 - **CIS SUSE Linux Enterprise 15 v1.1.1**
-- **CIS Ubuntu Linux 14.04 LTS v2.0.0**
-- **CIS Ubuntu Linux 16.04 LTS v2.0.0**
 - **CIS Ubuntu Linux 18.04 LTS v2.1.0**
 - **CIS Ubuntu Linux 20.04 LTS v2.0.1**
 - **CIS Ubuntu Linux 20.04 LTS STIG v2.0.0**
 - **CIS Ubuntu Linux 22.04 LTS v1.0.0**
 - **CIS VMware ESXi 6.7 v1.3.0**
 	- `xccdf_org.cisecurity.benchmarks_value_esxi.connection`: ESXi host connection string
-- **CIS VMware ESXi 7.0 v1.2.0**
+- **CIS VMware ESXi 7.0 v1.3.0**
 	- `xccdf_org.cisecurity.benchmarks_value_esxi.connection`: ESXi host connection string
 
 -----------------------------------------------
