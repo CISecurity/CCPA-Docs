@@ -64,6 +64,8 @@ CIS recommends installing CIS-CAT Pro Assessor v4 on a host separate from hosts 
 
 Java is required for operation of CIS-CAT. Versions of CIS-CAT are available with an embedded Java that is utilized at run time. See available builds on [CIS WorkBench](https://ccpa-docs.readthedocs.io/en/latest/Configuration%20Guide/#obtain-cis-cat-pro-assessor) for CIS-CAT Pro Assessor.
 
+CIS-CAT Lite is available at no cost via our [CIS Website](https://learn.cisecurity.org/cis-cat-lite?_gl=1*bf4z83*_ga*MTkwMjk0MzA1Ni4xNjkzMzMyMDg4*_ga_N70Z2MKMD7*MTY5ODA2NzYxNi45My4xLjE2OTgwNjg3NDUuNDkuMC4w*_ga_ZQVR7NM9HJ*MTY5ODA2NzYxNi4yMTcuMS4xNjk4MDY4NzQ1LjAuMC4w). For non-Members who wish to host Lite on a Linux operating system, installed Java is required. For Microsoft Windows, a runtime version of Java is embedded. 
+
 If a version of CIS-CAT is selected that does **NOT** contain embedded Java, the following Java requirements apply:
 
 - JRE or JDK installed on CIS-CAT host machine or CIS-CAT bundle includes embedded Java
