@@ -57,8 +57,10 @@ CIS recommends installing CIS-CAT Pro Assessor v4 on a host separate from hosts 
 ### Required:
 
 - Remote scanning requires unrestricted access from the CIS-CAT host system to the assessed target system
-- Windows remote and local assessments require a 64 bit operating system 
-- Linux builds **with** embedded Java MUST ensure that the jre folder of the build has appropriate read and execute permissions in order for the assessment process to function.
+- Microsoft Windows remote and local assessments require a 64 bit operating system 
+- Linux builds **with** embedded Java MUST ensure that the jre folder of the build has appropriate read and execute permissions in order for the assessment process to function
+- Microsoft Windows host and remote assessments require Powershell installed
+	- PowerShell Transcription is not compatible with the natively installed PowerShell v4 on Microsoft Windows 10 Release 1511 and Server 2008 R2 SP1. If this recommendation is set as prescribed, PowerShell will need to be updated to v5.1. For more information on updating to PowerShell v5.1, please see [Windows PowerShell System Requirements - PowerShell | Microsoft Learn](https://learn.microsoft.com/en-us/powershell/scripting/windows-powershell/install/windows-powershell-system-requirements?view=powershell-7.3#operating-system-requirements).
 
 ### Java Requirements
 
