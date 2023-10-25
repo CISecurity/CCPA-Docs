@@ -60,7 +60,7 @@ CIS recommends installing CIS-CAT Pro Assessor v4 on a host separate from hosts 
 - Microsoft Windows remote and local assessments require a 64 bit operating system 
 - Linux builds **with** embedded Java MUST ensure that the jre folder of the build has appropriate read and execute permissions in order for the assessment process to function
 - PowerShell installed for Microsoft Windows assessments
-	- PowerShell v5.1 is recommended
+	- PowerShell v5.1+ is supported for most optimal CIS Benchmark Assessments
 		- Note: Assessments for CIS Benchmark recommendations referring to PowerShell transcription states require PowerShell v5.1+. This version is not natively installed on some older versions of Microsoft systems like Microsoft Windows 10 Release 1511 and Server 2008 R2 SP1. See [PowerShell | Microsoft Learn](https://learn.microsoft.com/en-us/powershell/scripting/windows-powershell/install/windows-powershell-system-requirements?view=powershell-7.3#operating-system-requirements) for more information.
 	
 

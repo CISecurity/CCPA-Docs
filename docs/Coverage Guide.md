@@ -18,7 +18,7 @@ Note that any benchmark listed below which displays a bulleted list of "`id`:des
 
 For some older Windows platforms such as Microsoft Windows Server 2008 R2, it is required to be current with service pack updates in order for the assessment to process without error.
 
-CIS-CAT Pro Assessor v4 is currently a standards-based application focused on vendor-supported technology platforms and applications where OVAL coverage is available. The below technologies are supported. CIS-CAT Pro Assessor v4 supported CIS Benchmarks will be present in the benchmark directory of your downloaded CIS-CAT bundle and contain "oval" and "xccdf" in the filename. Please contact [CIS Support](https://www.cisecurity.org/support/) for additional coverage requests.
+CIS-CAT Pro Assessor v4 is a standards-based application focused on vendor-supported technology platforms and applications where OVAL coverage is available. The below technologies are supported. CIS-CAT Pro Assessor v4 supported CIS Benchmarks will be present in the benchmark directory of your downloaded CIS-CAT bundle and contain "oval" and "xccdf" in the filename. Please contact [CIS Support](https://www.cisecurity.org/support/) for additional coverage requests.
 
 CIS Benchmarks no longer officially supported for use with CIS-CAT have been archived. As Members are working to upgrade systems within their organization to more current technology, CIS offers archived CIS Benchmark automated assessment content on the CIS WorkBench. Navigate to [CIS WorkBench](https://workbench.cisecurity.org/files/2724) for more information.
 
@@ -27,7 +27,7 @@ The CIS Benchmarks are tested with the prior, official CIS-CAT version at the ti
 Some CIS Benchmark recommendations may not be supported for automation in CIS-CAT. This can result in differences occurring between the CIS Benchmark PDF recommendations identified as “Automated” and the CIS-CAT report. An “Automated” recommendation means that the CIS Benchmark Community has determined that this recommendation can potentially be fully assessed to a pass/fail state by a configuration assessment tool. In cases where CIS-CAT does not support a given “Automated” Recommendation it will be reported as “Manual” in the CIS-CAT report.
 
 - **CIS AKS-Optimized Azure Linux 2 v1.0.0**
-- **CIS AlmaLinux OS 8 v2.0.0**
+- **CIS AlmaLinux OS 8 v3.0.0**
 - **CIS AlmaLinux OS 9 v1.0.0**
 - **CIS Amazon Elastic Kubernetes Service (EKS) v1.3.0**
 - **CIS Amazon Linux 2023 v1.0.0**
@@ -36,12 +36,13 @@ Some CIS Benchmark recommendations may not be supported for automation in CIS-CA
 - **CIS Apache Tomcat 9 v1.2.0**
 - **CIS Apache Tomcat 10 v1.1.0**
 - **CIS Apple macOS 10.15 Catalina v3.0.0**
-- **CIS Apple macOS 11.0 Big Sur v3.1.0**
-- **CIS Apple macOS 12.0 Monterey v2.1.0**
-- **CIS Apple macOS 13.0 Ventura v1.1.0**
+- **CIS Apple macOS 11.0 Big Sur v4.0.0**
+- **CIS Apple macOS 12.0 Monterey v3.0.0**
+- **CIS Apple macOS 13.0 Ventura v2.0.0**
+- **CIS Apple macOS 14.0 Sonoma v1.0.0**
 - **CIS Azure Compute Microsoft Windows Server 2019 v1.0.1**
 - **CIS Azure Compute Microsoft Windows Server 2022 v1.0.0**
-- **CIS Azure Kubernetes Service (AKS) v1.3.0**
+- **CIS Azure Kubernetes Service (AKS) v1.4.0**
 - **CIS CentOS Linux 7 v3.1.2**
 - **CIS Cisco IOS 15 v4.1.1**
 - **CIS Cisco IOS 16 v2.0.0**
@@ -62,8 +63,8 @@ Some CIS Benchmark recommendations may not be supported for automation in CIS-CA
 - **CIS Microsoft Edge Benchmark, v2.0.0**
 - **CIS Microsoft IIS 8 Benchmark, v1.5.0**
 - **CIS Microsoft IIS 10 Benchmark, v1.2.1**
-- **CIS Microsoft Intune for Windows 10, v1.1.0**
-- **CIS Microsoft Intune for Windows 11, v1.0.0**
+- **CIS Microsoft Intune for Windows 10, v2.0.0**
+- **CIS Microsoft Intune for Windows 11, v2.0.0**
 - **CIS Microsoft Office Enterprise, v1.1.0**
 - **CIS Microsoft Office Access 2013 Benchmark, v1.0.1**
 - **CIS Microsoft Office Excel 2013 Benchmark, v1.0.1**
@@ -86,10 +87,10 @@ Some CIS Benchmark recommendations may not be supported for automation in CIS-CA
 - **CIS Microsoft Windows 11 Stand-alone Benchmark, v2.0.0**
 - **CIS Microsoft Windows Server 2008 (non-R2) v3.1.0**
 - **CIS Microsoft Windows Server 2008 R2 v3.3.0**
-- **CIS Microsoft Windows Server 2012 (non-R2) v2.4.0**
-- **CIS Microsoft Windows Server 2012 R2 v2.6.0**
+- **CIS Microsoft Windows Server 2012 (non-R2) v3.0.0**
+- **CIS Microsoft Windows Server 2012 R2 v3.0.0**
 - **CIS Microsoft Windows Server 2016 v2.0.0**
-- **CIS Microsoft Windows Server 2016 STIG v1.2.0**
+- **CIS Microsoft Windows Server 2016 STIG v2.0.0**
 - **CIS Microsoft Windows Server 2019 v2.0.0**
 - **CIS Microsoft Windows Server 2019 STIG v1.1.0**
 - **CIS Microsoft Windows Server 2022 v2.0.0**
@@ -98,8 +99,8 @@ Some CIS Benchmark recommendations may not be supported for automation in CIS-CA
 - **CIS MongoDB 3.6, v1.1.0**
     - `xccdf_org.cisecurity_value_runnin_config_file.url`: MongoDB running configuration file (mongod.conf) location.
 - **CIS MongoDB 4, v1.0.0**
-- **CIS MongoDB 5, v1.1.0**
-- **CIS MongoDB 6, v1.0.0**
+- **CIS MongoDB 5, v1.2.0**
+- **CIS MongoDB 6, v1.1.0**
 - **CIS Mozilla Firefox 38 ESR v1.0.0**
 - **CIS NGINX v2.0.1**
 - **Oracle Cloud Infrastructure Container Engine for Kubernetes(OKE) v1.3.0**
@@ -119,7 +120,7 @@ Some CIS Benchmark recommendations may not be supported for automation in CIS-CA
 	- `xccdf_org.cisecurity_value_jdbc.url`: Oracle Database connection string.
 	- `xccdf_org.cisecurity_value_listener.ora`: Path to the listener.ora file
 - **CIS Oracle Linux 7 Benchmark, v3.1.1**
-- **CIS Oracle Linux 8 Benchmark, v2.0.0**
+- **CIS Oracle Linux 8 Benchmark, v3.0.0**
 - **CIS Oracle Linux 9 Benchmark, v1.0.0**
 - **CIS Palo Alto Firewall 9 v1.1.0 (offline only)**
 - **CIS Palo Alto Firewall 10 v1.1.0 (offline only)**
@@ -138,15 +139,17 @@ Some CIS Benchmark recommendations may not be supported for automation in CIS-CA
 	- `xccdf_org.cisecurity_value_jdbc.url`: PostgreSQL Database connection string.
 - **CIS PostgreSQL 14 Benchmark, v1.1.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: PostgreSQL Database connection string.
-- **CIS PostgreSQL 15 Benchmark, v1.0.0**
+- **CIS PostgreSQL 15 Benchmark, v1.1.0**
+	- `xccdf_org.cisecurity_value_jdbc.url`: PostgreSQL Database connection string.
+- **CIS PostgreSQL 16 Benchmark, v1.0.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: PostgreSQL Database connection string.
 - **CIS Red Hat Enterprise Linux 7 v3.1.1**
 - **CIS Red Hat Enterprise Linux 7 STIG v2.0.0**
-- **CIS Red Hat Enterprise Linux 8 2.0.0**
+- **CIS Red Hat Enterprise Linux 8 3.0.0**
 - **CIS Red Hat Enterprise Linux 8 STIG v1.0.0**
 - **CIS Red Hat Enterprise Linux 9 v1.0.0**
 - **CIS Red Hat OpenShift Container Platform v4, v1.4.0**
-- **CIS Rocky Linux 8 v1.0.0**
+- **CIS Rocky Linux 8 v1.1.0**
 - **CIS Rocky Linux 9 v1.0.0**
 - **CIS SUSE Linux Enterprise 12 v3.1.0**
 - **CIS SUSE Linux Enterprise 15 v1.1.1**
@@ -157,6 +160,8 @@ Some CIS Benchmark recommendations may not be supported for automation in CIS-CA
 - **CIS VMware ESXi 6.7 v1.3.0**
 	- `xccdf_org.cisecurity.benchmarks_value_esxi.connection`: ESXi host connection string
 - **CIS VMware ESXi 7.0 v1.3.0**
+	- `xccdf_org.cisecurity.benchmarks_value_esxi.connection`: ESXi host connection string
+ **CIS VMware ESXi 8.0 v1.0.0**
 	- `xccdf_org.cisecurity.benchmarks_value_esxi.connection`: ESXi host connection string
 
 -----------------------------------------------

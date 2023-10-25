@@ -40,7 +40,7 @@ The basic workflow option accommodates a local system scan only.
 
 ### Automatic CIS Benchmark Selection 
 
-Version v4.23.0+ offers an option for a local assessment to detect the operating system and automatically select the compatible CIS Benchmark for the detected operating system. By default, the automatic CIS Benchmark selection will execute when running the GUI. See the [properties section in the Configuration Guide](https://ccpa-docs.readthedocs.io/en/latest/Configuration%20Guide/#properties) for how to modify or disable this property/functionality. The automatic CIS Benchmark selection works with the following Microsoft Windows operating systems:
+When running a local assessment, the GUI will detect the operating system on a Microsoft Windows operating system and automatically select the compatible CIS Benchmark. By default, the automatic CIS Benchmark selection will execute when running the GUI. See the [properties section in the Configuration Guide](https://ccpa-docs.readthedocs.io/en/latest/Configuration%20Guide/#properties) for how to modify or disable this property/functionality. The automatic CIS Benchmark selection works with the following Microsoft Windows operating systems:
 
 	- 10 Enterprise
 	- 11 Enterprise
@@ -97,6 +97,14 @@ Select reporting options in this screen. CIS-CAT Lite is restricted to rendering
 Reporting output option defaults can be set in the [properties file.](https://ccpa-docs.readthedocs.io/en/latest/Configuration%20Guide/#properties) The assessor-cli.properties file is located in the Assessor-CLI\config folder. Pre-set the GUI outputs to the available formats of HTML, csv, txt or json. Set default share file locations or CIS-CAT Pro Dashboard URL for where the results should be sent to. When the auto operating system detection is set to true (on), it is also possible to pre-set specific share file locations based on the detected operating system where report results can be sent to.
 
 ![](img/GUI_AssessmentOptions.png)
+
+The `Result Destination POST URL' is relevant when CIS-CAT Pro Dashboard is installed. When any value is entered into this field, on navigate away, the GUI will attempt to validate the Dashboard destination. If the validation is successful, a message will display noting the success. If the validation is not successful, screen alerts will appear noting that the results will not post to Dashboard and possible solutions to the issues.
+
+![](img/GUI_URLScreenWarning.png)
+
+![](img/GUIValidationPopup.png)
+
+
 
 Logging options, by default, are set to `WARN or ERROR`.  For support issues, ensure to capture a log of `WARN, ERROR, or INFO` and provide this as an attachment to a [technical support ticket](https://www.cisecurity.org/support/).
 

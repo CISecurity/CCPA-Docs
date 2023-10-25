@@ -9,6 +9,48 @@
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
 ---------------------------
+## CIS-CAT Pro Assessor, v4.35.0 
+Release Date: Oct. 25, 2023 
+
+### Benchmark Coverage ###
+
+- AlmaLinux OS 8 v3.0.0
+- Apple macOS 11 v4.0.0
+- Apple macOS 12 v3.0.0
+- Apple macOS 13 v2.0.0
+- Apple macOS 14 v1.0.0
+- Azure Kubernetes Service (AKS) v1.4.0
+- Microsoft Intune for Windows 10 v2.0.0
+- Microsoft Intune for Windows 11 v2.0.0
+- Microsoft Windows Server 2012 R2 v3.0.0
+- Microsoft Windows Server 2012 v3.0.0
+- Microsoft Windows Server 2016 STIG v2.0.0
+- MongoDB 5 v1.2.0
+- MongoDB 6 v1.1.0
+- Oracle Linux 8 v3.0.0
+- PostgreSQL 15 v1.1.0
+- PostgreSQL 16 v1.0.0
+- Red Hat Enterprise Linux 8 v3.0.0
+- Rocky Linux 8 v1.1.0
+- VMware ESXI 8 v1.0.0
+
+### Security ###
+
+- Resolved security vulnerabilities present in embedded, third party dependencies for io.netty (now 4.1.100.Final) and jackson-databind (now at 2.15.3)
+
+### Application 
+
+- When running CIS-CAT Lite on a Microsoft Windows 11 operating system, the GUI will no longer pause when attempting to load CIS Benchmark Microsoft Windows 11 Benchmark
+- Linux assessment processes improved to now handle file path spaces when a network share exists.
+- CIS-CAT Assessor license validator updated to be compatible with new CIS formats in addition to previous formats
+- When CIS-CAT Pro Dashboard is utilized, the GUI will now validate that the POST URL is valid. On screen help will offer suggestions on resolution
+
+### Documentation 
+
+- README.txt document for the list of suppressed third party security vulnerabilities from dependent libraries has been updated
+- Lite users are informed in the Configuration Guide that installed Java is required when utilizing Lite on an operating system other than Windows
+- The configuration guide was updated to specify PowerShell version requirements for Microsoft Windows assessments
+
 
 ## CIS-CAT Pro Assessor, v4.34.0 
 Release Date: Sep. 28, 2023 
