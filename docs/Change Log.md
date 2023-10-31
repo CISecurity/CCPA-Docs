@@ -36,7 +36,7 @@ Release Date: Oct. 25, 2023
 
 ### Security ###
 
-- Resolved security vulnerabilities present in embedded, third party dependencies for io.netty (now 4.1.100.Final) and jackson-databind (now at 2.15.3)
+- Resolved security vulnerabilities present in embedded, third party dependencies for jackson-databind (now at 2.15.3)
 
 ### Application 
 
@@ -48,6 +48,7 @@ Release Date: Oct. 25, 2023
 ### Documentation 
 
 - README.txt document for the list of suppressed third party security vulnerabilities from dependent libraries has been updated
+	- io.netty updated, but did not have available stable versions at time of release 
 - Lite users are informed in the Configuration Guide that installed Java is required when utilizing Lite on an operating system other than Windows
 - The configuration guide was updated to specify PowerShell version requirements for Microsoft Windows assessments
 
