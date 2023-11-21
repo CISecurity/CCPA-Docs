@@ -29,7 +29,7 @@ Some CIS Benchmark recommendations may not be supported for automation in CIS-CA
 - **CIS AKS-Optimized Azure Linux 2 v1.0.0**
 - **CIS AlmaLinux OS 8 v3.0.0**
 - **CIS AlmaLinux OS 9 v1.0.0**
-- **CIS Amazon Elastic Kubernetes Service (EKS) v1.3.0**
+- **CIS Amazon Elastic Kubernetes Service (EKS) v1.4.0**
 - **CIS Amazon Linux 2023 v1.0.0**
 - **CIS Amazon Linux 2 v2.0.0**
 - **CIS Amazon Linux 2 STIG v2.0.0**
@@ -63,8 +63,9 @@ Some CIS Benchmark recommendations may not be supported for automation in CIS-CA
 - **CIS Microsoft Edge Benchmark, v2.0.0**
 - **CIS Microsoft IIS 8 Benchmark, v1.5.0**
 - **CIS Microsoft IIS 10 Benchmark, v1.2.1**
-- **CIS Microsoft Intune for Windows 10, v2.0.0**
-- **CIS Microsoft Intune for Windows 11, v2.0.0**
+- **CIS Microsoft Intune for Office v1.0.0**
+- **CIS Microsoft Intune for Windows 10, v2.0.1**
+- **CIS Microsoft Intune for Windows 11, v2.0.1**
 - **CIS Microsoft Office Enterprise, v1.1.0**
 - **CIS Microsoft Office Access 2013 Benchmark, v1.0.1**
 - **CIS Microsoft Office Excel 2013 Benchmark, v1.0.1**
@@ -101,16 +102,20 @@ Some CIS Benchmark recommendations may not be supported for automation in CIS-CA
 - **CIS MongoDB 4, v1.0.0**
 - **CIS MongoDB 5, v1.2.0**
 - **CIS MongoDB 6, v1.1.0**
+- **CIS MongoDB 7, v1.0.0**
 - **CIS Mozilla Firefox 38 ESR v1.0.0**
 - **CIS NGINX v2.0.1**
-- **Oracle Cloud Infrastructure Container Engine for Kubernetes(OKE) v1.3.0**
+- **Oracle Cloud Infrastructure Container Engine for Kubernetes(OKE) v1.4.0**
 - **CIS Oracle MySQL Community Server 5.7 v2.0.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: MySQL Server connection string.
 	- `xccdf_org.cisecurity_value_repl.user`: MySQL replication user name.
 - **CIS Oracle MySQL Enterprise Edition 5.7 v2.0.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: MySQL Server connection string.
 	- `xccdf_org.cisecurity_value_repl.user`: MySQL replication user name.
-- **CIS Oracle MySQL Enterprise Edition 8.0 v1.2.1**
+- **CIS Oracle MySQL Community Edition 8.0 v1.0.0**
+	- `xccdf_org.cisecurity_value_jdbc.url`: MySQL Server connection string.
+	- `xccdf_org.cisecurity_value_repl.user`: MySQL replication user name.
+- **CIS Oracle MySQL Enterprise Edition 8.0 v1.3.0**
 	- `xccdf_org.cisecurity_value_jdbc.url`: MySQL Server connection string.
 	- `xccdf_org.cisecurity_value_repl.user`: MySQL replication user name.
 - **CIS Oracle Database 18c v1.1.0**

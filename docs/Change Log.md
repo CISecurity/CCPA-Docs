@@ -9,6 +9,38 @@
 See the CIS-CAT Pro Assessor Coverage Guide for information about supported benchmarks, OVAL schemas/test types, and scripting capabilities.
 
 ---------------------------
+## CIS-CAT Pro Assessor, v4.36.0
+#### Release Date: Nov. 21, 2023 ####
+
+
+### Benchmark Coverage ###
+
+- Amazon Elastic Kubernetes Service (EKS) v1.4.0
+- Microsoft Intune for Office v1.0.0
+- Microsoft Intune for Windows 10 v2.0.1
+- Microsoft Intune for Windows 11 v2.0.1
+- MongoDB 7 Benchmark v1.0.0
+- Oracle Cloud Infrastructure Container Engine for Kubernetes(OKE) Benchmark v1.4.0
+- Oracle MySQL Community Server 8.0 Benchmark v1.0.0
+- Oracle MySQL Enterprise Edition 8.0 Benchmark v1.3.0
+
+### Security ###
+
+- Resolved security vulnerabilities present in embedded, third party dependencies for io.netty (now at 4.1.101)
+- The main Assessor application has been signed with a renewed signing certificate.
+
+### Application 
+
+- The size of the release package has been reduced due to a reduction in libraries unnecessary for assessment activities
+- The Assessor Lite release bundle has been updated to include the CIS Microsoft Windows 11 Enterprise Benchmark
+- The GUI enhanced to show additional help text on ‘Assessment Options’ screen when utilizing the ‘Result Destination POST URL'
+
+### Documentation 
+
+- README.txt document updated. There are no known vulnerabilities at the time of this release.
+
+---------------------------
+
 ## CIS-CAT Pro Assessor, v4.35.0 
 Release Date: Oct. 25, 2023 
 
@@ -52,6 +84,7 @@ Release Date: Oct. 25, 2023
 - Lite users are informed in the Configuration Guide that installed Java is required when utilizing Lite on an operating system other than Windows
 - The configuration guide was updated to specify PowerShell version requirements for Microsoft Windows assessments
 
+----------------------
 
 ## CIS-CAT Pro Assessor, v4.34.0 
 Release Date: Sep. 28, 2023 

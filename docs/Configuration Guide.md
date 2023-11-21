@@ -36,15 +36,30 @@ Below are the possible download bundles:
 
 ## Security
 
-CIS-CAT team utilizes best efforts to ensure that the CIS-CAT product are free from material vulnerabilities resulting from integrated third-party libraries with continuous use of monitoring tools as part of the software build process. The Center for Internet Security performs annual penetration testing on eligible software products, which includes CIS-CAT. CIS-CAT mitigates risks with recommended solutions associated with penetration test findings assessed at and above a Medium.
+###Development Process
 
-The Center for Internet Security product engineering practices are SOC 2 certified. SOC 2 is a voluntary compliance standard for service organizations, developed by the American Institute of CPAs (AICPA), which specifies how organizations should manage customer data. The standard is based on the following Trust Services Criteria: security, availability, processing integrity, confidentiality, privacy.
+CIS-CAT team utilizes best efforts to ensure that the CIS-CAT product is free from material vulnerabilities resulting from integrated third-party libraries with continuous use of  monitoring tools as part of the software build process. Reasonable efforts are made to ensure the application mitigates risk of third-party library vulnerbilities. However, it's important to note that some detected vulnerabilites may still be present in the application for multiple reasons such as the vendor has not provided a non-vulnerable update, the vulnerability is a false positive, NIST has not yet completed analysis, etc. When a library is not updated, the software will deliver. The known vulnerabilities will be disclosed in the README.txt document within the bundle. Each release, CIS-CAT analyzes and updates this list and the libraries where possible.
 
-CIS-CAT's engineering team is populated with individuals educated and certified in cyber security best practices. The Center for Internet for Security develops cyber security best practices with our global community of cybersecurity experts. We implement these best practices within the organization.
+###Penetration Testing
 
-CIS-CAT Pro Assessor delivers with a Software Bill of Materials (SBOM). The bill of materials is delivered in file formats of JSON and XML and are updated with each release of the products and placed in the "Documentation" folder. The files may also be downloaded separately on [CIS WorkBench](https://workbench.cisecurity.org/files?q=&tags=39&visibility=all).
+The Center for Internet Security performs annual penetration testing on eligible software products, which includes CIS-CAT. CIS-CAT mitigates risks with recommended solutions associated with penetration test findings assessed at and above a Medium.
+
+###SOC 2 Compliance
+
+The Center for Internet Security product engineering practices are SOC 2 certified.
+SOC 2 is a voluntary compliance standard for service organizations, developed by the American Institute of CPAs (AICPA), which specifies how organizations should manage customer data. The standard is based on the following Trust Services Criteria: security, availability, processing integrity, confidentiality, privacy.
+
+###Security Trained Engineers
+
+CIS-CAT's engineering team is populated with individuals educated and certified in cyber security best practices.
+The Center for Internet for Security develops cyber security best practices with our global community of cybersecurity experts. We implement these best practices within the organization. 
+
+###Software Bill of Materials (SBOM)
+
+CIS-CAT Pro Dashboard delivers with a Software Bill of Materials (SBOM). The the bill of materials is delivered in file formats of JSON and XML and are updated with each release of the products and placed in the "Documentation" folder. The files may also be downloaded separately on [CIS WorkBench](https://workbench.cisecurity.org/files?q=&tags=39&visibility=all).
 
 The term “Software Bill of Materials” or “SBOM” means a formal record containing the details and supply chain relationships of various components used in building software. CIS SecureSuite products utilize and embed many open source and commercial software components. The SBOM enumerates these components in the product. It is analogous to a list of ingredients on food packaging. An SBOM is useful to those who develop or manufacture software, those who select or purchase software, and those who operate software. Buyers can use an SBOM to perform vulnerability or license analysis, both of which can be used to evaluate risk in a product. Those who operate software can use SBOMs to quickly and easily determine whether they are at potential risk of a newly discovered vulnerability. A widely used, machine-readable SBOM format allows for greater benefits through automation and tool integration. The SBOMs gain greater value when collectively stored in a repository that can be easily queried by other applications and systems. Understanding the supply chain of software, obtaining an SBOM, and using it to analyze known vulnerabilities are crucial in managing risk.
+
 
 ------------
 
