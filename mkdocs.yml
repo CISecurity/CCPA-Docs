@@ -8,8 +8,7 @@ nav:
         - 4. CIS Benchmark Support: Coverage Guide.md 
         - 5. Quick Start: Quick Start Guides.md
         - 6. Control Assessment User Guide: User Guide for Controls Assessment Module.md
-        - 7. Third Party Licenses: License Information.md
-        - 8. Change Log: Change Log.md
+        - 7. Change Log: Change Log.md
  
 theme:
   name: readthedocs
